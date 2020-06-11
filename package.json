@@ -1,0 +1,19 @@
+{
+  "name": "official-web-with-backend",
+  "version": "1.0.0",
+  "description": "为带后台的官网搭个试验品",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immafrady/official-web-with-backend.git"
+  },
+  "author": "Frady <immafrady@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/immafrady/official-web-with-backend/issues"
+  },
+  "homepage": "https://github.com/immafrady/official-web-with-backend#readme"
+}
