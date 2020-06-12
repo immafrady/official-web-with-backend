@@ -3,6 +3,7 @@ import 'zone.js/dist/zone-node';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { join } from 'path';
+const proxy = require('express-http-proxy');
 
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
@@ -21,6 +22,8 @@ export function app() {
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
+
+  server.use('/api', proxy('http://localhost:7001'))
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
