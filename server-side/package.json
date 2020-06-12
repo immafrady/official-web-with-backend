@@ -1,7 +1,7 @@
 {
   "name": "server-side",
   "version": "1.0.0",
-  "description": "{{description}}",
+  "description": "官网服务端",
   "private": true,
   "dependencies": {
     "midway": "^1.0.0",
@@ -48,6 +48,6 @@
     "type": "git",
     "url": ""
   },
-  "author": "anonymous",
+  "author": "Frady<immafrady@gmail.com>",
   "license": "MIT"
 }
