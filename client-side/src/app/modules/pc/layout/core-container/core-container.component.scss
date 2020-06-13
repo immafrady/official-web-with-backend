@@ -1,0 +1,10 @@
+@import "src/assets/styles/common.pc";
+
+.core-container-outer {
+  min-width: $core-width;
+  width: 100%;
+  .core-container-inner {
+    width: $core-width;
+    margin: 0 auto;
+  }
+}
