@@ -1,7 +1,35 @@
-<pc-core-container className="footer-container">footer</pc-core-container>
-{{ companyInfo.ADDRESS }}
-
-<footer>
-
-
+<footer class="footer-container">
+  <pc-core-container className="top-container">
+    <div class="wrapper">
+      <div class="content">
+        <div class="top">
+          <div class="left">
+            <img src="/assets/images/logo-light.png" class="logo-light" alt="logo">
+            <div class="text">
+              <span class="text-content">地址：{{ companyInfo.ADDRESS }}</span>
+              <span>电话：</span>
+              <span *ngFor="let phone of companyInfo.TELEPHONES" class="text-content">{{ phone }}</span>
+            </div>
+          </div>
+          <div class="right">
+            <div class="item">关注我们：</div>
+            <div class="item"><a [href]="companyInfo.WEIBO_HREF" target="_blank"><img src="/assets/images/icon-weibo.png" class="sns-icon" alt="微博"></a></div>
+            <div class="item with-qrcode">
+              <img src="/assets/images/icon-wechat.png" class="sns-icon wechat" alt="微信">
+              <div class="qrcode-block">
+                <img src="/assets/images/qrcode-xinbaokeji.png" class="qrcode-icon" alt="二维码">
+                <span class="qrcode-description">薪宝科技服务号</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div *ngFor="let content of misc">{{ content }}</div>
+        </div>
+      </div>
+    </div>
+  </pc-core-container>
+  <pc-core-container className="bottom-container">
+    <div class="content">Copyright {{ companyInfo.COPYRIGHT }} © <a [href]="gongXinBuUrl" target="_blank">{{ companyInfo.BEIAN }}</a></div>
+  </pc-core-container>
 </footer>

@@ -1,1 +1,11 @@
-<pc-core-container>header</pc-core-container>
+
+<header class="header-container">
+  <pc-core-container>
+    <div class="header-wrapper">
+      <img src="/assets/images/logo-dark.png" class="title-logo" alt="logo">
+      <div class="router-container">
+        <a *ngFor="let routerInfo of headerRoutes" [routerLink]="'/' + routerInfo.name">{{ routerInfo.title }}</a>
+      </div>
+    </div>
+  </pc-core-container>
+</header>

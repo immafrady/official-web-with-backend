@@ -1,0 +1,34 @@
+@import "src/styles/common.pc";
+
+$logo-height: 28px;
+
+.header-container {
+  width: 100%;
+  background-color: #fff;
+}
+
+.header-wrapper {
+  margin: 0 55px;
+  height: $header-height;
+  position: relative;
+  .title-logo {
+    height: $logo-height;
+    position: absolute;
+    left: 0;
+    @include absolute-y-middle;
+  }
+
+  .router-container {
+    position: absolute;
+    right: 0;
+    @include absolute-y-middle;
+    a {
+      color: #252525;
+      font-size: 12px;
+      margin-left: 40px;
+      &:hover {
+        color: $theme-color;
+      }
+    }
+  }
+}

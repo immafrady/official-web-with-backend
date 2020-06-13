@@ -2,8 +2,10 @@
   <dictionary name="fradywang">
     <words>
       <w>beian</w>
+      <w>qrcode</w>
       <w>sequelize</w>
       <w>wechat</w>
+      <w>xinbaokeji</w>
     </words>
   </dictionary>
 </component>

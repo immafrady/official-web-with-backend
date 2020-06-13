@@ -10,6 +10,7 @@ import {PcModule} from "./modules/pc/pc.module";
     AppComponent
   ],
   imports: [
+    PcModule,
     AppRoutingModule,
     HttpClientModule
   ],

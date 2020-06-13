@@ -1,1 +1,7 @@
+$theme-color: #D60033;
 
+@mixin absolute-y-middle() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

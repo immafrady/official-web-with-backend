@@ -1,0 +1,96 @@
+@import "src/styles/common.pc";
+
+$bottom-height: 80px;
+$border-height: 1px;
+
+.footer-container {
+  width: 100%;
+  height: $footer-height;
+  background-color: #39393B;
+  color: #CBCBCB;
+
+
+  .top-container {
+    height: $footer-height - $bottom-height - $border-height;
+    .wrapper {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      .content {
+        position: absolute;
+        @include absolute-y-middle;
+        width: 100%;
+        .top {
+          position: relative;
+          .left {
+            .logo-light {
+              display: block;
+              height: 35px;
+            }
+            .text {
+              margin-top: 20px;
+              color: #ccc;
+              font-size: 14px;
+              .text-content {
+                display: inline-block;
+                margin-right: 20px;
+              }
+            }
+          }
+          .right {
+            position: absolute;
+            right: 0;
+            @include absolute-y-middle;
+
+            .item {
+              display: inline-block;
+              margin-left: 45px;
+              position: relative;
+
+              .sns-icon {
+                width: 45px;
+              }
+
+              &.with-qrcode:hover {
+                .qrcode-block {
+                  display: block;
+                }
+              }
+              .qrcode-block {
+                display: none;
+                position: absolute;
+                bottom: 150%;
+                right: -130%;
+                background-color: #fff;
+                .qrcode-description {
+                  display: block;
+                  font-size: 10px;
+                  line-height: 30px;
+                  text-align: center;
+                  color: #3A3A3C;
+                }
+                .qrcode-icon {
+                  width: 155px;
+                }
+              }
+            }
+          }
+        }
+        .bottom {
+          margin-top: 30px;
+          font-size: 10px;
+          color: #ccc;
+          line-height: 24px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .bottom-container {
+    border-top: $border-height solid #aaa;
+    .content {
+      text-align: center;
+      line-height: $bottom-height;
+    }
+  }
+}
