@@ -12,5 +12,17 @@ export default (appInfo: EggAppInfo) => {
   config.middleware = [
   ];
 
+  // cors
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+  }
+
+  config.security = {
+    csrf: {
+      enable: false
+    }
+  }
+
   return config;
 };

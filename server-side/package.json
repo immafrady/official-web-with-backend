@@ -4,8 +4,11 @@
   "description": "官网服务端",
   "private": true,
   "dependencies": {
+    "egg-cors": "^2.2.3",
+    "egg-scripts": "^2.10.0",
+    "egg-sequelize": "^5.2.1",
     "midway": "^1.0.0",
-    "egg-scripts": "^2.10.0"
+    "mysql2": "^2.1.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
@@ -14,10 +17,11 @@
     "egg-ci": "^1.8.0",
     "midway-bin": "1",
     "midway-mock": "1",
-    "tslib": "^1.8.1",
-    "tslint-midway-contrib": "1",
+    "sequelize-cli": "^5.5.1",
     "ts-node": "^8.3.0",
+    "tslib": "^1.8.1",
     "tslint": "^5.11.0",
+    "tslint-midway-contrib": "1",
     "typescript": "^3.5.0"
   },
   "engines": {

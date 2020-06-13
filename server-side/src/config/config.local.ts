@@ -4,6 +4,7 @@ export const development = {
     'lib',
     'service',
     'config',
+    'interface',
     'app.ts',
     'agent.ts',
     'interface.ts',

@@ -1,4 +1,4 @@
-import { Context, inject, controller, get, provide } from 'midway';
+import { Context, inject, controller, get, provide, post } from 'midway';
 
 @provide()
 @controller('/')
@@ -7,8 +7,19 @@ export class HomeController {
   @inject()
   ctx: Context;
 
-  @get('/')
+  @get('/home')
   async index() {
-    this.ctx.body = `Welcome to midwayjs!`;
+    this.ctx.body = {
+      status: 'ok'
+    };
+    this.ctx.status = 200;
+  }
+
+  @post('/update')
+  async update() {
+    this.ctx.body = {
+      status: 'not ok'
+    };
+    this.ctx.status = 200
   }
 }
