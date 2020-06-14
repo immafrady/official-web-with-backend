@@ -24,6 +24,10 @@ export function app() {
   server.set('views', distFolder);
 
   server.use('/api', proxy('http://localhost:7001'))
+  // 以下路由不走服务端渲染(IE好像无法渲染)
+  server.get('/admin/*', (req, res) => {
+    res.sendFile(join(distFolder, 'index.html'));
+  });
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
