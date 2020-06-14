@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PcComponent } from './pc.component';
-import { CoreContainerComponent } from './common/core-container/core-container.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { PcRoutingModule } from "./pc-routing.module";
+import {PcSharedModule} from "./shared/pc-shared.module";
 
 @NgModule({
-  declarations: [PcComponent, CoreContainerComponent, HeaderComponent, FooterComponent],
+  declarations: [PcComponent, HeaderComponent, FooterComponent],
   imports: [
-    CommonModule,
+    PcSharedModule,
     PcRoutingModule
   ],
   exports: [PcComponent],

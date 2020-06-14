@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BasePageComponent} from "src/app/common/base-page.component";
+import {BasePageComponent} from "src/app/shared/base-page.component";
 
 @Component({
   selector: 'app-home',
