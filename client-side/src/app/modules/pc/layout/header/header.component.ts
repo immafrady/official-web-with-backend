@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {getWebRouterInfo, RouterInfo, WebRouterName} from "src/config/router-info";
+import { Component, OnInit } from '@angular/core';
+import { getWebRouterInfo, IRouterInfo, webRouteOrders } from "src/config/router-info";
 
 @Component({
   selector: 'pc-header',
@@ -8,21 +8,12 @@ import {getWebRouterInfo, RouterInfo, WebRouterName} from "src/config/router-inf
 })
 export class HeaderComponent implements OnInit {
 
-  headerRoutes: RouterInfo[] = [];
+  headerRoutes: IRouterInfo[] = [];
 
   constructor() {
-    const routeOrders: WebRouterName[] = [
-      WebRouterName.Home,
-      WebRouterName.AboutUs,
-      WebRouterName.NewsCenter,
-      WebRouterName.ProductIntro,
-      WebRouterName.XinAcademy,
-      WebRouterName.XinInnovationValley,
-      WebRouterName.XinTown,
-      WebRouterName.JoinUs,
-    ]
-    for (let i = 0; i < routeOrders.length; i++) {
-      this.headerRoutes.push(getWebRouterInfo(routeOrders[i]))
+
+    for (let i = 0; i < webRouteOrders.length; i++) {
+      this.headerRoutes.push(getWebRouterInfo(webRouteOrders[i]))
     }
   }
 
