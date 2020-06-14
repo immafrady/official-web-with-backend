@@ -4,6 +4,12 @@ export interface IRouterInfo {
   title: string;
 }
 
+// 路由信息 data
+export interface IRouterData {
+  title: string;
+  meta?: string;
+}
+
 /**
  * 路由枚举(网页端)
  */

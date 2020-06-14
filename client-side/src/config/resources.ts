@@ -1,3 +1,4 @@
+export const APPLICATION_NAME = '官网'
 // 公司信息
 export const COMPANY_INFO = {
   ADDRESS: '广州市天河区力达广场A1栋16层',

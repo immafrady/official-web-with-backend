@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from "@angular/router";
+import { RouterModule, Routes} from "@angular/router";
 import {PcComponent} from "./pc.component";
-import {HomeComponent} from "./pages/home/home.component";
 
 const routes: Routes = [
   { path: '', component: PcComponent, children: [
-      { path: '', component: HomeComponent }
+      { path: '', loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule) , data: { title: '首页' } }
     ]
   }
 ]
