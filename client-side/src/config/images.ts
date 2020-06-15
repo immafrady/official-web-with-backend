@@ -32,7 +32,7 @@ export const PATH_IMG = {
   LOGO_GST: BASE_PATH + 'logo-gst.png',
   LOGO_HUIZE: BASE_PATH + 'logo-huize.png',
   LOGO_HUOSHAN: BASE_PATH + 'logo-huoshan.png',
-  LOGO_HUYA: BASE_PATH + 'logo-.huya.png',
+  LOGO_HUYA: BASE_PATH + 'logo-huya.png',
   LOGO_K: BASE_PATH + 'logo-k.png',
   LOGO_LINGJI: BASE_PATH + 'logo-lingji.png',
   LOGO_MYBANK: BASE_PATH + 'logo-mybank.png',

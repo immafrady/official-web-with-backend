@@ -1,7 +1,34 @@
 <pc-home-carousel></pc-home-carousel>
 <pc-core-container>
-  <div class="block-title">最新动态</div>
+  <div class="middle-container">
+    <div class="block-title">最新动态</div>
+    <div class="inner-container">
+      <div nz-row>
+        <nz-space nz-col nzSize="large" nzSpan="14" nzOffset="5">
+          <nz-space-item *ngFor="let news of newsList">
+            <pc-news-preview></pc-news-preview>
+          </nz-space-item>
+        </nz-space>
+      </div>
+    </div>
+  </div>
 </pc-core-container>
 <pc-core-container>
-  <div class="block-title">合作伙伴</div>
+  <div class="bottom-container">
+    <div class="block-title">合作伙伴</div>
+    <div class="inner-container">
+      <nz-carousel class="bottom-carousel">
+        <div nz-carousel-content class="carousel-container">
+          <div class="associate-block">
+            <img *ngFor="let src of firstList" class="friendly-company" [src]="src" alt="">
+          </div>
+        </div>
+        <div nz-carousel-content class="carousel-container">
+          <div class="associate-block">
+            <img *ngFor="let src of secondList" class="friendly-company" [src]="src" alt="">
+          </div>
+        </div>
+      </nz-carousel>
+    </div>
+  </div>
 </pc-core-container>
