@@ -1,0 +1,26 @@
+.middle-container {
+  margin: 60px auto 40px;
+}
+.bottom-container {
+  margin-bottom: 70px;
+}
+
+$carousel-height: 400px;
+.bottom-carousel, .carousel-container {
+  height: $carousel-height;
+}
+
+.associate-block {
+  .friendly-company {
+    float: left;
+    width: 160px;
+    margin: 0 16px 14px 0;
+    &:nth-child(5n) {
+      margin-right: 0;
+    }
+  }
+}
+
+.inner-container {
+  padding: 0 164px;
+}
