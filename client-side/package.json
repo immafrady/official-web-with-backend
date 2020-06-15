@@ -11,6 +11,7 @@
     "dev:ssr": "ng run client-side:serve-ssr",
     "serve:ssr": "node dist/client-side/server/main.js",
     "build:ssr": "ng build --prod && ng run client-side:server:production",
+    "build-and-serve": "npm run build:ssr && npm run serve:ssr",
     "prerender": "ng run client-side:prerender"
   },
   "private": true,
