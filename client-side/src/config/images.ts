@@ -16,6 +16,8 @@ export const PATH_IMG = {
   // banner图内部原生
   PC_BANNER_1_SLOGAN: BASE_PATH + 'pc-banner-1-slogan.png',
   PC_BANNER_2_ELEMENT: BASE_PATH + 'pc-banner-2-element.png',
+  PC_BANNER_2_SLOGAN: BASE_PATH + 'pc-banner-2-slogan.png',
+  PC_BANNER_3_SLOGAN: BASE_PATH + 'pc-banner-3-slogan.png',
   // 公司logo
   LOGO_DARK: BASE_PATH + 'logo-dark.png',
   LOGO_LIGHT: BASE_PATH + 'logo-light.png',

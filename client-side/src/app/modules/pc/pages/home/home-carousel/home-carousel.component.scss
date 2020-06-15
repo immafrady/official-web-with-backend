@@ -1,0 +1,115 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+$carousel-height: 869px;
+
+.home-carousel {
+  width: 100%;
+  height: $carousel-height;
+  position: relative;
+
+  nz-carousel {
+    height: $carousel-height;
+    position: relative;
+  }
+
+  [nz-carousel-content] {
+    height: $carousel-height!important;
+  }
+  .carousel-item {
+    height: $carousel-height;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .wrapper {
+      position: relative;
+      width: 100%;
+      height: $carousel-height;
+    }
+
+    &.item-one {
+      background-image: $pc-banner-1;
+      .slogan {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1000px;
+      }
+    }
+    &.item-two {
+      background-image: $pc-banner-2;
+      .phone-element {
+        position: absolute;
+        @include absolute-y-middle;
+        left: 50px;
+        width: 280px;
+      }
+      .right-block {
+        @include absolute-y-middle;
+        right: 50px;
+
+        .slogan {
+          display: block;
+          width: 700px;
+        }
+        .button-like {
+          margin-left: 28px;
+          margin-top: 30px;
+        }
+      }
+
+    }
+    &.item-three {
+      background-image: $pc-banner-3;
+      .content-group {
+        @include absolute-y-middle;
+        left: 100px;
+        .slogan {
+          display: block;
+        }
+        .button-like {
+          margin-top: 30px;
+          margin-left: 28px;
+        }
+      }
+    }
+  }
+
+
+
+  .carousel-btn {
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    &.prev {
+      left: 10px;
+    }
+    &.next {
+      right: 10px;
+    }
+  }
+}
+
+// 自定按钮颜色
+.button-like {
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 15px;
+  &:hover {
+    color: #fff;
+  }
+  &.red {
+    background-color: #EF2A40;
+  }
+  &.purple {
+    background-color: #6676FF;
+  }
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+  background-color: $theme-color;
+}

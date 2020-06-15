@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NzCarouselModule } from "ng-zorro-antd";
+import {NzButtonModule, NzCarouselModule} from "ng-zorro-antd";
 
 import { HomeRoutingModule } from './home-routing.module';
 import {HomeComponent} from "./home.component";
@@ -13,7 +13,8 @@ import {CommonModule} from "@angular/common";
     CommonModule,
     PcSharedModule,
     HomeRoutingModule,
-    NzCarouselModule
+    NzCarouselModule,
+    NzButtonModule
   ],
 })
 export class HomeModule { }
