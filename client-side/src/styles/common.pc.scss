@@ -5,5 +5,13 @@ $footer-height: 350px; // 脚部高度
 $header-height: 60px; // 头部高度
 
 body {
+  font-family: "Microsoft Yahei", serif;
   min-width: $core-width;
+}
+
+.block-title {
+  color: #343434;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 30px;
 }

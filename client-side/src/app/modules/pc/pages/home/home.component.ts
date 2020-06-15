@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "src/app/shared/base-page.component";
 
 @Component({
-  selector: 'app-home',
+  selector: 'pc-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
