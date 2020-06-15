@@ -11,7 +11,22 @@ import {PATH_IMG} from "../../../../../config/images";
 })
 export class HomeComponent extends BasePageComponent implements OnInit {
 
-  newsList: any[] = [1,2,3]
+  newsList: {title: string, date: number, thumbnail: string, routerLink: string}[] = [{
+    title: 'A',
+    date: 1231231231231,
+    thumbnail: PATH_IMG.LOGO_BOQII,
+    routerLink: '/admin'
+  }, {
+    title: 'A',
+    date: 1231231231231,
+    thumbnail: PATH_IMG.PC_BANNER_3_SLOGAN,
+    routerLink: '/admin'
+  }, {
+    title: 'A',
+    date: 1231231231231,
+    thumbnail: PATH_IMG.PC_BANNER_2_ELEMENT,
+    routerLink: '/admin'
+  }]
 
   firstList: string[] = [
     PATH_IMG.LOGO_TENCENT,

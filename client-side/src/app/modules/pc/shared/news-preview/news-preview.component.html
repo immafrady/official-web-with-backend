@@ -1,6 +1,11 @@
-<nz-card [nzCover]="coverTemplate">
-  <nz-card-meta nzTitle="Card title" nzDescription="This is the description" ></nz-card-meta>
-</nz-card>
-<ng-template #coverTemplate>
-  <img src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" alt="">
-</ng-template>
+<div class="news-preview">
+  <img [src]="thumbnail" class="preview-thumbnail" alt="">
+  <div class="content-block">
+    <div class="news-title">{{ title }}</div>
+    <div class="news-date">{{ date | date:"yyyy-MM-dd" }}</div>
+    <a [routerLink]="routerLink" class="router-link" (mouseenter)="handleImageSwitch(true)" (mouseleave)="handleImageSwitch(false)">
+      <span>阅读全文</span>
+      <app-svg-icon class="svg-icon" [src]="svg.ICON_ARROW_RIGHT"></app-svg-icon>
+    </a>
+  </div>
+</div>

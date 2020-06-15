@@ -5,3 +5,13 @@ $theme-color: #D60033;
   top: 50%;
   transform: translateY(-50%);
 }
+
+@mixin clear-fix() {
+  zoom: 1;
+  &:after {
+    visibility: hidden;
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
