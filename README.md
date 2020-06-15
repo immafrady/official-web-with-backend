@@ -1,6 +1,10 @@
 # official-web-with-backend
 为带后台的官网搭建个试验性的版本
 
+## 备注
+
+- 想在开发编译中查看ie11效果，需要把`tsconfig.app.json`中的`target`字段改成`es5`
+
 ## 技术栈
 
 ### Client side
