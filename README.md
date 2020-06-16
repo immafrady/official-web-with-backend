@@ -17,7 +17,7 @@
 
 ### Global
 
-- [ ] 服务端/客户端共用interface
+- [x] 服务端/客户端共用interface（通过tsconfig - "reference"引入外部地址）
 
 ### Client side
 
