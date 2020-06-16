@@ -1,0 +1,118 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+$colorRed: #D50031;
+$colorGrey: #CBCBCB;
+$borderContent: 1px solid $colorGrey;
+.about-us-banner {
+  height: 450px;
+  background: $about-us-banner-1 center;
+  h2 {
+    font-size: 38px;
+    color: #fff;
+    text-align: center;
+    padding-top: 206px;
+  }
+}
+
+.description-content {
+  font-size: 14px;
+  line-height: 28px;
+  text-align: center;
+  margin: auto;
+  color: #656565;
+}
+
+.about-us-description {
+  .block-title {
+    margin: 80px 0 30px;
+  }
+  .description-content {
+    width: 560px;
+  }
+}
+
+.about-us-company-wish {
+  .block-title {
+    margin: 95px 0 30px;
+  }
+  .description-content {
+    width: 524px;
+  }
+}
+
+.about-us-banner-2 {
+  background: $about-us-banner-2 center;
+  margin-top: 50px;
+  height: 300px;
+}
+
+.about-us-history {
+  .block-title {
+    margin: 87px 0 42px;
+  }
+}
+
+.selector-container {
+  border: $borderContent;
+  border-left: none;
+  clear: both;
+  overflow: hidden;
+  width: 813px;
+  margin: 0 auto 50px;
+  user-select: none;
+  .arrow {
+    width: 90px;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    border-left: $borderContent;
+    cursor: pointer;
+  }
+  .selector {
+    width: 158px;
+    height: 60px;
+    border-left: $borderContent;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    cursor: pointer;
+    &.active {
+      background-color: $colorGrey;
+      color: $colorRed;
+    }
+  }
+}
+.selector-content {
+  margin-bottom: 100px;
+  color: #656565;
+  h3 {
+    font-size: 20px;
+    color: $colorRed;
+    text-align: center;
+    margin-bottom: 45px;
+  }
+  .ant-timeline {
+    margin-left: 345px;
+  }
+  .position-left  {
+    position: absolute;
+    right: calc(100% + 35px);
+    font-weight: bold;
+    font-size: 16px;
+    color: #333333;
+    width: 80px;
+    text-align: right;
+  }
+  .ant-timeline-item-tail {
+    border-left: 1px solid $colorRed;
+    left: 6px;
+  }
+  .ant-timeline-item-head {
+    width: 12px;
+    height: 12px;
+    background-color: $colorRed;
+  }
+}
