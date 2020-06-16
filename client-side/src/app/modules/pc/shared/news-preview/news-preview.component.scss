@@ -1,0 +1,49 @@
+@import "src/styles/common.pc";
+
+$news-preview-width: 270px;
+
+.news-preview {
+  width: $news-preview-width;
+  border: 1px solid #ccc;
+  //border-top: none;
+  .preview-thumbnail {
+    display: block;
+    width: $news-preview-width;
+    height: $news-preview-width;
+    object-fit: cover;
+  }
+  .content-block {
+    box-sizing: border-box;
+    padding: 20px;
+    .news-title {
+      font-size: 16px;
+      color: #343434;
+      margin-bottom: 44px;
+    }
+    .news-date {
+      font-size: 16px;
+      color: #A1A1A1;
+      margin-bottom: 32px;
+    }
+    .router-link {
+      display: block;
+      position: relative;
+      $router-height: 18px;
+      font-size: 14px;
+      color: #ccc;
+      &:hover {
+        color: $theme-color;
+      }
+      span {
+        line-height: $router-height;
+      }
+      .svg-icon {
+        display: block;
+        position: absolute;
+        @include absolute-y-middle;
+        right: 0;
+        font-size: 28px;
+      }
+    }
+  }
+}

@@ -5,5 +5,24 @@ $footer-height: 350px; // 脚部高度
 $header-height: 60px; // 头部高度
 
 body {
+  font-family: "Microsoft Yahei", serif;
   min-width: $core-width;
+}
+
+.block-title {
+  color: #343434;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+// 定制ng-zorro样式
+// carousel下方点点
+.ant-carousel .slick-dots li.slick-active button {
+  background-color: $theme-color;
+}
+.ant-carousel .slick-dots li button {
+  height: 8px;
+  border-radius: 5px;
+  background-color: #ccc;
 }

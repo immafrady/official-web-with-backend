@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import {GlobalSharedModule} from "../../../shared/global-shared.module";
 import {CoreContainerComponent} from "./core-container/core-container.component";
+import {CommonModule} from "@angular/common";
+import { NewsPreviewComponent } from './news-preview/news-preview.component';
+import {RouterModule} from "@angular/router";
+import {NzCardModule, NzIconModule} from "ng-zorro-antd";
 
 @NgModule({
-  declarations: [CoreContainerComponent],
+  declarations: [CoreContainerComponent, NewsPreviewComponent],
   imports: [
-    GlobalSharedModule
+    CommonModule,
+    GlobalSharedModule,
+    RouterModule,
+    NzCardModule
   ],
   exports: [
-    CoreContainerComponent
+    CoreContainerComponent,
+    NewsPreviewComponent
   ]
 })
 export class PcSharedModule { }

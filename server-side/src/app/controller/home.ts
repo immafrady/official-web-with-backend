@@ -1,13 +1,14 @@
-import { Context, inject, controller, get, provide, post } from 'midway';
+import { Context, inject, controller, get, provide } from 'midway';
+import { MIDDLEWARE_JWT } from "../../inject-token";
 
 @provide()
-@controller('/')
+@controller('/', { middleware: [] })
 export class HomeController {
 
   @inject()
   ctx: Context;
 
-  @get('/home')
+  @get('/home', { middleware: [MIDDLEWARE_JWT] })
   async index() {
     this.ctx.body = {
       status: 'ok'
@@ -15,7 +16,7 @@ export class HomeController {
     this.ctx.status = 200;
   }
 
-  @post('/update')
+  @get('/update')
   async update() {
     this.ctx.body = {
       status: 'not ok'

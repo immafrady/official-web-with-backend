@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {COMPANY_INFO, GONG_XIN_BU_URL} from "src/config/resources";
+import {PATH_IMG} from "../../../../../config/images";
 
 @Component({
   selector: 'pc-footer',
@@ -8,7 +9,7 @@ import {COMPANY_INFO, GONG_XIN_BU_URL} from "src/config/resources";
   encapsulation: ViewEncapsulation.None
 })
 export class FooterComponent implements OnInit {
-
+  images = PATH_IMG;
   companyInfo = COMPANY_INFO;
   gongXinBuUrl = GONG_XIN_BU_URL;
   misc = [
