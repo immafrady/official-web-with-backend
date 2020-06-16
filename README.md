@@ -15,12 +15,17 @@
 
 ## Problems need to be solved
 
+### Global
+
+- [ ] 服务端/客户端共用interface
+
 ### Client side
 
 - [ ] 动态路由，通过请求设备自动分配是电脑端还是移动端
 - [ ] 后端渲染时动态设置meta
 - [ ] 后端渲染时图片的加载失败问题
 - [ ] http请求拦截鉴权
-- [ ] 部分页面走回CSR（admin）
+- [x] 部分页面走回CSR（admin）
+- [ ] svg-icon的使用
 
 ### Server side
