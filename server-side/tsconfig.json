@@ -18,5 +18,8 @@
     "dist",
     "node_modules",
     "test"
+  ],
+  "references": [
+    { "path": "../libs" }
   ]
 }
