@@ -1,15 +1,16 @@
 @import "src/styles/common.pc";
 
-$news-preview-width: 270px;
+$news-preview-width: 278px;
+$news-preview-height: 250px;
 
 .news-preview {
-  width: $news-preview-width;
   border: 1px solid #ccc;
+  width: 280px;
   //border-top: none;
   .preview-thumbnail {
     display: block;
     width: $news-preview-width;
-    height: $news-preview-width;
+    height: $news-preview-height;
     object-fit: cover;
   }
   .content-block {
@@ -17,13 +18,20 @@ $news-preview-width: 270px;
     padding: 20px;
     .news-title {
       font-size: 16px;
+      height: 50px;
+      line-height: 25px;
       color: #343434;
-      margin-bottom: 44px;
+      width: 240px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; //行数
+      -webkit-box-orient: vertical;
     }
     .news-date {
       font-size: 16px;
       color: #A1A1A1;
-      margin-bottom: 32px;
+      margin: 12px 0 ;
     }
     .router-link {
       display: block;

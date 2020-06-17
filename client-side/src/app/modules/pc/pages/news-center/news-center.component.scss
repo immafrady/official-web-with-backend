@@ -1,0 +1,58 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+$colorRed: #D50032;
+.information-center-banner {
+  height: 450px;
+  background: $information-center-banner center;
+}
+
+.news-container {
+  width: 900px;
+  margin: 0 auto;
+  .more-link {
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 32px;
+    a {
+      color: $colorRed;
+      font-size: 16px;
+    }
+  }
+  .inner-container {
+    @include clear-fix;
+    pc-news-preview {
+      float: left;
+      margin: 0 10px;
+    }
+  }
+  &.hot-news {
+    margin: 70px auto 25px;
+  }
+}
+
+.honer-container {
+  margin-top: 45px;
+  .honer-article {
+    width: 730px;
+    margin: 50px auto 140px;
+    a {
+      display: block;
+      @include clear-fix;
+      margin-bottom: 25px;
+      color: #666666;
+      font-size: 16px;
+      p {
+        float: left;
+      }
+      span {
+        float: right;
+      }
+      &:hover {
+        color: $colorRed;
+      }
+    }
+  }
+}
+
+

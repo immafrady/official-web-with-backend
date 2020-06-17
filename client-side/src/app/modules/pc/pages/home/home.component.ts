@@ -12,7 +12,7 @@ import {PATH_IMG} from "../../../../../config/images";
 export class HomeComponent extends BasePageComponent implements OnInit {
 
   newsList: {title: string, date: number, thumbnail: string, routerLink: string}[] = [{
-    title: 'A',
+    title: '十多个发生过房管局道森股份加个动画森股份加个动画设计森股份加个动画设计森股份加个动画设计设计成f',
     date: 1231231231231,
     thumbnail: PATH_IMG.LOGO_BOQII,
     routerLink: '/admin'

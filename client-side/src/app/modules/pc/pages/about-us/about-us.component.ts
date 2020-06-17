@@ -2,7 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "../../../../shared/base-page.component";
-import {BASE_64_IMG, PATH_IMG} from "src/config/images";
+import {BASE_64_IMG} from "src/config/images";
 
 interface IDateDictionary {
   [key: string]: { time: string, content: string }[]
@@ -16,7 +16,6 @@ interface IDateDictionary {
 })
 export class AboutUsComponent extends BasePageComponent implements OnInit {
   base64Pics = BASE_64_IMG;
-  images = PATH_IMG;
   constructor(
     metaService: Meta,
     titleService: Title,
