@@ -1,0 +1,87 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+.product-intro-banner {
+  height: 450px;
+  background: $product-intro-banner center;
+}
+.product-intro-container {
+  margin: 90px auto;
+}
+.product-intro-steward {
+  border-top: 20px solid #fafafa;
+  padding-top: 64px;
+  margin-bottom: 80px;
+}
+.product-intro {
+  @include clear-fix;
+  padding-left: 80px;
+  .product-content {
+    float: left;
+    width: 410px;
+    color: #000000;
+    font-size: 12px;
+    line-height: 26px;
+    .product-icon {
+      width: 110px;
+      height: 110px;
+    }
+    h2 {
+      color: #333333;
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 46px;
+    }
+    h3 {
+      color: #666666;
+      font-size: 24px;
+      font-weight: 400;
+      margin: 25px 0;
+    }
+    a {
+      display: inline-block;
+      padding: 5px 27px;
+      font-size: 14px;
+      background-color: #EC292D;
+      border-radius: 18px;
+      color: #fff;
+      margin-top: 45px;
+    }
+  }
+  .product-intro-bg {
+    float: right;
+  }
+
+  &.pocket-studio {
+    .product-content {
+      margin-top: 20px;
+      .product-icon {
+        background: $product-pocket-icon;
+      }
+    }
+    .product-intro-bg {
+      width: 700px;
+      height: 500px;
+      background: $product-pocket-studio;
+      margin-right: -36px;
+    }
+  }
+
+  &.steward {
+    .product-content {
+      margin-top: 28px;
+      .product-icon {
+        background: $product-steward-icon;
+      }
+      a {
+        background-color: #6676FF;
+      }
+    }
+    .product-intro-bg {
+      width: 614px;
+      height: 613px;
+      background: $product-steward;
+      margin-right: -29px;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+<pc-core-container className="join-us-banner">
+  <h2 class="banner-title">认真生活 快乐工作</h2>
+</pc-core-container>
+
+<pc-core-container>
+  <div class="join-us-core">
+    <div class="block-title">企业文化</div>
+    <p class="core-text">薪宝核心价值观：真实、激情、敬业、包容、创新、拥抱变化、以客户为中心</p>
+  </div>
+</pc-core-container>
+
+<pc-core-container>
+  <nz-tabset [nzTabBarGutter]="180" [nzSize]="'large'">
+    <nz-tab nzTitle="工作环境">
+      <div class="company-container">
+        <img [src]="getImage('join-us-work-environment-1')" alt="">
+        <img [src]="getImage('join-us-work-environment-2')" alt="">
+        <img [src]="getImage('join-us-work-environment-3')" alt="">
+        <img [src]="getImage('join-us-work-environment-4')" alt="">
+        <img [src]="getImage('join-us-work-environment-5')" alt="">
+        <img [src]="getImage('join-us-work-environment-5')" alt="">
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="小伙伴生活">
+      <div class="company-container">
+        <img [src]="getImage('join-us-live-1')" alt="">
+        <img [src]="getImage('join-us-live-2')" alt="">
+        <img [src]="getImage('join-us-live-3')" alt="">
+        <img [src]="getImage('join-us-live-4')" alt="">
+        <img [src]="getImage('join-us-live-5')" alt="">
+        <img [src]="getImage('join-us-live-6')" alt="">
+      </div>
+    </nz-tab>
+  </nz-tabset>
+</pc-core-container>
+
+<pc-core-container className="station-container">
+  <div class="block-title">招聘岗位</div>
+  <nz-radio-group [(ngModel)]="size" ngDefaultControl nzSize="large">
+    <label nz-radio-button nzValue="1"><span>技术类</span></label>
+    <label nz-radio-button nzValue="2"><span>行政类</span></label>
+    <label nz-radio-button nzValue="3"><span>人事类</span></label>
+    <label nz-radio-button nzValue="4"><span>财务类</span></label>
+    <label nz-radio-button nzValue="5"><span>客服类</span></label>
+    <label nz-radio-button nzValue="6"><span>销售类</span></label>
+    <label nz-radio-button nzValue="6"><span>技术类</span></label>
+    <label nz-radio-button nzValue="7"><span>产品类</span></label>
+    <label nz-radio-button nzValue="8"><span>其他</span></label>
+  </nz-radio-group>
+  <div class="join-us-table">
+    <nz-table #nzTable [nzData]="listOfData" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['500px', '190px', '100px', '200px', '50px']">
+      <thead>
+      <tr>
+        <th>职位</th>
+        <th>类别</th>
+        <th>工作地</th>
+        <th></th>
+        <th nzWidth="60px"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let data of nzTable.data">
+        <tr>
+          <td>{{ data.position }}</td>
+          <td>{{ data.type }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.date }}</td>
+          <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
+        </tr>
+        <tr [nzExpand]="expandSet.has(data.id)">
+          <span>{{ data.description }}</span>
+        </tr>
+      </ng-container>
+      </tbody>
+    </nz-table>
+  </div>
+</pc-core-container>

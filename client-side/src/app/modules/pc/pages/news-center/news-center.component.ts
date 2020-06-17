@@ -2,7 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "../../../../shared/base-page.component";
-import {PATH_IMG} from "../../../../../config/images";
+import {getImage} from "src/utils/getImage";
 
 @Component({
   selector: 'pc-news-center',
@@ -14,17 +14,17 @@ export class NewsCenterComponent extends BasePageComponent implements OnInit {
   newsList: {title: string, date: number, thumbnail: string, routerLink: string}[] = [{
     title: '2019年度财税论坛圆满举行',
     date: 1231231231231,
-    thumbnail: PATH_IMG.LOGO_BOQII,
+    thumbnail: getImage('join-us-work-environment-1'),
     routerLink: '/admin'
   }, {
     title: '2019年度财税论坛圆满举行 财税风控及汇算清缴成会议重点',
     date: 1231231231231,
-    thumbnail: PATH_IMG.PC_BANNER_3_SLOGAN,
+    thumbnail: getImage('join-us-work-environment-2'),
     routerLink: '/admin'
   }, {
     title: '2019年度财税论坛圆满举行 中国财经峰会冬季论坛在京投资..',
     date: 1231231231231,
-    thumbnail: PATH_IMG.PC_BANNER_2_ELEMENT,
+    thumbnail: getImage('join-us-work-environment-3'),
     routerLink: '/admin'
   }]
 

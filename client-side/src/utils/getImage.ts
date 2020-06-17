@@ -1,4 +1,4 @@
-import { IMAGE_BASE_PATH } from "../config/images";
+import { IMAGE_BASE_PATH } from "src/config/images";
 
 /**
  * @description 获取图片地址

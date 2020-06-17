@@ -46,13 +46,13 @@ export function getWebRouterInfo(key: WebRouterName): IRouterInfo {
       name: 'xin-academy',
       title: '薪研院'
     },
-    [WebRouterName.XinInnovationValley]: <IRouterInfo>{
-      name: 'xin-innovation-valley',
-      title: '薪创谷'
-    },
     [WebRouterName.XinTown]: <IRouterInfo>{
       name: 'xin-town',
       title: '薪商小镇'
+    },
+    [WebRouterName.XinInnovationValley]: <IRouterInfo>{
+      name: 'xin-innovation-valley',
+      title: '薪码力'
     },
     [WebRouterName.JoinUs]: <IRouterInfo>{
       name: 'join-us',
@@ -68,7 +68,7 @@ export const webRouteOrders: WebRouterName[] = [
   WebRouterName.NewsCenter,
   WebRouterName.ProductIntro,
   WebRouterName.XinAcademy,
-  WebRouterName.XinInnovationValley,
   WebRouterName.XinTown,
+  WebRouterName.XinInnovationValley,
   WebRouterName.JoinUs,
 ]
