@@ -1,6 +1,8 @@
 /**
  * @description User-Service parameters
  */
+import { Connection, ObjectType, Repository } from "typeorm";
+
 export interface IUserOptions {
   id: number;
 }
@@ -20,4 +22,12 @@ export interface IUserResult {
  */
 export interface IUserService {
   getUser(options: IUserOptions): Promise<IUserResult>;
+}
+
+/**
+ * @description Database Service Interface
+ */
+export interface IDb {
+  getConnection(): Connection;
+  getRepository<Entity>(entity: ObjectType<Entity>): Repository<Entity>;
 }

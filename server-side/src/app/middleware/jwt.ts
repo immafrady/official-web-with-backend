@@ -7,9 +7,7 @@ export class JwtMiddleware implements WebMiddleware {
     jwtConfig;
 
     resolve(): Middleware {
-        console.log('jwt: ', this.jwtConfig)
         return async (ctx, next) => {
-            console.log('trigger', ctx)
             await next();
         };
     }
