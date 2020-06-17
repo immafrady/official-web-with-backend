@@ -26,7 +26,8 @@ $carousel-height: 400px;
 .inner-container {
   @include clear-fix;
   &.middle {
-    padding: 0 175px;
+    width: 900px;
+    margin: 0 auto;
   }
   &.bottom {
     padding: 0 164px;
@@ -35,8 +36,5 @@ $carousel-height: 400px;
 
 pc-news-preview {
   float: left;
-  margin-right: 20px;
-  &:last-child {
-    margin-right: 0;
-  }
+  margin: 0 10px;
 }
