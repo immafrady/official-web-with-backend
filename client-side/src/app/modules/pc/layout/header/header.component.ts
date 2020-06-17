@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getWebRouterInfo, IRouterInfo, webRouteOrders } from "src/config/router-info";
-import {PATH_IMG} from "../../../../../config/images";
+import { getImage } from "src/utils/getImage";
 
 @Component({
   selector: 'pc-header',
@@ -8,8 +8,7 @@ import {PATH_IMG} from "../../../../../config/images";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  images = PATH_IMG;
+  getImage = getImage;
 
   headerRoutes: IRouterInfo[] = [];
 

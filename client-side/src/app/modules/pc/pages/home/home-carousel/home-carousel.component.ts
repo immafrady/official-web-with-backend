@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {BASE_64_IMG, PATH_IMG} from "src/config/images";
+import { BASE_64_IMG } from "src/config/images";
+import { getImage } from 'src/utils/getImage';
 
 @Component({
   selector: 'pc-home-carousel',
@@ -9,8 +10,9 @@ import {BASE_64_IMG, PATH_IMG} from "src/config/images";
 })
 export class HomeCarouselComponent implements OnInit, AfterViewInit {
 
+  getImage = getImage;
+
   base64Pics = BASE_64_IMG;
-  images = PATH_IMG;
 
   constructor() { }
 

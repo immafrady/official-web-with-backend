@@ -4,7 +4,7 @@
       <div class="content">
         <div class="top">
           <div class="left">
-            <img [src]="images.LOGO_LIGHT" class="logo-light" alt="logo">
+            <img [src]="getImage('logo-light')" class="logo-light" alt="logo">
             <div class="text">
               <span class="text-content">地址：{{ companyInfo.ADDRESS }}</span>
               <span>电话：</span>
@@ -13,11 +13,11 @@
           </div>
           <div class="right">
             <div class="item">关注我们：</div>
-            <div class="item"><a [href]="companyInfo.WEIBO_HREF" target="_blank"><img [src]="images.ICON_WEIBO" class="sns-icon" alt="微博"></a></div>
+            <div class="item"><a [href]="companyInfo.WEIBO_HREF" target="_blank"><img [src]="getImage('icon-weibo')" class="sns-icon" alt="微博"></a></div>
             <div class="item with-qrcode">
-              <img [src]="images.ICON_WECHAT" class="sns-icon wechat" alt="微信">
+              <img [src]="getImage('icon-wechat')" class="sns-icon wechat" alt="微信">
               <div class="qrcode-block">
-                <img [src]="images.QRCODE_XINBAOKEJI" class="qrcode-icon" alt="二维码">
+                <img [src]="getImage('qrcode-xinbaokeji')" class="qrcode-icon" alt="二维码">
                 <span class="qrcode-description">薪宝科技服务号</span>
               </div>
             </div>

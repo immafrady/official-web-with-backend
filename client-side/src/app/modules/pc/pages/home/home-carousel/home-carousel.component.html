@@ -2,15 +2,15 @@
   <nz-carousel #nzCarouselComponent nzEffect="scrollx">
     <div nz-carousel-content class="carousel-item item-one">
       <pc-core-container>
-        <img [src]="images.PC_BANNER_1_SLOGAN" class="slogan" alt="">
+        <img [src]="getImage('pc-banner-1-slogan')" class="slogan" alt="">
       </pc-core-container>
     </div>
     <div nz-carousel-content class="carousel-item item-two">
       <pc-core-container>
         <div class="wrapper">
-          <img [src]="images.PC_BANNER_2_ELEMENT" class="phone-element" alt="">
+          <img [src]="getImage('pc-banner-2-element')" class="phone-element" alt="">
           <div class="right-block">
-            <img [src]="images.PC_BANNER_2_SLOGAN" class="slogan" alt="">
+            <img [src]="getImage('pc-banner-2-slogan')" class="slogan" alt="">
             <a class="button-like red" routerLink="/">了解更多</a>
           </div>
         </div>
@@ -20,7 +20,7 @@
       <pc-core-container>
         <div class="wrapper">
           <div class="content-group">
-            <img [src]="images.PC_BANNER_3_SLOGAN" class="slogan" alt="">
+            <img [src]="getImage('pc-banner-3-slogan')" class="slogan" alt="">
             <a class="button-like purple" routerLink="/">了解更多</a>
           </div>
         </div>

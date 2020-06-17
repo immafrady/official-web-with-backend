@@ -2,7 +2,7 @@
 <header class="header-container">
   <pc-core-container>
     <div class="header-wrapper">
-      <img [src]="images.LOGO_DARK" class="title-logo" alt="logo">
+      <img [src]="getImage('logo-dark')" class="title-logo" alt="logo">
       <div class="router-container">
         <a *ngFor="let routerInfo of headerRoutes" [routerLink]="'/' + routerInfo.name" routerLinkActive="current-page">{{ routerInfo.title }}</a>
       </div>
