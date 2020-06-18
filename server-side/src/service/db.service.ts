@@ -1,8 +1,8 @@
-import { provide, config, logger, EggContextLogger, init, Application } from "midway";
+import { provide, config, logger, EggContextLogger, Application } from "midway";
 import { LOGGER_SYSTEM, CONFIG_TYPE_ORM, DB_CONNECTION_NAME, SERVICE_DB } from "../inject-token";
 import { Connection, createConnection, getConnection, Repository } from "typeorm";
 import { ObjectType } from "typeorm/common/ObjectType";
-import { IDb } from "../interface";
+import { IDb } from "../interfaces/db";
 
 @provide(SERVICE_DB)
 export class Db implements IDb{
@@ -17,24 +17,12 @@ export class Db implements IDb{
     @logger(LOGGER_SYSTEM)
     logger: EggContextLogger;
 
-    private connection: Connection = null;
-
-    @init()
-    async init() {
-        if (this.connection instanceof Connection) {
-            if (!this.connection.isConnected) {
-                await this.connection.connect()
-            }
-        } else {
-            this.connection = getConnection(DB_CONNECTION_NAME)
-            await this.connection.connect()
-        }
-    }
-
     getConnection(): Connection {
-        return this.connection
+        return getConnection(DB_CONNECTION_NAME)
     }
+
     getRepository<Entity>(entity: ObjectType<Entity>): Repository<Entity> {
-        return this.connection.getRepository(entity)
+        const connection = getConnection(DB_CONNECTION_NAME)
+        return connection.getRepository(entity)
     }
 }

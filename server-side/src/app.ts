@@ -1,6 +1,6 @@
 import { Application, EggContextLogger } from 'midway'
 import { LOGGER_SYSTEM } from "./inject-token";
-import { Db } from "./db/db";
+import { Db } from "./service/db.service";
 
 module.exports = (app: Application) => {
     app.beforeStart(async () => {

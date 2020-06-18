@@ -1,34 +1,21 @@
-import { Context, inject, controller, get, provide, logger } from 'midway';
-import { MIDDLEWARE_JWT, MIDDLEWARE_REQUEST_LOGGER, SERVICE_DB } from "../../inject-token";
+import { Context, inject, controller, get, provide } from 'midway';
+import { MIDDLEWARE_JWT } from "../../inject-token";
+import { successResponse } from "../../utils/responseBuilder";
 
 @provide()
-@controller('/', { middleware: [MIDDLEWARE_REQUEST_LOGGER] })
+@controller('/h', { middleware: [] })
 export class HomeController {
 
   @inject()
   ctx: Context;
 
-  @inject(SERVICE_DB)
-  dbService;
-
-  @logger()
-  logger;
-
   @get('/home', { middleware: [MIDDLEWARE_JWT] })
   async index() {
-    const connection = this.dbService.getConnection()
-    connection.connect()
-    this.ctx.body = {
-      status: 'ok'
-    };
-    this.ctx.status = 200;
+    return successResponse({ id: this.ctx.request.headers['user-id'] }, '哈哈')
   }
 
   @get('/update')
   async update() {
-    this.ctx.body = {
-      status: 'not ok'
-    };
-    this.ctx.status = 200
+    return successResponse({i: 1}, '哈哈')
   }
 }

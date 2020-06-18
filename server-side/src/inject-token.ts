@@ -1,9 +1,9 @@
 // Service
 export const SERVICE_DB = 'DBService'
+export const SERVICE_USER = 'UserService'
 
 // Middleware
 export const MIDDLEWARE_JWT = 'JWTMiddleware'
-export const MIDDLEWARE_REQUEST_LOGGER = 'RequestLoggerMiddleware'
 
 // Config
 export const CONFIG_JWT = 'JWTConfig'

@@ -14,6 +14,7 @@ export default (app: EggAppInfo) => {
       'service',
       'config',
       'interface',
+      'utils',
       'app.ts',
       'agent.ts',
       'interface.ts',
