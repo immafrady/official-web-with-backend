@@ -28,7 +28,8 @@ export default (appInfo: EggAppInfo) => {
 
   // jwt配置
   config[CONFIG_JWT] = <IJWTConfig>{
-    secret: 'official-web'
+    secret: 'official-web',
+    expiredIn: '24h'
   }
 
   config.customLogger = {

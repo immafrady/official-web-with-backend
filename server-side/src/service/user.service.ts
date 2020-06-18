@@ -40,7 +40,7 @@ export class UserService implements IUserService {
         }
         return {
           nickname: user.nickname,
-          token: jwt.sign(payload, secret, { expiresIn: '60' })
+          token: jwt.sign(payload, secret, { expiresIn: this.jwtConfig.expiredIn })
         }
       } else {
         throw new UserPasswordNotPairError()
