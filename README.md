@@ -21,7 +21,9 @@
 
 ### Global
 
-- [x] 服务端/客户端共用interface（通过tsconfig - "reference"引入外部地址）
+- [x] 服务端/客户端共用interface
+
+> 通过tsconfig - "reference"引入外部地址
 
 ### Client side
 
@@ -33,4 +35,7 @@
 - [ ] svg-icon的使用
 
 ### Server side
-- [ ] middleware全局和局部顺序
+
+- [x] middleware全局和局部顺序
+
+> 先全局，再局部
