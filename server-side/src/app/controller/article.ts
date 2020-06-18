@@ -8,7 +8,7 @@ import {
 } from "../../../../libs/request/article";
 import { IHttpResponse } from "../../../../libs/common";
 import {
-    IArticleCreateResponse,
+    IArticleCreateResponse, IArticleDeleteResponse,
     IArticleDetailResponse,
     IArticleListResponse,
     IArticleModifyResponse
@@ -18,7 +18,7 @@ import { getIdFromHeader } from "../../utils/get-id-from-header.util";
 import { IArticleService } from "../../interfaces/article.interface";
 
 @provide()
-@controller('/post')
+@controller('/article')
 export class ArticleController {
     @inject()
     ctx;
@@ -43,14 +43,14 @@ export class ArticleController {
     }
 
     @del('/detail/:id', { middleware: [MIDDLEWARE_JWT] })
-    async delete(): Promise<IHttpResponse<IArticleDetailResponse>> {
+    async delete(): Promise<IHttpResponse<IArticleDeleteResponse>> {
         const options: IArticleDeleteOptions = {
             id: this.ctx.params?.id
         }
         return successResponse(await this.service.delete(options), '删除成功')
     }
 
-    @get('/detail/:id', { middleware: [MIDDLEWARE_JWT] })
+    @get('/detail/:id')
     async get(): Promise<IHttpResponse<IArticleDetailResponse>> {
         const options: IArticleDetailOptions = {
             id: this.ctx.params?.id,

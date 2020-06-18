@@ -16,17 +16,26 @@ import {
     IArticleModifyResponse
 } from "../../../libs/response/article";
 import { Article } from "../db/entities/article";
-import { setFieldInClass } from "../utils/set-field-in-class.util";
 import {
     ArticleCannotCreateError,
     ArticleCannotDeleteError,
-    ArticleCannotModifyError
+    ArticleCannotModifyError, ArticleNotFoundError
 } from "../../../libs/response-error";
 import { IDb } from "../interfaces/db.interface";
 import { User } from "../db/entities/user";
+import { IArticleEntity } from "../../../libs/entity/article";
 
 @provide(SERVICE_POST)
 export class ArticleService implements IArticleService {
+    static setCommonField = (article: Article, options: IArticleEntity) => {
+        article.content = options.content
+        article.modifyDate = options.modifyDate
+        article.title = options.title
+        article.priority = options.priority
+        article.status = options.status
+        article.thumbnail = options.thumbnail
+    }
+
     @inject(SERVICE_DB)
     db: IDb;
 
@@ -38,7 +47,8 @@ export class ArticleService implements IArticleService {
         try {
             const articleRepo = this.db.getRepository(Article)
             const article = new Article()
-            setFieldInClass(article, options)
+
+            ArticleService.setCommonField(article, options)
 
             const user = new User()
             user.id = options.userId
@@ -73,10 +83,15 @@ export class ArticleService implements IArticleService {
     }
 
     async modify(options: IArticleModifyOptions): Promise<IArticleModifyResponse> {
+
+        const articleRepo = this.db.getRepository(Article)
+        const article = await articleRepo.findOne(options.id)
+
+        if (!article) {
+            throw new ArticleNotFoundError()
+        }
         try {
-            const articleRepo = this.db.getRepository(Article)
-            const article = await articleRepo.findOne(options.id)
-            setFieldInClass(article, options)
+            ArticleService.setCommonField(article, options)
 
             const userRepo = this.db.getRepository(User)
             article.user = await userRepo.findOne(options.userId)

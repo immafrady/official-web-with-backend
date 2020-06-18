@@ -44,9 +44,16 @@ export class ArticleCannotDeleteError extends BaseResponseError {
 }
 
 export class ArticleCannotModifyError extends BaseResponseError {
-    constructor(message = '无法修改文章', data?: any) {
+    constructor(data?: any, message = '无法修改文章') {
         super(ResponseCode.ArticleCannotModify, message, data);
     }
+}
+
+export class ArticleNotFoundError extends BaseResponseError {
+    constructor(data?: any, message = '找不到文章') {
+        super(ResponseCode.ArticleNotFound, message, data);
+    }
+
 }
 
 export class CommonFormInvalidError extends BaseResponseError {

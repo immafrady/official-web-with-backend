@@ -11,6 +11,7 @@ export const enum ResponseCode {
     ArticleCannotCreate = 2001,
     ArticleCannotDelete,
     ArticleCannotModify,
+    ArticleNotFound,
     CommonFormInvalid = 9998,
     UnknownError = 9999
 }

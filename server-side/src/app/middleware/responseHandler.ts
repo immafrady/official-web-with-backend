@@ -26,7 +26,6 @@ export default function (options: any, app: Application): Middleware {
                 }
                 ctx.body = errorResponse(e.code, e.message, e.data)
                 logger.error(responseLoggerBuilder(ctx.status, ctx.body.code, ctx.url, ctx.method, ctx.body.msg, ctx.body.data))
-                ctx.status = 200
             }
             // 非Error不处理
         }
