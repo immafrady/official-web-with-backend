@@ -5,7 +5,7 @@
 <pc-core-container>
   <div class="xin-innovation-introduce">
     <div class="introduce-left">
-      <img [src]="getImage('xin-academy-logo')" alt="">
+      <img [src]="getImage('xin-innovation-vally-logo')" alt="">
       <h3>2017年7月薪宝科技“薪码力”项目正式启动</h3>
       <p>薪宝“薪码力”薪宝科技技术研发及大数据处理中心，目前已累计为100多个共享经济灵活用工平台型企业提供商税</p>
       <p>“薪码力”致力于探索商税技术未来，旨在为灵活用工企业及广大自由职业者提 技术支撑及服务。“薪码力”致力于探索商税技术未来，旨在为灵活用工企业及广大自由职业者提供最前沿的商税技术解决方案。 供最前沿的商税技术解决方案。</p>
@@ -22,13 +22,22 @@
 </pc-core-container>
 
 <pc-core-container>
-  <div>
-
+  <div class="xin-innovation-swiper-container">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" [class]="'xin-innovation-vally-' + index" *ngFor="let item of slides, index as index">
+          <p class="swiper-title">{{ item.title }}</p>
+          <p class="swiper-text">{{ item.text }}</p>
+          <p class="swiper-desc">{{ item.desc }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="arrow swiper-button-prev"></div>
+    <div class="arrow swiper-button-next"></div>
   </div>
 </pc-core-container>
 
 <pc-core-container className="xin-innovation-vally-join-us">
-  <div class="block-title">加入我们</div>
-  <p>应聘此职位，投递简历至HR#xinpayorll.com（把#换成@） </p>
+  <a href="">加入我们</a>
   <p>简历投递格式请以“应聘职位+姓名”作为邮件标题。</p>
 </pc-core-container>

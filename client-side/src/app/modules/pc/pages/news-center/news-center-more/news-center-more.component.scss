@@ -1,0 +1,12 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+.inner-container {
+  @include clear-fix;
+  width: 900px;
+  margin: 0 auto;
+  pc-news-preview {
+    float: left;
+    margin: 25px 10px;
+  }
+}

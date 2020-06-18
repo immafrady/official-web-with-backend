@@ -64,6 +64,7 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
       { time: '12月', content: '2019中国先锋人力资源服务商—年度最佳薪税服务平台' }
     ],
     '2020': [
+      { time: '2月', content: '加入广州市电子商务协会' },
       { time: '2月', content: '为抗疫出力 薪宝科技向湖北安徽捐赠物资助力疫情防控' },
       { time: '3月', content: '2019年度中国华南地区人力资源创先争优（金人奖）' },
       { time: '4月', content: 'HRoot大中华地区最佳人力资源服务品牌（薪税服务类）' },

@@ -54,18 +54,6 @@
 
 .station-container {
   margin-top: 80px;
-  .ant-radio-group {
-    margin-left: 28px;
-    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
-      border-color: #D50032;
-      background-color: #D50032;
-      color: #fff;
-    }
-    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active {
-      color: #D50032;
-      border-color: #D50032;
-    }
-  }
   .recruitment-group {
     border: 1px solid #CCCCCC;
     @include clear-fix;
@@ -83,9 +71,7 @@
         border-left: none;
       }
       &:hover {
-        background-color: #D50032;
-        color: #fff;
-        border-color: #D50032;
+        color: #D50032;
       }
       &.active {
         background-color: #D50032;

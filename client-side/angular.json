@@ -34,6 +34,8 @@
             ],
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "./node_modules/swiper/css/swiper.min.css",
+              "src/assets/iconfont/iconfont.css",
               "src/styles.scss"
             ],
             "scripts": []

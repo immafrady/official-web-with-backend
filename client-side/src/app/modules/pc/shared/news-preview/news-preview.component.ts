@@ -7,7 +7,6 @@ import {BASE_64_IMG, PATH_SVG} from "../../../../../config/images";
   styleUrls: ['./news-preview.component.scss']
 })
 export class NewsPreviewComponent implements OnInit {
-
   svg = PATH_SVG;
 
   @Input()
@@ -24,8 +23,7 @@ export class NewsPreviewComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   handleImageSwitch(bool: boolean): void {
     this.routerSpanClass = bool ? 'hover' : ''

@@ -1,0 +1,131 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+.xin-town-banner {
+  height: 450px;
+  background: $xin-town-banner center;
+}
+
+.xin-town-introduce {
+  @include clear-fix;
+  .introduce-left {
+    float: left;
+    width: 416px;
+    margin: 0 0 0 74px;
+    font-size: 12px;
+    color: #000000;
+    line-height: 22px;
+    img {
+      width: 218px;
+      height: 74px;
+      margin-top: 60px;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 40px 0 30px;
+    }
+  }
+  .introduce-right {
+    float: left;
+    margin-left: -75px;
+  }
+}
+
+.xin-town-service {
+  @include clear-fix;
+  width: 950px;
+  margin: auto;
+  .service-box {
+    width: 140px;
+    text-align: center;
+    float: left;
+    margin: 35px 25px 80px;
+    img {
+      width: 94px;
+      height: 100px;
+    }
+    h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    p {
+      line-height: 18px;
+      font-size: 10px;
+      color: #666666;
+    }
+  }
+}
+
+.xin-town-feature {
+  width: 1144px;
+  margin: 20px auto 70px;
+  @include clear-fix;
+  .feature-box {
+    width: 266px;
+    height: 176px;
+    text-align: center;
+    box-shadow:0 4px 16px 0 rgba(204,204,204,0.5);
+    padding: 46px 25px 0;
+    float: left;
+    margin:15px 10px;
+    h2 {
+      margin-bottom: 25px;
+      color: #333333;
+    }
+    p {
+      line-height: 18px;
+      font-size: 10px;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.xin-town-thumb {
+  @include clear-fix;
+  width: 1136px;
+  margin: auto;
+  .swiper-container {
+    float: left;
+  }
+  #gallery {
+    width: 864px;
+  }
+  #thumbs {
+    width: 242px;
+    margin-left: 20px;
+    .swiper-wrapper {
+      display: block;
+      .swiper-slide {
+        width: 242px !important;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+.xin-town-maker {
+  width: 1050px;
+  margin: 50px auto 70px;
+  @include clear-fix;
+  .maker-box {
+    width: 330px;
+    height: 158px;
+    padding: 55px 50px 0;
+    text-align: center;
+    box-shadow:0 4px 16px 0 rgba(204,204,204,0.5);
+    float: left;
+    margin: 0 10px;
+    h2 {
+      font-size: 16px;
+      color: #333333;
+    }
+    p {
+      font-size: 10px;
+      color: #666666;
+      margin-top: 20px;
+      line-height: 18px;
+    }
+  }
+}
