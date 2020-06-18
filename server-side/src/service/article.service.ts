@@ -24,6 +24,7 @@ import {
 import { IDb } from "../interfaces/db.interface";
 import { User } from "../db/entities/user";
 import { IArticleEntity } from "../../../libs/entity/article";
+import { isValidPagination } from "../utils/validator.util";
 
 @provide(SERVICE_POST)
 export class ArticleService implements IArticleService {
@@ -46,9 +47,7 @@ export class ArticleService implements IArticleService {
     async create(options: IArticleCreateOptions): Promise<IArticleCreateResponse> {
         try {
             const articleRepo = this.db.getRepository(Article)
-            const article = new Article()
-
-            ArticleService.setCommonField(article, options)
+            const article = articleRepo.create(options)
 
             const user = new User()
             user.id = options.userId
@@ -74,14 +73,51 @@ export class ArticleService implements IArticleService {
         }
     }
 
+    /**
+     * @description 文章列表
+     * @param options
+     */
     async findMany(options: IArticleListOptions): Promise<IArticleListResponse> {
-        return Promise.resolve(undefined);
+        const hasPagination = isValidPagination(options.page, options.size) // 是否开启分页
+
+        try {
+            const articleRepo = this.db.getRepository(Article)
+
+            // 开启分页
+            const [list, total]= await articleRepo.findAndCount({
+                where: options,
+                relations: ["user"],
+                order: {
+                    modifyDate: "DESC",
+                    priority: "DESC"
+                },
+                skip: hasPagination ? options.size * (options.page - 1) : undefined,
+                take: hasPagination ? options.size : undefined
+            })
+
+
+            return {
+                list,
+                size: options.size,
+                total
+            }
+        } catch (e) {
+            throw new ArticleNotFoundError(e)
+        }
     }
 
+    /**
+     * @description 文章详情
+     * @param options
+     */
     async findOne(options: IArticleDetailOptions): Promise<IArticleDetailResponse> {
         return Promise.resolve(undefined);
     }
 
+    /**
+     * @description 修改文章
+     * @param options
+     */
     async modify(options: IArticleModifyOptions): Promise<IArticleModifyResponse> {
 
         const articleRepo = this.db.getRepository(Article)

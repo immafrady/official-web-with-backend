@@ -9,14 +9,17 @@ export class User extends BaseEntity implements IUserEntity{
      * @description 用户名
      */
     @Column({
-        unique: true
+        unique: true,
+        select: false
     })
     username: string;
 
     @Column()
     nickname: string;
 
-    @Column()
+    @Column({
+        select: false
+    })
     password: string;
 
     @OneToMany(

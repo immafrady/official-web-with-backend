@@ -1,7 +1,7 @@
 /**
  * 新增接口
  */
-import { IdParam, IRequestPagination } from "../common";
+import { IRequestPagination } from "../common";
 import { IArticleEntity } from "../entity/article";
 
 export interface IArticleCreateOptions extends IArticleEntity {

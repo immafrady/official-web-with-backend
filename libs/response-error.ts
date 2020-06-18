@@ -53,7 +53,6 @@ export class ArticleNotFoundError extends BaseResponseError {
     constructor(data?: any, message = '找不到文章') {
         super(ResponseCode.ArticleNotFound, message, data);
     }
-
 }
 
 export class CommonFormInvalidError extends BaseResponseError {

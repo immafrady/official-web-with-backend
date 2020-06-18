@@ -12,9 +12,11 @@ export default function (options: any, app: Application): Middleware {
         const logger = app.getLogger(LOGGER_REQUEST)
         try {
             const res = await next() as IHttpResponse<any>
-            ctx.body = res
-            logger.info(responseLoggerBuilder(ctx.status, res.code, ctx.url, ctx.method, res.msg, res.data))
-            ctx.status = 200
+            if (res) {
+                ctx.body = res
+                logger.info(responseLoggerBuilder(ctx.status, res.code, ctx.url, ctx.method, res.msg, res.data))
+                ctx.status = 200
+            }
             return res
         } catch (e) {
             if (e instanceof Error) {

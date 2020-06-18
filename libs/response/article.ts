@@ -1,5 +1,5 @@
 import { IArticleEntity } from "../entity/article";
-import { IRequestPagination } from "../common";
+import { IRequestPagination, IResponsePagination } from "../common";
 
 /**
  * @description
@@ -36,6 +36,6 @@ export interface IArticleDetailResponse extends IArticleEntity {
 /**
  * 文章列表
  */
-export interface IArticleListResponse extends IArticleEntity, IRequestPagination{
-    id?: number;
+export interface IArticleListResponse extends IResponsePagination{
+    list: IArticleEntity[]
 }

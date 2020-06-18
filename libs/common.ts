@@ -10,11 +10,19 @@ export interface IHttpResponse<Data> {
 export type IdParam = string | number;
 
 /**
- * @description 列表分页
+ * @description 请求列表分页
  */
 export interface IRequestPagination {
-    size: number;
-    page: number;
+    size?: number;
+    page?: number;
+}
+
+/**
+ * @description 响应列表分页
+ */
+export interface IResponsePagination {
+    total: number;
+    size: number
 }
 
 export class BaseResponseError extends Error{
