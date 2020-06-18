@@ -1,5 +1,5 @@
 import { WebMiddleware, Middleware, provide, config } from "midway";
-import { CONFIG_JWT, MIDDLEWARE_JWT } from "../inject-token";
+import { CONFIG_JWT, HEADER_USER_ID, MIDDLEWARE_JWT } from "../inject-token";
 import * as jwt from 'jsonwebtoken'
 import { UserNotAuthorizeError } from "../../../libs/response-error";
 import { IJWTSavedInfo } from "../interfaces/config.interface";
@@ -18,7 +18,7 @@ export class JwtMiddleware implements WebMiddleware {
                 const token = auth.split(' ')[1]
                 try {
                     const decoded = jwt.verify(token, this.jwtConfig.secret) as IJWTSavedInfo;
-                    ctx.request.headers['user-id'] = decoded.id
+                    ctx.request.headers[HEADER_USER_ID] = decoded.id
                 } catch (e) {
                     throw new UserNotAuthorizeError()
                 }

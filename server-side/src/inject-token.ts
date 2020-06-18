@@ -16,3 +16,5 @@ export const DB_CONNECTION_NAME = 'DBConnectionMain'
 export const LOGGER_REQUEST = 'RequestLoggerConfig'
 export const LOGGER_SYSTEM = 'SystemLoggerConfig'
 
+// Header
+export const HEADER_USER_ID = 'header-user-id'
