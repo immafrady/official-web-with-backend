@@ -2,7 +2,7 @@ import { WebMiddleware, Middleware, provide, config } from "midway";
 import { CONFIG_JWT, MIDDLEWARE_JWT } from "../inject-token";
 import * as jwt from 'jsonwebtoken'
 import { UserNotAuthorizeError } from "../../../libs/response-error";
-import { IJWTSavedInfo } from "../interfaces/config";
+import { IJWTSavedInfo } from "../interfaces/config.interface";
 
 
 

@@ -1,6 +1,6 @@
 import { Context, inject, controller, get, provide } from 'midway';
 import { MIDDLEWARE_JWT } from "../../inject-token";
-import { successResponse } from "../../utils/responseBuilder";
+import { successResponse } from "../../utils/response-builder.util";
 
 @provide()
 @controller('/h', { middleware: [] })

@@ -1,9 +1,9 @@
 import { Middleware } from "koa";
 import { BaseResponseError, IHttpResponse } from "../../../../libs/common";
-import { errorResponse } from "../../utils/responseBuilder";
+import { errorResponse } from "../../utils/response-builder.util";
 import { Application } from "midway";
 import { LOGGER_REQUEST } from "../../inject-token";
-import { responseLoggerBuilder } from "../../utils/loggerBuilder";
+import { responseLoggerBuilder } from "../../utils/logger-builder.util";
 import { UnknownError } from "../../../../libs/response-error";
 
 

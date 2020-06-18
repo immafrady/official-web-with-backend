@@ -1,5 +1,5 @@
 import { provide, inject, config } from 'midway';
-import { IUserService } from "../interfaces/user";
+import { IUserService } from "../interfaces/user.interface";
 import { CONFIG_JWT, SERVICE_DB, SERVICE_USER } from "../inject-token";
 import { IUserLoginResponse, IUserRegisterResponse } from "../../../libs/response/user";
 import { User } from "../db/entities/user";
@@ -11,9 +11,9 @@ import {
   UserRegisterKeyNotPairError
 } from "../../../libs/response-error";
 import * as jwt from 'jsonwebtoken'
-import { generatePassword } from "../utils/generatePassword";
-import { IDb } from "../interfaces/db";
-import { IJWTConfig, IJWTSavedInfo } from "../interfaces/config";
+import { generatePassword } from "../utils/generate-password.util";
+import { IDb } from "../interfaces/db.interface";
+import { IJWTConfig, IJWTSavedInfo } from "../interfaces/config.interface";
 
 @provide(SERVICE_USER)
 export class UserService implements IUserService {

@@ -2,7 +2,7 @@ import { provide, config, logger, EggContextLogger, Application } from "midway";
 import { LOGGER_SYSTEM, CONFIG_TYPE_ORM, DB_CONNECTION_NAME, SERVICE_DB } from "../inject-token";
 import { Connection, createConnection, getConnection, Repository } from "typeorm";
 import { ObjectType } from "typeorm/common/ObjectType";
-import { IDb } from "../interfaces/db";
+import { IDb } from "../interfaces/db.interface";
 
 @provide(SERVICE_DB)
 export class Db implements IDb{

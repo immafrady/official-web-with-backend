@@ -1,7 +1,7 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'midway';
 import { CONFIG_JWT, LOGGER_REQUEST, LOGGER_SYSTEM } from "../inject-token";
 import * as path from "path";
-import { IJWTConfig } from "../interfaces/config";
+import { IJWTConfig } from "../interfaces/config.interface";
 
 export type DefaultConfig = PowerPartial<EggAppConfig>
 
