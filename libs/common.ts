@@ -7,6 +7,16 @@ export interface IHttpResponse<Data> {
     msg: string
 }
 
+export type IdParam = string | number;
+
+/**
+ * @description 列表分页
+ */
+export interface IRequestPagination {
+    size: number;
+    page: number;
+}
+
 export class BaseResponseError extends Error{
     code: ResponseCode;
     message: string;

@@ -1,6 +1,7 @@
 // Service
 export const SERVICE_DB = 'DBService'
 export const SERVICE_USER = 'UserService'
+export const SERVICE_POST = 'PostService'
 
 // Middleware
 export const MIDDLEWARE_JWT = 'JWTMiddleware'
