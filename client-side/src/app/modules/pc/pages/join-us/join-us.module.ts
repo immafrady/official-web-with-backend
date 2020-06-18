@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { JoinUsRoutingModule } from './join-us-routing.module';
 import {PcSharedModule} from "../../shared/pc-shared.module";
 import {JoinUsComponent} from "./join-us.component";
-import {NzTableModule, NzRadioModule, NzTabsModule, NzIconModule} from "ng-zorro-antd";
+import {NzTableModule, NzRadioModule, NzTabsModule, NzIconModule, NzTagModule} from "ng-zorro-antd";
 import {FormsModule} from "@angular/forms";
 
 
@@ -20,7 +20,8 @@ import {FormsModule} from "@angular/forms";
     NzRadioModule,
     NzTableModule,
     FormsModule,
-    NzIconModule
+    NzIconModule,
+    NzTagModule
   ]
 })
 export class JoinUsModule { }

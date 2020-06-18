@@ -11,6 +11,8 @@ const routes: Routes = [
       { path: getWebRouterInfo(WebRouterName.ProductIntro).name, loadChildren: () => import('./pages/product-intro/product-intro.module').then(mod => mod.ProductIntroModule) },
       { path: getWebRouterInfo(WebRouterName.XinAcademy).name, loadChildren: () => import('./pages/xin-academy/xin-academy.module').then(mod => mod.XinAcademyModule) },
       { path: getWebRouterInfo(WebRouterName.JoinUs).name, loadChildren: () => import('./pages/join-us/join-us.module').then(mod => mod.JoinUsModule) },
+      { path: getWebRouterInfo(WebRouterName.XinTown).name, loadChildren: () => import('./pages/xin-town/xin-town.module').then(mod => mod.XinTownModule) },
+      { path: getWebRouterInfo(WebRouterName.XinInnovationValley).name, loadChildren: () => import('./pages/xin-innovation-valley/xin-innovation-valley.module').then(mod => mod.XinInnovationValleyModule) },
     ]
   }
 ]

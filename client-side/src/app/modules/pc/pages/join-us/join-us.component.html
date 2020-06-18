@@ -36,39 +36,39 @@
 
 <pc-core-container className="station-container">
   <div class="block-title">招聘岗位</div>
-  <nz-radio-group [(ngModel)]="size" ngDefaultControl nzSize="large">
-    <label nz-radio-button nzValue="1"><span>技术类</span></label>
-    <label nz-radio-button nzValue="2"><span>行政类</span></label>
-    <label nz-radio-button nzValue="3"><span>人事类</span></label>
-    <label nz-radio-button nzValue="4"><span>财务类</span></label>
-    <label nz-radio-button nzValue="5"><span>客服类</span></label>
-    <label nz-radio-button nzValue="6"><span>销售类</span></label>
-    <label nz-radio-button nzValue="6"><span>技术类</span></label>
-    <label nz-radio-button nzValue="7"><span>产品类</span></label>
-    <label nz-radio-button nzValue="8"><span>其他</span></label>
-  </nz-radio-group>
+  <div class="recruitment-group">
+    <div [class]="item.type === positionType ? 'active' : ''" *ngFor="let item of recruitment" (click)="changeRecruitment(item.type)">{{ item.label }}</div>
+  </div>
   <div class="join-us-table">
-    <nz-table #nzTable [nzData]="listOfData" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['500px', '190px', '100px', '200px', '50px']">
+    <nz-table #nzTable [nzData]="positionData[positionType]" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['500px', '190px', '100px', '200px', '50px']">
       <thead>
       <tr>
         <th>职位</th>
         <th>类别</th>
         <th>工作地</th>
         <th></th>
-        <th nzWidth="60px"></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
       <ng-container *ngFor="let data of nzTable.data">
         <tr>
-          <td>{{ data.position }}</td>
+          <td>{{ data.position }}<nz-tag *ngIf="data.impatient" [nzColor]="'#F36374'">急</nz-tag><nz-tag *ngIf="data.new" [nzColor]="'#30CBF3'">新</nz-tag></td>
           <td>{{ data.type }}</td>
           <td>{{ data.address }}</td>
           <td>{{ data.date }}</td>
-          <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
+          <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : 'rotateDown'" nz-icon nzType="down" nzTheme="outline"></i></td>
         </tr>
         <tr [nzExpand]="expandSet.has(data.id)">
-          <span>{{ data.description }}</span>
+         <div>
+           <ul>
+             <li *ngFor="let item of data.description">{{ item }}</li>
+           </ul>
+            <div class="send-way">
+              <p>应聘此职位，投递简历至HR#xinpayorll.com（把#换成@）</p>
+              <p>简历投递格式请以“应聘职位+姓名”作为邮件标题。</p>
+            </div>
+         </div>
         </tr>
       </ng-container>
       </tbody>

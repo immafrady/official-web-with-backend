@@ -1,0 +1,44 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+.xin-innovation-vally-banner {
+  height: 452px;
+  background: $xin-innovation-vally-banner center;
+}
+
+.xin-innovation-introduce {
+  @include clear-fix;
+  margin: 78px 0 60px;
+  .introduce-left {
+    float: left;
+    width: 445px;
+    margin: 0 66px 0 74px;
+    font-size: 12px;
+    color: #000000;
+    line-height: 22px;
+    img {
+      width: 196px;
+      height: 83px;
+      margin-top: 10px;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 48px 0 30px;
+    }
+  }
+  .introduce-right {
+    float: left;
+    img {
+      width: 402px;
+      height: 464px;
+    }
+  }
+}
+
+.xin-innovation-vally-join-us {
+  font-size: 18px;
+  color: #333333;
+  line-height: 26px;
+  text-align: center;
+  margin: 88px auto 210px;
+}
