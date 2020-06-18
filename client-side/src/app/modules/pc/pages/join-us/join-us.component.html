@@ -40,13 +40,13 @@
     <div [class]="item.type === positionType ? 'active' : ''" *ngFor="let item of recruitment" (click)="changeRecruitment(item.type)">{{ item.label }}</div>
   </div>
   <div class="join-us-table">
-    <nz-table #nzTable [nzData]="positionData[positionType]" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['500px', '190px', '100px', '200px', '50px']">
+    <nz-table #nzTable [nzData]="positionData[positionType]" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['480px', '160px', '200px', '200px', '50px']">
       <thead>
       <tr>
         <th>职位</th>
         <th>类别</th>
         <th>工作地</th>
-        <th></th>
+        <th>发布时间</th>
         <th></th>
       </tr>
       </thead>

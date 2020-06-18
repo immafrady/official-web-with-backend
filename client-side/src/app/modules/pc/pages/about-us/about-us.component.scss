@@ -7,6 +7,7 @@ $borderContent: 1px solid $colorGrey;
 .about-us-banner {
   height: 450px;
   background: $about-us-banner-1 center;
+  background-size: cover;
 }
 
 .description-content {
@@ -37,6 +38,7 @@ $borderContent: 1px solid $colorGrey;
 
 .about-us-banner-2 {
   background: $about-us-banner-2 center;
+  background-size: cover;
   margin-top: 50px;
   height: 300px;
 }
