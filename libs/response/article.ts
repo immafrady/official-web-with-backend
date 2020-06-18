@@ -1,23 +1,29 @@
 import { IArticleEntity } from "../entity/article";
 import { IRequestPagination } from "../common";
 
-export interface IArticleCreateResponse extends IArticleEntity {
-    userId?: number;
-}
+/**
+ * @description
+ */
+export interface IArticleCreateResponse {}
 
 /**
  * 修改接口
  */
-export interface IArticleModifyResponse extends IArticleEntity {
-    id?: number;
-    userId?: number;
-}
+export interface IArticleModifyResponse {}
 
 /**
  * 删除接口
  */
-export interface IArticleDeleteResponse extends IArticleEntity {
-    id?: number;
+export interface IArticleDeleteResponse {
+    /**
+     * Raw SQL result returned by executed query.
+     */
+    raw: any;
+    /**
+     * Number of affected rows/documents
+     * Not all drivers support this
+     */
+    affected?: number | null;
 }
 
 /**

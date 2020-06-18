@@ -12,7 +12,7 @@ export interface IArticleCreateOptions extends IArticleEntity {
  * 修改接口
  */
 export interface IArticleModifyOptions extends IArticleEntity {
-    id: IdParam;
+    id?: number;
     userId: number;
 }
 
@@ -20,14 +20,14 @@ export interface IArticleModifyOptions extends IArticleEntity {
  * 删除接口
  */
 export interface IArticleDeleteOptions {
-    id: IdParam;
+    id: number;
 }
 
 /**
  * 单篇文章
  */
 export interface IArticleDetailOptions extends Partial<IArticleEntity> {
-    id: IdParam;
+    id: number;
 }
 
 /**

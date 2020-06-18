@@ -8,5 +8,9 @@ export const enum ResponseCode {
     UserNotAuthorize,
     UserAlreadyExist,
     UserRegisterKeyNotPair,
+    ArticleCannotCreate = 2001,
+    ArticleCannotDelete,
+    ArticleCannotModify,
+    CommonFormInvalid = 9998,
     UnknownError = 9999
 }
