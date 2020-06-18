@@ -20,7 +20,7 @@ export class JwtMiddleware implements WebMiddleware {
                     const decoded = jwt.verify(token, this.jwtConfig.secret) as IJWTSavedInfo;
                     ctx.request.headers[HEADER_USER_ID] = decoded.id
                 } catch (e) {
-                    throw new UserNotAuthorizeError()
+                    throw new UserNotAuthorizeError(e)
                 }
             } else {
                 throw new UserNotAuthorizeError()

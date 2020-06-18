@@ -47,7 +47,7 @@ export class ArticleService implements IArticleService {
             await articleRepo.save(article)
             return {}
         } catch (e) {
-            throw new ArticleCannotCreateError(undefined, e.stack)
+            throw new ArticleCannotCreateError(e)
         }
     }
 
@@ -60,7 +60,7 @@ export class ArticleService implements IArticleService {
             const articleRepo = this.db.getRepository(Article)
             return await articleRepo.delete(options.id)
         } catch (e) {
-            throw new ArticleCannotDeleteError()
+            throw new ArticleCannotDeleteError(e)
         }
     }
 
