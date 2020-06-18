@@ -1,7 +1,7 @@
 import { Column, Entity, OneToMany } from "typeorm";
 import { BaseEntity } from "./base";
 import { IUserEntity } from "../../../../libs/entity/user";
-import { Post } from "./post";
+import { Article } from "./article";
 
 @Entity()
 export class User extends BaseEntity implements IUserEntity{
@@ -20,8 +20,8 @@ export class User extends BaseEntity implements IUserEntity{
     password: string;
 
     @OneToMany(
-        type => Post,
-        post => post.user
+        type => Article,
+        article => article.user
     )
-    posts: Post[];
+    articles: Article[];
 }

@@ -1,7 +1,7 @@
 /**
  * @description 文章状态
  */
-export enum PostStatus {
+export enum ArticleStatus {
     Offline,
     Online
 }
@@ -9,7 +9,7 @@ export enum PostStatus {
 /**
  * @description 文章优先级
  */
-export enum PostPriority {
+export enum ArticlePriority {
     Normal,
     Important,
     VeryImportant

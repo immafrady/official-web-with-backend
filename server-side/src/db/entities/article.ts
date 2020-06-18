@@ -1,11 +1,11 @@
 import { BaseEntity } from "./base";
 import { Column, Entity, ManyToOne } from "typeorm";
-import { PostPriority, PostStatus } from "../../../../libs/enums/post";
-import { IPostEntity } from "../../../../libs/entity/post";
+import { ArticlePriority, ArticleStatus } from "../../../../libs/enums/article";
+import { IArticleEntity } from "../../../../libs/entity/article";
 import { User } from "./user";
 
 @Entity()
-export class Post extends BaseEntity implements IPostEntity{
+export class Article extends BaseEntity implements IArticleEntity{
     /**
      * @description 标题
      */
@@ -38,24 +38,24 @@ export class Post extends BaseEntity implements IPostEntity{
      */
     @Column({
         type: "enum",
-        enum: PostStatus,
-        default: PostStatus.Offline
+        enum: ArticleStatus,
+        default: ArticleStatus.Offline
     })
-    status: PostStatus;
+    status: ArticleStatus;
 
     @Column({
         type: "enum",
-        enum: PostPriority,
-        default: PostPriority.Normal
+        enum: ArticlePriority,
+        default: ArticlePriority.Normal
     })
-    priority: PostPriority;
+    priority: ArticlePriority;
 
     /**
      * @description 作者
      */
     @ManyToOne(
         type => User,
-        user => user.posts
+        user => user.articles
     )
     user: User;
 }

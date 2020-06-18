@@ -1,40 +1,40 @@
 import { controller, provide, inject, post, put, del, get } from 'midway'
 import { MIDDLEWARE_JWT, SERVICE_POST } from "../../inject-token";
 import {
-    IPostCreateOptions,
-    IPostDeleteOptions,
-    IPostDetailOptions, IPostListOptions,
-    IPostModifyOptions
-} from "../../../../libs/request/post";
+    IArticleCreateOptions,
+    IArticleDeleteOptions,
+    IArticleDetailOptions, IArticleListOptions,
+    IArticleModifyOptions
+} from "../../../../libs/request/article";
 import { IHttpResponse } from "../../../../libs/common";
 import {
-    IPostCreateResponse,
-    IPostDetailResponse,
-    IPostListResponse,
-    IPostModifyResponse
-} from "../../../../libs/response/post";
+    IArticleCreateResponse,
+    IArticleDetailResponse,
+    IArticleListResponse,
+    IArticleModifyResponse
+} from "../../../../libs/response/article";
 import { successResponse } from "../../utils/response-builder.util";
 import { getIdFromHeader } from "../../utils/get-id-from-header.util";
-import { IPostService } from "../../interfaces/post.interface";
+import { IArticleService } from "../../interfaces/article.interface";
 
 @provide()
 @controller('/post')
-export class PostController {
+export class ArticleController {
     @inject()
     ctx;
     @inject(SERVICE_POST)
-    service: IPostService;
+    service: IArticleService;
 
     @post('/new', { middleware: [MIDDLEWARE_JWT] })
-    async create(): Promise<IHttpResponse<IPostCreateResponse>> {
-        const options: IPostCreateOptions = this.ctx.request.body
+    async create(): Promise<IHttpResponse<IArticleCreateResponse>> {
+        const options: IArticleCreateOptions = this.ctx.request.body
         options.userId = getIdFromHeader(this.ctx)
         return successResponse(await this.service.create(options), '添加成功')
     }
 
     @put('/detail/:id', { middleware: [MIDDLEWARE_JWT] })
-    async modify(): Promise<IHttpResponse<IPostModifyResponse>> {
-        const options: IPostModifyOptions = {
+    async modify(): Promise<IHttpResponse<IArticleModifyResponse>> {
+        const options: IArticleModifyOptions = {
             id: this.ctx.params?.id,
             userId: getIdFromHeader(this.ctx),
             ...this.ctx.request?.body
@@ -43,16 +43,16 @@ export class PostController {
     }
 
     @del('/detail/:id', { middleware: [MIDDLEWARE_JWT] })
-    async delete(): Promise<IHttpResponse<IPostDetailResponse>> {
-        const options: IPostDeleteOptions = {
+    async delete(): Promise<IHttpResponse<IArticleDetailResponse>> {
+        const options: IArticleDeleteOptions = {
             id: this.ctx.params?.id
         }
         return successResponse(await this.service.delete(options), '删除成功')
     }
 
     @get('/detail/:id', { middleware: [MIDDLEWARE_JWT] })
-    async get(): Promise<IHttpResponse<IPostDetailResponse>> {
-        const options: IPostDetailOptions = {
+    async get(): Promise<IHttpResponse<IArticleDetailResponse>> {
+        const options: IArticleDetailOptions = {
             id: this.ctx.params?.id,
             ...this.ctx.request?.query
         }
@@ -60,8 +60,8 @@ export class PostController {
     }
 
     @get('/list')
-    async getList(): Promise<IHttpResponse<IPostListResponse>> {
-        const options: IPostListOptions = {
+    async getList(): Promise<IHttpResponse<IArticleListResponse>> {
+        const options: IArticleListOptions = {
             ...this.ctx.request?.query
         }
         return successResponse(await this.service.findMany(options), '')
