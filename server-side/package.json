@@ -1,5 +1,5 @@
 {
-  "name": "server-side",
+  "name": "official-web",
   "version": "1.0.0",
   "description": "官网服务端",
   "private": true,
@@ -7,15 +7,19 @@
     "egg-cors": "^2.2.3",
     "egg-scripts": "^2.10.0",
     "jsonwebtoken": "^8.5.1",
-    "koa-jwt": "^4.0.0",
+    "md5": "^2.2.1",
     "midway": "^1.0.0",
-    "mysql2": "^2.1.0"
+    "mysql2": "^2.1.0",
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/koa": "^2.11.3",
+    "@types/md5": "^2.2.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.5.5",
     "cross-env": "^6.0.0",
+    "egg": "^2.26.1",
     "egg-ci": "^1.8.0",
     "midway-bin": "1",
     "midway-mock": "1",
