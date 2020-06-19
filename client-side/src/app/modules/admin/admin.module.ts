@@ -12,6 +12,8 @@ import {CommonModule} from "@angular/common";
     CommonModule,
     AdminSharedModule,
     AdminRoutingModule
-  ]
+  ],
+  exports: [AdminComponent],
+  bootstrap: [AdminComponent]
 })
 export class AdminModule { }
