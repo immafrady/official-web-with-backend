@@ -4,7 +4,7 @@ import {CoreContainerComponent} from "./core-container/core-container.component"
 import {CommonModule} from "@angular/common";
 import { NewsPreviewComponent } from './news-preview/news-preview.component';
 import {RouterModule} from "@angular/router";
-import {NzCardModule, NzIconModule} from "ng-zorro-antd";
+import {NzCardModule} from "ng-zorro-antd";
 
 @NgModule({
   declarations: [CoreContainerComponent, NewsPreviewComponent],

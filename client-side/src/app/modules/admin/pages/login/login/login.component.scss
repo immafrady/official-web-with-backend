@@ -1,0 +1,20 @@
+
+.login-container {
+  width: 420px;
+  margin: 300px auto 0;
+  text-align: center;
+  border: 1px solid #cecece;
+  border-radius: 20px;
+  padding: 50px;
+  .login-form {
+    text-align: left;
+  }
+  .login-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .ant-input-affix-wrapper-lg,.login-form-button {
+    width: 100%;
+    border-radius: 4px;
+  }
+}

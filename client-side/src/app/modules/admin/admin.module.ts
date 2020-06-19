@@ -6,11 +6,10 @@ import {AdminSharedModule} from "./shared/admin-shared.module";
 import {CommonModule} from "@angular/common";
 import { NzBreadCrumbModule, NzIconModule, NzLayoutModule, NzMenuModule } from "ng-zorro-antd";
 import { WrapperComponent } from './layout/wrapper/wrapper.component';
-import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, WrapperComponent, LoginComponent],
+  declarations: [AdminComponent, WrapperComponent],
   imports: [
     CommonModule,
     AdminSharedModule,
@@ -19,6 +18,8 @@ import { LoginComponent } from './pages/login/login.component';
     NzMenuModule,
     NzBreadCrumbModule,
     NzIconModule
-  ]
+  ],
+  exports: [AdminComponent],
+  bootstrap: [AdminComponent]
 })
 export class AdminModule { }

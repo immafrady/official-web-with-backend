@@ -1,0 +1,25 @@
+<div class="news-list-container">
+  <h2 class="news-list-title">新闻列表</h2>
+  <nz-table #nzTable [nzData]="articleList" nzTableLayout="fixed">
+    <thead>
+    <tr>
+      <th>序号</th>
+      <th>标题</th>
+      <th>内容</th>
+      <th>发布时间</th>
+      <th>状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let data of nzTable.data, index as index">
+      <tr>
+        <td>{{ index + 1 }}</td>
+        <td>{{ data.title }}</td>
+        <td>{{ data.content }}</td>
+        <td>{{ data.modifyDate }}</td>
+        <td>{{ data.status ? '已上线' : '已下线'}}</td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </nz-table>
+</div>
