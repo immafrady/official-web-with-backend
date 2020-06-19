@@ -1,0 +1,18 @@
+<nz-layout>
+  <nz-sider nzWidth="200px">
+    <div class="logo">管理后台</div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <i nz-icon nzType="book"></i>
+        <span>文章</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

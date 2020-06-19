@@ -22,7 +22,6 @@ export interface IRequestPagination {
  */
 export interface IResponsePagination {
     total: number;
-    size: number
 }
 
 export class BaseResponseError extends Error{
@@ -39,4 +38,10 @@ export class BaseResponseError extends Error{
 
 export interface IHttpAuthRequest {
     userId: number;
+}
+
+export interface IBaseEntity {
+    id: number;
+    createDate: Date;
+    updateDate: Date;
 }

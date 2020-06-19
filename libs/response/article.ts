@@ -1,4 +1,4 @@
-import { IArticleEntity } from "../entity/article";
+import { ArticlePick, IArticleEntity } from "../entity/article";
 import { IRequestPagination, IResponsePagination } from "../common";
 
 /**
@@ -29,8 +29,9 @@ export interface IArticleDeleteResponse {
 /**
  * 单篇文章
  */
-export interface IArticleDetailResponse extends IArticleEntity {
-    id?: number;
+export interface IArticleDetailResponse {
+    article: IArticleEntity;
+    related: [ArticlePick, ArticlePick]
 }
 
 /**

@@ -23,7 +23,7 @@ import {
 } from "../../../libs/response-error";
 import { IDb } from "../interfaces/db.interface";
 import { User } from "../db/entities/user";
-import { IArticleEntity } from "../../../libs/entity/article";
+import { ArticlePick, IArticleEntity } from "../../../libs/entity/article";
 import { isValidPagination } from "../utils/validator.util";
 
 @provide(SERVICE_POST)
@@ -76,8 +76,10 @@ export class ArticleService implements IArticleService {
     /**
      * @description 文章列表
      * @param options
+     * @param select    展示列
      */
-    async findMany(options: IArticleListOptions): Promise<IArticleListResponse> {
+    async findMany(options: IArticleListOptions, select?: (keyof IArticleEntity | "user")[]): Promise<IArticleListResponse> {
+        const isShowUser = Array.isArray(select) && select.includes("user")
         const hasPagination = isValidPagination(options.page, options.size) // 是否开启分页
 
         try {
@@ -85,8 +87,9 @@ export class ArticleService implements IArticleService {
 
             // 开启分页
             const [list, total]= await articleRepo.findAndCount({
+                select,
                 where: options,
-                relations: ["user"],
+                relations: isShowUser ? ["user"] : undefined,
                 order: {
                     modifyDate: "DESC",
                     priority: "DESC"
@@ -98,7 +101,6 @@ export class ArticleService implements IArticleService {
 
             return {
                 list,
-                size: options.size,
                 total
             }
         } catch (e) {
@@ -111,8 +113,38 @@ export class ArticleService implements IArticleService {
      * @param options
      */
     async findOne(options: IArticleDetailOptions): Promise<IArticleDetailResponse> {
-        return Promise.resolve(undefined);
-    }
+        // 拿单篇文章
+        const articleRepo = this.db.getRepository(Article)
+        const article = await articleRepo.findOne(options.id, { relations: ["user"] })
+        if (!article) {
+            throw new ArticleNotFoundError()
+        }
+
+        delete options.id
+        // 拿所有文章
+        const { list } = await this.findMany(options, ['id', 'title'])
+
+        try {
+            let related: [ArticlePick, ArticlePick]
+            if (list) {
+                for (let i = 0; i < list.length; i++) {
+                    if (list[i].id === article.id) {
+                        related = [
+                            list[i - 1] as ArticlePick,
+                            list[i + 1] as ArticlePick
+                        ]
+                    }
+                }
+            }
+
+            return {
+                related,
+                article
+            }
+        } catch (e) {
+            throw new ArticleNotFoundError(e)
+        }
+     }
 
     /**
      * @description 修改文章
