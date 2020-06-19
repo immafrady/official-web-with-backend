@@ -19,7 +19,7 @@ export class LoginComponent extends BasePageComponent implements OnInit {
     metaService: Meta,
     titleService: Title,
     activatedRoute: ActivatedRoute,
-    router: Router,
+    private router: Router,
     private fb: FormBuilder,
     private http: HttpClient,
     private LoginService: LoginService
@@ -35,7 +35,9 @@ export class LoginComponent extends BasePageComponent implements OnInit {
     const username = this.validateForm.controls.username.value;
     const password = this.validateForm.controls.password.value;
     if (username && password) {
-      this.LoginService.login({ username, password: Md5.hashStr(password) })
+      this.LoginService.login({ username, password }).subscribe(res => {
+        this.router.navigateByUrl('/admin/news-list')
+      })
     }
   }
 

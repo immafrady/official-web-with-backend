@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NewsListRoutingModule } from './news-list-routing.module';
 import { NewsListComponent } from './news-list/news-list.component';
-import {NzTableModule} from "ng-zorro-antd";
+import {NzButtonModule, NzTableModule} from "ng-zorro-antd";
 import {NewsLIstService} from "./news-list.service";
 
 
@@ -12,7 +12,8 @@ import {NewsLIstService} from "./news-list.service";
   imports: [
     CommonModule,
     NewsListRoutingModule,
-    NzTableModule
+    NzTableModule,
+    NzButtonModule
   ],
   providers: [NewsLIstService],
   bootstrap: [NewsListComponent]
