@@ -28,6 +28,7 @@ export class UserService implements IUserService {
   async login(options: IUserLoginOptions): Promise<IUserLoginResponse> {
     const repo = this.db.getRepository(User)
     const user = await repo.findOne({
+      select: ["username", "password", "id", "nickname"],
       where: {
         username: options.username
       }

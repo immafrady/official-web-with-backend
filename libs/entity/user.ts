@@ -1,7 +1,9 @@
 /**
  * @description 用户实体接口
  */
-export interface IUserEntity {
+import { IBaseEntity } from "../common";
+
+export interface IUserEntity extends Partial<IBaseEntity>{
     username: string;
     nickname: string;
     password: string;
