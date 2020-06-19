@@ -1,0 +1,50 @@
+<div class="create-article-content">
+  <h2 class="create-article-title">创建任务</h2>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="title">标题</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入文章标题">
+        <input nz-input formControlName="title" id="title" placeholder="请输入文章标题" ngModel/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="status">文章状态</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择文章状态">
+        <nz-select id="status" formControlName="status" nzPlaceHolder="请选择文章状态" ngModel>
+          <nz-option *ngFor="let option of statusOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="priority">文章重要级别</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择文章重要级别">
+        <nz-select id="priority" formControlName="priority" nzPlaceHolder="请选择文章重要级别" ngModel>
+          <nz-option *ngFor="let option of priorityOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired>发布时间</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择发布时间">
+        <nz-date-picker
+          nzShowTime
+          formControlName="modifyDate"
+          nzFormat="yyyy-MM-dd HH:mm:ss"
+          nzPlaceHolder="请选择发布时间"
+          ngModel
+        ></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired>文章内容</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入文章内容">
+        <editor formControlName="content" [init]="tinymceOptions" ngModel></editor>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="4">
+        <button nz-button nzType="primary" nzSize="large" nzBlock>保存</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

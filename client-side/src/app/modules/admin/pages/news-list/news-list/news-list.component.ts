@@ -3,7 +3,7 @@ import {NewsLIstService} from "../news-list.service";
 import {IArticleEntity} from "../../../../../../../../libs/entity/article";
 
 @Component({
-  selector: 'pc-news-list',
+  selector: 'admin-news-list',
   templateUrl: './news-list.component.html',
   styleUrls: ['./news-list.component.scss']
 })

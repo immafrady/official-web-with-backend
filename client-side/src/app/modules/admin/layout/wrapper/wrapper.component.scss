@@ -2,13 +2,13 @@ nz-layout {
   height: 100%;
 }
 
-.logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  line-height: 32px;
+.sidebar-logo {
   text-align: center;
   color: #fff;
-  margin: 16px;
+  margin: 20px 15px 10px 10px;
+  img {
+    width: 160px;
+  }
 }
 
 nz-header {
@@ -30,7 +30,9 @@ nz-breadcrumb {
   min-height: 360px;
   height: 100%;
 }
-
+nz-content {
+  margin: 0;
+}
 nz-footer {
   text-align: center;
 }
