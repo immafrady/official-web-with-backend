@@ -56,11 +56,6 @@ export class NewsCenterMoreComponent extends BasePageComponent implements OnInit
     date: 1231231231231,
     thumbnail: getImage('join-us-work-environment-3'),
     routerLink: '/admin'
-  }, {
-    title: '2019年度财税论坛圆满举行 中国财经峰会冬季论坛在京投资..',
-    date: 1231231231231,
-    thumbnail: getImage('join-us-work-environment-3'),
-    routerLink: '/admin'
   }]
   constructor(
     metaService: Meta,
