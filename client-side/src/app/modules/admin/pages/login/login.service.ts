@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import {HttpHeaders} from "@angular/common/http";
-import {HttpService} from "../../../../shared/http.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {IHttpResponse} from "../../../../../../../libs/common";
@@ -8,11 +6,13 @@ import {IUserLoginResponse} from "../../../../../../../libs/response/user";
 import {IUserLoginOptions} from "../../../../../../../libs/request/user";
 import {Md5} from "ts-md5";
 import {tap} from "rxjs/operators";
+import { REQUEST_AUTH_TOKEN } from "../../../../../config/resources";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class LoginService {
   constructor(
-    private http : HttpService,
+    private http : HttpClient,
     private router: Router
   ) { }
 
@@ -24,7 +24,7 @@ export class LoginService {
     return this.http.post('/user/login', form).pipe(
       tap((res: IHttpResponse<IUserLoginResponse>) => {
         const storage = window.localStorage;
-        storage.setItem('admin-token', res.data.token);
+        storage.setItem(REQUEST_AUTH_TOKEN, res.data.token);
       })
     ) as Observable<IHttpResponse<IUserLoginResponse>>
   }

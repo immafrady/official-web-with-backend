@@ -32,7 +32,6 @@
     "classlist.js": "^1.1.20150312",
     "express": "^4.15.2",
     "express-http-proxy": "^1.6.0",
-    "md5": "^2.2.1",
     "ng-zorro-antd": "^9.1.2",
     "rxjs": "~6.5.4",
     "swiper": "^5.4.5",

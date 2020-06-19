@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {AppModule} from "./app.module";
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -18,10 +17,11 @@ registerLocaleData(zh);
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserTransferStateModule,
     FormsModule,
-    HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [{
+    provide: NZ_I18N, useValue: zh_CN
+  }],
   bootstrap: [AppComponent]
 })
 export class AppBrowserModule { }
