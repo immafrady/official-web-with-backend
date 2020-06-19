@@ -1,10 +1,23 @@
-<nz-layout>
-  <nz-sider nzWidth="200px">
-    <div class="logo">管理后台</div>
+
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzWidth="200px"
+            nzBreakpoint="md">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img [src]="getImage('logo-dark')" alt="logo">
+      </a>
+    </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item>
-        <i nz-icon nzType="book"></i>
-        <span>文章</span>
+      <li nz-submenu nzTitle="文章管理" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter routerLink="/admin/createTask">
+            <a>新增文章</a>
+          </li>
+          <li nz-menu-item nzMatchRouter routerLink="/admin/news-list">
+            <a>管理文章</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </nz-sider>
@@ -16,3 +29,5 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
+
+

@@ -3,9 +3,7 @@ import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "../../../../../shared/base-page.component";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {HttpClient} from "@angular/common/http";
 import {LoginService} from "../login.service";
-import {Md5} from 'ts-md5'
 
 @Component({
   selector: 'admin-login',
@@ -21,7 +19,6 @@ export class LoginComponent extends BasePageComponent implements OnInit {
     activatedRoute: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private http: HttpClient,
     private LoginService: LoginService
   ) {
     super(metaService, titleService, activatedRoute, router)
