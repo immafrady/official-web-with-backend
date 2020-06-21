@@ -23,7 +23,14 @@ export function app() {
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
-  server.use('/api', proxy('http://localhost:7001'))
+  server.use('/api', proxy('http://localhost:7001', {
+    proxyReqPathResolver: function (req) {
+      const parts = req.url.split('?');
+      const queryString = parts[1];
+      const updatedPath = parts[0].replace(/\/api/, '');
+      return updatedPath + (queryString ? '?' + queryString : '');
+    }
+  }))
   // 以下路由不走服务端渲染(IE好像无法渲染)
   server.get('/admin/*', (req, res) => {
     res.sendFile(join(distFolder, 'index.html'));
