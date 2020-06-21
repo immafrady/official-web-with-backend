@@ -35,6 +35,9 @@ export function app() {
   server.get('/admin/*', (req, res) => {
     res.sendFile(join(distFolder, 'index.html'));
   });
+  server.get('/admin', (req, res) => {
+    res.sendFile(join(distFolder, 'index.html'));
+  });
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
