@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {IHttpResponse} from "../../../../../../../libs/common";
 import {IUserLoginResponse} from "../../../../../../../libs/response/user";
@@ -12,8 +11,7 @@ import { HttpClient } from "@angular/common/http";
 @Injectable()
 export class LoginService {
   constructor(
-    private http : HttpClient,
-    private router: Router
+    private http : HttpClient
   ) { }
 
   login(data:IUserLoginOptions): Observable<IHttpResponse<IUserLoginResponse>>{

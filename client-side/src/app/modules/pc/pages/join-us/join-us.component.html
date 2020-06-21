@@ -57,7 +57,7 @@
           <td>{{ data.type }}</td>
           <td>{{ data.address }}</td>
           <td>{{ data.date }}</td>
-          <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : 'rotateDown'" nz-icon nzType="down" nzTheme="outline"></i></td>
+          <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : rotateActive ? 'rotateDown': ''" nz-icon nzType="down" nzTheme="outline"></i></td>
         </tr>
         <tr [nzExpand]="expandSet.has(data.id)">
          <div>

@@ -8,9 +8,9 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="status">文章状态</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择文章状态">
-        <nz-select id="status" formControlName="status" nzPlaceHolder="请选择文章状态" ngModel>
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="status">是否发布</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择是否发布">
+        <nz-select id="status" formControlName="status" nzPlaceHolder="请选择是否发布" ngModel>
           <nz-option *ngFor="let option of statusOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
         </nz-select>
       </nz-form-control>
@@ -33,6 +33,12 @@
           nzPlaceHolder="请选择发布时间"
           ngModel
         ></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired>上传缩略图</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请上传上传缩略图">
+
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>

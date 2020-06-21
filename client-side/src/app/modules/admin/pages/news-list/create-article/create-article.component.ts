@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ArticlePriority, ArticleStatus} from "../../../../../../../../libs/enums/article";
 import {CreateArticleService} from "./create-article.service";
 import {IArticleCreateOptions} from "../../../../../../../../libs/request/article";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'admin-create-article',
@@ -11,7 +12,18 @@ import {IArticleCreateOptions} from "../../../../../../../../libs/request/articl
 })
 export class CreateArticleComponent implements OnInit {
   validateForm: FormGroup;
-  form:IArticleCreateOptions;
+  form: IArticleCreateOptions = {
+    createDate: undefined,
+    id: 0,
+    thumbnail: "",
+    updateDate: undefined,
+    userId: 0,
+    title: '',
+    content: '',
+    modifyDate: null,
+    status: null,
+    priority: null
+  };
   tinymceOptions = {
     base_url: '/tinymce',
     language: 'zh_CN',
@@ -38,7 +50,8 @@ export class CreateArticleComponent implements OnInit {
   }];
   constructor(
     private fb: FormBuilder,
-    private CreateArticleService: CreateArticleService
+    private CreateArticleService: CreateArticleService,
+    private router: Router
   ) { }
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -50,7 +63,9 @@ export class CreateArticleComponent implements OnInit {
     this.form.priority = this.validateForm.controls.priority.value;
     this.form.modifyDate = this.validateForm.controls.modifyDate.value;
     this.form.content = this.validateForm.controls.content.value;
-    this.CreateArticleService.saveArticle(this.form)
+    this.CreateArticleService.saveArticle(this.form).subscribe(() => {
+      this.router.navigateByUrl('/admin/news-list')
+    })
   }
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -61,5 +76,4 @@ export class CreateArticleComponent implements OnInit {
       content:[null, [Validators.required]]
     });
   }
-
 }

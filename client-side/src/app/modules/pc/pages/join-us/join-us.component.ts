@@ -12,8 +12,10 @@ import {getImage} from "../../../../../utils/getImage";
 })
 export class JoinUsComponent extends BasePageComponent implements OnInit {
   positionType = 'common';
+  rotateActive = false;
   expandSet = new Set<number>();
   onExpandChange(id: number, checked: boolean): void {
+    this.rotateActive = true;
     if (checked) {
       this.expandSet.add(id);
     } else {

@@ -5,7 +5,6 @@
     <tr>
       <th>序号</th>
       <th>标题</th>
-      <th>内容</th>
       <th>发布时间</th>
       <th>状态</th>
       <th>操作</th>
@@ -16,8 +15,7 @@
       <tr>
         <td>{{ index + 1 }}</td>
         <td>{{ data.title }}</td>
-        <td>{{ data.content }}</td>
-        <td>{{ data.modifyDate }}</td>
+        <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
         <td>{{ data.status ? '已上线' : '已下线'}}</td>
         <td>
           <button nz-button nzType="primary" nzShape="round" routerLink="create-article">编辑</button>
