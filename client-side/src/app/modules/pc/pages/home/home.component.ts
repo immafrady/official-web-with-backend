@@ -3,6 +3,8 @@ import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "src/app/shared/base-page.component";
 import { getImage } from "src/utils/getImage";
+import {NewsCenterService} from "../news-center/news-center/news-center.service";
+import {IArticleEntity} from "../../../../../../../libs/entity/article";
 
 @Component({
   selector: 'pc-home',
@@ -11,22 +13,8 @@ import { getImage } from "src/utils/getImage";
 })
 export class HomeComponent extends BasePageComponent implements OnInit {
 
-  newsList: {title: string, date: number, thumbnail: string, routerLink: string}[] = [{
-    title: '十多个发生过房管局道森股份加个动画森股份加个动画设计森股份加个动画设计森股份加个动画设计设计成f',
-    date: 1231231231231,
-    thumbnail: getImage('logo-boqii'),
-    routerLink: '/admin'
-  }, {
-    title: 'A',
-    date: 1231231231231,
-    thumbnail: getImage('pc-banner-3-slogan'),
-    routerLink: '/admin'
-  }, {
-    title: 'A',
-    date: 1231231231231,
-    thumbnail: getImage('pc-banner-2-element'),
-    routerLink: '/admin'
-  }]
+  newsList:IArticleEntity[];
+  getImage = getImage;
 
   firstList: string[] = [
     getImage('logo-tencent'),
@@ -44,7 +32,7 @@ export class HomeComponent extends BasePageComponent implements OnInit {
     getImage('logo-qq-music'),
     getImage('logo-zhongyou'),
     getImage('logo-thunder')
-  ]
+  ];
   secondList: string[] = [
     getImage('logo-lingji'),
     getImage('logo-xiaopeng'),
@@ -61,19 +49,26 @@ export class HomeComponent extends BasePageComponent implements OnInit {
     getImage('logo-boqii'),
     getImage('logo-baluru'),
     getImage('logo-bgy')
-  ]
+  ];
 
   constructor(
     metaService: Meta,
     titleService: Title,
     activatedRoute: ActivatedRoute,
-    router: Router
+    router: Router,
+    private NewsCenterService: NewsCenterService
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
 
-  ngOnInit(): void {
+  getNewsList(): void {
+    this.NewsCenterService.getNewsList({ page: 1, size: 4 }).subscribe(res => {
+      this.newsList = res.data.list;
+    })
+  }
 
+  ngOnInit(): void {
+    this.getNewsList()
   }
 
 }

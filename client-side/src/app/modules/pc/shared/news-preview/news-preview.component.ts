@@ -10,6 +10,8 @@ export class NewsPreviewComponent implements OnInit {
   svg = PATH_SVG;
 
   @Input()
+  id: number;
+  @Input()
   thumbnail: string;
   @Input()
   title: string;

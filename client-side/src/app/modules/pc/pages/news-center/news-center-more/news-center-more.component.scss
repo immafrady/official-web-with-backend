@@ -1,12 +1,29 @@
 @import "src/styles/images.pc";
 @import "src/styles/common.pc";
 
-.inner-container {
-  @include clear-fix;
-  width: 900px;
-  margin: 0 auto 60px;
-  pc-news-preview {
-    float: left;
-    margin: 25px 10px;
+.header-container{
+  box-shadow:0 3px 7px 0 rgba(101,101,101,0.2);
+}
+.news-center-more {
+  margin: 80px auto;
+  .inner-container {
+    @include clear-fix;
+    margin: 0 auto 20px;
+    pc-news-preview {
+      float: left;
+      margin: 40px 10px;
+    }
+  }
+  nz-pagination {
+    text-align: center;
+  }
+  .ant-pagination-item-active, .ant-pagination-item:focus, .ant-pagination-item:hover, .ant-pagination-next:focus .ant-pagination-item-link, .ant-pagination-next:hover .ant-pagination-item-link, .ant-pagination-prev:focus .ant-pagination-item-link, .ant-pagination-prev:hover .ant-pagination-item-link {
+    border-color: #D50032;
+    background-color: #D50032;
+    a, svg {color: #fff;}
+  }
+  .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon, .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon {
+    color: #D50032;
   }
 }
+
