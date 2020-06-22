@@ -14,6 +14,7 @@ import {IArticleEntity} from "../../../../../../../../libs/entity/article";
 })
 export class NewsCenterMoreComponent extends BasePageComponent implements OnInit {
   newsList: IArticleEntity[];
+  total: number;
   constructor(
     metaService: Meta,
     titleService: Title,
@@ -24,14 +25,15 @@ export class NewsCenterMoreComponent extends BasePageComponent implements OnInit
     super(metaService, titleService, activatedRoute, router)
   }
 
-  getNewsList(): void {
-    this.NewsCenterService.getNewsList({ page: 1, size: 12 }).subscribe(({ data }) => {
-      this.newsList = data.list
+  getNewsList(page): void {
+    this.NewsCenterService.getNewsList({ page, size: 12 }).subscribe(({ data }) => {
+      this.newsList = data.list;
+      this.total = data.total
     })
   }
 
   ngOnInit(): void {
-    this.getNewsList()
+    this.getNewsList(1)
   }
 
 }

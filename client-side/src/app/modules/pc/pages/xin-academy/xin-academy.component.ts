@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {BasePageComponent} from "../../../../shared/base-page.component";
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
+import {getImage} from 'src/utils/getImage';
 
 @Component({
   selector: 'pc-xin-academy',
@@ -10,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   encapsulation: ViewEncapsulation.None
 })
 export class XinAcademyComponent extends BasePageComponent implements OnInit {
-
+  getImage = getImage;
   constructor(
     metaService: Meta,
     titleService: Title,
