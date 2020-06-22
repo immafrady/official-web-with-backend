@@ -124,6 +124,9 @@ export class ArticleService implements IArticleService {
             throw new ArticleNotFoundError()
         }
 
+        const author = article.user
+        delete article.user
+
         delete options.id
         // 拿所有文章
         const { list } = await this.findMany(options, ['id', 'title'])
@@ -143,7 +146,8 @@ export class ArticleService implements IArticleService {
 
             return {
                 related,
-                article
+                article,
+                author
             }
         } catch (e) {
             throw new ArticleNotFoundError(e)

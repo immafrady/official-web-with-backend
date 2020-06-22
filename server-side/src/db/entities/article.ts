@@ -1,6 +1,6 @@
 import { BaseEntity } from "./base";
 import { Column, Entity, ManyToOne } from "typeorm";
-import { ArticlePriority, ArticleStatus } from "../../../../libs/enums/article";
+import { ArticlePriority, ArticleStatus, ArticleType } from '../../../../libs/enums/article';
 import { IArticleEntity } from "../../../../libs/entity/article";
 import { User } from "./user";
 
@@ -50,6 +50,13 @@ export class Article extends BaseEntity implements IArticleEntity{
     })
     priority: ArticlePriority;
 
+    @Column({
+        type: "enum",
+        enum: ArticleType,
+        default: ArticleType.New
+    })
+    type: ArticleType;
+
     /**
      * @description 作者
      */
@@ -58,4 +65,5 @@ export class Article extends BaseEntity implements IArticleEntity{
         user => user.articles
     )
     user: User;
+
 }

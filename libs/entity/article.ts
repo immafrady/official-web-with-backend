@@ -1,4 +1,4 @@
-import { ArticlePriority, ArticleStatus } from "../enums/article";
+import { ArticlePriority, ArticleStatus, ArticleType } from '../enums/article';
 import { IBaseEntity } from "../common";
 
 /**
@@ -11,6 +11,7 @@ export interface IArticleEntity extends Partial<IBaseEntity>{
     modifyDate: Date;
     status: ArticleStatus;
     priority: ArticlePriority;
+    type: ArticleType;
 }
 
 export type ArticlePick = {

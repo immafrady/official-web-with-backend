@@ -1,5 +1,6 @@
 import { ArticlePick, IArticleEntity } from "../entity/article";
 import { IResponsePagination } from "../common";
+import { IUserEntity } from '../entity/user';
 
 /**
  * @description 新增接口
@@ -31,7 +32,8 @@ export interface IArticleDeleteResponse {
  */
 export interface IArticleDetailResponse {
     article: IArticleEntity;
-    related: [ArticlePick, ArticlePick]
+    related: [ArticlePick, ArticlePick],
+    author: IUserEntity
 }
 
 /**
