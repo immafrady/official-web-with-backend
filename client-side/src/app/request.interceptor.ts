@@ -3,18 +3,23 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { isPlatformBrowser } from "@angular/common";
 import { REQUEST_AUTH_TOKEN } from "../config/resources";
+import { ResponseCode } from '../../../server-side/src/libs/response-code';
+import { NzMessageService } from 'ng-zorro-antd';
+import { tap } from 'rxjs/operators';
+import { IHttpResponse } from '../../../libs/common';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
 
   constructor(
     @Inject(PLATFORM_ID)
-    private platformId: Object
+    private platformId: Object,
+    private nzMessageService: NzMessageService
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -38,6 +43,14 @@ export class RequestInterceptor implements HttpInterceptor {
     return next.handle(request.clone({
       url,
       setHeaders
-    }))
+    })).pipe(
+      tap(event => {
+        if (event instanceof HttpResponse) {
+          if (event.body.code && event.body.code !== ResponseCode.Success && event.body.msg) {
+            this.nzMessageService.create('error', event.body.msg)
+          }
+        }
+      })
+    )
   }
 }

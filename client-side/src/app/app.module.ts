@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import {AngularSvgIconModule} from "angular-svg-icon";
 import { RequestInterceptor } from "./request.interceptor";
+import { NzMessageModule } from 'ng-zorro-antd';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { RequestInterceptor } from "./request.interceptor";
   imports: [
     AppRoutingModule,
     HttpClientModule,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+    NzMessageModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
