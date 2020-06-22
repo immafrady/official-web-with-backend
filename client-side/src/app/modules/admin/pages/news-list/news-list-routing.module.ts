@@ -6,7 +6,7 @@ import {CreateArticleComponent} from "./create-article/create-article.component"
 
 const routes: Routes = [
   {path: '', component: NewsListComponent, data: { title: '新闻列表' }},
-  {path: 'create-article', component: CreateArticleComponent, data: { title: '新增/编辑文章' }},
+  {path: 'create-article/:id', component: CreateArticleComponent, data: { title: '新增/编辑文章' }},
 ];
 
 @NgModule({
