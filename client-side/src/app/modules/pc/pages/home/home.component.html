@@ -3,7 +3,7 @@
   <div class="middle-container">
     <div class="block-title">最新动态</div>
     <div class="inner-container middle">
-      <pc-news-preview *ngFor="let news of newsList" [thumbnail]="news.thumbnail" [date]="news.date" [title]="news.title" [routerLink]="news.routerLink"></pc-news-preview>
+      <pc-news-preview *ngFor="let news of newsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
     </div>
   </div>
 </pc-core-container>
@@ -11,18 +11,20 @@
   <div class="bottom-container">
     <div class="block-title">合作伙伴</div>
     <div class="inner-container bottom">
-      <nz-carousel class="bottom-carousel">
-        <div nz-carousel-content class="carousel-container">
-          <div class="associate-block">
-            <img *ngFor="let src of firstList" class="friendly-company" [src]="src" alt="">
-          </div>
-        </div>
-        <div nz-carousel-content class="carousel-container">
-          <div class="associate-block">
-            <img *ngFor="let src of secondList" class="friendly-company" [src]="src" alt="">
-          </div>
-        </div>
-      </nz-carousel>
+      <div class="move-mask move-mask-left"></div>
+      <div class="move-mask move-mask-right"></div>
+      <div class="line-move">
+        <img [src]="getImage('home-logo1')" alt="">
+        <img [src]="getImage('home-logo1')" alt="">
+      </div>
+      <div class="line-move line-even">
+        <img [src]="getImage('home-logo2')" alt="">
+        <img [src]="getImage('home-logo2')" alt="">
+      </div>
+      <div class="line-move">
+        <img [src]="getImage('home-logo3')" alt="">
+        <img [src]="getImage('home-logo3')" alt="">
+      </div>
     </div>
   </div>
 </pc-core-container>

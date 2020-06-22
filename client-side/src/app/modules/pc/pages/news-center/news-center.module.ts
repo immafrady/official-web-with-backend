@@ -6,12 +6,14 @@ import {NewsCenterComponent} from "./news-center/news-center.component";
 import {PcSharedModule} from "../../shared/pc-shared.module";
 import {NewsCenterMoreComponent} from "./news-center-more/news-center-more.component";
 import {NzPaginationModule} from "ng-zorro-antd";
+import { NewsDetailComponent } from './news-detail/news-detail.component';
 
 
 @NgModule({
   declarations: [
     NewsCenterComponent,
-    NewsCenterMoreComponent
+    NewsCenterMoreComponent,
+    NewsDetailComponent
   ],
   imports: [
     CommonModule,

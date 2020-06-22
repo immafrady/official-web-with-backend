@@ -84,8 +84,10 @@ export class CreateArticleComponent implements OnInit {
     for (const key in formControls) {
       formControls[key].markAsDirty();
       formControls[key].updateValueAndValidity();
-      validStatus = !!formControls[key].value
+      validStatus = !!formControls[key].value;
+      this.form[key] = formControls[key].value
     }
+
     if (validStatus) {
       if (this.form.id) {
         this.CreateArticleService.saveDetailArticle(this.form as IArticleModifyOptions).subscribe(() => {

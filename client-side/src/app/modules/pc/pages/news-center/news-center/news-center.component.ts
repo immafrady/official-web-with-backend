@@ -5,6 +5,7 @@ import {BasePageComponent} from "../../../../../shared/base-page.component";
 import {HttpClient} from '@angular/common/http';
 import {NewsCenterService} from "./news-center.service";
 import {IArticleEntity} from "../../../../../../../../libs/entity/article";
+import {ArticleType} from "../../../../../../../../libs/enums/article";
 
 @Component({
   selector: 'pc-news-center',
@@ -14,6 +15,7 @@ import {IArticleEntity} from "../../../../../../../../libs/entity/article";
 })
 export class NewsCenterComponent extends BasePageComponent implements OnInit {
   newsList: IArticleEntity[];
+  oldList: IArticleEntity[];
 
   constructor(
     metaService: Meta,
@@ -25,11 +27,14 @@ export class NewsCenterComponent extends BasePageComponent implements OnInit {
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
-
-  ngOnInit(): void {
-    this.NewsCenterService.getNewsList({ page: 1, size: 3 }).subscribe(res => {
-      this.newsList = res.data.list
+  getNewsList(type, list): void {
+    this.NewsCenterService.getNewsList({ page: 1, size: 4, type }).subscribe(res => {
+      this[list] = res.data.list;
     })
+  }
+  ngOnInit(): void {
+    this.getNewsList(ArticleType.Hot, 'newsList');
+    this.getNewsList(ArticleType.OLD, 'oldList')
   }
 
 }
