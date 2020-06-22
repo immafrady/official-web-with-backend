@@ -32,15 +32,6 @@ import { cleanNoneValue } from '../utils/clean-none-value.utils';
 
 @provide(SERVICE_POST)
 export class ArticleService implements IArticleService {
-    static setCommonField = (article: Article, options: IArticleEntity) => {
-        article.content = options.content
-        article.modifyDate = options.modifyDate
-        article.title = options.title
-        article.priority = options.priority
-        article.status = options.status
-        article.thumbnail = options.thumbnail
-        article.type = options.type
-    }
 
     @inject(SERVICE_DB)
     db: IDb;
@@ -170,12 +161,9 @@ export class ArticleService implements IArticleService {
             throw new ArticleNotFoundError()
         }
         try {
-            ArticleService.setCommonField(article, options)
+            const modified = articleRepo.create(options)
 
-            const userRepo = this.db.getRepository(User)
-            article.user = await userRepo.findOne(options.userId)
-
-            await articleRepo.save(article)
+            await articleRepo.save(modified)
             return {}
         } catch (e) {
             throw new ArticleCannotModifyError(e)
