@@ -12,8 +12,8 @@ export default (app: EggAppInfo) => {
         host: 'localhost',
         port: 3306,
         database: 'official_web',
-        username: 'root',
-        password: 'password',
+        username: 'frady',
+        password: 'root',
         timezone: '+8:00',
         synchronize: true, // 每次启动都会覆盖数据库，生产勿用
         entities: [app.baseDir + '/db/entities/*.{ts,js}']

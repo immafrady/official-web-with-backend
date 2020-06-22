@@ -13,7 +13,7 @@ export interface IArticleCreateOptions extends IArticleEntity {
  */
 export interface IArticleModifyOptions extends IArticleEntity {
     id?: number;
-    userId: number;
+    userId?: number;
 }
 
 /**
