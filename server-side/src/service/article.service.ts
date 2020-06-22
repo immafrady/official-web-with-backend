@@ -39,6 +39,7 @@ export class ArticleService implements IArticleService {
         article.priority = options.priority
         article.status = options.status
         article.thumbnail = options.thumbnail
+        article.type = options.type
     }
 
     @inject(SERVICE_DB)
