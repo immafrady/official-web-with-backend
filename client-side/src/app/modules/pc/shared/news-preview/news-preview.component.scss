@@ -5,10 +5,10 @@ $news-preview-height: 170px;
 
 .news-preview {
   border: 1px solid #ccc;
+  overflow: hidden;
   border-radius: 8px;
   width: 280px;
   cursor: pointer;
-  //border-top: none;
   .preview-thumbnail {
     display: block;
     width: $news-preview-width;
