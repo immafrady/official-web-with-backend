@@ -8,26 +8,26 @@ import {
     IArticleListOptions,
     IArticleModifyOptions,
     IArticleSetStatusOption
-} from '../../../libs/request/article';
+} from '../libs/request/article';
 import {
     IArticleCreateResponse,
     IArticleDeleteResponse,
     IArticleDetailResponse,
     IArticleListResponse,
     IArticleModifyResponse
-} from '../../../libs/response/article';
+} from '../libs/response/article';
 import { Article } from '../db/entities/article';
 import {
     ArticleCannotCreateError,
     ArticleCannotDeleteError,
     ArticleCannotModifyError,
     ArticleNotFoundError
-} from '../../../libs/response-error';
+} from '../libs/response-error';
 import { IDb } from '../interfaces/db.interface';
 import { User } from '../db/entities/user';
-import { ArticlePick, IArticleEntity } from '../../../libs/entity/article';
+import { ArticlePick, IArticleEntity } from '../libs/entity/article';
 import { isValidPagination } from '../utils/validator.util';
-import { ArticleStatus } from '../../../libs/enums/article';
+import { ArticleStatus } from '../libs/enums/article';
 import { cleanNoneValue } from '../utils/clean-none-value.utils';
 
 @provide(SERVICE_POST)
