@@ -5,14 +5,14 @@ import {
     IArticleDeleteOptions,
     IArticleDetailOptions, IArticleListOptions,
     IArticleModifyOptions
-} from "../../../../libs/request/article";
-import { IHttpResponse } from "../../../../libs/common";
+} from "../../libs/request/article";
+import { IHttpResponse } from "../../libs/common";
 import {
     IArticleCreateResponse, IArticleDeleteResponse,
     IArticleDetailResponse,
     IArticleListResponse,
     IArticleModifyResponse, IArticleSetStatusResponse
-} from '../../../../libs/response/article';
+} from '../../libs/response/article';
 import { successResponse } from "../../utils/response-builder.util";
 import { getIdFromHeader } from "../../utils/get-id-from-header.util";
 import { IArticleService } from "../../interfaces/article.interface";

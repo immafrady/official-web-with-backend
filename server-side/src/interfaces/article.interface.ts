@@ -3,14 +3,14 @@ import {
     IArticleDeleteOptions, IArticleDetailOptions,
     IArticleListOptions,
     IArticleModifyOptions, IArticleSetStatusOption
-} from '../../../libs/request/article';
+} from '../libs/request/article';
 import {
     IArticleCreateResponse,
     IArticleDeleteResponse, IArticleDetailResponse,
     IArticleListResponse,
     IArticleModifyResponse, IArticleSetStatusResponse
-} from '../../../libs/response/article';
-import { IArticleEntity } from "../../../libs/entity/article";
+} from '../libs/response/article';
+import { IArticleEntity } from '../libs/entity/article';
 
 export interface IArticleService {
     create(options: IArticleCreateOptions): Promise<IArticleCreateResponse>;

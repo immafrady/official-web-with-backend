@@ -1,7 +1,7 @@
 import { BaseEntity } from "./base";
 import { Column, Entity, ManyToOne } from "typeorm";
-import { ArticlePriority, ArticleStatus, ArticleType } from '../../../../libs/enums/article';
-import { IArticleEntity } from "../../../../libs/entity/article";
+import { ArticlePriority, ArticleStatus, ArticleType } from '../../libs/enums/article';
+import { IArticleEntity } from '../../libs/entity/article';
 import { User } from "./user";
 
 @Entity()

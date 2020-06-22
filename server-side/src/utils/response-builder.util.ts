@@ -1,5 +1,5 @@
-import { ResponseCode } from "../../../libs/response-code";
-import { IHttpResponse } from "../../../libs/common";
+import { ResponseCode } from "../libs/response-code";
+import { IHttpResponse } from "../libs/common";
 
 function responseBuilder<T>(code: ResponseCode, data: T, msg: string ): IHttpResponse<T> {
     return {

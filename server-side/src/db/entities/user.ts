@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany } from "typeorm";
 import { BaseEntity } from "./base";
-import { IUserEntity } from "../../../../libs/entity/user";
+import { IUserEntity } from '../../libs/entity/user';
 import { Article } from "./article";
 
 @Entity()

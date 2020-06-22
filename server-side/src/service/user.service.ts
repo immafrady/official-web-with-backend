@@ -1,15 +1,15 @@
 import { provide, inject, config } from 'midway';
 import { IUserService } from "../interfaces/user.interface";
 import { CONFIG_JWT, SERVICE_DB, SERVICE_USER } from "../inject-token";
-import { IUserLoginResponse, IUserRegisterResponse } from "../../../libs/response/user";
+import { IUserLoginResponse, IUserRegisterResponse } from '../libs/response/user';
 import { User } from "../db/entities/user";
-import { IUserLoginOptions, IUserRegisterOptions } from "../../../libs/request/user";
+import { IUserLoginOptions, IUserRegisterOptions } from '../libs/request/user';
 import {
   UserAlreadyExistError,
   UserNotFoundError,
   UserPasswordNotPairError,
   UserRegisterKeyNotPairError
-} from "../../../libs/response-error";
+} from '../libs/response-error';
 import * as jwt from 'jsonwebtoken'
 import { generatePassword } from "../utils/generate-password.util";
 import { IDb } from "../interfaces/db.interface";
