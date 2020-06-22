@@ -6,3 +6,21 @@
     margin-bottom: 30px;
   }
 }
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  .ant-form-item {
+    display: flex;
+    width: 50%;
+  }
+  .ant-form-item-label {
+    min-width: 150px;
+  }
+  nz-select,input,nz-date-picker {
+    width: 300px;
+  }
+}
+.tox-tinymce {
+  min-height: 450px;
+}

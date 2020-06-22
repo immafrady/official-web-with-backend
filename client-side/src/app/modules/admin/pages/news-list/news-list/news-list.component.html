@@ -1,9 +1,12 @@
 <div class="news-list-container">
-  <h2 class="news-list-title">文章列表</h2>
-  <nz-table #nzTable [nzData]="articleList" nzTableLayout="fixed">
+  <div class="nav-container">
+    <h2 class="news-list-title">文章管理</h2>
+    <button nz-button nzType="primary" routerLink="create-article/0">新增文章</button>
+  </div>
+  <nz-table #nzTable [nzData]="articleList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
     <thead>
     <tr>
-      <th>序号</th>
+      <th nzWidth="80px">序号</th>
       <th>标题</th>
       <th>发布时间</th>
       <th>状态</th>
@@ -18,8 +21,8 @@
         <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
         <td>{{ data.status ? '已上线' : '已下线'}}</td>
         <td>
-          <button nz-button nzType="primary" nzShape="round" routerLink="create-article">编辑</button>
-<!--          <button nz-button nzType="dashed" nzShape="round" [nzDanger]="data.status === 1">{{ data.status ? '下线' : '上线' }}</button>-->
+          <button nz-button nzType="primary" nzShape="round" routerLink="create-article/{{ data.id }}">编辑</button>
+          <button nz-button nzType="dashed" nzShape="round" [nzDanger]="data.status === 1">{{ data.status ? '下线' : '上线' }}</button>
         </td>
       </tr>
     </ng-container>

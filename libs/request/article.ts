@@ -5,7 +5,7 @@ import { IRequestPagination } from "../common";
 import { IArticleEntity } from "../entity/article";
 
 export interface IArticleCreateOptions extends IArticleEntity {
-    userId: number;
+    userId?: number;
 }
 
 /**

@@ -39,7 +39,6 @@ const fileNameGenerator = (raw: string): string => {
  * @param file
  */
 export const uploadAliyun: (file: File)=> Promise<{ url: string, name: string }> = async (file: File) => {
-  debugger
   if (file instanceof File) {
     const client = new OSS({
       region: OSS_CONFIG.region,
@@ -67,7 +66,7 @@ export const uploadAliyun: (file: File)=> Promise<{ url: string, name: string }>
  * @param fileName 目标文件名
  * @returns {string}
  */
-function appendFileNameSearchParam(url: string, fileName: string): string {
+export function appendFileNameSearchParam(url: string, fileName: string): string {
   // url = new URL(url)
   // url.searchParams.set(KEY, fileName)
   return url + `?${KEY}=${fileName}`

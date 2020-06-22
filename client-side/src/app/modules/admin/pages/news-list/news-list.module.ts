@@ -7,10 +7,11 @@ import {
   NzButtonModule,
   NzDatePickerModule,
   NzFormModule,
-  NzGridModule,
+  NzGridModule, NzIconModule,
   NzInputModule,
   NzSelectModule,
-  NzTableModule, NzUploadModule
+  NzTableModule,
+  NzUploadModule
 } from "ng-zorro-antd";
 import {NewsLIstService} from "./news-list.service";
 import {CreateArticleComponent} from "./create-article/create-article.component";
@@ -33,7 +34,8 @@ import {CreateArticleService} from "./create-article/create-article.service";
     NzFormModule,
     NzDatePickerModule,
     EditorModule,
-    NzUploadModule
+    NzUploadModule,
+    NzIconModule
   ],
   providers: [
     NewsLIstService,

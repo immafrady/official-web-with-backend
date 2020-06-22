@@ -9,15 +9,9 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-submenu nzTitle="文章管理" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter routerLink="/admin/news-list/create-article">
-            <a>新增文章</a>
-          </li>
-          <li nz-menu-item nzMatchRouter routerLink="/admin/news-list">
-            <a>管理文章</a>
-          </li>
-        </ul>
+      <li nz-menu-item nz-tooltip nzSelected nzTitle="文章管理" routerLink="/admin/news-list">
+        <i nz-icon nzType="form"></i>
+        <span>文章管理</span>
       </li>
     </ul>
   </nz-sider>

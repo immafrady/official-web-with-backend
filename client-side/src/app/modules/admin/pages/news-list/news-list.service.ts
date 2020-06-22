@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {IHttpResponse} from "../../../../../../../libs/common";
-import {IArticleListResponse} from "../../../../../../../libs/response/article";
+import {IArticleListResponse, IArticleSetStatusResponse} from "../../../../../../../libs/response/article";
 import { HttpClient } from "@angular/common/http";
+import {IArticleSetStatusOption} from "../../../../../../../libs/request/article";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,15 @@ export class NewsLIstService {
   constructor(
     private http: HttpClient
   ) { }
+
+  // 获取文章列表
   getNewsList(): Observable<IHttpResponse<IArticleListResponse>> {
     return this.http.get('/article/list') as Observable<IHttpResponse<IArticleListResponse>>
   }
+
+  // 上线或者下线
+  handlerArticle(id: IArticleSetStatusOption): Observable<IHttpResponse<IArticleSetStatusResponse>> {
+    return this.http.put(`/article/detail/${ id }/status`, null) as Observable<IHttpResponse<IArticleSetStatusResponse>>
+  }
+
 }
