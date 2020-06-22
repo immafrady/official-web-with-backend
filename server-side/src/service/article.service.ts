@@ -28,6 +28,7 @@ import { User } from '../db/entities/user';
 import { ArticlePick, IArticleEntity } from '../../../libs/entity/article';
 import { isValidPagination } from '../utils/validator.util';
 import { ArticleStatus } from '../../../libs/enums/article';
+import { cleanNoneValue } from '../utils/clean-none-value.utils';
 
 @provide(SERVICE_POST)
 export class ArticleService implements IArticleService {
@@ -88,6 +89,7 @@ export class ArticleService implements IArticleService {
         try {
             const articleRepo = this.db.getRepository(Article)
             const articleOptions = articleRepo.create(options)
+            cleanNoneValue(articleOptions)
 
             // 开启分页
             const [list, total]= await articleRepo.findAndCount({
