@@ -50,6 +50,11 @@ export class ArticleController {
         return successResponse(await this.service.delete(options), '删除成功')
     }
 
+    @put('/detail/:id/status', { middleware: [MIDDLEWARE_JWT] })
+    async updateArticleStatus(): Promise<IHttpResponse<IArticleSetStatusResponse>> {
+        return successResponse(await this.service.setArticleStatus(this.ctx.request?.query?.id), '更改成功')
+    }
+
     @get('/detail/:id')
     async get(): Promise<IHttpResponse<IArticleDetailResponse>> {
         const options: IArticleDetailOptions = {
@@ -65,10 +70,5 @@ export class ArticleController {
             ...this.ctx.request?.query
         }
         return successResponse(await this.service.findMany(options), '')
-    }
-
-    @put('/detail/:id/status')
-    async updateArticleStatus(): Promise<IHttpResponse<IArticleSetStatusResponse>> {
-        return successResponse(await this.service.setArticleStatus(this.ctx.request?.query?.id), '更改成功')
     }
 }
