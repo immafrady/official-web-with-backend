@@ -1,7 +1,7 @@
 <pc-core-container className="news-center-more">
   <div class="block-title">新闻中心</div>
   <div class="inner-container">
-    <pc-news-preview *ngFor="let news of newsList" [thumbnail]="news.thumbnail" [date]="news.date" [title]="news.title" [routerLink]="news.routerLink"></pc-news-preview>
+    <pc-news-preview *ngFor="let news of newsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [routerLink]="news.routerLink"></pc-news-preview>
   </div>
-  <nz-pagination [nzPageIndex]="2" [nzTotal]="500" nzShowQuickJumper></nz-pagination>
+  <nz-pagination [nzPageIndex]="1" [nzTotal]="total" nzShowQuickJumper [nzHideOnSinglePage]="true" (nzPageIndexChange)="getNewsList($event)"></nz-pagination>
 </pc-core-container>
