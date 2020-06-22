@@ -1,5 +1,5 @@
 /**
- * 新增接口
+ * @description 新增接口
  */
 import { IRequestPagination } from "../common";
 import { IArticleEntity } from "../entity/article";
@@ -9,7 +9,7 @@ export interface IArticleCreateOptions extends IArticleEntity {
 }
 
 /**
- * 修改接口
+ * @description 修改接口
  */
 export interface IArticleModifyOptions extends IArticleEntity {
     id?: number;
@@ -17,20 +17,25 @@ export interface IArticleModifyOptions extends IArticleEntity {
 }
 
 /**
- * 删除接口
+ * @description 删除接口
  */
 export interface IArticleDeleteOptions {
     id: number;
 }
 
 /**
- * 单篇文章
+ * @description 单篇文章
  */
 export interface IArticleDetailOptions extends Partial<IArticleEntity> {
     id: number;
 }
 
 /**
- * 文章列表
+ * @description 文章列表
  */
 export interface IArticleListOptions extends Partial<IArticleEntity>, IRequestPagination{}
+
+/**
+ * @description 修改文章状态接口
+ */
+export type IArticleSetStatusOption = number|string

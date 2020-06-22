@@ -11,8 +11,8 @@ import {
     IArticleCreateResponse, IArticleDeleteResponse,
     IArticleDetailResponse,
     IArticleListResponse,
-    IArticleModifyResponse
-} from "../../../../libs/response/article";
+    IArticleModifyResponse, IArticleSetStatusResponse
+} from '../../../../libs/response/article';
 import { successResponse } from "../../utils/response-builder.util";
 import { getIdFromHeader } from "../../utils/get-id-from-header.util";
 import { IArticleService } from "../../interfaces/article.interface";
@@ -65,5 +65,10 @@ export class ArticleController {
             ...this.ctx.request?.query
         }
         return successResponse(await this.service.findMany(options), '')
+    }
+
+    @put('/detail/:id/status')
+    async updateArticleStatus(): Promise<IHttpResponse<IArticleSetStatusResponse>> {
+        return successResponse(await this.service.setArticleStatus(this.ctx.request?.query?.id), '更改成功')
     }
 }

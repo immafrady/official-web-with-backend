@@ -2,14 +2,14 @@ import {
     IArticleCreateOptions,
     IArticleDeleteOptions, IArticleDetailOptions,
     IArticleListOptions,
-    IArticleModifyOptions
-} from "../../../libs/request/article";
+    IArticleModifyOptions, IArticleSetStatusOption
+} from '../../../libs/request/article';
 import {
     IArticleCreateResponse,
     IArticleDeleteResponse, IArticleDetailResponse,
     IArticleListResponse,
-    IArticleModifyResponse
-} from "../../../libs/response/article";
+    IArticleModifyResponse, IArticleSetStatusResponse
+} from '../../../libs/response/article';
 import { IArticleEntity } from "../../../libs/entity/article";
 
 export interface IArticleService {
@@ -18,4 +18,5 @@ export interface IArticleService {
     modify(options: IArticleModifyOptions): Promise<IArticleModifyResponse>;
     findMany(options: IArticleListOptions, select?: (keyof IArticleEntity)[]): Promise<IArticleListResponse>;
     findOne(options: IArticleDetailOptions): Promise<IArticleDetailResponse>;
+    setArticleStatus(id: IArticleSetStatusOption): Promise<IArticleSetStatusResponse>;
 }

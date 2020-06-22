@@ -3,9 +3,11 @@
  * @param page 第几页
  * @param size 分页大小
  */
-export const isValidPagination = (page: number, size: number) => {
-    return typeof size === "number" &&
-        typeof page === "number" &&
+export const isValidPagination = (page: number|string, size: number|string) => {
+    page = +page;
+    size = +size;
+    return typeof +size === "number" &&
+        typeof +page === "number" &&
         !Number.isNaN(size * (page - 1)) &&
         page > 0 &&
         size > 0 &&

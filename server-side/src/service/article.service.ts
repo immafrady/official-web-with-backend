@@ -1,30 +1,33 @@
 import { inject, provide } from 'midway';
-import { IArticleService } from "../interfaces/article.interface";
-import { SERVICE_DB, SERVICE_POST } from "../inject-token";
+import { IArticleService } from '../interfaces/article.interface';
+import { SERVICE_DB, SERVICE_POST } from '../inject-token';
 import {
     IArticleCreateOptions,
     IArticleDeleteOptions,
     IArticleDetailOptions,
     IArticleListOptions,
-    IArticleModifyOptions
-} from "../../../libs/request/article";
+    IArticleModifyOptions,
+    IArticleSetStatusOption
+} from '../../../libs/request/article';
 import {
     IArticleCreateResponse,
     IArticleDeleteResponse,
     IArticleDetailResponse,
     IArticleListResponse,
     IArticleModifyResponse
-} from "../../../libs/response/article";
-import { Article } from "../db/entities/article";
+} from '../../../libs/response/article';
+import { Article } from '../db/entities/article';
 import {
     ArticleCannotCreateError,
     ArticleCannotDeleteError,
-    ArticleCannotModifyError, ArticleNotFoundError
-} from "../../../libs/response-error";
-import { IDb } from "../interfaces/db.interface";
-import { User } from "../db/entities/user";
-import { ArticlePick, IArticleEntity } from "../../../libs/entity/article";
-import { isValidPagination } from "../utils/validator.util";
+    ArticleCannotModifyError,
+    ArticleNotFoundError
+} from '../../../libs/response-error';
+import { IDb } from '../interfaces/db.interface';
+import { User } from '../db/entities/user';
+import { ArticlePick, IArticleEntity } from '../../../libs/entity/article';
+import { isValidPagination } from '../utils/validator.util';
+import { ArticleStatus } from '../../../libs/enums/article';
 
 @provide(SERVICE_POST)
 export class ArticleService implements IArticleService {
@@ -84,11 +87,12 @@ export class ArticleService implements IArticleService {
 
         try {
             const articleRepo = this.db.getRepository(Article)
+            const articleOptions = articleRepo.create(options)
 
             // 开启分页
             const [list, total]= await articleRepo.findAndCount({
                 select,
-                where: options,
+                where: articleOptions,
                 relations: isShowUser ? ["user"] : undefined,
                 order: {
                     modifyDate: "DESC",
@@ -171,5 +175,21 @@ export class ArticleService implements IArticleService {
         }
     }
 
+    /**
+     * @description 修改文章状态接口
+     * @param id
+     */
+    async setArticleStatus(id: IArticleSetStatusOption): Promise<IArticleCreateResponse> {
+        const articleRepo = this.db.getRepository(Article)
+        const article = await articleRepo.findOne(id)
 
+        if (!article) {
+            throw new ArticleNotFoundError()
+        }
+
+        article.status = article.status === ArticleStatus.Online ? ArticleStatus.Offline : ArticleStatus.Online
+
+        await articleRepo.save(article)
+        return {}
+    }
 }

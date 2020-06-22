@@ -1,18 +1,18 @@
 import { ArticlePick, IArticleEntity } from "../entity/article";
-import { IRequestPagination, IResponsePagination } from "../common";
+import { IResponsePagination } from "../common";
 
 /**
- * @description
+ * @description 新增接口
  */
 export interface IArticleCreateResponse {}
 
 /**
- * 修改接口
+ * @description 修改接口
  */
 export interface IArticleModifyResponse {}
 
 /**
- * 删除接口
+ * @description 删除接口
  */
 export interface IArticleDeleteResponse {
     /**
@@ -27,7 +27,7 @@ export interface IArticleDeleteResponse {
 }
 
 /**
- * 单篇文章
+ * @description 单篇文章
  */
 export interface IArticleDetailResponse {
     article: IArticleEntity;
@@ -35,8 +35,13 @@ export interface IArticleDetailResponse {
 }
 
 /**
- * 文章列表
+ * @description 文章列表
  */
 export interface IArticleListResponse extends IResponsePagination{
     list: IArticleEntity[]
 }
+
+/**
+ *  @description 修改文章状态接口
+ */
+export interface IArticleSetStatusResponse {}
