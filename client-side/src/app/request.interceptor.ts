@@ -11,7 +11,6 @@ import { REQUEST_AUTH_TOKEN } from "../config/resources";
 import { ResponseCode } from '../../../server-side/src/libs/response-code';
 import { NzMessageService } from 'ng-zorro-antd';
 import { tap } from 'rxjs/operators';
-import { IHttpResponse } from '../../../libs/common';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {

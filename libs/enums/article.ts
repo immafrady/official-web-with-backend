@@ -21,5 +21,6 @@ export enum ArticlePriority {
 export enum ArticleType {
     Hot = 'HOT_ARTICLE', // 热门报道
     New = 'NEW_ARTICLE', // 最新动态
-    OLD = 'OLD_ARTICLE' // 往期动态
+    Old = 'OLD_ARTICLE', // 往期动态
+    Honor = 'HONOR_ARTICLE', // 荣誉奖项
 }
