@@ -9,7 +9,9 @@ export class Article extends BaseEntity implements IArticleEntity{
     /**
      * @description 标题
      */
-    @Column()
+    @Column({
+        length: 191
+    })
     title: string;
 
     @Column({
@@ -20,7 +22,9 @@ export class Article extends BaseEntity implements IArticleEntity{
     /**
      * @description 缩略图
      */
-    @Column()
+    @Column({
+        length: 191
+    })
     thumbnail: string;
 
     /**

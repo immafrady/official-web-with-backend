@@ -10,15 +10,19 @@ export class User extends BaseEntity implements IUserEntity{
      */
     @Column({
         unique: true,
-        select: false
+        select: false,
+        length: 191
     })
     username: string;
 
-    @Column()
+    @Column({
+        length: 191
+    })
     nickname: string;
 
     @Column({
-        select: false
+        select: false,
+        length: 191
     })
     password: string;
 
