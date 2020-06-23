@@ -25,11 +25,20 @@
 <pc-core-container className="honer-container">
   <div class="block-title">荣誉奖项</div>
   <ul class="honer-article">
-    <li *ngFor="let data of honerNewsList">
+    <li *ngFor="let data of honerNewsList | slice:0:6">
       <a routerLink="/news-center/news-detail/{{ data.id }}">
         <p>{{ data.title }}</p>
-        <span>{{ data.modifyDate | date:'yyyy-MM' }}</span>
+        <span>{{ data.modifyDate | date:'yyyy.MM' }}</span>
       </a>
     </li>
+    <ng-template [ngIf]="showMoreHonerList">
+      <li *ngFor="let data of honerNewsList | slice:6:honerNewsList.length">
+        <a routerLink="/news-center/news-detail/{{ data.id }}">
+          <p>{{ data.title }}</p>
+          <span>{{ data.modifyDate | date:'yyyy.MM' }}</span>
+        </a>
+      </li>
+    </ng-template>
+    <li class="more-link" (click)="showMoreHonerList = !showMoreHonerList">{{ showMoreHonerList ? '隐藏' : '展开' }}更多 》</li>
   </ul>
 </pc-core-container>
