@@ -28,7 +28,9 @@ $carousel-height: 869px;
     }
 
     &.item-one {
-      background:  $pc-banner-1-bg , $pc-banner-1;
+      background-image:  $pc-banner-1-bg , $pc-banner-1;
+      background-position: center, center;
+      background-size: 100%, cover;
       .slogan {
         position: absolute;
         top: 50%;

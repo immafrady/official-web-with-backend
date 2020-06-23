@@ -59,8 +59,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '公共事务部',
         address: '广州',
         date: '2020-06-18',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -83,8 +83,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '市场中心',
         address: '广州',
         date: '2020-06-12',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -108,7 +108,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -133,8 +133,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '销售中心',
         address: '广州',
         date: '2020-06-12',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -158,7 +158,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -180,7 +180,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '上海、杭州、深圳',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -204,8 +204,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '财务部',
         address: '广州',
         date: '2020-06-12',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -235,7 +235,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -265,7 +265,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -286,8 +286,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '技术部',
         address: '广州',
         date: '2020-06-12',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "负责对应用系统开发实施，参与相关产品线的产品迭代开发，交付上线，并跟进解决上线过程中以及上线之后的各类系统问题。",
@@ -317,7 +317,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "作为DevOps团队负责人，负责管理公司所有应用系统和阿里云平台基础架构的生产运维。",
@@ -348,7 +348,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -373,8 +373,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '产品部',
         address: '广州',
         date: '2020-06-12',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -400,7 +400,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "职责描述：",
@@ -426,8 +426,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '人力资源部',
         address: '广州',
         date: '2020-06-12',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -451,7 +451,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -476,7 +476,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -499,8 +499,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '服务运营中心',
         address: '广州',
         date: '2020-06-12',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -521,7 +521,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -544,7 +544,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -568,7 +568,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         address: '广州',
         date: '2020-06-12',
         impatient: false,
-        new: true,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
@@ -592,8 +592,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         type: '海南子公司',
         address: '广州',
         date: '2020-06-12',
-        impatient: true,
-        new: true,
+        impatient: false,
+        new: false,
         expand: false,
         description: [
           "岗位职责：",
