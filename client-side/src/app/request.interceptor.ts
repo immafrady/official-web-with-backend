@@ -59,10 +59,13 @@ export class RequestInterceptor implements HttpInterceptor {
             if (event.body.code !== ResponseCode.Success) {
               switch (event.body.code) {
                 case ResponseCode.UserNotAuthorize:
+                  // 没登录的话，清除token，并且重定向
+                  if (isPlatformBrowser(this.platformId)) {
+                    localStorage.removeItem(REQUEST_AUTH_TOKEN)
+                  }
                   this.router.navigateByUrl('/admin/login')
                   break
               }
-
               // 异常返回码以错误形式抛出
               throw event
             }

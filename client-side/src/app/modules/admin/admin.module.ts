@@ -6,6 +6,7 @@ import {AdminSharedModule} from "./shared/admin-shared.module";
 import {CommonModule} from "@angular/common";
 import {NzBreadCrumbModule, NzIconModule, NzLayoutModule, NzMenuModule, NzToolTipModule} from "ng-zorro-antd";
 import { WrapperComponent } from './layout/wrapper/wrapper.component';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -19,6 +20,9 @@ import { WrapperComponent } from './layout/wrapper/wrapper.component';
     NzBreadCrumbModule,
     NzIconModule,
     NzToolTipModule
+  ],
+  providers: [
+    AuthGuard
   ],
   exports: [AdminComponent],
   bootstrap: [AdminComponent]

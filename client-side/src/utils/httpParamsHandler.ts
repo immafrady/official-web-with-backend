@@ -6,7 +6,6 @@ export function httpParamsHandler(params:Object) {
     for (let key in params) {
       httpParams = httpParams.set(key, params[key])
     }
-    console.log(httpParams.toString());
     return httpParams.toString()
   }
 }
