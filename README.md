@@ -1,6 +1,26 @@
 # official-web-with-backend
 为带后台的官网搭建个试验性的版本
 
+## 生产执行脚本
+
+```bash
+    # 安装依赖
+    npm run postinstall
+
+    # 服务端
+        cd server-side
+        npm run build
+        # 开启服务
+        npm start
+        # 关闭服务
+        npm stop
+   
+
+    # 客户端
+        npm run build:ssr
+        npm run serve:ssr
+```
+
 ## 备注
 
 - 想在开发编译中查看ie11效果，需要把`tsconfig.app.json`中的`target`字段改成`es5`
