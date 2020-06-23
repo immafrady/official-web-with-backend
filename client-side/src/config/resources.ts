@@ -9,7 +9,7 @@ export const COMPANY_INFO = {
 }
 
 // 工信部地址，怕他又变
-export const GONG_XIN_BU_URL = 'http://www.beian.gov.cn/portal/index.do'
+export const GONG_XIN_BU_URL = 'http://www.beian.miit.gov.cn/'
 
 // 项目内部令牌
 export const REQUEST_AUTH_TOKEN = 'admin-token'
