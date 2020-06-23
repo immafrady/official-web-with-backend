@@ -16,7 +16,7 @@ import {ArticleType} from "../../../../../../../../libs/enums/article";
 export class NewsCenterComponent extends BasePageComponent implements OnInit {
   hotsNewsList: IArticleEntity[];
   oldNewsList: IArticleEntity[];
-  honerNewsList: IArticleEntity[];
+  honerNewsList: IArticleEntity[] = [];
   showMoreHonerList:Boolean = false;
 
   constructor(

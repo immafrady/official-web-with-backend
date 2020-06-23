@@ -16,19 +16,6 @@ import {appendFileNameSearchParam, uploadAliyun} from "../../../../../../utils/u
 export class CreateArticleComponent implements OnInit {
   validateForm: FormGroup;
   loading = false;
-  form: IArticleCreateOptions = {
-    type: undefined,
-    createDate: undefined,
-    id: 0,
-    thumbnail: "",
-    updateDate: undefined,
-    userId: 0,
-    title: '',
-    content: '',
-    modifyDate: null,
-    status: null,
-    priority: null
-  };
   tinyOptions = {
     base_url: '/tinymce',
     language: 'zh_CN',
@@ -82,46 +69,32 @@ export class CreateArticleComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
   submitForm(): void {
-    const formControls = this.validateForm.controls;
-    let validStatus = false;
-    for (const key in formControls) {
-      formControls[key].markAsDirty();
-      formControls[key].updateValueAndValidity();
-      validStatus = !!formControls[key].value;
-      this.form[key] = formControls[key].value
+    for (const key in this.validateForm.controls) {
+      this.validateForm.controls[key].markAsDirty();
+      this.validateForm.controls[key].updateValueAndValidity()
     }
-
-    if (validStatus) {
-      if (this.form.id) {
-        this.CreateArticleService.saveDetailArticle(this.form as IArticleModifyOptions).subscribe(() => {
-          this.router.navigateByUrl('/admin/news-list')
-        })
-      } else {
-        this.CreateArticleService.saveArticle(this.form).subscribe(() => {
-          this.router.navigateByUrl('/admin/news-list')
-        })
-      }
+    const formData = this.validateForm.value;
+    if (formData.id) {
+      this.CreateArticleService.saveDetailArticle(formData as IArticleModifyOptions).subscribe(() => {
+        this.router.navigate(['/admin/news-list'])
+      })
+    } else {
+      this.CreateArticleService.saveArticle(formData).subscribe(() => {
+        this.router.navigate(['/admin/news-list'])
+      })
     }
   }
   customRequest(): void {}
   handleChange(info: { file: UploadFile }): void {
     this.loading = true;
     uploadAliyun(info.file.originFileObj).then(res => {
-      this.form.thumbnail = appendFileNameSearchParam(res.url, res.name);
+      this.validateForm.patchValue({ thumbnail: appendFileNameSearchParam(res.url, res.name) });
       this.loading = false
     }).catch(() => { this.loading = false })
   }
   getArticleDetail(id): void {
     this.CreateArticleService.getArticleContent(id).subscribe(({ data }) => {
-      this.validateForm = this.fb.group({
-        title: [data.article.title],
-        status: [data.article.status],
-        priority:[data.article.priority],
-        modifyDate:[data.article.modifyDate],
-        content:[data.article.content],
-        type:[data.article.type]
-      });
-      this.form.thumbnail = data.article.thumbnail
+      this.validateForm.patchValue(data.article);
     });
   }
   ngOnInit(): void {
@@ -131,12 +104,15 @@ export class CreateArticleComponent implements OnInit {
       priority:[null, [Validators.required]],
       modifyDate:[null, [Validators.required]],
       content:[null, [Validators.required]],
-      type:[null, [Validators.required]]
+      type:[null, [Validators.required]],
+      thumbnail:[null, [Validators.required]],
+      id: [null]
     });
     this.route.params.subscribe(data => {
-      if (+data.id) {
-        this.form.id = +data.id;
-        this.getArticleDetail(data.id)
+      const id = +data.id;
+      if (id) {
+        this.validateForm.patchValue({ id });
+        this.getArticleDetail(id)
       }
     })
   }

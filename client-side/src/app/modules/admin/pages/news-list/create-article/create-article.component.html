@@ -1,5 +1,5 @@
 <div class="create-article-content">
-  <h2 class="create-article-title">{{ form.id ? '编辑文章' : '新增文章'}}</h2>
+  <h2 class="create-article-title">{{ validateForm.value.id ? '编辑文章' : '新增文章'}}</h2>
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <nz-form-item>
       <nz-form-label nzRequired nzFor="title">标题</nz-form-label>
@@ -56,11 +56,11 @@
           [nzShowUploadList]="false"
           (nzChange)="handleChange($event)"
         >
-          <ng-container *ngIf="!form.thumbnail">
+          <ng-container *ngIf="!validateForm.value.thumbnail">
             <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
             <div class="ant-upload-text">上传缩略图</div>
           </ng-container>
-          <img *ngIf="form.thumbnail" [src]="form.thumbnail" style="width: 100%" />
+          <img *ngIf="validateForm.value.thumbnail" [src]="validateForm.value.thumbnail" style="width: 100%" />
         </nz-upload>
       </nz-form-control>
     </nz-form-item>
@@ -70,6 +70,6 @@
         <editor formControlName="content" [init]="tinyOptions" ngModel></editor>
       </nz-form-control>
     </nz-form-item>
-    <button nz-button nzType="primary" style="margin-left: 150px">保存</button>
+    <button nz-button nzType="primary" style="margin-left: 150px" [disabled]="!validateForm.valid">保存</button>
   </form>
 </div>

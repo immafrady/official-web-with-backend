@@ -15,6 +15,7 @@ $logo-height: 28px;
     height: $logo-height;
     position: absolute;
     left: 0;
+    cursor: pointer;
     @include absolute-y-middle;
   }
 
