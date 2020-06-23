@@ -13,7 +13,7 @@ export class FooterComponent implements OnInit {
   companyInfo = COMPANY_INFO;
   gongXinBuUrl = GONG_XIN_BU_URL;
   misc = [
-    'Copyright © 2020 - 2025 薪宝信息科技（广州）有限公司有限公司 版权所有'
+    '薪宝信息科技（广州）有限公司有限公司 版权所有'
   ]
 
   constructor() { }

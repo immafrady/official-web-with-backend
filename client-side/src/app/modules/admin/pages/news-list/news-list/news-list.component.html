@@ -2,7 +2,7 @@
   <div class="nav-container">
     <h2 class="news-list-title">文章管理</h2>
     <button nz-button nzType="primary" routerLink="create-article/0">新增文章</button>
-  </div>
+  </div>s
   <nz-table #nzTable [nzData]="articleList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
     <thead>
     <tr>
@@ -14,10 +14,10 @@
     </tr>
     </thead>
     <tbody>
-    <ng-container *ngFor="let data of nzTable.data, index as index">
+    <ng-container *ngFor="let data of nzTable.data, index as index" >
       <tr>
         <td>{{ index + 1 }}</td>
-        <td>{{ data.title }}</td>
+        <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
         <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
         <td>{{ data.status === ArticleStatus.Online ? '已上线' : '已下线'}}</td>
         <td>
