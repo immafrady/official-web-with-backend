@@ -106,7 +106,7 @@ export class CreateArticleComponent implements OnInit {
       content:[null, [Validators.required]],
       type:[null, [Validators.required]],
       thumbnail:[null, [Validators.required]],
-      id: [null, [Validators.required]]
+      id: [null]
     });
     this.route.params.subscribe(data => {
       const id = +data.id;
