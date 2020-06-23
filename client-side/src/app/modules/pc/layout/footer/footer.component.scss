@@ -1,6 +1,6 @@
 @import "src/styles/common.pc";
 
-$bottom-height: 80px;
+$bottom-height: 54px;
 $border-height: 1px;
 
 .footer-container {
@@ -21,6 +21,7 @@ $border-height: 1px;
         @include absolute-y-middle;
         width: 100%;
         z-index: 1000;
+        padding: 0 96px 0 35px;
         .top {
           position: relative;
           .left {
@@ -30,8 +31,8 @@ $border-height: 1px;
             }
             .text {
               margin-top: 20px;
-              color: #ccc;
-              font-size: 14px;
+              color: #CBCBCB;
+              font-size: 12px;
               .text-content {
                 display: inline-block;
                 margin-right: 20px;
@@ -42,11 +43,14 @@ $border-height: 1px;
             position: absolute;
             right: 0;
             @include absolute-y-middle;
+            margin-top: 26px;
 
             .item {
               display: inline-block;
-              margin-left: 45px;
+              margin-left: 25px;
               position: relative;
+              vertical-align: middle;
+              font-size: 12px;
 
               .sns-icon {
                 width: 45px;
@@ -78,11 +82,10 @@ $border-height: 1px;
           }
         }
         .bottom {
-          margin-top: 30px;
+          margin-top: 20px;
           font-size: 10px;
-          color: #ccc;
+          color: #CBCBCB;
           line-height: 24px;
-          text-align: center;
         }
       }
     }
@@ -91,7 +94,14 @@ $border-height: 1px;
     border-top: $border-height solid #aaa;
     .content {
       text-align: center;
+      font-size: 12px;
       line-height: $bottom-height;
+      a {
+        color: #CBCBCB;
+        &:hover {
+          color: #D50032;
+        }
+      }
     }
   }
 }
