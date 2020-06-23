@@ -16,6 +16,7 @@ import {ArticleType} from "../../../../../../../../libs/enums/article";
 export class NewsCenterComponent extends BasePageComponent implements OnInit {
   hotsNewsList: IArticleEntity[];
   oldNewsList: IArticleEntity[];
+  honerNewsList: IArticleEntity[];
 
   constructor(
     metaService: Meta,
@@ -34,7 +35,8 @@ export class NewsCenterComponent extends BasePageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getNewsList(ArticleType.Hot, 'hotsNewsList');
-    this.getNewsList(ArticleType.Old, 'oldNewsList')
+    this.getNewsList(ArticleType.Old, 'oldNewsList');
+    this.getNewsList(ArticleType.Honor, 'honerNewsList')
   }
 
 }

@@ -25,58 +25,10 @@
 <pc-core-container className="honer-container">
   <div class="block-title">荣誉奖项</div>
   <ul class="honer-article">
-    <li>
-      <a href="">
-        <p>薪宝科技荣获“2019-2020大中华区最佳人力资源服务品牌”</p>
-        <span>2020.05</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <p>2019年金人奖榜单发布，薪宝科技荣获两项大奖</p>
-        <span>2020.04</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <p>2019中国先锋人力资源评选，薪宝科技获“年度最佳薪税服务平台”</p>
-        <span>2019.12</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <p>2019中国财经峰会冬季论坛在京召开 薪宝科技获最具投资价值奖</p>
-        <span>2019.11</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <p>薪宝科技CEO刘树兵入围2019中国人力资源科技影响力TOP人物榜单</p>
-        <span>2019.11</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <p>薪宝科技荣获2019数字人力资源科技奖</p>
-        <span>2019.10</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <p>薪宝科技荣获2019“中国最具影响力人力资源品牌奖”</p>
-        <span>2019.09</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <p>薪宝科技荣获2019中国人力资源科技创新产品奖</p>
-        <span>2019.09</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <p>薪宝科技CEO刘树兵 荣获广东省人力资源研究会“新锐企业家”称号</p>
-        <span>2019.06</span>
+    <li *ngFor="let data of honerNewsList">
+      <a routerLink="/news-center/news-detail/{{ data.id }}">
+        <p>{{ data.title }}</p>
+        <span>{{ data.modifyDate | date:'yyyy-MM' }}</span>
       </a>
     </li>
   </ul>
