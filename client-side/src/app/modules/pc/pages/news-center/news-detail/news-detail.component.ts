@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NewsCenterService} from "../news-center/news-center.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {IArticleListOptions} from "../../../../../../../../libs/request/article";
 import {ArticlePick} from "../../../../../../../../libs/entity/article";
 
@@ -29,8 +29,9 @@ export class NewsDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = +this.route.snapshot.paramMap.get('id');
-    this.getNewsDetail(this.id)
+    this.route.params.subscribe(data => {
+      this.getNewsDetail(data.id)
+    });
   }
 
 }
