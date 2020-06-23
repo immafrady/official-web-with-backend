@@ -39,6 +39,6 @@
         </a>
       </li>
     </ng-template>
-    <li class="more-link" (click)="showMoreHonerList = !showMoreHonerList">{{ showMoreHonerList ? '隐藏' : '展开' }}更多 》</li>
+    <li *ngIf="honerNewsList.length > 6" class="more-link" (click)="showMoreHonerList = !showMoreHonerList">{{ showMoreHonerList ? '隐藏' : '展开' }}更多 》</li>
   </ul>
 </pc-core-container>
