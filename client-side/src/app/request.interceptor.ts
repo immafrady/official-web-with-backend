@@ -10,7 +10,8 @@ import { isPlatformBrowser } from "@angular/common";
 import { REQUEST_AUTH_TOKEN } from "../config/resources";
 import { ResponseCode } from '../../../server-side/src/libs/response-code';
 import { NzMessageService } from 'ng-zorro-antd';
-import { tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
@@ -18,7 +19,8 @@ export class RequestInterceptor implements HttpInterceptor {
   constructor(
     @Inject(PLATFORM_ID)
     private platformId: Object,
-    private nzMessageService: NzMessageService
+    private nzMessageService: NzMessageService,
+    private router: Router
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -43,12 +45,30 @@ export class RequestInterceptor implements HttpInterceptor {
       url,
       setHeaders
     })).pipe(
-      tap(event => {
+      map(event => {
         if (event instanceof HttpResponse) {
-          if (event.body.code && event.body.code !== ResponseCode.Success && event.body.msg) {
-            this.nzMessageService.create('error', event.body.msg)
+          if (event.body.code) {
+            // 这些才是我们包装过的返回值
+
+            // 抛出消息
+            if (event.body.msg) {
+              this.nzMessageService.create(event.body.code === ResponseCode.Success ? 'success' : 'error', event.body.msg)
+            }
+
+            // 逻辑处理
+            if (event.body.code !== ResponseCode.Success) {
+              switch (event.body.code) {
+                case ResponseCode.UserNotAuthorize:
+                  this.router.navigateByUrl('/admin/login')
+                  break
+              }
+
+              // 异常返回码以错误形式抛出
+              throw event
+            }
           }
         }
+        return event
       })
     )
   }
