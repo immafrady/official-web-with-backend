@@ -20,6 +20,7 @@ $border-height: 1px;
         position: absolute;
         @include absolute-y-middle;
         width: 100%;
+        z-index: 1000;
         .top {
           position: relative;
           .left {

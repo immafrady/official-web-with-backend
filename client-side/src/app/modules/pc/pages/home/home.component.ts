@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Meta, Title} from "@angular/platform-browser";
+import {Meta, Title, TransferState} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "src/app/shared/base-page.component";
 import { getImage } from "src/utils/getImage";
 import {NewsCenterService} from "../news-center/news-center/news-center.service";
 import {IArticleEntity} from "../../../../../../../libs/entity/article";
+import {ArticleType} from "../../../../../../../libs/enums/article";
 
 @Component({
   selector: 'pc-home',
@@ -13,43 +14,8 @@ import {IArticleEntity} from "../../../../../../../libs/entity/article";
 })
 export class HomeComponent extends BasePageComponent implements OnInit {
 
-  newsList:IArticleEntity[];
+  NewsList:IArticleEntity[];
   getImage = getImage;
-
-  firstList: string[] = [
-    getImage('logo-tencent'),
-    getImage('logo-tictok'),
-    getImage('logo-yy'),
-    getImage('logo-xigua'),
-    getImage('logo-huya'),
-    getImage('logo-zhaoshang'),
-    getImage('logo-mybank'),
-    getImage('logo-pingan'),
-    getImage('logo-fortex'),
-    getImage('logo-bge'),
-    getImage('logo-wanlian'),
-    getImage('logo-netease'),
-    getImage('logo-qq-music'),
-    getImage('logo-zhongyou'),
-    getImage('logo-thunder')
-  ];
-  secondList: string[] = [
-    getImage('logo-lingji'),
-    getImage('logo-xiaopeng'),
-    getImage('logo-plateno'),
-    getImage('logo-huoshan'),
-    getImage('logo-poly'),
-    getImage('logo-art'),
-    getImage('logo-yujia'),
-    getImage('logo-7-days-im'),
-    getImage('logo-k'),
-    getImage('logo-shunfeng'),
-    getImage('logo-gst'),
-    getImage('logo-huize'),
-    getImage('logo-boqii'),
-    getImage('logo-baluru'),
-    getImage('logo-bgy')
-  ];
 
   constructor(
     metaService: Meta,
@@ -62,8 +28,8 @@ export class HomeComponent extends BasePageComponent implements OnInit {
   }
 
   getNewsList(): void {
-    this.NewsCenterService.getNewsList({ page: 1, size: 4 }).subscribe(res => {
-      this.newsList = res.data.list;
+    this.NewsCenterService.getNewsList({ page: 1, size: 4, type: ArticleType.New }, 'NewsList').subscribe(res => {
+      this.NewsList = res.data.list;
     })
   }
 

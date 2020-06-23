@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {IHttpResponse} from "../../../../../../../libs/common";
-import {IArticleListResponse, IArticleSetStatusResponse} from "../../../../../../../libs/response/article";
+import {
+  IArticleDeleteResponse,
+  IArticleListResponse,
+  IArticleSetStatusResponse
+} from "../../../../../../../libs/response/article";
 import { HttpClient } from "@angular/common/http";
-import {IArticleSetStatusOption} from "../../../../../../../libs/request/article";
+import {IArticleDeleteOptions, IArticleSetStatusOption} from "../../../../../../../libs/request/article";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +25,11 @@ export class NewsLIstService {
   // 上线或者下线
   handlerArticle(id: IArticleSetStatusOption): Observable<IHttpResponse<IArticleSetStatusResponse>> {
     return this.http.put(`/article/detail/${ id }/status`, null) as Observable<IHttpResponse<IArticleSetStatusResponse>>
+  }
+
+  // 删除新闻
+  deleteArticle(id:IArticleDeleteOptions): Observable<IHttpResponse<IArticleDeleteResponse>> {
+    return this.http.delete(`/article/${ id }`) as Observable<IHttpResponse<IArticleDeleteResponse>>
   }
 
 }

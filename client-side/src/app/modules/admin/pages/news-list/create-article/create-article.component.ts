@@ -69,8 +69,11 @@ export class CreateArticleComponent implements OnInit {
     value: ArticleType.New,
     label: '最新动态'
   }, {
-    value: ArticleType.OLD,
+    value: ArticleType.Old,
     label: '往期动态'
+  }, {
+    value: ArticleType.Honor,
+    label: '荣誉奖项'
   }];
   constructor(
     private fb: FormBuilder,
@@ -131,8 +134,10 @@ export class CreateArticleComponent implements OnInit {
       type:[null, [Validators.required]]
     });
     this.route.params.subscribe(data => {
-      this.form.id = data.id;
-      this.getArticleDetail(data.id)
+      if (+data.id) {
+        this.form.id = +data.id;
+        this.getArticleDetail(data.id)
+      }
     })
   }
 }

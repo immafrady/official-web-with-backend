@@ -24,3 +24,14 @@ form {
 .tox-tinymce {
   min-height: 450px;
 }
+.tox .tox-dialog__body {
+  display: block !important;
+  .tox-dialog__body-nav {
+    flex-direction: row;
+    padding-bottom: 0;
+    .tox-tab {
+      margin-right: 20px;
+      font-size: 16px;
+    }
+  }
+}
