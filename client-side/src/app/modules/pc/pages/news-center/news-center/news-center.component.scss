@@ -52,6 +52,11 @@ $colorRed: #D50032;
         color: $colorRed;
       }
     }
+    .more-link {
+      text-align: right;
+      color: $colorRed;
+      cursor: pointer;
+    }
   }
 }
 

@@ -29,7 +29,7 @@ export class NewsLIstService {
 
   // 删除新闻
   deleteArticle(id:IArticleDeleteOptions): Observable<IHttpResponse<IArticleDeleteResponse>> {
-    return this.http.delete(`/article/${ id }`) as Observable<IHttpResponse<IArticleDeleteResponse>>
+    return this.http.delete(`/article/detail/${ id }`) as Observable<IHttpResponse<IArticleDeleteResponse>>
   }
 
 }
