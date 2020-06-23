@@ -19,8 +19,8 @@ export const enum WebRouterName {
   NewsCenter,
   ProductIntro,
   XinAcademy,
-  XinInnovationValley,
   XinTown,
+  XinInnovationValley,
   JoinUs
 }
 
@@ -58,7 +58,7 @@ export function getWebRouterInfo(key: WebRouterName): IRouterInfo {
       name: 'join-us',
       title: '加入我们'
     }
-  }
+  };
   return routerInfos[key]
 }
 
@@ -71,4 +71,4 @@ export const webRouteOrders: WebRouterName[] = [
   WebRouterName.XinTown,
   WebRouterName.XinInnovationValley,
   WebRouterName.JoinUs,
-]
+];
