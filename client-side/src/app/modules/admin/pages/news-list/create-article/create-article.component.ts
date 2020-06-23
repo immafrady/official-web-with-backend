@@ -122,7 +122,6 @@ export class CreateArticleComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.form.id = +this.route.snapshot.paramMap.get('id');
     this.validateForm = this.fb.group({
       title: [null, [Validators.required]],
       status: [null, [Validators.required]],
@@ -131,8 +130,9 @@ export class CreateArticleComponent implements OnInit {
       content:[null, [Validators.required]],
       type:[null, [Validators.required]]
     });
-    if (this.form.id) {
-      this.getArticleDetail(this.form.id)
-    }
+    this.route.params.subscribe(data => {
+      this.form.id = data.id;
+      this.getArticleDetail(data.id)
+    })
   }
 }
