@@ -6,7 +6,7 @@
   <div class="news-container hot-news">
     <div class="block-title">热门报道</div>
     <div class="inner-container">
-      <pc-news-preview *ngFor="let news of newsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
+      <pc-news-preview *ngFor="let news of hotsNewsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
     </div>
     <div class="more-link"><a routerLink="./more-news">查看更多 》</a></div>
   </div>
@@ -16,7 +16,7 @@
   <div class="news-container">
     <div class="block-title">往期动态</div>
     <div class="inner-container">
-      <pc-news-preview *ngFor="let news of oldList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
+      <pc-news-preview *ngFor="let news of oldNewsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
     </div>
     <div class="more-link"><a>查看更多 》</a></div>
   </div>

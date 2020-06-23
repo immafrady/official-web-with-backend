@@ -13,7 +13,7 @@ import {IArticleEntity} from "../../../../../../../../libs/entity/article";
   encapsulation: ViewEncapsulation.None
 })
 export class NewsCenterMoreComponent extends BasePageComponent implements OnInit {
-  newsList: IArticleEntity[];
+  moreNewsList: IArticleEntity[];
   total: number;
   constructor(
     metaService: Meta,
@@ -26,8 +26,8 @@ export class NewsCenterMoreComponent extends BasePageComponent implements OnInit
   }
 
   getNewsList(page): void {
-    this.NewsCenterService.getNewsList({ page, size: 12 }).subscribe(({ data }) => {
-      this.newsList = data.list;
+    this.NewsCenterService.getNewsList({ page, size: 12 }, 'moreNewsList').subscribe(({ data }) => {
+      this.moreNewsList = data.list;
       this.total = data.total
     })
   }

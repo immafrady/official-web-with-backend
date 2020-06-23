@@ -14,8 +14,8 @@ import {ArticleType} from "../../../../../../../../libs/enums/article";
   encapsulation: ViewEncapsulation.None
 })
 export class NewsCenterComponent extends BasePageComponent implements OnInit {
-  newsList: IArticleEntity[];
-  oldList: IArticleEntity[];
+  hotsNewsList: IArticleEntity[];
+  oldNewsList: IArticleEntity[];
 
   constructor(
     metaService: Meta,
@@ -28,13 +28,13 @@ export class NewsCenterComponent extends BasePageComponent implements OnInit {
     super(metaService, titleService, activatedRoute, router)
   }
   getNewsList(type, list): void {
-    this.NewsCenterService.getNewsList({ page: 1, size: 4, type }).subscribe(res => {
+    this.NewsCenterService.getNewsList({ page: 1, size: 4, type }, list).subscribe(res => {
       this[list] = res.data.list;
     })
   }
   ngOnInit(): void {
-    this.getNewsList(ArticleType.Hot, 'newsList');
-    this.getNewsList(ArticleType.OLD, 'oldList')
+    this.getNewsList(ArticleType.Hot, 'hotsNewsList');
+    this.getNewsList(ArticleType.Old, 'oldNewsList')
   }
 
 }
