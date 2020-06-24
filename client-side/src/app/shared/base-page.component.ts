@@ -15,7 +15,9 @@ export class BasePageComponent {
       filter(event => event instanceof NavigationEnd )
     ).subscribe(() => {
       activatedRoute.data.subscribe((data: IRouterData) => {
-        titleService.setTitle(`${APPLICATION_NAME}${data.title ? ' - ' + data.title : '' }`)
+        if (data) {
+          titleService.setTitle(`${APPLICATION_NAME}${data.title ? ' - ' + data.title : '' }`)
+        }
       })
     })
   }

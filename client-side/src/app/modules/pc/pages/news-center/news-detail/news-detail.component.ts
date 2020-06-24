@@ -3,6 +3,8 @@ import {NewsCenterService} from "../news-center/news-center.service";
 import {ActivatedRoute} from "@angular/router";
 import {IArticleListOptions} from "../../../../../../../../libs/request/article";
 import {ArticlePick} from "../../../../../../../../libs/entity/article";
+import { Title } from '@angular/platform-browser';
+import { APPLICATION_NAME } from '../../../../../../config/resources';
 
 @Component({
   selector: 'app-news-detail',
@@ -17,7 +19,8 @@ export class NewsDetailComponent implements OnInit {
   nextRelated: ArticlePick;
   constructor(
     private route: ActivatedRoute,
-    private NewsCenterService: NewsCenterService
+    private NewsCenterService: NewsCenterService,
+    private titleService: Title
   ) { }
 
   getNewsDetail(id) {
@@ -25,6 +28,7 @@ export class NewsDetailComponent implements OnInit {
       this.newsDetail = data.article;
       this.preRelated = data.related[0];
       this.nextRelated = data.related[1]
+      this.titleService.setTitle(`${APPLICATION_NAME}${this.newsDetail.title ? ' - 新闻 - ' + this.newsDetail.title : ''}`)
     })
   }
 
