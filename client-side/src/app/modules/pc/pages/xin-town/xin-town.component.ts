@@ -26,9 +26,16 @@ export class XinTownComponent extends BasePageComponent implements OnInit, After
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
+  swipePrev() {
+    this.xinTownwiper.swipePrev();
+  }
+  swipeNext() {
+    this.xinTownwiper.swipeNext();
+  }
   ngAfterViewInit() {
     this.xinTownwiper = new Swiper('#gallery', {
       spaceBetween: 10,
+      calculateHeight: true,
       thumbs: {
         swiper: {
           // @ts-ignore

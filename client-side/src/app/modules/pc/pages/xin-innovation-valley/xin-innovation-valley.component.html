@@ -32,8 +32,10 @@
         </div>
       </div>
     </div>
-    <div class="arrow swiper-button-prev"></div>
-    <div class="arrow swiper-button-next"></div>
+    <div class="swiper-button">
+      <div class="arrow swiper-button-prev" (click)="swipePrev()"><i nz-icon nzType="left" nzTheme="outline"></i></div>
+      <div class="arrow swiper-button-next" (click)="swipeNext()"><i nz-icon nzType="right" nzTheme="outline"></i></div>
+    </div>
   </div>
 </pc-core-container>
 

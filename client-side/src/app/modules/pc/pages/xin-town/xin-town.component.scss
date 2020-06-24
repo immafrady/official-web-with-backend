@@ -62,11 +62,11 @@
 }
 
 .xin-town-feature {
-  width: 1144px;
-  margin: 20px auto 70px;
+  width: 1152px;
+  margin: 20px 24px 70px;
   @include clear-fix;
   .feature-box {
-    width: 266px;
+    width: 268px;
     height: 176px;
     text-align: center;
     box-shadow:0 4px 16px 0 rgba(204,204,204,0.5);
@@ -80,9 +80,6 @@
     p {
       line-height: 18px;
       font-size: 10px;
-    }
-    &:first-child {
-      margin-left: 0;
     }
   }
 }
@@ -99,7 +96,7 @@
   }
   #thumbs {
     width: 242px;
-    margin-left: 20px;
+    margin-left: 22px;
     .swiper-wrapper {
       display: block;
       .swiper-slide {
@@ -124,17 +121,16 @@
 }
 
 .xin-town-maker {
-  width: 1050px;
-  margin: 50px auto 70px;
+  margin: 50px 24px 70px;
   @include clear-fix;
   .maker-box {
-    width: 330px;
+    width: 360px;
     height: 158px;
     padding: 55px 50px 0;
     text-align: center;
     box-shadow:0 4px 16px 0 rgba(204,204,204,0.5);
     float: left;
-    margin: 0 10px;
+    margin: 0 12px;
     h2 {
       font-size: 16px;
       color: #333333;

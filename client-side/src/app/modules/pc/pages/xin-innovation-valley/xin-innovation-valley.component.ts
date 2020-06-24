@@ -76,20 +76,26 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
     super(metaService, titleService, activatedRoute, router)
   }
 
+  swipePrev() {
+    this.xinInnovationVallySwiper.swipePrev();
+  }
+  swipeNext() {
+    this.xinInnovationVallySwiper.swipeNext();
+  }
   ngAfterViewInit() {
     this.xinInnovationVallySwiper = new Swiper('.swiper-container', {
-      direction: 'horizontal',
+      mode: 'horizontal',
       loop: true,
-      autoplay: true,
+      autoplay: 2000,
       slidesPerView: 5,
-      navigation: {// 如果需要前进后退按钮
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      }
+      calculateHeight: true,
+      updateOnImagesReady: true,
+      paginationClickable: true
     });
   }
 
   ngOnInit(): void {
+
   }
 
 }
