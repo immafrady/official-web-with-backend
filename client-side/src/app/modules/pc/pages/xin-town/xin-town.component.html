@@ -79,8 +79,8 @@
     </div>
     <div id="thumbs" class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" (click)="swipePrev()"><span class="invert-matte"></span><img [src]="getImage('xin-town-small-bg-1')"/></div>
-        <div class="swiper-slide" (click)="swipeNext()"><span class="invert-matte"></span><img [src]="getImage('xin-town-small-bg-2')"/></div>
+        <div class="swiper-slide slide-prev" (click)="swipePrev('prev')"><span [class]="sliderName === 'prev' ? 'active' : ''" class="invert-matte"></span><img [src]="getImage('xin-town-small-bg-1')"/></div>
+        <div class="swiper-slide slide-next" (click)="swipeNext('next')"><span [class]="sliderName === 'next' ? 'active' : ''"  class="invert-matte"></span><img [src]="getImage('xin-town-small-bg-2')"/></div>
       </div>
     </div>
   </div>

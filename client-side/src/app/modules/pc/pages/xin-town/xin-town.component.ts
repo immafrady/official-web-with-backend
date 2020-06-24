@@ -14,6 +14,7 @@ import Swiper from "swiper";
 export class XinTownComponent extends BasePageComponent implements OnInit, AfterViewInit {
   getImage = getImage;
   xinTownwiper: Swiper;
+  sliderName: string = 'prev';
   slides = [
     getImage('xin-town-big-bg-1'),
     getImage('xin-town-small-bg-2'),
@@ -26,15 +27,18 @@ export class XinTownComponent extends BasePageComponent implements OnInit, After
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
-  swipePrev() {
+  swipePrev(name) {
     this.xinTownwiper.swipePrev();
+    this.sliderName = name
   }
-  swipeNext() {
+  swipeNext(name) {
     this.xinTownwiper.swipeNext();
+    this.sliderName = name
   }
   ngAfterViewInit() {
     this.xinTownwiper = new Swiper('#gallery', {
       spaceBetween: 10,
+      autoplay: 1000,
       calculateHeight: true,
       thumbs: {
         swiper: {
