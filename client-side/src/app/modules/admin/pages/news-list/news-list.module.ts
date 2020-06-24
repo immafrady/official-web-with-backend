@@ -18,6 +18,7 @@ import {CreateArticleComponent} from "./create-article/create-article.component"
 import {ReactiveFormsModule} from "@angular/forms";
 import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
 import {CreateArticleService} from "./create-article/create-article.service";
+import { AdminSharedModule } from '../../shared/admin-shared.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {CreateArticleService} from "./create-article/create-article.service";
     EditorModule,
     NzUploadModule,
     NzIconModule,
-    NzToolTipModule
+    NzToolTipModule,
+    AdminSharedModule
   ],
   providers: [
     NewsLIstService,

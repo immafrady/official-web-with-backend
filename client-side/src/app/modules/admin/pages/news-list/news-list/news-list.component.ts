@@ -7,7 +7,7 @@ import {ArticleStatus} from "../../../../../../../../libs/enums/article";
 @Component({
   selector: 'admin-news-list',
   templateUrl: './news-list.component.html',
-  styleUrls: ['./news-list.component.scss']
+  styleUrls: ['./news-list.component.scss'],
 })
 export class NewsListComponent implements OnInit {
   articleList:IArticleEntity[];

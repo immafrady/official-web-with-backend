@@ -1,11 +1,16 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ArticlePriority, ArticleStatus, ArticleType} from "../../../../../../../../libs/enums/article";
-import {CreateArticleService} from "./create-article.service";
-import {IArticleCreateOptions, IArticleModifyOptions} from "../../../../../../../../libs/request/article";
-import {ActivatedRoute, Router} from "@angular/router";
-import {UploadFile} from 'ng-zorro-antd/upload';
-import {appendFileNameSearchParam, uploadAliyun} from "../../../../../../utils/uploadAliOss";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ArticlePriority, ArticlePriorityLabel,
+  ArticleStatus,
+  ArticleStatusLabel,
+  ArticleType, ArticleTypeLabel
+} from '../../../../../../../../libs/enums/article';
+import { CreateArticleService } from './create-article.service';
+import { IArticleModifyOptions } from '../../../../../../../../libs/request/article';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UploadFile } from 'ng-zorro-antd/upload';
+import { appendFileNameSearchParam, uploadAliyun } from '../../../../../../utils/uploadAliOss';
 
 @Component({
   selector: 'admin-create-article',
@@ -34,33 +39,33 @@ export class CreateArticleComponent implements OnInit {
   };
   statusOptions = [{
     value: ArticleStatus.Online,
-    label: '已上线'
+    label: ArticleStatusLabel[ArticleStatus.Online]
   }, {
     value: ArticleStatus.Offline,
-    label: '已下线'
+    label: ArticleStatusLabel[ArticleStatus.Offline]
   }];
   priorityOptions = [{
     value: ArticlePriority.Normal,
-    label: '普通'
+    label: ArticlePriorityLabel[ArticlePriority.Normal]
   }, {
     value: ArticlePriority.Important,
-    label: '重要'
+    label: ArticlePriorityLabel[ArticlePriority.Important]
   }, {
     value: ArticlePriority.VeryImportant,
-    label: '非常重要'
+    label: ArticlePriorityLabel[ArticlePriority.VeryImportant]
   }];
   typeOptions = [{
     value: ArticleType.Hot,
-    label: '热门报道'
+    label: ArticleTypeLabel[ArticleType.Hot]
   }, {
     value: ArticleType.New,
-    label: '最新动态'
+    label: ArticleTypeLabel[ArticleType.New]
   }, {
     value: ArticleType.Old,
-    label: '往期动态'
+    label: ArticleTypeLabel[ArticleType.Old]
   }, {
     value: ArticleType.Honor,
-    label: '荣誉奖项'
+    label: ArticleTypeLabel[ArticleType.Honor]
   }];
   constructor(
     private fb: FormBuilder,

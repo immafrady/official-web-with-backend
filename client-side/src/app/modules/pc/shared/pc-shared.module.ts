@@ -16,7 +16,8 @@ import {NzCardModule} from "ng-zorro-antd";
   ],
   exports: [
     CoreContainerComponent,
-    NewsPreviewComponent
+    NewsPreviewComponent,
+    GlobalSharedModule
   ]
 })
 export class PcSharedModule { }

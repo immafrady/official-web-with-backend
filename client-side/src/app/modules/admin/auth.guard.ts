@@ -38,5 +38,4 @@ export class AuthGuard implements CanActivateChild {
       return false
     }
   }
-
 }

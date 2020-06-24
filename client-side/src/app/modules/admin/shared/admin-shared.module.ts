@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {GlobalSharedModule} from "../../../shared/global-shared.module";
 
 
@@ -9,6 +8,8 @@ import {GlobalSharedModule} from "../../../shared/global-shared.module";
   imports: [
     GlobalSharedModule
   ],
-  exports: []
+  exports: [
+    GlobalSharedModule
+  ]
 })
 export class AdminSharedModule { }

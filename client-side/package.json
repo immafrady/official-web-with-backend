@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run client-side:serve-ssr",
+    "dev:ssr": "ng run client-side:serve-ssr --host 0.0.0.0",
     "serve:ssr": "node dist/client-side/server/main.js",
     "build:ssr": "ng build --prod && ng run client-side:server:production",
     "build-and-serve": "npm run build:ssr && npm run serve:ssr",

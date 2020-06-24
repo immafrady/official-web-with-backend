@@ -9,6 +9,7 @@
       <th nzWidth="80px">序号</th>
       <th>标题</th>
       <th>发布时间</th>
+      <th>类型</th>
       <th>状态</th>
       <th nzWidth="350px">操作</th>
     </tr>
@@ -19,7 +20,8 @@
         <td>{{ index + 1 }}</td>
         <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
         <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-        <td>{{ data.status === ArticleStatus.Online ? '已上线' : '已下线'}}</td>
+        <td>{{ data.type | articleType }}</td>
+        <td>{{ data.status | articleStatus }}</td>
         <td>
           <button nz-button nzType="primary" nzShape="round" routerLink="create-article/{{ data.id }}">编辑</button>
           <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteArticle(data.id)">删除</button>
