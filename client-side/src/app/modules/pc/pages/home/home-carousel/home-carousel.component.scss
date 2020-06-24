@@ -87,11 +87,14 @@ $carousel-height: 869px;
     transform: translateY(-50%);
     cursor: pointer;
     &.prev {
-      left: 10px;
+      left: 50px;
     }
     &.next {
-      right: 10px;
+      right: 50px;
     }
+  }
+  .ant-carousel .slick-dots-bottom, .ant-popover-placement-leftBottom>.ant-popover-content>.ant-popover-arrow, .ant-popover-placement-rightBottom>.ant-popover-content>.ant-popover-arrow {
+    bottom: 30px;
   }
 }
 
