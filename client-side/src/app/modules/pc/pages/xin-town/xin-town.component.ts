@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewEncapsulation, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "../../../../shared/base-page.component";
 import {getImage} from "../../../../../utils/getImage";
 import Swiper from "swiper";
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'pc-xin-town',
@@ -23,7 +24,9 @@ export class XinTownComponent extends BasePageComponent implements OnInit, After
     metaService: Meta,
     titleService: Title,
     activatedRoute: ActivatedRoute,
-    router: Router
+    router: Router,
+    @Inject(PLATFORM_ID)
+    private platformId: any
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
@@ -36,20 +39,22 @@ export class XinTownComponent extends BasePageComponent implements OnInit, After
     this.sliderName = name
   }
   ngAfterViewInit() {
-    this.xinTownwiper = new Swiper('#gallery', {
-      spaceBetween: 10,
-      autoplay: 1000,
-      calculateHeight: true,
-      thumbs: {
-        swiper: {
-          // @ts-ignore
-          el: '#thumbs',
-          slidesPerView: 2,
-          watchSlidesVisibility: true
-        },
-        thumbsContainerClass: 'swiper-container-thumbs'
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.xinTownwiper = new Swiper('#gallery', {
+        spaceBetween: 10,
+        autoplay: 1000,
+        calculateHeight: true,
+        thumbs: {
+          swiper: {
+            // @ts-ignore
+            el: '#thumbs',
+            slidesPerView: 2,
+            watchSlidesVisibility: true
+          },
+          thumbsContainerClass: 'swiper-container-thumbs'
+        }
+      });
+    }
   }
 
   ngOnInit(): void {

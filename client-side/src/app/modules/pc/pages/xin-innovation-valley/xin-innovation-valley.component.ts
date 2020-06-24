@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewEncapsulation, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "../../../../shared/base-page.component";
 import {getImage} from "../../../../../utils/getImage";
 import Swiper from "swiper";
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'pc-xin-innovation-valley',
@@ -71,7 +72,9 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
     metaService: Meta,
     titleService: Title,
     activatedRoute: ActivatedRoute,
-    router: Router
+    router: Router,
+    @Inject(PLATFORM_ID)
+    private platformId: any
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
@@ -83,15 +86,17 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
     this.xinInnovationVallySwiper.swipeNext();
   }
   ngAfterViewInit() {
-    this.xinInnovationVallySwiper = new Swiper('.swiper-container', {
-      mode: 'horizontal',
-      loop: true,
-      autoplay: 2000,
-      slidesPerView: 5,
-      calculateHeight: true,
-      updateOnImagesReady: true,
-      paginationClickable: true
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.xinInnovationVallySwiper = new Swiper('.swiper-container', {
+        mode: 'horizontal',
+        loop: true,
+        autoplay: 2000,
+        slidesPerView: 5,
+        calculateHeight: true,
+        updateOnImagesReady: true,
+        paginationClickable: true
+      });
+    }
   }
 
   ngOnInit(): void {
