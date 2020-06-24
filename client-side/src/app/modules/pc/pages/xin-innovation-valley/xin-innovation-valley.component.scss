@@ -45,11 +45,19 @@
   --swiper-navigation-color: #fff;/* 单独设置按钮颜色 */
   --swiper-navigation-size: 18px;/* 设置按钮大小 */
   margin-top: 60px;
+  .swiper-button {
+    position: relative;
+    bottom: 211px;
+  }
   .arrow {
     width: 42px;
     height: 42px;
     background-color: #999999;
     border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    line-height: 42px;
+    position: absolute;
     &.swiper-button-prev {
       left: 0;
     }

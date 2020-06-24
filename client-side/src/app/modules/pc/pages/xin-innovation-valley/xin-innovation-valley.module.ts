@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { XinInnovationValleyRoutingModule } from './xin-innovation-valley-routing.module';
 import { XinInnovationValleyComponent } from './xin-innovation-valley.component';
 import {PcSharedModule} from "../../shared/pc-shared.module";
+import {NzIconModule} from "ng-zorro-antd";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import {PcSharedModule} from "../../shared/pc-shared.module";
   imports: [
     CommonModule,
     XinInnovationValleyRoutingModule,
-    PcSharedModule
+    PcSharedModule,
+    NzIconModule
   ]
 })
 export class XinInnovationValleyModule { }
