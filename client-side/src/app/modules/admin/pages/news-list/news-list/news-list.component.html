@@ -10,7 +10,7 @@
       <th>标题</th>
       <th>发布时间</th>
       <th>状态</th>
-      <th nzWidth="250px">操作</th>
+      <th nzWidth="350px">操作</th>
     </tr>
     </thead>
     <tbody>
@@ -24,6 +24,7 @@
           <button nz-button nzType="primary" nzShape="round" routerLink="create-article/{{ data.id }}">编辑</button>
           <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteArticle(data.id)">删除</button>
           <button nz-button nzType="dashed" nzShape="round" [nzDanger]="data.status === ArticleStatus.Online" (click)="handlerArticle(data.id)">{{ data.status === ArticleStatus.Online ? '下线' : '上线' }}</button>
+          <button nz-button nzType="link" routerLink="/news-center/news-detail/{{ data.id }}">预览</button>
         </td>
       </tr>
     </ng-container>
