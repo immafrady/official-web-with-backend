@@ -87,7 +87,7 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
   }
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.xinInnovationVallySwiper = new Swiper('.swiper-container', {
+      this.xinInnovationVallySwiper = new Swiper('#gallery-valley', {
         mode: 'horizontal',
         loop: true,
         autoplay: 2000,
@@ -96,6 +96,7 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
         updateOnImagesReady: true,
         paginationClickable: true
       });
+      console.log(this.xinInnovationVallySwiper)
     }
   }
 

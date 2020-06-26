@@ -14,7 +14,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class XinTownComponent extends BasePageComponent implements OnInit, AfterViewInit {
   getImage = getImage;
-  xinTownwiper: Swiper;
+  xinTownSwiper: Swiper;
   sliderName: string = 'prev';
   slides = [
     getImage('xin-town-big-bg-1'),
@@ -31,16 +31,16 @@ export class XinTownComponent extends BasePageComponent implements OnInit, After
     super(metaService, titleService, activatedRoute, router)
   }
   swipePrev(name) {
-    this.xinTownwiper.swipePrev();
+    this.xinTownSwiper.swipePrev();
     this.sliderName = name
   }
   swipeNext(name) {
-    this.xinTownwiper.swipeNext();
+    this.xinTownSwiper.swipeNext();
     this.sliderName = name
   }
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.xinTownwiper = new Swiper('#gallery', {
+      this.xinTownSwiper = new Swiper('#gallery', {
         spaceBetween: 10,
         autoplay: 1000,
         calculateHeight: true,
