@@ -16,7 +16,7 @@ export class LoginService {
 
   login(data:IUserLoginOptions): Observable<IHttpResponse<IUserLoginResponse>>{
     const form = {
-      username: data.username.trim(),
+      username: data.username?.trim(),
       password: Md5.hashStr(data.password)
     };
     return this.http.post('/user/login', form).pipe(
