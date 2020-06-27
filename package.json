@@ -18,8 +18,5 @@
   "bugs": {
     "url": "https://github.com/immafrady/official-web-with-backend/issues"
   },
-  "homepage": "https://github.com/immafrady/official-web-with-backend#readme",
-  "dependencies": {
-    "domino": "^2.1.5"
-  }
+  "homepage": "https://github.com/immafrady/official-web-with-backend#readme"
 }
