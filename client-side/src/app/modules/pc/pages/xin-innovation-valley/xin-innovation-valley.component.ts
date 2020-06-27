@@ -96,7 +96,6 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
         updateOnImagesReady: true,
         paginationClickable: true
       });
-      console.log(this.xinInnovationVallySwiper)
     }
   }
 
