@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {BasePageComponent} from "../../../../shared/base-page.component";
+import {BasePageComponent} from "../../../../shared/mixins/base-page.component";
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {getImage} from 'src/utils/getImage';

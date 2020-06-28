@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BasePageComponent} from "../../../../shared/base-page.component";
+import {BasePageComponent} from "../../../../shared/mixins/base-page.component";
 import {getImage} from "../../../../../utils/getImage";
 import Swiper from "swiper";
 import { isPlatformBrowser } from '@angular/common';

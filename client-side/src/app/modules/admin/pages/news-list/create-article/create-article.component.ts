@@ -6,11 +6,11 @@ import {
   ArticleStatusLabel,
   ArticleType, ArticleTypeLabel
 } from '../../../../../../../../libs/enums/article';
-import { CreateArticleService } from './create-article.service';
 import { IArticleModifyOptions } from '../../../../../../../../libs/request/article';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UploadFile } from 'ng-zorro-antd/upload';
 import { appendFileNameSearchParam, uploadAliyun } from '../../../../../../utils/uploadAliOss';
+import { ArticleRequestService } from '../../../../../shared/api/article-request.service';
 
 @Component({
   selector: 'admin-create-article',
@@ -69,7 +69,7 @@ export class CreateArticleComponent implements OnInit {
   }];
   constructor(
     private fb: FormBuilder,
-    private CreateArticleService: CreateArticleService,
+    private articleRequestService: ArticleRequestService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -80,11 +80,11 @@ export class CreateArticleComponent implements OnInit {
     }
     const formData = this.validateForm.value;
     if (formData.id) {
-      this.CreateArticleService.saveDetailArticle(formData as IArticleModifyOptions).subscribe(() => {
+      this.articleRequestService.saveDetailArticle(formData as IArticleModifyOptions).subscribe(() => {
         this.router.navigate(['/admin/news-list'])
       })
     } else {
-      this.CreateArticleService.saveArticle(formData).subscribe(() => {
+      this.articleRequestService.saveArticle(formData).subscribe(() => {
         this.router.navigate(['/admin/news-list'])
       })
     }
@@ -98,7 +98,7 @@ export class CreateArticleComponent implements OnInit {
     }).catch(() => { this.loading = false })
   }
   getArticleDetail(id): void {
-    this.CreateArticleService.getArticleContent(id).subscribe(({ data }) => {
+    this.articleRequestService.getArticleContent(id).subscribe(({ data }) => {
       this.validateForm.patchValue(data.article);
     });
   }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Meta, Title, TransferState} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BasePageComponent} from "src/app/shared/base-page.component";
+import {BasePageComponent} from "src/app/shared/mixins/base-page.component";
 import { getImage } from "src/utils/getImage";
-import {NewsCenterService} from "../news-center/news-center/news-center.service";
+import {ArticleRequestService} from "../../../../shared/api/article-request.service";
 import {IArticleEntity} from "../../../../../../../libs/entity/article";
 import {ArticleType} from "../../../../../../../libs/enums/article";
 
@@ -22,7 +22,7 @@ export class HomeComponent extends BasePageComponent implements OnInit {
     titleService: Title,
     activatedRoute: ActivatedRoute,
     router: Router,
-    private NewsCenterService: NewsCenterService
+    private NewsCenterService: ArticleRequestService
   ) {
     super(metaService, titleService, activatedRoute, router)
   }

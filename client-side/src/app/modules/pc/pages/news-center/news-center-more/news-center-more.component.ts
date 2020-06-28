@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BasePageComponent} from "../../../../../shared/base-page.component";
+import {BasePageComponent} from "../../../../../shared/mixins/base-page.component";
 import {getImage} from "../../../../../../utils/getImage";
-import {NewsCenterService} from "../news-center/news-center.service";
+import {ArticleRequestService} from "../../../../../shared/api/article-request.service";
 import {IArticleEntity} from "../../../../../../../../libs/entity/article";
 
 @Component({
@@ -20,13 +20,13 @@ export class NewsCenterMoreComponent extends BasePageComponent implements OnInit
     titleService: Title,
     activatedRoute: ActivatedRoute,
     router: Router,
-    private NewsCenterService: NewsCenterService
+    private articleRequestService: ArticleRequestService
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
 
   getNewsList(page): void {
-    this.NewsCenterService.getNewsList({ page, size: 12 }, 'moreNewsList').subscribe(({ data }) => {
+    this.articleRequestService.getNewsList({ page, size: 12 }, 'moreNewsList').subscribe(({ data }) => {
       this.moreNewsList = data.list;
       this.total = data.total
     })

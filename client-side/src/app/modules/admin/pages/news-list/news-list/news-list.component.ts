@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NewsLIstService} from "../news-list.service";
 import {IArticleEntity} from "../../../../../../../../libs/entity/article";
 import {IArticleDeleteOptions, IArticleSetStatusOption} from "../../../../../../../../libs/request/article";
 import {ArticleStatus} from "../../../../../../../../libs/enums/article";
+import { ArticleRequestService } from '../../../../../shared/api/article-request.service';
 
 @Component({
   selector: 'admin-news-list',
@@ -14,24 +14,24 @@ export class NewsListComponent implements OnInit {
   ArticleStatus = ArticleStatus;
   total: number;
   constructor(
-    private newsLIstService: NewsLIstService
+    private articleRequestService: ArticleRequestService
   ) {}
 
   getNewsList(): void {
-    this.newsLIstService.getNewsList().subscribe(({ data }) => {
+    this.articleRequestService.getNewsListAdmin().subscribe(({ data }) => {
       this.articleList = data.list;
       this.total = data.total
     });
   }
 
   handlerArticle(id:IArticleSetStatusOption): void {
-    this.newsLIstService.handlerArticle(id).subscribe(res => {
+    this.articleRequestService.handlerArticle(id).subscribe(res => {
       this.getNewsList()
     })
   }
 
   deleteArticle(id: IArticleDeleteOptions): void {
-    this.newsLIstService.deleteArticle(id).subscribe(() => {
+    this.articleRequestService.deleteArticle(id).subscribe(() => {
       this.getNewsList()
     })
   }
