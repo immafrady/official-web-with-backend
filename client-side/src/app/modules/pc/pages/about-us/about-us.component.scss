@@ -47,68 +47,67 @@ $borderContent: 1px solid $colorGrey;
   .block-title {
     margin: 87px 0 42px;
   }
-}
-
-.selector-container {
-  border: $borderContent;
-  border-left: none;
-  clear: both;
-  overflow: hidden;
-  width: 813px;
-  margin: 0 auto 50px;
-  user-select: none;
-  .arrow {
-    width: 90px;
-    height: 60px;
-    float: left;
-    text-align: center;
-    padding: 17px 0;
-    border-left: $borderContent;
-    cursor: pointer;
-  }
-  .selector {
-    width: 158px;
-    height: 60px;
-    border-left: $borderContent;
-    float: left;
-    text-align: center;
-    line-height: 60px;
-    font-size: 20px;
-    cursor: pointer;
-    &.active {
-      background-color: $colorGrey;
-      color: $colorRed;
+  .selector-container {
+    border: $borderContent;
+    border-left: none;
+    clear: both;
+    overflow: hidden;
+    width: 813px;
+    margin: 0 auto 50px;
+    user-select: none;
+    .arrow {
+      width: 90px;
+      height: 60px;
+      float: left;
+      text-align: center;
+      padding: 17px 0;
+      border-left: $borderContent;
+      cursor: pointer;
+    }
+    .selector {
+      width: 158px;
+      height: 60px;
+      border-left: $borderContent;
+      float: left;
+      text-align: center;
+      line-height: 60px;
+      font-size: 20px;
+      cursor: pointer;
+      &.active {
+        background-color: $colorGrey;
+        color: $colorRed;
+      }
     }
   }
-}
-.selector-content {
-  margin-bottom: 100px;
-  color: #656565;
-  h3 {
-    font-size: 20px;
-    color: $colorRed;
-    text-align: center;
-    margin-bottom: 45px;
-  }
-  .ant-timeline {
-    margin-left: 345px;
-  }
-  .position-left  {
-    position: absolute;
-    right: calc(100% + 35px);
-    font-weight: bold;
-    font-size: 16px;
-    color: #333333;
-    width: 80px;
-    text-align: right;
-  }
-  .ant-timeline-item-tail {
-    border-left: 1px solid $colorRed;
-    left: 6px;
-  }
-  .ant-timeline-item-head {
-    width: 12px;
-    height: 12px;
-    background-color: $colorRed;
+  .selector-content {
+    margin-bottom: 100px;
+    color: #656565;
+    h3 {
+      font-size: 20px;
+      color: $colorRed;
+      text-align: center;
+      margin-bottom: 45px;
+    }
+    .ant-timeline {
+      margin-left: 345px;
+    }
+    .position-left  {
+      position: absolute;
+      right: calc(100% + 35px);
+      font-weight: bold;
+      font-size: 16px;
+      color: #333333;
+      width: 80px;
+      text-align: right;
+    }
+    .ant-timeline-item-tail {
+      border-left: 1px solid $colorRed;
+      left: 6px;
+    }
+    .ant-timeline-item-head {
+      width: 12px;
+      height: 12px;
+      background-color: $colorRed;
+    }
   }
 }

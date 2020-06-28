@@ -99,8 +99,6 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
     }
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
 }

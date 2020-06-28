@@ -27,7 +27,7 @@ export class NewsDetailComponent implements OnInit {
     this.NewsCenterService.getNewsDetail({ id }).subscribe(({ data }) => {
       this.newsDetail = data.article;
       this.preRelated = data.related[0];
-      this.nextRelated = data.related[1]
+      this.nextRelated = data.related[1];
       this.titleService.setTitle(`${APPLICATION_NAME}${this.newsDetail.title ? ' - 新闻 - ' + this.newsDetail.title : ''}`)
     })
   }

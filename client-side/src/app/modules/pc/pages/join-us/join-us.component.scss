@@ -1,28 +1,7 @@
 @import "src/styles/images.pc";
 @import "src/styles/common.pc";
-.ant-tabs-bar {
-  border-bottom: none;
-  text-align: center;
-  margin-right: -180px;
-  .ant-tabs-tab-active {
-    color: #D50032;
-  }
-  .ant-tabs-ink-bar {
-    background-color: #D50032;
-  }
-}
-.ant-table-row-expand-icon:focus, .ant-table-row-expand-icon:hover, .ant-tabs-nav .ant-tabs-tab:hover {
-  color: #D50032;
-}
-.ant-tabs-nav .ant-tabs-tab:active {
-  color: #D50032;
-}
-.ant-tabs .ant-tabs-large-bar .ant-tabs-tab {
-  padding: 20px 0;
-}
-.ant-tabs .ant-tabs-large-bar .ant-tabs-nav-container {
-  font-size: 20px;
-}
+
+$colorRed: #D50032;
 
 .join-us-banner {
   height: 451px;
@@ -43,13 +22,38 @@
   }
 }
 
-.company-container {
-  width: 1158px;
-  margin: 20px auto;
-  @include clear-fix;
-  img {
-    float: left;
-    margin: 10px;
+.join-us-environment-live {
+  .ant-tabs-bar {
+    border-bottom: none;
+    text-align: center;
+    margin-right: -180px;
+    .ant-tabs-tab-active {
+      color: $colorRed;
+    }
+    .ant-tabs-ink-bar {
+      background-color: $colorRed;
+    }
+  }
+  .ant-table-row-expand-icon:focus, .ant-table-row-expand-icon:hover, .ant-tabs-nav .ant-tabs-tab:hover {
+    color: $colorRed;
+  }
+  .ant-tabs-nav .ant-tabs-tab:active {
+    color: $colorRed;
+  }
+  .ant-tabs .ant-tabs-large-bar .ant-tabs-tab {
+    padding: 20px 0;
+  }
+  .ant-tabs .ant-tabs-large-bar .ant-tabs-nav-container {
+    font-size: 20px;
+  }
+  .company-container {
+    width: 1158px;
+    margin: 20px auto;
+    @include clear-fix;
+    img {
+      float: left;
+      margin: 10px;
+    }
   }
 }
 
@@ -72,12 +76,12 @@
         border-left: none;
       }
       &:hover {
-        color: #D50032;
+        color: $colorRed;
       }
       &.active {
-        background-color: #D50032;
+        background-color: $colorRed;
         color: #fff;
-        border-color: #D50032;
+        border-color: $colorRed;
       }
     }
   }
@@ -150,13 +154,14 @@
         }
       }
     }
+    .ant-table tfoot > tr > td:last-child, .station-container .join-us-table .ant-table tfoot > tr > th:last-child, .station-container .join-us-table .ant-table-tbody > tr > td:last-child, .station-container .join-us-table .ant-table-thead > tr > th:last-child {
+      border-bottom: 1px solid #cecece !important;
+    }
+    .ant-table-content {
+      margin-bottom: -1px;
+    }
   }
 }
-.station-container .join-us-table .ant-table tfoot > tr > td:last-child, .station-container .join-us-table .ant-table tfoot > tr > th:last-child, .station-container .join-us-table .ant-table-tbody > tr > td:last-child, .station-container .join-us-table .ant-table-thead > tr > th:last-child {
-  border-bottom: 1px solid #cecece !important;
-}
 
-.ant-table-content {
-  margin-bottom: -1px;
-}
+
 

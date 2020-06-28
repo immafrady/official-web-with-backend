@@ -18,7 +18,7 @@
     <div class="inner-container">
       <pc-news-preview *ngFor="let news of oldNewsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
     </div>
-    <div class="more-link"><a>查看更多 》</a></div>
+    <div class="more-link"><a routerLink="./more-news">查看更多 》</a></div>
   </div>
 </pc-core-container>
 

@@ -29,11 +29,13 @@ export class NewsCenterComponent extends BasePageComponent implements OnInit {
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
+
   getNewsList(size, type, list): void {
     this.NewsCenterService.getNewsList({ page: 1, size, type }, list).subscribe(res => {
       this[list] = res.data.list;
     })
   }
+
   ngOnInit(): void {
     this.getNewsList(4, ArticleType.Hot, 'hotsNewsList');
     this.getNewsList(4, ArticleType.Old, 'oldNewsList');

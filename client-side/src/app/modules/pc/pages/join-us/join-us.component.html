@@ -9,7 +9,7 @@
   </div>
 </pc-core-container>
 
-<pc-core-container>
+<pc-core-container className="join-us-environment-live">
   <nz-tabset [nzTabBarGutter]="180" [nzSize]="'large'">
     <nz-tab nzTitle="工作环境">
       <div class="company-container">
@@ -42,35 +42,35 @@
   <div class="join-us-table">
     <nz-table #nzTable [nzData]="positionData[positionType]" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['480px', '160px', '200px', '200px', '50px']">
       <thead>
-      <tr>
-        <th>职位</th>
-        <th>部门</th>
-        <th>工作地</th>
-        <th>发布时间</th>
-        <th></th>
-      </tr>
+        <tr>
+          <th>职位</th>
+          <th>部门</th>
+          <th>工作地</th>
+          <th>发布时间</th>
+          <th></th>
+        </tr>
       </thead>
       <tbody>
-      <ng-container *ngFor="let data of nzTable.data">
-        <tr>
-          <td>{{ data.position }}<nz-tag *ngIf="data.impatient" [nzColor]="'#F36374'">急</nz-tag><nz-tag *ngIf="data.new" [nzColor]="'#30CBF3'">新</nz-tag></td>
-          <td>{{ data.type }}</td>
-          <td>{{ data.address }}</td>
-          <td>{{ data.date }}</td>
-          <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : rotateActive ? 'rotateDown': ''" nz-icon nzType="down" nzTheme="outline"></i></td>
-        </tr>
-        <tr [nzExpand]="expandSet.has(data.id)">
-         <div>
-           <ul>
-             <li *ngFor="let item of data.description">{{ item }}</li>
-           </ul>
-            <div class="send-way">
-              <p>应聘此职位，投递简历至 <a href="mailto:HR@xinpayorll.com">HR@xinpayorll.com</a></p>
-              <p>简历投递格式请以“应聘职位+姓名”作为邮件标题。</p>
-            </div>
-         </div>
-        </tr>
-      </ng-container>
+        <ng-container *ngFor="let data of nzTable.data">
+          <tr>
+            <td>{{ data.position }}<nz-tag *ngIf="data.impatient" [nzColor]="'#F36374'">急</nz-tag><nz-tag *ngIf="data.new" [nzColor]="'#30CBF3'">新</nz-tag></td>
+            <td>{{ data.type }}</td>
+            <td>{{ data.address }}</td>
+            <td>{{ data.date }}</td>
+            <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : rotateActive ? 'rotateDown': ''" nz-icon nzType="down" nzTheme="outline"></i></td>
+          </tr>
+          <tr [nzExpand]="expandSet.has(data.id)">
+           <td>
+             <ul>
+               <li *ngFor="let item of data.description">{{ item }}</li>
+             </ul>
+              <div class="send-way">
+                <p>应聘此职位，投递简历至 <a href="mailto:HR@xinpayorll.com">HR@xinpayorll.com</a></p>
+                <p>简历投递格式请以“应聘职位+姓名”作为邮件标题。</p>
+              </div>
+           </td>
+          </tr>
+        </ng-container>
       </tbody>
     </nz-table>
   </div>
