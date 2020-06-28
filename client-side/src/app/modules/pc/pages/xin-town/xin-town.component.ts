@@ -16,10 +16,6 @@ export class XinTownComponent extends BasePageComponent implements OnInit, After
   getImage = getImage;
   xinTownSwiper: Swiper;
   sliderName: string = 'prev';
-  slides = [
-    getImage('xin-town-big-bg-1'),
-    getImage('xin-town-small-bg-2'),
-  ];
   constructor(
     metaService: Meta,
     titleService: Title,
@@ -42,11 +38,9 @@ export class XinTownComponent extends BasePageComponent implements OnInit, After
     if (isPlatformBrowser(this.platformId)) {
       this.xinTownSwiper = new Swiper('#gallery', {
         spaceBetween: 10,
-        autoplay: 1000,
         calculateHeight: true,
         thumbs: {
           swiper: {
-            // @ts-ignore
             el: '#thumbs',
             slidesPerView: 2,
             watchSlidesVisibility: true
@@ -57,7 +51,6 @@ export class XinTownComponent extends BasePageComponent implements OnInit, After
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

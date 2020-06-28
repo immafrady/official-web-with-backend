@@ -14,6 +14,7 @@
   padding-top: 64px;
   margin-bottom: 80px;
 }
+
 .product-intro {
   @include clear-fix;
   padding-left: 80px;
@@ -69,7 +70,6 @@
   .product-intro-bg {
     float: right;
   }
-
   &.pocket-studio {
     .product-content {
       margin-top: 20px;
@@ -81,7 +81,6 @@
       margin-right: -36px;
     }
   }
-
   &.steward {
     .product-content {
       margin-top: 28px;
