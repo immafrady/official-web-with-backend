@@ -47,6 +47,9 @@ export class Article extends BaseEntity implements IArticleEntity{
     })
     status: ArticleStatus;
 
+    /**
+     * @description 文章优先级
+     */
     @Column({
         type: "enum",
         enum: ArticlePriority,
@@ -54,6 +57,9 @@ export class Article extends BaseEntity implements IArticleEntity{
     })
     priority: ArticlePriority;
 
+    /**
+     * @description 文章类型
+     */
     @Column({
         type: "enum",
         enum: ArticleType,
