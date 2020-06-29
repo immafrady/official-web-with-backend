@@ -7,11 +7,11 @@
     "egg-cors": "^2.2.3",
     "egg-scripts": "^2.10.0",
     "jsonwebtoken": "^8.5.1",
+    "libs": "file:../libs",
     "md5": "^2.2.1",
     "midway": "^1.0.0",
     "mysql2": "^2.1.0",
-    "typeorm": "^0.2.25",
-    "libs": "file:../libs"
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.0",
@@ -45,7 +45,7 @@
     "cov": "midway-bin cov --ts",
     "lint": "tslint --fix -p tsconfig.json -t stylish",
     "ci": "npm run cov",
-    "build": "npm install && midway-bin build -c",
+    "build": "npm install libs && midway-bin build -c",
     "autod": "midway-bin autod"
   },
   "ci": {
