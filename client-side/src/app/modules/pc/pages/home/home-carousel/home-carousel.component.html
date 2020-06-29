@@ -1,5 +1,5 @@
 <div class="home-carousel">
-  <nz-carousel #nzCarouselComponent nzEffect="scrollx">
+  <nz-carousel #nzCarouselComponent nzEffect="scrollx" [nzAutoPlay]="true">
     <div nz-carousel-content class="carousel-item item-one">
     </div>
     <div nz-carousel-content class="carousel-item item-two">
@@ -8,7 +8,7 @@
           <img [src]="getImage('pc-banner-2-element')" class="phone-element" alt="">
           <div class="right-block">
             <img [src]="getImage('pc-banner-2-slogan')" class="slogan" alt="">
-            <a class="button-like red" routerLink="/">了解更多</a>
+            <a class="button-like red" routerLink="/product-introduction">了解更多</a>
           </div>
         </div>
       </pc-core-container>
@@ -18,7 +18,7 @@
         <div class="wrapper">
           <div class="content-group">
             <img [src]="getImage('pc-banner-3-slogan')" class="slogan" alt="">
-            <a class="button-like purple" routerLink="/">了解更多</a>
+            <a class="button-like purple" href="https://xinshuiguanjia.com/" target="_blank">了解更多</a>
           </div>
         </div>
       </pc-core-container>

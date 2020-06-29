@@ -5,6 +5,7 @@
     <div class="inner-container middle">
       <pc-news-preview *ngFor="let news of NewsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
     </div>
+    <div class="more-link"><a routerLink="/news-center/more-news">查看更多 》</a></div>
   </div>
 </pc-core-container>
 <pc-core-container>

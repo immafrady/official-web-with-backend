@@ -31,6 +31,11 @@ export class NewsCenterService {
     }
   }
 
+  getPageNewsList(data:IArticleListOptions): Observable<IHttpResponse<IArticleListResponse>> {
+    console.log(data);
+    return this.http.get('/article/list?' + httpParamsHandler(data)) as Observable<IHttpResponse<IArticleListResponse>>
+  }
+
   getNewsDetail(data: IArticleDetailOptions): Observable<IHttpResponse<IArticleDetailResponse>> {
     return this.http.get(`/article/detail/${ data.id }`) as Observable<IHttpResponse<IArticleDetailResponse>>
   }

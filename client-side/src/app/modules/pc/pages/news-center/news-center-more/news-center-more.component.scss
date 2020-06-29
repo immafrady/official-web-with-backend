@@ -5,10 +5,10 @@
   box-shadow:0 3px 7px 0 rgba(101,101,101,0.2);
 }
 .news-center-more {
-  margin: 80px auto;
+  margin: 50px auto;
   .inner-container {
     @include clear-fix;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
     pc-news-preview {
       float: left;
       margin: 40px 10px;
