@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 import {IHttpResponse} from "../../../../../../../../libs/common";
 import {
   IArticleCreateOptions,
-  IArticleDetailOptions,
   IArticleModifyOptions
 } from "../../../../../../../../libs/request/article";
 import {
   IArticleCreateResponse,
-  IArticleDeleteResponse,
   IArticleDetailResponse, IArticleModifyResponse
 } from "../../../../../../../../libs/response/article";
 import {Observable} from 'rxjs';
