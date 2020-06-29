@@ -1,21 +1,26 @@
-import { controller, provide, inject, post, put, del, get } from 'midway'
-import { MIDDLEWARE_JWT, SERVICE_POST } from "../../inject-token";
+import { controller, del, get, inject, post, provide, put } from 'midway';
+import { MIDDLEWARE_JWT, SERVICE_POST } from '../../inject-token';
 import {
     IArticleCreateOptions,
     IArticleDeleteOptions,
-    IArticleDetailOptions, IArticleListOptions,
+    IArticleDetailOptions,
+    IArticleListOptions,
     IArticleModifyOptions
-} from "../../libs/request/article";
-import { IHttpResponse } from "../../libs/common";
+} from 'libs/request/article';
+import { IHttpResponse } from 'libs/common';
 import {
-    IArticleCreateResponse, IArticleDeleteResponse,
+    IArticleCreateResponse,
+    IArticleDeleteResponse,
     IArticleDetailResponse,
     IArticleListResponse,
-    IArticleModifyResponse, IArticleSetStatusResponse
-} from '../../libs/response/article';
-import { successResponse } from "../../utils/response-builder.util";
-import { getIdFromHeader } from "../../utils/get-id-from-header.util";
-import { IArticleService } from "../../interfaces/article.interface";
+    IArticleModifyResponse,
+    IArticleSetStatusResponse
+} from 'libs/response/article';
+import { successResponse } from '../../utils/response-builder.util';
+import { getIdFromHeader } from '../../utils/get-id-from-header.util';
+import { IArticleService } from '../../interfaces/article.interface';
+import { ArticleStatus } from 'libs/enums/article';
+import { LessThanOrEqual } from 'typeorm';
 
 @provide()
 @controller('/article')
@@ -55,8 +60,21 @@ export class ArticleController {
         return successResponse(await this.service.setArticleStatus(this.ctx.request?.query?.id), '更改成功')
     }
 
+    // 只能查上线的
     @get('/detail/:id')
-    async get(): Promise<IHttpResponse<IArticleDetailResponse>> {
+    async getDetailUser(): Promise<IHttpResponse<IArticleDetailResponse>> {
+        const options: IArticleDetailOptions = {
+            id: this.ctx.params?.id,
+            ...this.ctx.request?.query,
+            status: ArticleStatus.Online,
+            modifyDate: LessThanOrEqual(new Date())
+        }
+        return successResponse(await this.service.findOne(options), '')
+    }
+
+    // 管理员查全部
+    @get('/admin/detail/:id', { middleware: [MIDDLEWARE_JWT] })
+    async getDetailAdmin(): Promise<IHttpResponse<IArticleDetailResponse>> {
         const options: IArticleDetailOptions = {
             id: this.ctx.params?.id,
             ...this.ctx.request?.query
@@ -64,8 +82,19 @@ export class ArticleController {
         return successResponse(await this.service.findOne(options), '')
     }
 
+    // 只能查上线的
     @get('/list')
-    async getList(): Promise<IHttpResponse<IArticleListResponse>> {
+    async getListUser(): Promise<IHttpResponse<IArticleListResponse>> {
+        const options: IArticleListOptions = {
+            ...this.ctx.request?.query,
+            status: ArticleStatus.Online,
+            modifyDate: LessThanOrEqual(new Date())
+        }
+        return successResponse(await this.service.findMany(options), '')
+    }
+
+    @get('/admin/list', { middleware: [MIDDLEWARE_JWT] })
+    async getListAdmin(): Promise<IHttpResponse<IArticleListResponse>> {
         const options: IArticleListOptions = {
             ...this.ctx.request?.query
         }

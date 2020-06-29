@@ -10,7 +10,8 @@
     "md5": "^2.2.1",
     "midway": "^1.0.0",
     "mysql2": "^2.1.0",
-    "typeorm": "^0.2.25"
+    "typeorm": "^0.2.25",
+    "libs": "file:../libs"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.0",
