@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {IHttpResponse} from "../../../../../../../libs/common";
-import {IUserLoginResponse} from "../../../../../../../libs/response/user";
-import {IUserLoginOptions} from "../../../../../../../libs/request/user";
+import {IHttpResponse} from '@libs/common';
+import {IUserLoginResponse} from '@libs/response/user';
+import {IUserLoginOptions} from '@libs/request/user';
 import {Md5} from "ts-md5";
 import {tap} from "rxjs/operators";
 import { REQUEST_AUTH_TOKEN } from "../../../../../config/resources";

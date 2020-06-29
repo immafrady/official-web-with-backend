@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ArticleStatus, ArticleStatusLabel } from '../../../../../libs/enums/article';
+import { ArticleStatus, ArticleStatusLabel } from '@libs/enums/article';
 
 @Pipe({
   name: 'articleStatus'

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsLIstService} from "../news-list.service";
-import {IArticleEntity} from "../../../../../../../../libs/entity/article";
-import {IArticleDeleteOptions, IArticleSetStatusOption} from "../../../../../../../../libs/request/article";
-import {ArticleStatus} from "../../../../../../../../libs/enums/article";
+import {IArticleEntity} from '@libs/entity/article';
+import {IArticleDeleteOptions, IArticleSetStatusOption} from '@libs/request/article';
+import {ArticleStatus} from '@libs/enums/article';
 
 @Component({
   selector: 'admin-news-list',
