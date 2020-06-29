@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "tsc -b"
+    "build": "tsc -b",
+    "clean": "tsc -b --clean",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
