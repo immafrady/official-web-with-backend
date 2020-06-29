@@ -31,6 +31,13 @@ export class NewsCenterMoreComponent extends BasePageComponent implements OnInit
     })
   }
 
+  getPageNewsList(page): void {
+    this.NewsCenterService.getPageNewsList({ page, size: 12 }).subscribe(({ data }) => {
+      this.moreNewsList = data.list;
+      this.total = data.total
+    })
+  }
+
   ngOnInit(): void {
     this.getNewsList(1)
   }

@@ -101,6 +101,7 @@ $colorRed: #D50032;
       &.rotateUp {
         transform: rotate(180deg);
         animation: rotateArrowUp 0.2s;
+        color: $colorRed;
         @keyframes rotateArrowUp {
           from {
             transform: rotate(0deg);
@@ -145,7 +146,7 @@ $colorRed: #D50032;
     tr.ant-table-expanded-row:hover>td, tr.ant-table-expanded-row>td {
       background-color: #f4f4f4;
       color: #333333;
-      font-size: 18px;
+      font-size: 16px;
       padding: 20px 0 60px 30px;
       .send-way {
         margin-top: 40px;
@@ -159,6 +160,11 @@ $colorRed: #D50032;
     }
     .ant-table-content {
       margin-bottom: -1px;
+    }
+    .collapse-arrow,.ant-table-cell-with-append,.ant-table-cell {
+      &:hover {
+        color: $colorRed !important;
+      }
     }
   }
 }

@@ -24,12 +24,12 @@
           </div>
         </div>
         <div class="bottom">
-          <div *ngFor="let content of misc">{{ content }}</div>
+          <div *ngFor="let content of misc">{{ companyInfo.COPYRIGHT }} © {{ content }}</div>
         </div>
       </div>
     </div>
   </pc-core-container>
   <pc-core-container className="bottom-container">
-    <div class="content">{{ companyInfo.COPYRIGHT }} © <a [href]="gongXinBuUrl" target="_blank">{{ companyInfo.BEIAN }}</a></div>
+    <div class="content"><a [href]="gongXinBuUrl" target="_blank">{{ companyInfo.BEIAN }}</a></div>
   </pc-core-container>
 </footer>
