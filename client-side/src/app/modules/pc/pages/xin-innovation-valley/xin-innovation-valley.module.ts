@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { XinInnovationValleyRoutingModule } from './xin-innovation-valley-routing.module';
 import { XinInnovationValleyComponent } from './xin-innovation-valley.component';
-import {PcSharedModule} from "../../shared/pc-shared.module";
+import {PcSharedModule} from '@pc/shared/pc-shared.module';
 import {NzIconModule} from "ng-zorro-antd";
 
 

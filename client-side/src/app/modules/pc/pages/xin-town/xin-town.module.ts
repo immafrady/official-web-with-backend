@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { XinTownRoutingModule } from './xin-town-routing.module';
 import { XinTownComponent } from './xin-town.component';
-import {PcSharedModule} from "../../shared/pc-shared.module";
+import {PcSharedModule} from '@pc/shared/pc-shared.module';
 
 
 @NgModule({

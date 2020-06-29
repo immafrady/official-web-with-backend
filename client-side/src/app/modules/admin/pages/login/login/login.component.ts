@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BasePageComponent} from "../../../../../shared/base-page.component";
+import {BasePageComponent} from '@/app/shared/base-page.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {LoginService} from "../login.service";
 

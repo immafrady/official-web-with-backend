@@ -1,8 +1,8 @@
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
-import {APPLICATION_NAME} from "../../config/resources";
-import {IRouterData} from "../../config/router-info";
+import {APPLICATION_NAME} from '@/config/resources';
+import {IRouterData} from '@/config/router-info';
 
 export class BasePageComponent {
   constructor(

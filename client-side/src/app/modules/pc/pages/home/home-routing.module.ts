@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./home.component";
-import {getWebRouterInfo, IRouterData, WebRouterName} from "../../../../../config/router-info";
+import {getWebRouterInfo, IRouterData, WebRouterName} from '@/config/router-info';
 
 
 const routes: Routes = [

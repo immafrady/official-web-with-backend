@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {getWebRouterInfo, IRouterData, WebRouterName} from "../../../../../config/router-info";
+import {getWebRouterInfo, IRouterData, WebRouterName} from '@/config/router-info';
 import {XinTownComponent} from "./xin-town.component";
 
 

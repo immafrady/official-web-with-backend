@@ -5,7 +5,7 @@ import {IUserLoginResponse} from '@libs/response/user';
 import {IUserLoginOptions} from '@libs/request/user';
 import {Md5} from "ts-md5";
 import {tap} from "rxjs/operators";
-import { REQUEST_AUTH_TOKEN } from "../../../../../config/resources";
+import { REQUEST_AUTH_TOKEN } from '@/config/resources';
 import { HttpClient } from "@angular/common/http";
 
 @Injectable()

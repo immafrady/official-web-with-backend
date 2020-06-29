@@ -5,7 +5,7 @@ import {IArticleDetailResponse, IArticleListResponse} from '@libs/response/artic
 import {IArticleDetailOptions, IArticleListOptions} from '@libs/request/article';
 import {HttpClient} from "@angular/common/http";
 import {TransferState} from "@angular/platform-browser";
-import {httpParamsHandler} from "../../../../../../utils/httpParamsHandler";
+import {httpParamsHandler} from '@/utils/httpParamsHandler';
 import {tap} from "rxjs/operators";
 
 @Injectable({

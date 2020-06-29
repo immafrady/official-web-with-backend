@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {getWebRouterInfo, IRouterData, WebRouterName} from "../../../../../config/router-info";
+import {getWebRouterInfo, IRouterData, WebRouterName} from '@/config/router-info';
 import {NewsCenterComponent} from "./news-center/news-center.component";
 import {NewsCenterMoreComponent} from "./news-center-more/news-center-more.component";
 import {NewsDetailComponent} from "./news-detail/news-detail.component";

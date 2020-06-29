@@ -10,7 +10,7 @@ import { CreateArticleService } from './create-article.service';
 import { IArticleModifyOptions } from '@libs/request/article';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UploadFile } from 'ng-zorro-antd/upload';
-import { appendFileNameSearchParam, uploadAliyun } from '../../../../../../utils/uploadAliOss';
+import { appendFileNameSearchParam, uploadAliyun } from '@/utils/uploadAliOss';
 
 @Component({
   selector: 'admin-create-article',

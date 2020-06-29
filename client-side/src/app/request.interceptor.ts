@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { isPlatformBrowser } from "@angular/common";
-import { REQUEST_AUTH_TOKEN } from "../config/resources";
+import { REQUEST_AUTH_TOKEN } from '@/config/resources';
 import { ResponseCode } from '@libs/response-code';
 import { NzMessageService } from 'ng-zorro-antd';
 import { map } from 'rxjs/operators';

@@ -16,7 +16,10 @@
       "dom"
     ],
     "paths": {
-      "@libs/*": ["../libs/*"]
+      "@libs/*": ["../libs/*"],
+      "@/*": ["./src/*"],
+      "@admin/*": ["./src/app/modules/admin/*"],
+      "@pc/*": ["./src/app/modules/pc/*"]
     }
   },
   "angularCompilerOptions": {
