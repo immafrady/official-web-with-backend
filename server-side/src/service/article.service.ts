@@ -28,6 +28,7 @@ import { User } from '../db/entities/user';
 import { ArticlePick, IArticleEntity } from 'libs/entity/article';
 import { ArticleStatus } from 'libs/enums/article';
 import { cleanNoneValue } from '../utils/clean-none-value.utils';
+import { handlePagination } from '../utils/handle-pagination.utils';
 
 @provide(SERVICE_POST)
 export class ArticleService implements IArticleService {
@@ -75,7 +76,6 @@ export class ArticleService implements IArticleService {
      */
     async findMany(options: IArticleListOptions, select?: (keyof IArticleEntity | "user")[]): Promise<IArticleListResponse> {
         const isShowUser = Array.isArray(select) && select.includes("user")
-        const hasPagination = isValidPagination(options.page, options.size) // 是否开启分页
 
         try {
             const articleRepo = this.db.getRepository(Article)
@@ -91,8 +91,7 @@ export class ArticleService implements IArticleService {
                     modifyDate: "DESC",
                     priority: "DESC"
                 },
-                skip: hasPagination ? options.size * (options.page - 1) : undefined,
-                take: hasPagination ? options.size : undefined
+                ...handlePagination(options.size, options.page)
             })
 
 
