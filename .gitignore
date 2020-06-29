@@ -1,4 +1,7 @@
-
+libs/node_modules
+libs/**/*.d.ts
+libs/**/*.d.ts.map
+libs/**/*.js
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,node
 

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {GlobalSharedModule} from "../../../shared/global-shared.module";
+import {GlobalSharedModule} from '@/app/shared/global-shared.module';
 
 
 

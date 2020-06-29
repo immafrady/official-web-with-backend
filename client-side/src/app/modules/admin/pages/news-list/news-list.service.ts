@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {IHttpResponse} from "../../../../../../../libs/common";
+import {IHttpResponse} from '@libs/common';
 import {
   IArticleDeleteResponse,
   IArticleListResponse,
   IArticleSetStatusResponse
-} from "../../../../../../../libs/response/article";
+} from '@libs/response/article';
 import { HttpClient } from "@angular/common/http";
-import {IArticleDeleteOptions, IArticleSetStatusOption} from "../../../../../../../libs/request/article";
+import {IArticleDeleteOptions, IArticleSetStatusOption} from '@libs/request/article';
 
 @Injectable({
   providedIn: 'root'

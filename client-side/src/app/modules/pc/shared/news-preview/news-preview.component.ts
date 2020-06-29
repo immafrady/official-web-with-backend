@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BASE_64_IMG, PATH_SVG} from "../../../../../config/images";
+import {BASE_64_IMG, PATH_SVG} from '@/config/images';
 
 @Component({
   selector: 'pc-news-preview',

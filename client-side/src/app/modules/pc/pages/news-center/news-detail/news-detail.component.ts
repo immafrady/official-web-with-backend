@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NewsCenterService} from "../news-center/news-center.service";
 import {ActivatedRoute} from "@angular/router";
-import {IArticleListOptions} from "../../../../../../../../libs/request/article";
-import {ArticlePick} from "../../../../../../../../libs/entity/article";
+import {IArticleListOptions} from '@libs/request/article';
+import {ArticlePick} from '@libs/entity/article';
 import { Title } from '@angular/platform-browser';
-import { APPLICATION_NAME } from '../../../../../../config/resources';
+import { APPLICATION_NAME } from '@/config/resources';
 
 @Component({
   selector: 'app-news-detail',

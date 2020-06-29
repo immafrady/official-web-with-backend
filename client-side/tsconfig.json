@@ -14,13 +14,16 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@libs/*": ["../libs/*"],
+      "@/*": ["./src/*"],
+      "@admin/*": ["./src/app/modules/admin/*"],
+      "@pc/*": ["./src/app/modules/pc/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  },
-  "references": [
-    { "path": "../libs" }
-  ]
+  }
 }

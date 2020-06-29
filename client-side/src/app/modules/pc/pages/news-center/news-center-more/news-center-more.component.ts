@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BasePageComponent} from "../../../../../shared/base-page.component";
+import {BasePageComponent} from '@/app/shared/base-page.component';
 import {NewsCenterService} from "../news-center/news-center.service";
-import {IArticleEntity} from "../../../../../../../../libs/entity/article";
+import {IArticleEntity} from '@libs/entity/article';
 
 @Component({
   selector: 'pc-news-center-more',

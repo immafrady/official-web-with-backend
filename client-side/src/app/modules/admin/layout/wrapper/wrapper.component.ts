@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {getImage} from "../../../../../utils/getImage";
+import {getImage} from '@/utils/getImage';
 
 @Component({
   selector: 'app-wrapper',

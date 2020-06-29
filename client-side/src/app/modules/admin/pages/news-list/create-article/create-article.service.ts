@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {IHttpResponse} from "../../../../../../../../libs/common";
+import {IHttpResponse} from '@libs/common';
 import {
   IArticleCreateOptions,
   IArticleModifyOptions
-} from "../../../../../../../../libs/request/article";
+} from '@libs/request/article';
 import {
   IArticleCreateResponse,
   IArticleDetailResponse, IArticleModifyResponse
-} from "../../../../../../../../libs/response/article";
+} from '@libs/response/article';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 

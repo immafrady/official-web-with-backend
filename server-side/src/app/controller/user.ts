@@ -1,8 +1,8 @@
 import { Context, controller, inject, provide, post } from 'midway';
 import { successResponse } from "../../utils/response-builder.util";
-import { IHttpResponse } from "../../libs/common";
-import { IUserLoginResponse, IUserRegisterResponse } from "../../libs/response/user";
-import { IUserLoginOptions, IUserRegisterOptions } from "../../libs/request/user";
+import { IHttpResponse } from 'libs/common';
+import { IUserLoginResponse, IUserRegisterResponse } from 'libs/response/user';
+import { IUserLoginOptions, IUserRegisterOptions } from 'libs/request/user';
 import { SERVICE_USER } from "../../inject-token";
 import { IUserService } from "../../interfaces/user.interface";
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from "@angular/router";
 import {PcComponent} from "./pc.component";
-import {getWebRouterInfo, WebRouterName} from "../../../config/router-info";
+import {getWebRouterInfo, WebRouterName} from '@/config/router-info';
 
 const routes: Routes = [
   { path: '', component: PcComponent, children: [

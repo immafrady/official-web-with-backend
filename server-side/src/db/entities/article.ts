@@ -1,7 +1,8 @@
 import { BaseEntity } from "./base";
 import { Column, Entity, ManyToOne } from "typeorm";
-import { ArticlePriority, ArticleStatus, ArticleType } from '../../libs/enums/article';
-import { IArticleEntity } from '../../libs/entity/article';
+import { ArticlePriority, ArticleStatus, ArticleType } from 'libs/enums/article';
+import { IArticleEntity } from 'libs/entity/article';
+
 import { User } from "./user";
 
 @Entity()
@@ -47,6 +48,9 @@ export class Article extends BaseEntity implements IArticleEntity{
     })
     status: ArticleStatus;
 
+    /**
+     * @description 文章优先级
+     */
     @Column({
         type: "enum",
         enum: ArticlePriority,
@@ -54,6 +58,9 @@ export class Article extends BaseEntity implements IArticleEntity{
     })
     priority: ArticlePriority;
 
+    /**
+     * @description 文章类型
+     */
     @Column({
         type: "enum",
         enum: ArticleType,

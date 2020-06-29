@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BasePageComponent} from "../../../../../shared/base-page.component";
+import {BasePageComponent} from '@/app/shared/base-page.component';
 import {HttpClient} from '@angular/common/http';
 import {NewsCenterService} from "./news-center.service";
-import {IArticleEntity} from "../../../../../../../../libs/entity/article";
-import {ArticleType} from "../../../../../../../../libs/enums/article";
+import {IArticleEntity} from '@libs/entity/article';
+import {ArticleType} from '@libs/enums/article';
 
 @Component({
   selector: 'pc-news-center',

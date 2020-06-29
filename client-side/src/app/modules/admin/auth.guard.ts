@@ -2,7 +2,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
-import { REQUEST_AUTH_TOKEN } from '../../../config/resources';
+import { REQUEST_AUTH_TOKEN } from '@/config/resources';
 
 @Injectable()
 export class AuthGuard implements CanActivateChild {

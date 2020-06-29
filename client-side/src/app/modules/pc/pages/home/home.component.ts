@@ -4,8 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "src/app/shared/base-page.component";
 import { getImage } from "src/utils/getImage";
 import {NewsCenterService} from "../news-center/news-center/news-center.service";
-import {IArticleEntity} from "../../../../../../../libs/entity/article";
-import {ArticleType} from "../../../../../../../libs/enums/article";
+import {IArticleEntity} from '@libs/entity/article';
+import {ArticleType} from '@libs/enums/article';
 
 @Component({
   selector: 'pc-home',

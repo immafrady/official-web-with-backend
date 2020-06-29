@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BasePageComponent} from "../../../../shared/base-page.component";
+import {BasePageComponent} from '@/app/shared/base-page.component';
 import { BASE_64_IMG } from "src/config/images";
 
 interface IDateDictionary {
