@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Meta, Title, TransferState} from "@angular/platform-browser";
+import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from "src/app/shared/base-page.component";
 import { getImage } from "src/utils/getImage";
