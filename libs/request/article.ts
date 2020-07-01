@@ -34,11 +34,7 @@ export interface IArticleDetailOptions {
 /**
  * @description 文章列表
  */
-export interface IArticleListOptions extends IRequestPagination{
-    type?: ArticleType,
-    priority?: ArticlePriority,
-    modifyDate?: any
-}
+export interface IArticleListOptions extends Partial<IArticleEntity>, IRequestPagination{}
 
 /**
  * @description 修改文章状态接口
