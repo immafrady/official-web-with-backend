@@ -20,7 +20,7 @@
         <td>{{ index + 1 }}</td>
         <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
         <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-        <td><span *ngFor="let item of data.type, index as index">{{ item | articleType }}<i *ngIf="index < data.type.length - 1">，</i></span></td>
+        <td>{{ data.type | articleType }}</td>
         <td>{{ data.status | articleStatus }}</td>
         <td>
           <button nz-button nzType="primary" nzShape="round" routerLink="create-article/{{ data.id }}">编辑</button>
