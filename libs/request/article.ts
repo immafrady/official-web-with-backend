@@ -34,7 +34,9 @@ export interface IArticleDetailOptions {
 /**
  * @description 文章列表
  */
-export interface IArticleListOptions extends Partial<IArticleEntity>, IRequestPagination{}
+export interface IArticleListOptions extends IRequestPagination{
+    type?: ArticleType;
+}
 
 /**
  * @description 修改文章状态接口
