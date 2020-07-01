@@ -26,6 +26,7 @@ import { User } from '../db/entities/user';
 import { ArticlePick } from 'libs/entity/article';
 import { ArticleStatus } from 'libs/enums/article';
 import { handlePagination } from '../utils/handle-pagination.utils';
+import { cleanNoneValue } from '../utils/clean-none-value.utils';
 
 @provide(SERVICE_POST)
 export class ArticleService implements IArticleService {
@@ -73,10 +74,11 @@ export class ArticleService implements IArticleService {
     async findMany(options: IArticleFindManyOptions): Promise<IArticleListResponse> {
         try {
             const articleRepo = this.db.getRepository(Article)
+            cleanNoneValue(options.where)
 
             // 开启分页
             const [list, total]= await articleRepo.findAndCount({
-                where: options?.where,
+                where: options?.where ,
                 relations: options.showUser ? ["user"] : undefined,
                 order: {
                     modifyDate: "DESC",
