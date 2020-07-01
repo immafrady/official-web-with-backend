@@ -6,8 +6,8 @@ import { ArticleType, ArticleTypeLabel } from '@libs/enums/article';
 })
 export class ArticleTypePipe implements PipeTransform {
 
-  transform(value: ArticleType): string {
-    return ArticleTypeLabel[value]
+  transform(typeList: ArticleType[]): string {
+    return typeList.map(type => ArticleTypeLabel[type]).join(', ')
   }
 
 }
