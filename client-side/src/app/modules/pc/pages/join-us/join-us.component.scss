@@ -163,7 +163,9 @@ $colorRed: #D50032;
     }
     .collapse-arrow,.ant-table-cell-with-append,.ant-table-cell {
       &:hover {
-        color: $colorRed !important;
+        .anticon {
+          color: $colorRed !important;
+        }
       }
     }
   }
