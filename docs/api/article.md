@@ -45,14 +45,14 @@
 
 ## 查看文章列表（用户）
 
-- url: `/article/detail/list`
+- url: `/article/list`
 - method: `GET`
 - content-type: `application/x-www-form-urlencoded`
 - params: `IArticleListOptions`
 
 ## 查看文章列表（管理员）
 
-- url: `/article/admin/detail/list`
+- url: `/article/admin/list`
 - method: `GET`
 - content-type: `application/x-www-form-urlencoded`
 - params: `IArticleListOptions`
