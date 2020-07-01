@@ -19,7 +19,7 @@ export class NewsLIstService {
 
   // 获取文章列表
   getNewsList(): Observable<IHttpResponse<IArticleListResponse>> {
-    return this.http.get('/article/list') as Observable<IHttpResponse<IArticleListResponse>>
+    return this.http.get('/article/admin/list') as Observable<IHttpResponse<IArticleListResponse>>
   }
 
   // 上线或者下线

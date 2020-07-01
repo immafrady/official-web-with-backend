@@ -33,15 +33,11 @@ $carousel-height: 620px;
     }
 
     &.item-one {
-      background-image:  $pc-banner-1-bg , $pc-banner-1;
-      background-position: center, center;
-      background-size: 100%, cover;
+      background-image:  $pc-banner-1-bg;
+      background-size: cover;
       .slogan {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 1000px;
+        display: block;
+        margin: 190px 0 0 60px;
       }
     }
     &.item-two {

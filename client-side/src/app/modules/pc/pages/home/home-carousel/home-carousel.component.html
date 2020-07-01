@@ -1,6 +1,13 @@
 <div class="home-carousel">
   <nz-carousel #nzCarouselComponent nzEffect="scrollx" [nzAutoPlay]="true">
     <div nz-carousel-content class="carousel-item item-one">
+      <pc-core-container>
+        <div class="wrapper">
+          <div class="content-group">
+            <img [src]="getImage('pc-banner-1-slogan')" class="slogan" alt="">
+          </div>
+        </div>
+      </pc-core-container>
     </div>
     <div nz-carousel-content class="carousel-item item-two">
       <pc-core-container>
