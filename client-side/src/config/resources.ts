@@ -5,7 +5,7 @@ export const COMPANY_INFO = {
   TELEPHONES: ['020-88529619', '020-38776616'],
   WEIBO_HREF: '',
   COPYRIGHT: 'Copyright 2019',
-  BEIAN: '粤ICP备17126097号'
+  BEIAN: '粤ICP备17126097号-4'
 }
 
 // 工信部地址，怕他又变

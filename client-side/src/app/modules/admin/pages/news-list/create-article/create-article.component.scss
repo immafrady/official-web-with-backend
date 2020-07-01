@@ -20,18 +20,39 @@
     }
   }
 }
-
 .tox-tinymce {
   min-height: 450px;
 }
-.tox .tox-dialog__body {
-  display: block !important;
-  .tox-dialog__body-nav {
-    flex-direction: row;
-    padding-bottom: 0;
-    .tox-tab {
-      margin-right: 20px;
-      font-size: 16px;
+
+.tox {
+  .tox-dialog__header {
+    border-bottom: 1px solid #cecece !important;
+    padding: 8px 15px !important;
+    .tox-dialog__title {
+      font-size: 18px !important;
+    }
+  }
+  .tox-dialog__body {
+    display: block !important;
+    .tox-dialog__body-nav {
+      flex-direction: row;
+      padding-bottom: 0;
+      .tox-tab {
+        margin-right: 20px;
+        font-size: 16px;
+      }
+    }
+  }
+  .tox-dialog-wrap .tox-dialog--width-lg {
+    max-width: 620px !important;
+    .tox-dialog__body-content {
+      height: 602px !important;
+      padding: 0 !important;
+    }
+    .tox-dialog__footer {
+      display: none !important;
     }
   }
 }
+
+

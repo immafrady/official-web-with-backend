@@ -26,10 +26,10 @@ export class CreateArticleComponent implements OnInit {
     language: 'zh_CN',
     suffix: '.min',
     language_url : '/assets/tinymce/langs/zh_CN.js', // 语言 中文
-    plugins: 'image, link', // 插件 图片/超链接
+    plugins: 'image, link, preview, table, emoticons, paste', // 插件 图片/超链接/预览/表格/表情/粘贴
     default_link_target: "_blank", // 打开的超链接新的地址打开
     image_advtab: true, // 上传的图片的css样式（内置style）、边距（margin）和边框（border）
-    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help | image | link',
+    toolbar: 'undo redo | formatselect | bold italic backcolor | table tabledelete | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help | image | link | emoticons | preview',
     images_upload_handler: (blobInfo, succFun, failFun) => {
       const file = blobInfo.blob();
       uploadAliyun(file).then(res => {
