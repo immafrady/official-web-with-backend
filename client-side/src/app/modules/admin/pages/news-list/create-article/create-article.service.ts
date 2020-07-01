@@ -26,7 +26,7 @@ export class CreateArticleService {
 
   //  获取文章数据
   getArticleContent(id): Observable<IHttpResponse<IArticleDetailResponse>> {
-    return this.http.get(`/article/detail/${ id }`) as Observable<IHttpResponse<IArticleDetailResponse>>
+    return this.http.get(`/article/admin/detail/${ id }`) as Observable<IHttpResponse<IArticleDetailResponse>>
   }
 
   // 保存编辑文章
