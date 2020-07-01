@@ -808,16 +808,15 @@
     </column>
     <column id="246" parent="236" name="priority">
       <Position>9</Position>
-      <DataType>enum(&apos;NORMAL&apos;, &apos;IMPORTANT&apos;, &apos;VERY_IMPORTANT&apos;)|0e</DataType>
+      <DataType>enum(&apos;0&apos;, &apos;1&apos;, &apos;2&apos;)|0e</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;NORMAL&apos;</DefaultExpression>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="247" parent="236" name="type">
       <Position>10</Position>
-      <DataType>enum(&apos;HOT_ARTICLE&apos;, &apos;NEW_ARTICLE&apos;, &apos;OLD_ARTICLE&apos;, &apos;HONOR_ARTICLE&apos;)|0e</DataType>
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;NEW_ARTICLE&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="248" parent="236" name="userId">
