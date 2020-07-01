@@ -84,22 +84,31 @@ export class ArticleController {
     // 只能查上线的
     @get('/list')
     async getListUser(): Promise<IHttpResponse<IArticleListResponse>> {
-        const type = this.ctx.request?.query?.type
+        const query: IArticleListOptions = this.ctx.request.query
 
         const options: IArticleFindManyOptions = {
             where: {
                 status: ArticleStatus.Online,
                 modifyDate: LessThanOrEqual(new Date()),
-                type: type ? Like(`%${type}%`) : undefined
-            }
+                type: query.type ? Like(`%${query.type}%`) : undefined
+            },
+            size: query?.size,
+            page: query?.page
         }
         return successResponse(await this.service.findMany(options), '')
     }
 
     @get('/admin/list', { middleware: [MIDDLEWARE_JWT] })
     async getListAdmin(): Promise<IHttpResponse<IArticleListResponse>> {
-        const options: IArticleListOptions = {
-            ...this.ctx.request?.query
+        const query: IArticleListOptions = this.ctx.request.query
+        const options: IArticleFindManyOptions = {
+            where: {
+                modifyDate: query.modifyDate ? LessThanOrEqual(query.modifyDate) : undefined,
+                type: query.type ? Like(`%${query.type}%`) : undefined,
+                status: query?.status
+            },
+            size: query?.size,
+            page: query?.page
         }
         return successResponse(await this.service.findMany(options), '')
     }
