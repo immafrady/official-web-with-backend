@@ -11,7 +11,7 @@ export interface IArticleEntity extends Partial<IBaseEntity>{
     modifyDate: Date;
     status: ArticleStatus;
     priority: ArticlePriority;
-    type: ArticleType;
+    type: ArticleType[];
 }
 
 export type ArticlePick = {

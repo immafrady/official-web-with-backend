@@ -3,7 +3,6 @@ import { MIDDLEWARE_JWT, SERVICE_POST } from '../../inject-token';
 import {
     IArticleCreateOptions,
     IArticleDeleteOptions,
-    IArticleDetailOptions,
     IArticleListOptions,
     IArticleModifyOptions
 } from 'libs/request/article';
@@ -18,9 +17,9 @@ import {
 } from 'libs/response/article';
 import { successResponse } from '../../utils/response-builder.util';
 import { getIdFromHeader } from '../../utils/get-id-from-header.util';
-import { IArticleService } from '../../interfaces/article.interface';
+import { IArticleFindManyOptions, IArticleFindOneOptions, IArticleService } from '../../interfaces/article.interface';
 import { ArticleStatus } from 'libs/enums/article';
-import { LessThanOrEqual } from 'typeorm';
+import { LessThanOrEqual, Like } from 'typeorm';
 
 @provide()
 @controller('/article')
@@ -63,11 +62,12 @@ export class ArticleController {
     // 只能查上线的
     @get('/detail/:id')
     async getDetailUser(): Promise<IHttpResponse<IArticleDetailResponse>> {
-        const options: IArticleDetailOptions = {
+        const options: IArticleFindOneOptions = {
             id: this.ctx.params?.id,
-            ...this.ctx.request?.query,
-            status: ArticleStatus.Online,
-            modifyDate: LessThanOrEqual(new Date())
+            where: {
+                status: ArticleStatus.Online,
+                modifyDate: LessThanOrEqual(new Date())
+            }
         }
         return successResponse(await this.service.findOne(options), '')
     }
@@ -75,9 +75,8 @@ export class ArticleController {
     // 管理员查全部
     @get('/admin/detail/:id', { middleware: [MIDDLEWARE_JWT] })
     async getDetailAdmin(): Promise<IHttpResponse<IArticleDetailResponse>> {
-        const options: IArticleDetailOptions = {
-            id: this.ctx.params?.id,
-            ...this.ctx.request?.query
+        const options: IArticleFindOneOptions = {
+            id: this.ctx.params?.id
         }
         return successResponse(await this.service.findOne(options), '')
     }
@@ -85,10 +84,14 @@ export class ArticleController {
     // 只能查上线的
     @get('/list')
     async getListUser(): Promise<IHttpResponse<IArticleListResponse>> {
-        const options: IArticleListOptions = {
-            ...this.ctx.request?.query,
-            status: ArticleStatus.Online,
-            modifyDate: LessThanOrEqual(new Date())
+        const type = this.ctx.request?.query?.type
+
+        const options: IArticleFindManyOptions = {
+            where: {
+                status: ArticleStatus.Online,
+                modifyDate: LessThanOrEqual(new Date()),
+                type: type ? Like(`%${type}%`) : undefined
+            }
         }
         return successResponse(await this.service.findMany(options), '')
     }

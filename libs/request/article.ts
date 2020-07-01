@@ -3,6 +3,7 @@
  */
 import { IRequestPagination } from "../common";
 import { IArticleEntity } from "../entity/article";
+import { ArticlePriority, ArticleType } from '../enums/article';
 
 export interface IArticleCreateOptions extends IArticleEntity {
     userId?: number;
@@ -26,14 +27,18 @@ export interface IArticleDeleteOptions {
 /**
  * @description 单篇文章
  */
-export interface IArticleDetailOptions extends Partial<IArticleEntity> {
+export interface IArticleDetailOptions {
     id: number;
 }
 
 /**
  * @description 文章列表
  */
-export interface IArticleListOptions extends Partial<IArticleEntity>, IRequestPagination{}
+export interface IArticleListOptions extends IRequestPagination{
+    type?: ArticleType,
+    priority?: ArticlePriority,
+    modifyDate?: any
+}
 
 /**
  * @description 修改文章状态接口

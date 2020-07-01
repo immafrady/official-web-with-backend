@@ -13,8 +13,8 @@ export type IdParam = string | number;
  * @description 请求列表分页
  */
 export interface IRequestPagination {
-    size?: number;
-    page?: number;
+    size?: number | string;
+    page?: number | string;
 }
 
 /**

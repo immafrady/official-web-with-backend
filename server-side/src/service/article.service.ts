@@ -1,11 +1,9 @@
 import { inject, provide } from 'midway';
-import { IArticleService } from '../interfaces/article.interface';
+import { IArticleFindManyOptions, IArticleFindOneOptions, IArticleService } from '../interfaces/article.interface';
 import { SERVICE_DB, SERVICE_POST } from '../inject-token';
 import {
     IArticleCreateOptions,
     IArticleDeleteOptions,
-    IArticleDetailOptions,
-    IArticleListOptions,
     IArticleModifyOptions,
     IArticleSetStatusOption
 } from 'libs/request/article';
@@ -25,9 +23,8 @@ import {
 } from 'libs/response-error';
 import { IDb } from '../interfaces/db.interface';
 import { User } from '../db/entities/user';
-import { ArticlePick, IArticleEntity } from 'libs/entity/article';
+import { ArticlePick } from 'libs/entity/article';
 import { ArticleStatus } from 'libs/enums/article';
-import { cleanNoneValue } from '../utils/clean-none-value.utils';
 import { handlePagination } from '../utils/handle-pagination.utils';
 
 @provide(SERVICE_POST)
@@ -72,21 +69,15 @@ export class ArticleService implements IArticleService {
     /**
      * @description 文章列表
      * @param options
-     * @param select    展示列
      */
-    async findMany(options: IArticleListOptions, select?: (keyof IArticleEntity | "user")[]): Promise<IArticleListResponse> {
-        const isShowUser = Array.isArray(select) && select.includes("user")
-
+    async findMany(options: IArticleFindManyOptions): Promise<IArticleListResponse> {
         try {
             const articleRepo = this.db.getRepository(Article)
-            const articleOptions = articleRepo.create(options)
-            cleanNoneValue(articleOptions)
 
             // 开启分页
             const [list, total]= await articleRepo.findAndCount({
-                select,
-                where: articleOptions,
-                relations: isShowUser ? ["user"] : undefined,
+                where: options?.where,
+                relations: options.showUser ? ["user"] : undefined,
                 order: {
                     modifyDate: "DESC",
                     priority: "DESC"
@@ -108,10 +99,10 @@ export class ArticleService implements IArticleService {
      * @description 文章详情
      * @param options
      */
-    async findOne(options: IArticleDetailOptions): Promise<IArticleDetailResponse> {
+    async findOne(options: IArticleFindOneOptions): Promise<IArticleDetailResponse> {
         // 拿单篇文章
         const articleRepo = this.db.getRepository(Article)
-        const article = await articleRepo.findOne(options.id, { relations: ["user"] })
+        const article = await articleRepo.findOne(options.id, { relations: ["user"], where: options.where })
         if (!article) {
             throw new ArticleNotFoundError()
         }
@@ -119,9 +110,11 @@ export class ArticleService implements IArticleService {
         const author = article.user
         delete article.user
 
-        delete options.id
         // 拿所有文章
-        const { list } = await this.findMany(options, ['id', 'title'])
+        const { list } = await this.findMany({
+            where: options.where,
+            select: ['id', 'title' ]
+        }, )
 
         try {
             let related: [ArticlePick, ArticlePick]

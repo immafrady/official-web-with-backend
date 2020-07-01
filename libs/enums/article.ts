@@ -14,9 +14,9 @@ export const ArticleStatusLabel = {
  * @description 文章优先级
  */
 export enum ArticlePriority {
-    Normal= 'NORMAL',
-    Important = 'IMPORTANT',
-    VeryImportant = 'VERY_IMPORTANT'
+    Normal,
+    Important,
+    VeryImportant
 }
 export const ArticlePriorityLabel = {
     [ArticlePriority.Normal]: '普通',

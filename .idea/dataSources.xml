@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="official_web@localhost" uuid="f1d41265-4b76-488a-9f3b-2b2b67c37044">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/official_web</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="official_web@fradyspace.com" uuid="12279ea3-3f7a-41b8-8f05-a840228f7866">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://fradyspace.com:3306/official_web</jdbc-url>
+    </data-source>
+  </component>
+</project>

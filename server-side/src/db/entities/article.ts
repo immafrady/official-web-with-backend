@@ -62,11 +62,9 @@ export class Article extends BaseEntity implements IArticleEntity{
      * @description 文章类型
      */
     @Column({
-        type: "enum",
-        enum: ArticleType,
-        default: ArticleType.New
+        type: "simple-array",
     })
-    type: ArticleType;
+    type: ArticleType[];
 
     /**
      * @description 作者
