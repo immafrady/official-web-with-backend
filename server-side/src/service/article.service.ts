@@ -78,6 +78,7 @@ export class ArticleService implements IArticleService {
 
             // 开启分页
             const [list, total]= await articleRepo.findAndCount({
+                select: options.select,
                 where: options?.where ,
                 relations: options.showUser ? ["user"] : undefined,
                 order: {
@@ -109,24 +110,29 @@ export class ArticleService implements IArticleService {
             throw new ArticleNotFoundError()
         }
 
-        const author = article.user
-        delete article.user
+        let author
+        if (options.showUser) {
+            author = article.user
+        }
 
-        // 拿所有文章
-        const { list } = await this.findMany({
-            where: options.where,
-            select: ['id', 'title' ]
-        }, )
+        delete article.user
 
         try {
             let related: [ArticlePick, ArticlePick]
-            if (list) {
-                for (let i = 0; i < list.length; i++) {
-                    if (list[i].id === article.id) {
-                        related = [
-                            list[i - 1] as ArticlePick,
-                            list[i + 1] as ArticlePick
-                        ]
+            if (options.showRelation) {
+                // 拿所有文章
+                const { list } = await this.findMany({
+                    where: options.where,
+                    select: ['id', 'title' ]
+                }, )
+                if (list) {
+                    for (let i = 0; i < list.length; i++) {
+                        if (list[i].id === article.id) {
+                            related = [
+                                list[i - 1] as ArticlePick,
+                                list[i + 1] as ArticlePick
+                            ]
+                        }
                     }
                 }
             }

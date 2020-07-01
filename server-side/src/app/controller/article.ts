@@ -67,7 +67,9 @@ export class ArticleController {
             where: {
                 status: ArticleStatus.Online,
                 modifyDate: LessThanOrEqual(new Date())
-            }
+            },
+            showRelation: true,
+            showUser: true
         }
         return successResponse(await this.service.findOne(options), '')
     }
@@ -103,9 +105,7 @@ export class ArticleController {
         const query: IArticleListOptions = this.ctx.request.query
         const options: IArticleFindManyOptions = {
             where: {
-                modifyDate: query.modifyDate ? LessThanOrEqual(query.modifyDate) : undefined,
-                type: query.type ? Like(`%${query.type}%`) : undefined,
-                status: query?.status
+                type: query.type ? Like(`%${query.type}%`) : undefined
             },
             size: query?.size,
             page: query?.page

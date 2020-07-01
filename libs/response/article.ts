@@ -32,8 +32,8 @@ export interface IArticleDeleteResponse {
  */
 export interface IArticleDetailResponse {
     article: IArticleEntity;
-    related: [ArticlePick, ArticlePick],
-    author: IUserEntity
+    related?: [ArticlePick, ArticlePick],
+    author?: IUserEntity
 }
 
 /**

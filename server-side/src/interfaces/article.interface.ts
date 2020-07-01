@@ -24,7 +24,8 @@ export interface IArticleFindOneOptions {
     id: number,
     where?: TypeOrmFindWhere<Article>,
     select?: (keyof IArticleEntity)[],
-    showUser?: boolean
+    showUser?: boolean,
+    showRelation?: boolean,
 }
 
 export interface IArticleService {
