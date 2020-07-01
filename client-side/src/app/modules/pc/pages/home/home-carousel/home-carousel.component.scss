@@ -1,7 +1,7 @@
 @import "src/styles/images.pc";
 @import "src/styles/common.pc";
 
-$carousel-height: 869px;
+$carousel-height: 620px;
 
 .home-carousel {
   width: 100%;
@@ -49,19 +49,17 @@ $carousel-height: 869px;
       .phone-element {
         position: absolute;
         @include absolute-y-middle;
-        left: 50px;
-        width: 280px;
+        left: 88px;
       }
       .right-block {
         @include absolute-y-middle;
-        right: 50px;
+        right: 69px;
 
         .slogan {
           display: block;
-          width: 700px;
         }
         .button-like {
-          margin-left: 28px;
+          margin-left: 21px;
           margin-top: 30px;
         }
       }
@@ -76,7 +74,7 @@ $carousel-height: 869px;
           display: block;
         }
         .button-like {
-          margin-top: 30px;
+          margin-top: 22px;
           margin-left: 28px;
         }
       }
@@ -94,10 +92,10 @@ $carousel-height: 869px;
     transform: translateY(-50%);
     cursor: pointer;
     &.prev {
-      left: 50px;
+      left: 90px;
     }
     &.next {
-      right: 50px;
+      right: 90px;
     }
   }
   .ant-carousel .slick-dots-bottom, .ant-popover-placement-leftBottom>.ant-popover-content>.ant-popover-arrow, .ant-popover-placement-rightBottom>.ant-popover-content>.ant-popover-arrow {
