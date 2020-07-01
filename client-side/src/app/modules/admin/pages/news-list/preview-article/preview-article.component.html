@@ -1,0 +1,7 @@
+<pc-core-container class="news-detail-container">
+  <div class="news-detail--content">
+    <h2 class="news-detail-title">{{ newsDetail?.title }}</h2>
+    <div class="news-detail-time">发布时间：{{ newsDetail?.modifyDate | date: 'yyyy-MM-dd' }}</div>
+    <div class="news-detail-html" [innerHTML]="newsDetail?.content | richTextNoSanitize"></div>
+  </div>
+</pc-core-container>

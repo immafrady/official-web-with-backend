@@ -19,10 +19,12 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
 import {CreateArticleService} from "./create-article/create-article.service";
 import { AdminSharedModule } from '@admin/shared/admin-shared.module';
+import { PreviewArticleComponent } from './preview-article/preview-article.component';
+import { PcSharedModule } from '@pc/shared/pc-shared.module';
 
 
 @NgModule({
-  declarations: [NewsListComponent, CreateArticleComponent],
+  declarations: [NewsListComponent, CreateArticleComponent, PreviewArticleComponent],
   imports: [
     CommonModule,
     NewsListRoutingModule,
@@ -38,7 +40,8 @@ import { AdminSharedModule } from '@admin/shared/admin-shared.module';
     NzUploadModule,
     NzIconModule,
     NzToolTipModule,
-    AdminSharedModule
+    AdminSharedModule,
+    PcSharedModule
   ],
   providers: [
     NewsLIstService,
