@@ -3,7 +3,7 @@
  */
 import { IRequestPagination } from "../common";
 import { IArticleEntity } from "../entity/article";
-import { ArticlePriority, ArticleType } from '../enums/article';
+import { ArticleType } from '../enums/article';
 
 export interface IArticleCreateOptions extends IArticleEntity {
     userId?: number;
