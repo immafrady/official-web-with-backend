@@ -1,11 +1,20 @@
 # official-web-with-backend
 为带后台的官网搭建个试验性的版本
 
+## 项目目录
+
+```
+├── client-side (客户端代码)
+├── docs （文档）
+├── libs （项目共享代码）
+└── server-side （服务端代码）
+```
+
 ## 生产执行脚本
 
 ```bash
     # 安装依赖
-    npm run postinstall
+    npm install
 
     # 服务端
         cd server-side
@@ -34,7 +43,7 @@
 - [Ng-ZORRO](https://ng.ant.design/docs/introduce/zh)
 
 ### Server side
-- [Midwayjs](https://midwayjs.org/midway/)
+- [Midwayjs](https://midwayjs.org/midway/) -- **打算废弃，改用nest.js**
 
 
 ## Problems need to be solved
@@ -43,14 +52,15 @@
 
 - [x] 服务端/客户端共用interface
 
-> 通过tsconfig - "reference"引入外部地址
+> Angular 客户端直接通过paths配置引用  
+> MidwayJS 需要以本地NPM链接的形式，拷贝到node_modules里引用（假如使用paths，会导致编译出来到目录结构不对，无法启动程序）
 
 ### Client side
 
 - [ ] 动态路由，通过请求设备自动分配是电脑端还是移动端
-- [ ] 后端渲染时动态设置meta
+- [x] 后端渲染时动态设置meta
 - [ ] 后端渲染时图片的加载失败问题
-- [ ] http请求拦截鉴权
+- [x] http请求拦截鉴权
 - [x] 部分页面走回CSR（admin）
 - [ ] svg-icon的使用
 
