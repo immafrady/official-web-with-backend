@@ -1,22 +1,20 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
-    "target": "ES2018",
     "module": "commonjs",
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "inlineSourceMap":true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "stripInternal": true,
-    "pretty": true,
     "declaration": true,
-    "outDir": "dist"
-  },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "test"
-  ]
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "paths": {
+      "@libs/*": [
+        "../libs/*"
+      ]
+    }
+  }
 }
