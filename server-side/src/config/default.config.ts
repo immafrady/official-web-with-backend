@@ -1,4 +1,6 @@
 // 默认配置
 export default {
-    secret: 'Official-Web'
+    secret: 'Official-Web',
+    expiredIn: '24h',
+    registerKey: ''
 }

@@ -5,6 +5,8 @@ import { ConnectionOptions } from 'typeorm';
 
 interface Config {
     secret: string;
+    expiredIn: string | number;
+    registerKey: string;
     [Config_Typeorm]: ConnectionOptions
 }
 

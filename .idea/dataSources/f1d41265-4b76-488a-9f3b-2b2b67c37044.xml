@@ -957,15 +957,16 @@
     </column>
     <column id="295" parent="284" name="priority">
       <Position>10</Position>
-      <DataType>enum(&apos;0&apos;, &apos;1&apos;, &apos;2&apos;)|0e</DataType>
+      <DataType>enum(&apos;NORMAL&apos;, &apos;IMPORTANT&apos;, &apos;VERY_IMPORTANT&apos;)|0e</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <DefaultExpression>&apos;NORMAL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="296" parent="284" name="type">
       <Position>11</Position>
-      <DataType>text|0s</DataType>
+      <DataType>enum(&apos;HOT_ARTICLE&apos;, &apos;NEW_ARTICLE&apos;, &apos;OLD_ARTICLE&apos;, &apos;HONOR_ARTICLE&apos;)|0e</DataType>
       <NotNull>1</NotNull>
+      <DefaultExpression>&apos;NEW_ARTICLE&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="297" parent="284" name="FK_636f17dadfea1ffb4a412296a28">
