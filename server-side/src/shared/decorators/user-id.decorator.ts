@@ -1,5 +1,5 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { getDataFromJwt } from '../utils/get-data-from-jwt.utls';
+import { getDataFromJwt } from '../../utils/get-data-from-jwt.utls';
 
 
 export const UserId = createParamDecorator(
