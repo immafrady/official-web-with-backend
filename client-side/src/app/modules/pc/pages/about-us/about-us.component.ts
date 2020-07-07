@@ -84,24 +84,26 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
   ngOnInit(): void {
   }
   selectTab(active, arrow?: string): void {
-    this.active = active;
-    let position = null;
-    this.dateList.forEach((item, index) => {
-      if (item.year === active) {
-        position = index
+    if (arrow) {
+      let position = null;
+      this.dateList.forEach((item, index) => {
+        if (item.year === active) {
+          position = index
+        }
+      });
+      if (arrow === 'left') {
+        position--;
+        if (position >= 0) {
+          this.active = this.dateList[position].year;
+        }
+      } else if (arrow === 'right') {
+        position++;
+        if (position < this.dateList.length) {
+          this.active = this.dateList[position].year
+        }
       }
-    });
-    position = arrow && arrow === 'left' ? position-- : position++;
-    if (arrow === 'left') {
-      position--;
-      if (position >= 0) {
-        this.active = this.dateList[position].year;
-      }
-    } else if (arrow === 'right') {
-      position++;
-      if (position < this.dateList.length) {
-        this.active = this.dateList[position].year
-      }
+    } else {
+      this.active = active;
     }
   }
 }
