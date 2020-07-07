@@ -18,7 +18,7 @@
   <h2 class="block-title">企业大事件</h2>
   <div class="selector-container">
     <div class="arrow selector-left" (click)="selectTab(active, 'left')"><img [src]="base64Pics.SELECTOR_LEFT" alt=""></div>
-    <div *ngFor="let item of dateList" (click)="selectTab(item)" class="selector" [class]="item === active ? 'active' : ''">{{ item }}</div>
+    <div *ngFor="let item of dateList" (click)="selectTab(item.year)" class="selector" [class]="item.year === active ? 'active' : ''">{{ item.year }} - {{ item.title }}</div>
     <div class="arrow selector-right" (click)="selectTab(active, 'right')" ><img [src]="base64Pics.SELECTOR_RIGHT" alt=""></div>
   </div>
   <div class="selector-content">

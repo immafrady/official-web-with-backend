@@ -25,67 +25,83 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
     super(metaService, titleService, activatedRoute, router)
   }
 
-  dateList:string[] = ['2017', '2018', '2019', '2020'];
+  dateList:Array<any> = [{
+    year: '2016',
+    title: '探索'
+  }, {
+    year: '2017',
+    title: '践行'
+  }, {
+    year: '2018',
+    title: '成长'
+  }, {
+    year: '2019',
+    title: '飞跃'
+  }, {
+    year: '2020',
+    title: '引领'}];
   dateDictionary: IDateDictionary = {
+    '2016': [
+      { time: '12月', content: '率先推出自由职业者发薪报税经营模式，引领行业探索新经济商税服务' }
+    ],
     '2017': [
-      { time: '7月', content: '薪宝科技在广州成立' },
-      { time: '7月', content: '业内领先推出“薪税管家”商税服务系统，上线首月服务业务量破1亿' },
-      { time: '7月', content: '“创客宝”产品上线，完成第一家个体口袋工作室开户' },
-      { time: '8月', content: '广州华信人力并入薪宝科技大业务板块' },
-      { time: '8月', content: '薪水管家平台年度服务业务量破10亿' },
+      { time: '2月', content: '业内领先推出“佣金宝”商税服务系统，上线首月服务流水破1亿' },
+      { time: '6月', content: '“创客宝”产品上线，完成第一家个体口袋工作室开户' },
+      { time: '7月', content: '薪宝信息科技（广州）有限公司成立' },
+      { time: '12月', content: '薪宝科技全年服务流水突破10亿' }
     ],
     '2018': [
-      { time: '7月', content: '举办社保改革与应对策略分享会（广州场）' },
-      { time: '8月', content: '社保改革与应对策略分享会（深圳场）' },
-      { time: '9月', content: '举办社保改革与应对策略私董会（广州）' },
-      { time: '9月', content: '杭州分享会/线上课程分享会' },
-      { time: '9月', content: '梁会长与董教授来我司参观指导' },
-      { time: '10月', content: '祁东政府到我司参观指导' },
-      { time: '10月', content: '社税新政下的组织重构与成本解决方案（中山场）' },
-      { time: '10月', content: '社税新政下的组织重构与成本解决方案（广州场）' },
-      { time: '10月', content: '薪宝集团注入新势力，周康康、万国文、刘康等同事加入薪宝' },
+      { time: '1月', content: '薪宝科技“薪码力”项目正式启动，致力于探索商税技术未来' },
+      { time: '7月', content: '“佣金宝”“创客宝”产品合名为“薪税管家”企业发拥报税智能结算系统' },
+      { time: '12月', content: '服务新经济企业客户超过50家，全年服务流水破40亿元人民币，“薪税管家”、“创客宝”产品深受客户好评' }
     ],
     '2019': [
-      { time: '1月', content: '接受猎聘网两亿元天使轮战略投资' },
-      { time: '4月', content: '薪宝科技加入《中国人力资源社会保障》理事会会员' },
-      { time: '6月', content: '薪宝科技CEO荣获广东省人力资源研究会“新锐企业家”称号' },
-      { time: '7月', content: '薪宝科技参加广州跨境电商博览会' },
-      { time: '9月', content: '2019中国人力资源科技创新产品奖' },
-      { time: '9月', content: '2019“中国最具影响力人力资源品牌奖”' },
-      { time: '9月', content: '2019数字人力资源科技奖（人气奖）' },
-      { time: '10月', content: '薪宝科技第一批员工到张家界团建' },
-      { time: '11月', content: '薪宝科技CEO刘树兵上榜2019中国人力资源科技影响力TOP人物' },
-      { time: '11月', content: '薪宝科技参加第二届社群团购联盟大会协议' },
-      { time: '11月', content: '2019参与中国财经峰会冬季论坛，获年度最具投资价值奖' },
-      { time: '11月', content: '薪宝科技参加湖北山林社电商展会' },
-      { time: '11月', content: '2019GHR年度人气HR服务机构全国30强' },
-      { time: '12月', content: '黄山市税务领导到我司参观指导' },
-      { time: '12月', content: '广东财经大学财税学院来访，与薪宝建立广东财经大学实践教学基地' },
-      { time: '12月', content: '2019中国先锋人力资源服务商—年度最佳薪税服务平台' }
+      { time: '1月', content: '获猎聘网2000万战略投资' },
+      { time: '2月', content: '薪宝科技“薪研院”项目正式启动，致力于探索自然人商税服务未来' },
+      { time: '6月', content: '薪宝科技CEO刘树兵，荣获广东省人力资源研究会“新锐企业家”称号' },
+      { time: '8月', content: '薪宝科技入选“广东省人力资源研究会“副会长单位' },
+      { time: '9月', content: '荣获“2019中国十大影响力人力资源品牌奖”' },
+      { time: '9月', content: '荣获“2019中国人力资源科技创新产品奖”' },
+      { time: '10月', content: '荣获“2019数字人力资源科技人气奖”' },
+      { time: '10月', content: '广东财经大学实践教学基地项目启动' },
+      { time: '11月', content: '荣获“2019年度最具投资价值奖”' },
+      { time: '11月', content: '荣获“2019中国财经峰会冬季论坛-2019年度最具投资价值奖”' },
+      { time: '11月', content: '薪宝科技CEO刘树兵荣获“2019中国人力资源科技影响力TOP人物”' },
+      { time: '12月', content: '荣获“2019中国人力资源先锋服务机构——年度最佳薪税服务平台奖“' }
     ],
     '2020': [
-      { time: '2月', content: '加入广州市电子商务协会' },
-      { time: '2月', content: '为抗疫出力 薪宝科技向湖北安徽捐赠物资助力疫情防控' },
-      { time: '3月', content: '2019年度中国华南地区人力资源创先争优（金人奖）' },
-      { time: '4月', content: 'HRoot大中华地区最佳人力资源服务品牌（薪税服务类）' },
-      { time: '5月', content: '2020中国人力资源服务机构100强 - TOP 61' },
-      { time: '5月', content: '薪宝科技乔迁至力达广场' }
+      { time: '1月', content: '薪宝科技“薪商小镇”项目正式启动，致力于打造一站式智慧商事生态圈' },
+      { time: '2月', content: '承担社会责任抗击疫情，薪宝科技向湖北及安徽两地捐赠了总价值达23万元的生活物资及防疫用品' },
+      { time: '3月', content: '荣获“2019年度中国华南地区人力资源创先争优金人奖”' },
+      { time: '4月', content: '荣获“HRoot大中华地区最佳人力资源服务品牌”' },
+      { time: '4月', content: '入选“广州电子商务行业协会“副会长单位' },
+      { time: '4月', content: '“口袋工作室”个人商税综合服务平台上线' },
+      { time: '5月', content: '荣获“2020中国人力资源服务机构100强“' }
     ]
   };
-  active:string = '2017';
+  active:string = '2018';
 
   ngOnInit(): void {
   }
   selectTab(active, arrow?: string): void {
     this.active = active;
-    let position = this.dateList.indexOf(active);
-    if (arrow === 'left' && position > 0) {
+    let position = null;
+    this.dateList.forEach((item, index) => {
+      if (item.year === active) {
+        position = index
+      }
+    });
+    position = arrow && arrow === 'left' ? position-- : position++;
+    if (arrow === 'left') {
       position--;
-      this.active = this.dateList[position]
-    } else if (arrow === 'right' && position < this.dateList.length - 1){
+      if (position >= 0) {
+        this.active = this.dateList[position].year;
+      }
+    } else if (arrow === 'right') {
       position++;
-      this.active = this.dateList[position]
+      if (position < this.dateList.length) {
+        this.active = this.dateList[position].year
+      }
     }
   }
-
 }
