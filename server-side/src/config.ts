@@ -10,6 +10,6 @@ interface Config {
     [Config_Typeorm]: ConnectionOptions
 }
 
-export const config = (function () {
-    return (process.env.NODE_ENV === 'production' ? prodConfig : devConfig) as unknown
-})() as Config
+export const config = (function (): Config {
+    return (process.env.NODE_ENV === 'production' ? prodConfig : devConfig) as Config
+})()

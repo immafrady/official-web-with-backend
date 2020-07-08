@@ -70,7 +70,7 @@ export class Article extends BaseEntity implements IArticleEntity{
      * @description 作者
      */
     @ManyToOne(
-        type => User,
+        () => User,
         user => user.articles
     )
     user: User;

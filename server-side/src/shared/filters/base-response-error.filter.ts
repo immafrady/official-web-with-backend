@@ -5,7 +5,7 @@ import { errorResponse } from '../../utils/ro-builder.utils';
 
 @Catch(BaseResponseError)
 export class BaseResponseErrorFilter implements ExceptionFilter {
-    catch(exception: BaseResponseError, host: ArgumentsHost) {
+    catch(exception: BaseResponseError, host: ArgumentsHost): void {
         const ctx = host.switchToHttp()
         const response = ctx.getResponse<Response>()
         response

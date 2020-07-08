@@ -16,12 +16,12 @@ export class UserService {
     ) {}
 
     // 通过用户ID找用户
-    async findById(id): Promise<User> {
+    async findById(id: string | number): Promise<User> {
         return this.userRepository.findOne(id)
     }
 
     // 通过用户名查找用户
-    async findByUsername(username): Promise<User> {
+    async findByUsername(username: string): Promise<User> {
         return this.userRepository.findOne({
             where: {
                 username
@@ -30,19 +30,19 @@ export class UserService {
     }
 
     // 新增用户
-    async createNewUser(registerDto: RegisterDto) {
+    async createNewUser(registerDto: RegisterDto): Promise<any> {
         const user = this.userRepository.create(registerDto)
         await this.userRepository.save(user)
         return {}
     }
 
     // 判断密码是否正确
-    checkPasswordEqual(fromDto, fromEntity) {
+    checkPasswordEqual(fromDto: string, fromEntity: string): boolean {
         return md5(fromDto) === fromEntity
     }
 
     // 生成jwt
-    generateJWT(id) {
+    generateJWT(id: string | number): string {
         return jwt.sign(<IJWTSavedInfo>{
             id
         }, config.secret, {

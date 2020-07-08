@@ -14,7 +14,7 @@ function responseBuilder<T>(code: ResponseCode, data: T, msg: string ): IHttpRes
  * @param data  内容
  * @param msg   消息
  */
-export function successResponse<T>(data?: T, msg?: string) {
+export function successResponse<T>(data?: T, msg?: string): IHttpResponse<T> {
     return responseBuilder(ResponseCode.Success, data, msg)
 }
 
@@ -24,6 +24,6 @@ export function successResponse<T>(data?: T, msg?: string) {
  * @param data
  * @param msg
  */
-export function errorResponse<T>(code: ResponseCode, msg?: string, data: T = null) {
+export function errorResponse<T>(code: ResponseCode, msg?: string, data: T = null): IHttpResponse<T> {
     return responseBuilder(code, data, msg)
 }

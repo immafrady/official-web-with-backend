@@ -27,13 +27,13 @@ export class User extends BaseEntity implements IUserEntity{
     password: string;
 
     @OneToMany(
-        type => Article,
+        () => Article,
         article => article.user
     )
     articles: Article[];
 
     @BeforeInsert()
-    hashPassword() {
+    hashPassword(): void {
         this.password = md5(this.password)
     }
 }
