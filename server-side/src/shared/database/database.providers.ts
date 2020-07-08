@@ -9,4 +9,4 @@ export const databaseProviders = [
         provide: Token_DatabaseConnection,
         useFactory: async () => await createConnection(config[Config_Typeorm])
     }
-]
+];

@@ -2,7 +2,7 @@ import { BeforeInsert, Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from "../../shared/base.entity";
 import { IUserEntity } from 'libs/entity/user';
 import { Article } from "../article/article.entity";
-import * as md5 from 'md5'
+import * as md5 from 'md5';
 
 @Entity()
 export class User extends BaseEntity implements IUserEntity{
@@ -34,6 +34,6 @@ export class User extends BaseEntity implements IUserEntity{
 
     @BeforeInsert()
     hashPassword(): void {
-        this.password = md5(this.password)
+        this.password = md5(this.password);
     }
 }

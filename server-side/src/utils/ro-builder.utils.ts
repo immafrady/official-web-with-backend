@@ -6,7 +6,7 @@ function responseBuilder<T>(code: ResponseCode, data: T, msg: string ): IHttpRes
         code,
         data,
         msg
-    }
+    };
 }
 
 /**
@@ -15,7 +15,7 @@ function responseBuilder<T>(code: ResponseCode, data: T, msg: string ): IHttpRes
  * @param msg   消息
  */
 export function successResponse<T>(data?: T, msg?: string): IHttpResponse<T> {
-    return responseBuilder(ResponseCode.Success, data, msg)
+    return responseBuilder(ResponseCode.Success, data, msg);
 }
 
 /**
@@ -25,5 +25,5 @@ export function successResponse<T>(data?: T, msg?: string): IHttpResponse<T> {
  * @param msg
  */
 export function errorResponse<T>(code: ResponseCode, msg?: string, data: T = null): IHttpResponse<T> {
-    return responseBuilder(code, data, msg)
+    return responseBuilder(code, data, msg);
 }

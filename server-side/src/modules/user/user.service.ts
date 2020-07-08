@@ -17,7 +17,7 @@ export class UserService {
 
     // 通过用户ID找用户
     async findById(id: string | number): Promise<User> {
-        return this.userRepository.findOne(id)
+        return this.userRepository.findOne(id);
     }
 
     // 通过用户名查找用户
@@ -26,19 +26,19 @@ export class UserService {
             where: {
                 username
             }
-        })
+        });
     }
 
     // 新增用户
     async createNewUser(registerDto: RegisterDto): Promise<any> {
-        const user = this.userRepository.create(registerDto)
-        await this.userRepository.save(user)
-        return {}
+        const user = this.userRepository.create(registerDto);
+        await this.userRepository.save(user);
+        return {};
     }
 
     // 判断密码是否正确
     checkPasswordEqual(fromDto: string, fromEntity: string): boolean {
-        return md5(fromDto) === fromEntity
+        return md5(fromDto) === fromEntity;
     }
 
     // 生成jwt
@@ -47,6 +47,6 @@ export class UserService {
             id
         }, config.secret, {
             expiresIn: config.expiredIn
-        })
+        });
     }
 }

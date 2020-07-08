@@ -7,7 +7,7 @@ import { AuthMiddleware } from '../../shared/middlewares/auth.middleware';
 })
 export class SystemModule implements NestModule{
     configure(consumer: MiddlewareConsumer): any {
-        consumer.apply(AuthMiddleware).forRoutes(SystemController)
+        consumer.apply(AuthMiddleware).forRoutes(SystemController);
     }
 
 }

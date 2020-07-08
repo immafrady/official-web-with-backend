@@ -7,6 +7,6 @@ export class SystemController {
 
     @Get('check-login-status')
     async checkIsLogin(): Promise<IHttpResponse<any>> {
-        return successResponse({})
+        return successResponse({});
     }
 }

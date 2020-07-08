@@ -1,4 +1,4 @@
-import defaultConfig from './default.config'
+import defaultConfig from './default.config';
 import { Config_Typeorm } from '../constants';
 import { ConnectionOptions } from 'typeorm';
 
@@ -15,4 +15,4 @@ export default {
         // synchronize: true, // 每次启动都会覆盖数据库，生产勿用
         entities: [__dirname + '/../**/*.entity.{ts,js}']
     }
-}
+};

@@ -3,4 +3,4 @@ export default {
     secret: 'Official-Web',
     expiredIn: '24h',
     registerKey: ''
-}
+};

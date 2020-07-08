@@ -9,4 +9,4 @@ export const userProviders = [
         useFactory: (connection: Connection) => connection.getRepository(User),
         inject: [Token_DatabaseConnection]
     }
-]
+];

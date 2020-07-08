@@ -12,6 +12,6 @@ import { SystemModule } from './modules/system/system.module';
 })
 export class AppModule implements NestModule{
     configure(consumer: MiddlewareConsumer): any {
-        consumer.apply()
+        consumer.apply();
     }
 }

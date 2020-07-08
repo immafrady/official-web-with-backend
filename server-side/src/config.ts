@@ -1,5 +1,5 @@
-import devConfig from './config/dev.config'
-import prodConfig from './config/prod.config'
+import devConfig from './config/dev.config';
+import prodConfig from './config/prod.config';
 import { Config_Typeorm } from './constants';
 import { ConnectionOptions } from 'typeorm';
 
@@ -11,5 +11,5 @@ interface Config {
 }
 
 export const config = (function (): Config {
-    return (process.env.NODE_ENV === 'production' ? prodConfig : devConfig) as Config
-})()
+    return (process.env.NODE_ENV === 'production' ? prodConfig : devConfig) as Config;
+})();

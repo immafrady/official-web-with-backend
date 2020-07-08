@@ -12,12 +12,12 @@ export class CommonErrorInterceptor implements NestInterceptor {
             .pipe(
                 catchError(err => {
                     if (err instanceof BaseResponseError) {
-                        return throwError(err)
+                        return throwError(err);
                     } else {
                         return throwError(new UnknownError('未知错误', {
                             stack: err.stack,
                             name: err.name
-                        }))
+                        }));
                     }
                 })
             );

@@ -19,34 +19,34 @@ export class UserController extends BaseController {
     constructor(
         private readonly userService: UserService
     ) {
-        super()
+        super();
     }
 
     @Post('login')
     async login(@Body() loginDto: LoginDto): Promise<IHttpResponse<IUserLoginResponse>> {
-        const user = await this.userService.findByUsername(loginDto.username)
+        const user = await this.userService.findByUsername(loginDto.username);
         if (!user) {
-            throw new UserNotFoundError()
+            throw new UserNotFoundError();
         }
         if (!this.userService.checkPasswordEqual(loginDto.password, user.password)) {
-            throw new UserPasswordNotPairError()
+            throw new UserPasswordNotPairError();
         }
         return successResponse( {
             nickname: user.nickname,
             token: this.userService.generateJWT(user.id)
-        } as IUserLoginResponse)
+        } as IUserLoginResponse);
     }
 
     @Post('register')
     async register(@Body() registerDto: RegisterDto): Promise<IHttpResponse<IUserRegisterResponse>> {
         if (registerDto.key !== config.registerKey) {
-            throw new UserRegisterKeyNotPairError()
+            throw new UserRegisterKeyNotPairError();
         }
 
-        const user = await this.userService.findByUsername(registerDto.username)
+        const user = await this.userService.findByUsername(registerDto.username);
         if (user) {
-            throw new UserAlreadyExistError()
+            throw new UserAlreadyExistError();
         }
-        return successResponse(await this.userService.createNewUser(registerDto))
+        return successResponse(await this.userService.createNewUser(registerDto));
     }
 }
