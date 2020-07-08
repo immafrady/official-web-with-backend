@@ -5,12 +5,12 @@ import { getDataFromJwt } from '../../utils/get-data-from-jwt.utls';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-  use(req: Request, res: Response, next: NextFunction) {
-    const decoded = getDataFromJwt(req)
-    if (decoded) {
-      next()
-    } else {
-      throw new UserNotAuthorizeError()
+    use(req: Request, res: Response, next: NextFunction) {
+        const decoded = getDataFromJwt(req)
+        if (decoded) {
+            next()
+        } else {
+            throw new UserNotAuthorizeError()
+        }
     }
-  }
 }

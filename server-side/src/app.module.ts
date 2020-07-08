@@ -6,12 +6,12 @@ import { DatabaseModule } from './shared/database/database.module';
 import { SystemModule } from './modules/system/system.module';
 
 @Module({
-  imports: [UserModule, SystemModule, DatabaseModule],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [UserModule, SystemModule, DatabaseModule],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule implements NestModule{
-  configure(consumer: MiddlewareConsumer): any {
-    consumer.apply()
-  }
+    configure(consumer: MiddlewareConsumer): any {
+        consumer.apply()
+    }
 }
