@@ -9,5 +9,4 @@ export class CreateArticleDto implements IArticleCreateOptions{
     readonly thumbnail: string;
     readonly title: string;
     readonly type: ArticleType[];
-    userId: number;
 }

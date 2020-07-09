@@ -11,8 +11,4 @@ import { ArticleModule } from "./modules/article/article.module";
     controllers: [AppController],
     providers: [AppService],
 })
-export class AppModule implements NestModule{
-    configure(consumer: MiddlewareConsumer): any {
-        consumer.apply();
-    }
-}
+export class AppModule {}

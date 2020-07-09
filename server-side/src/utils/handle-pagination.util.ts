@@ -23,7 +23,7 @@ interface IPagination {
 }
 
 /**
- * 构造分页
+ * @description 构造分页
  * @param size 分页大小
  * @param page 第几页
  */

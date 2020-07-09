@@ -7,7 +7,8 @@ interface Config {
     secret: string;
     expiredIn: string | number;
     registerKey: string;
-    [Config_Typeorm]: ConnectionOptions
+    [Config_Typeorm]: ConnectionOptions;
+    port: number;
 }
 
 export const config = (function (): Config {

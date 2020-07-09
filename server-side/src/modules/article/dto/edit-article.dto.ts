@@ -9,6 +9,4 @@ export class EditArticleDto implements IArticleModifyOptions{
     readonly thumbnail: string;
     readonly title: string;
     readonly type: ArticleType[];
-    userId: number;
-    id: number;
 }
