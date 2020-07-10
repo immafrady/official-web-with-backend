@@ -11,7 +11,7 @@ import { getImage } from 'src/utils/getImage';
 export class HomeCarouselComponent implements OnInit, AfterViewInit {
 
   getImage = getImage;
-
+  carouselPlay = true;
   base64Pics = BASE_64_IMG;
 
   constructor() { }
@@ -22,5 +22,11 @@ export class HomeCarouselComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
 
+  mouseEnter() {
+    this.carouselPlay = false
+  }
+  mouseLeave() {
+    this.carouselPlay = true
+  }
 
 }

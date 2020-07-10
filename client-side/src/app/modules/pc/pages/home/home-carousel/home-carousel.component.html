@@ -1,32 +1,43 @@
 <div class="home-carousel">
-  <nz-carousel #nzCarouselComponent nzEffect="scrollx" [nzAutoPlay]="true">
+  <nz-carousel #nzCarouselComponent nzEffect="scrollx" [nzAutoPlay]="carouselPlay" [nzAutoPlaySpeed]="4000" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
     <div nz-carousel-content class="carousel-item item-one">
       <pc-core-container>
-        <div class="wrapper">
-          <div class="content-group">
-            <img [src]="getImage('pc-banner-1-slogan')" class="slogan" alt="">
-          </div>
+        <div class="banner-desc-container">
+          <p>科技·财税·未来</p>
+          <h2>2亿自由职业者的发佣报税服务商</h2>
+          <p>“以科技赋能新就业形态发佣报税”</p>
+        </div>
+      </pc-core-container>
+    </div>
+    <div nz-carousel-content class="carousel-item item-four">
+      <pc-core-container>
+        <div class="banner-desc-container">
+          <p>Service Leader</p>
+          <h2>新就业形态发拥报税服务领先者</h2>
+          <p>“以科技赋能新就业形态发佣报税 服务2亿自由职业者”</p>
         </div>
       </pc-core-container>
     </div>
     <div nz-carousel-content class="carousel-item item-two">
       <pc-core-container>
         <div class="wrapper">
-          <img [src]="getImage('pc-banner-2-element')" class="phone-element" alt="">
-          <div class="right-block">
-            <img [src]="getImage('pc-banner-2-slogan')" class="slogan" alt="">
-            <a class="button-like red" routerLink="/product-introduction">了解更多</a>
+          <div class="banner-desc-container">
+            <p>Smart Studio</p>
+            <h2>合规更省钱 自由职业第一步</h2>
+            <p>“个人商事微服务平台”</p>
+            <a class="button-like" routerLink="/product-introduction">了解更多</a>
           </div>
+          <img [src]="getImage('pc-banner-2-element')" class="phone-element" alt="">
         </div>
       </pc-core-container>
     </div>
     <div nz-carousel-content class="carousel-item item-three">
       <pc-core-container>
-        <div class="wrapper">
-          <div class="content-group">
-            <img [src]="getImage('pc-banner-3-slogan')" class="slogan" alt="">
-            <a class="button-like purple" routerLink="/product-introduction">了解更多</a>
-          </div>
+        <div class="banner-desc-container">
+          <p>Xinpayroll Manager</p>
+          <h2>以科技赋能新就业形态商税结算</h2>
+          <p>“企业发佣报税智能结算系统”</p>
+          <a class="button-like" routerLink="/product-introduction">了解更多</a>
         </div>
       </pc-core-container>
     </div>

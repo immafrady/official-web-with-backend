@@ -31,54 +31,51 @@ $carousel-height: 620px;
       width: 100%;
       height: $carousel-height;
     }
+    .banner-desc-container{
+      padding-top: 240px;
+      .button-like {
+        width: 72px;
+        height: 24px;
+        border: 1px solid #fff;
+        font-size: 12px;
+        margin-top: 30px;
+        color: #fff;
+        display: inline-block;
+        line-height: 24px;
+        &:hover {
+          background-color: $theme-color;
+          color: #fff;
+          border-color: $theme-color;
+        }
+      }
+    }
 
     &.item-one {
       background-image:  $pc-banner-1-bg;
       background-size: cover;
       width: 100%;
-      .slogan {
-        display: block;
-        margin: 190px 0 0 60px;
-      }
     }
     &.item-two {
       background-image: $pc-banner-2;
+      .banner-desc-container {
+        position: absolute;
+        left: 255px;
+      }
       .phone-element {
         position: absolute;
         @include absolute-y-middle;
-        left: 88px;
+        right: 0;
       }
-      .right-block {
-        @include absolute-y-middle;
-        right: 69px;
-
-        .slogan {
-          display: block;
-        }
-        .button-like {
-          margin-left: 21px;
-          margin-top: 30px;
-        }
-      }
-
     }
     &.item-three {
       background-image: $pc-banner-3;
-      .content-group {
-        @include absolute-y-middle;
-        left: 100px;
-        .slogan {
-          display: block;
-        }
-        .button-like {
-          margin-top: 22px;
-          margin-left: 28px;
-        }
-      }
+    }
+    &.item-four {
+      background-image: $pc-banner-4;
+      background-size: cover;
+      width: 100%;
     }
   }
-
-
 
   .carousel-btn {
     transition: opacity 0.2s;
@@ -97,23 +94,5 @@ $carousel-height: 620px;
   }
   .ant-carousel .slick-dots-bottom, .ant-popover-placement-leftBottom>.ant-popover-content>.ant-popover-arrow, .ant-popover-placement-rightBottom>.ant-popover-content>.ant-popover-arrow {
     bottom: 30px;
-  }
-}
-
-// 自定按钮颜色
-.button-like {
-  display: inline-block;
-  color: #fff;
-  font-size: 14px;
-  padding: 5px 15px;
-  border-radius: 4px;
-  &:hover {
-    color: #fff;
-  }
-  &.red {
-    background-color: #EF2A40;
-  }
-  &.purple {
-    background-color: #6676FF;
   }
 }

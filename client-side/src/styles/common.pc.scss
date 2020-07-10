@@ -21,6 +21,22 @@ body {
   text-align: center;
   padding-top: 206px;
 }
+.banner-desc-container {
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  padding-top: 158px;
+  font-family: Arial, "PingFang SC", "Microsoft Yahei", serif;
+  font-weight: 400;
+  h2 {
+    margin: 30px auto 40px;
+    font-size: 54px;
+    color: #fff;
+    font-family: Arial, "PingFang SC", "Microsoft Yahei", serif;
+    font-weight: 400;
+    line-height: 54px;
+  }
+}
 
 // 定制ng-zorro样式
 // carousel下方点点
