@@ -1,13 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { BaseResponseErrorFilter } from './shared/filters/base-response-error.filter';
-import { CommonErrorInterceptor } from './shared/interceptors/common-error.interceptor';
 import { config } from "./config";
+import { CustomLogger } from './shared/modules/logger/logger.service';
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
-    app.useGlobalInterceptors(new CommonErrorInterceptor()); // 把未知错误转化为业务异常
-    app.useGlobalFilters(new BaseResponseErrorFilter()); // 统一处理业务异常
+    const app = await NestFactory.create(AppModule, {
+        logger: false
+    });
+    app.useLogger(app.get(CustomLogger))
     await app.listen(config.port);
 }
 bootstrap();

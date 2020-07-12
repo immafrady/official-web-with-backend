@@ -9,8 +9,10 @@ interface Config {
     registerKey: string;
     [Config_Typeorm]: ConnectionOptions;
     port: number;
+    logRoot: string;
 }
 
 export const config = (function (): Config {
     return (process.env.NODE_ENV === 'production' ? prodConfig : devConfig) as Config;
 })();
+
