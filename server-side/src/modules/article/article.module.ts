@@ -16,6 +16,6 @@ export class ArticleModule implements NestModule {
                 { path: 'article/list', method: RequestMethod.GET },
                 { path: 'article/detail/:id', method: RequestMethod.GET }
             )
-            .forRoutes(ArticleController)
+            .forRoutes(ArticleController);
     }
 }

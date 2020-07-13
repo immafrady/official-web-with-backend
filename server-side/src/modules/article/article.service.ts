@@ -28,7 +28,7 @@ export class ArticleService {
      */
     async hasArticleOrFail(id: number): Promise<void> {
         if (!await this.articleRepository.findOne(id)) {
-            throw new ArticleNotFoundError()
+            throw new ArticleNotFoundError();
         }
     }
 
@@ -43,7 +43,7 @@ export class ArticleService {
         user.id = userId;
         article.user = user;
         await this.articleRepository.save(article);
-        return {}
+        return {};
     }
 
     /**
@@ -58,7 +58,7 @@ export class ArticleService {
         user.id = userId;
         article.user = user;
         await this.articleRepository.update(articleId, article);
-        return {}
+        return {};
     }
 
     /**
@@ -66,7 +66,7 @@ export class ArticleService {
      * @param id
      */
     async delete(id: number): Promise<DeleteResult> {
-        return await this.articleRepository.delete(id)
+        return await this.articleRepository.delete(id);
     }
 
     /**
@@ -75,8 +75,8 @@ export class ArticleService {
      * @param pagination
      * @param showUser
      */
-    async findMany(articleFindManyOptions: IArticleFindManyOptions, pagination: IRequestPagination = {}, showUser: boolean = false): Promise<IArticleListResponse> {
-        cleanNoneValue(articleFindManyOptions.where)
+    async findMany(articleFindManyOptions: IArticleFindManyOptions, pagination: IRequestPagination = {}, showUser = false): Promise<IArticleListResponse> {
+        cleanNoneValue(articleFindManyOptions.where);
         const [list, total] = await this.articleRepository.findAndCount({
             select: articleFindManyOptions.select,
             where: articleFindManyOptions.where,
@@ -91,7 +91,7 @@ export class ArticleService {
         return {
             list,
             total
-        }
+        };
     }
 
     /**
@@ -113,7 +113,7 @@ export class ArticleService {
                 }
             }
         }
-        return articleRelation
+        return articleRelation;
     }
 
     /**
@@ -122,7 +122,7 @@ export class ArticleService {
      * @param options
      * @param showUser
      */
-    async findOne(articleId: number, options: IArticleFindManyOptions = {}, showUser: boolean = false): Promise<IArticleFindOneResult> {
+    async findOne(articleId: number, options: IArticleFindManyOptions = {}, showUser = false): Promise<IArticleFindOneResult> {
         const article = await this.articleRepository.findOne(articleId, {
             where: options?.where,
             relations: showUser ? ['user'] : undefined
@@ -138,14 +138,14 @@ export class ArticleService {
                 return {
                     article,
                     author
-                }
+                };
             } else {
                 return {
                     article
-                }
+                };
             }
         } else {
-            return null
+            return null;
         }
     }
 
@@ -157,6 +157,6 @@ export class ArticleService {
         const article = await this.articleRepository.findOne(id);
         return await this.articleRepository.update(id, {
             status: article.status === ArticleStatus.Online ? ArticleStatus.Offline : ArticleStatus.Online
-        })
+        });
     }
 }

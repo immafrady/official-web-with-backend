@@ -6,20 +6,20 @@ import { Request } from "express";
 
 @Injectable()
 export class LoggerInterceptor implements NestInterceptor {
-  constructor(
-      @Inject(CustomLogger)
-      private readonly logger: CustomLogger
-  ) {
-  }
+    constructor(
+        @Inject(CustomLogger)
+        private readonly logger: CustomLogger
+    ) {
+    }
 
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    return next
-        .handle()
-        .pipe(
-            tap(res => {
-                const ctx = context.switchToHttp();
-                this.logger.httpResponse(ctx.getRequest() as Request, res)
-            })
-        );
-  }
+    intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+        return next
+            .handle()
+            .pipe(
+                tap(res => {
+                    const ctx = context.switchToHttp();
+                    this.logger.httpResponse(ctx.getRequest() as Request, res);
+                })
+            );
+    }
 }

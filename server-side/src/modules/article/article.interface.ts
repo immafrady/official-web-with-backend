@@ -16,7 +16,7 @@ export interface IArticleFindOneOptions {
     showRelation?: boolean,
 }
 
-export type ArticleRelation = [ArticlePick, ArticlePick]
+export type ArticleRelation = [ArticlePick, ArticlePick];
 
 export interface IArticleFindOneResult {
     article: Article,

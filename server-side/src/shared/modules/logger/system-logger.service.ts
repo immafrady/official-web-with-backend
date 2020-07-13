@@ -33,14 +33,14 @@ export class SystemLogger implements LoggerService{
                     )
                 })
             ]
-        })
+        });
     }
 
     debug(message: any, context?: string): any {
         this.logger.debug({
             message,
             context
-        })
+        });
     }
 
     error(message: any, trace?: string, context?: string): any {
@@ -48,28 +48,28 @@ export class SystemLogger implements LoggerService{
             message,
             trace,
             context
-        })
+        });
     }
 
     log(message: any, context?: string): any {
         this.logger.info({
             message,
             context
-        })
+        });
     }
 
     verbose(message: any, context?: string): any {
         this.logger.verbose({
             message,
             context
-        })
+        });
     }
 
     warn(message: any, context?: string): any {
         this.logger.warn({
             message,
             context
-        })
+        });
     }
 
 }

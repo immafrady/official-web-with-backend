@@ -16,7 +16,7 @@ export class BaseResponseErrorFilter implements ExceptionFilter {
         const ctx = host.switchToHttp();
         const request = ctx.getRequest();
         const response = ctx.getResponse<Response>();
-        const formattedException = errorResponse(exception.code, exception.message, exception.data)
+        const formattedException = errorResponse(exception.code, exception.message, exception.data);
         response
             .status(200)
             .json(formattedException);

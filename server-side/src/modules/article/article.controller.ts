@@ -31,11 +31,11 @@ export class ArticleController {
      * @param userId
      */
     @Post('new')
-    async createArticle(@Body() createArticleDto: CreateArticleDto, @UserId() userId): Promise<IHttpResponse<IArticleCreateResponse>> {
+    async createArticle(@Body() createArticleDto: CreateArticleDto, @UserId() userId: number): Promise<IHttpResponse<IArticleCreateResponse>> {
         try {
-            return successResponse(await this.articleService.create(createArticleDto, userId), '新增文章成功')
+            return successResponse(await this.articleService.create(createArticleDto, userId), '新增文章成功');
         } catch (e) {
-            throw new ArticleCannotCreateError(e)
+            throw new ArticleCannotCreateError(e);
         }
     }
 
@@ -46,12 +46,12 @@ export class ArticleController {
      * @param articleId
      */
     @Put('detail/:id')
-    async editArticle(@Body() editArticleDto: EditArticleDto, @UserId() userId, @Param('id') articleId): Promise<IHttpResponse<IArticleModifyResponse>> {
-        await this.articleService.hasArticleOrFail(articleId)
+    async editArticle(@Body() editArticleDto: EditArticleDto, @UserId() userId: number, @Param('id') articleId: number): Promise<IHttpResponse<IArticleModifyResponse>> {
+        await this.articleService.hasArticleOrFail(articleId);
         try {
-            return successResponse(await this.articleService.edit(editArticleDto, articleId, userId), '更新文章成功')
+            return successResponse(await this.articleService.edit(editArticleDto, articleId, userId), '更新文章成功');
         } catch (e) {
-           throw new ArticleCannotModifyError(e)
+            throw new ArticleCannotModifyError(e);
         }
     }
 
@@ -60,12 +60,12 @@ export class ArticleController {
      * @param articleId
      */
     @Delete('detail/:id')
-    async deleteArticle(@Param('id') articleId): Promise<IHttpResponse<IArticleDeleteResponse>> {
-        await this.articleService.hasArticleOrFail(articleId)
+    async deleteArticle(@Param('id') articleId: number): Promise<IHttpResponse<IArticleDeleteResponse>> {
+        await this.articleService.hasArticleOrFail(articleId);
         try {
-            return successResponse(await this.articleService.delete(articleId), '删除文章成功')
+            return successResponse(await this.articleService.delete(articleId), '删除文章成功');
         } catch (e) {
-            throw new ArticleCannotDeleteError(e)
+            throw new ArticleCannotDeleteError(e);
         }
     }
 
@@ -74,12 +74,12 @@ export class ArticleController {
      * @param articleId
      */
     @Put('detail/:id/status')
-    async updateArticleStatus(@Param('id') articleId): Promise<IHttpResponse<IArticleSetStatusResponse>> {
-        await this.articleService.hasArticleOrFail(articleId)
+    async updateArticleStatus(@Param('id') articleId: number): Promise<IHttpResponse<IArticleSetStatusResponse>> {
+        await this.articleService.hasArticleOrFail(articleId);
         try {
-            return successResponse(await this.articleService.switchArticleStatus(articleId), '修改状态成功')
+            return successResponse(await this.articleService.switchArticleStatus(articleId), '修改状态成功');
         } catch (e) {
-            throw new ArticleCannotModifyError(e)
+            throw new ArticleCannotModifyError(e);
         }
     }
 
@@ -96,14 +96,14 @@ export class ArticleController {
                     modifyDate: LessThanOrEqual(new Date()),
                     type: articleListDto.type ? Like(`%${articleListDto.type}%`) : undefined
                 }
-            }
+            };
             const pagination: IRequestPagination = {
                 page: articleListDto.page,
                 size: articleListDto.size
-            }
-            return successResponse(await this.articleService.findMany(options, pagination, true))
+            };
+            return successResponse(await this.articleService.findMany(options, pagination, true));
         } catch (e) {
-            throw new ArticleNotFoundError(e)
+            throw new ArticleNotFoundError(e);
         }
     }
 
@@ -118,14 +118,14 @@ export class ArticleController {
                 where: {
                     type: articleListDto.type ? Like(`%${articleListDto.type}%`) : undefined
                 }
-            }
+            };
             const pagination: IRequestPagination = {
                 page: articleListDto.page,
                 size: articleListDto.size
-            }
-            return successResponse(await this.articleService.findMany(options, pagination, false))
+            };
+            return successResponse(await this.articleService.findMany(options, pagination, false));
         } catch (e) {
-            throw new ArticleNotFoundError(e)
+            throw new ArticleNotFoundError(e);
         }
     }
 
@@ -134,7 +134,7 @@ export class ArticleController {
      * @param articleId
      */
     @Get('detail/:id')
-    async userArticleDetail(@Param('id') articleId): Promise<IHttpResponse<IArticleDetailResponse>> {
+    async userArticleDetail(@Param('id') articleId: number): Promise<IHttpResponse<IArticleDetailResponse>> {
         await this.articleService.hasArticleOrFail(articleId);
 
         const options: IArticleFindManyOptions = {
@@ -142,30 +142,30 @@ export class ArticleController {
                 status: ArticleStatus.Online,
                 modifyDate: LessThanOrEqual(new Date())
             }
-        }
+        };
 
-        const result = await this.articleService.findOne(articleId, options, true)
+        const result = await this.articleService.findOne(articleId, options, true);
 
         if (result) {
-            const related = await this.articleService.findRelation(articleId, options)
+            const related = await this.articleService.findRelation(articleId, options);
             return successResponse({
                 article: result.article,
                 related,
                 author: result.author
-            })
+            });
         } else {
-            throw new ArticleNotFoundError({}, '没有阅读权限')
+            throw new ArticleNotFoundError({}, '没有阅读权限');
         }
     }
 
     @Get('admin/detail/:id')
-    async adminArticleDetail(@Param('id') articleId): Promise<IHttpResponse<IArticleDetailResponse>> {
-        await this.articleService.hasArticleOrFail(articleId)
+    async adminArticleDetail(@Param('id') articleId: number): Promise<IHttpResponse<IArticleDetailResponse>> {
+        await this.articleService.hasArticleOrFail(articleId);
 
         try {
-            return successResponse(await this.articleService.findOne(articleId))
+            return successResponse(await this.articleService.findOne(articleId));
         } catch (e) {
-            throw new ArticleNotFoundError(e)
+            throw new ArticleNotFoundError(e);
         }
     }
 }

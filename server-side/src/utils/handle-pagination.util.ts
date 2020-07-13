@@ -12,10 +12,10 @@ const isValidPagination = (page: number|string, size: number|string) => {
         page > 0 &&
         size > 0 &&
         Math.floor(page) === page &&
-        Math.floor(size) === size
-}
+        Math.floor(size) === size;
+};
 
-type Pagination = number | string
+type Pagination = number | string;
 
 interface IPagination {
     skip?: number,
@@ -29,13 +29,13 @@ interface IPagination {
  */
 export function handlePagination(size: Pagination, page: Pagination): IPagination {
     if (isValidPagination(page, size)) {
-        size = +size
-        page = +page
+        size = +size;
+        page = +page;
         return {
             skip: size * (page - 1),
             take: size
-        }
+        };
     } else {
-        return {}
+        return {};
     }
 }
