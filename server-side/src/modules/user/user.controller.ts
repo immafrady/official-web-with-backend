@@ -12,7 +12,7 @@ import {
 } from 'libs/response-error';
 import { successResponse } from '../../utils/ro-builder.utils';
 import { config } from '../../config';
-import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 
 @ApiTags('用户(user)')
 @ApiBearerAuth()
@@ -25,6 +25,7 @@ export class UserController extends BaseController {
         super();
     }
 
+    @ApiOperation({ summary: '登录' })
     @Post('login')
     async login(@Body() loginDto: LoginDto): Promise<IHttpResponse<IUserLoginResponse>> {
         const user = await this.userService.findByUsername(loginDto.username);
@@ -40,6 +41,7 @@ export class UserController extends BaseController {
         } as IUserLoginResponse);
     }
 
+    @ApiOperation({ summary: '注册' })
     @Post('register')
     async register(@Body() registerDto: RegisterDto): Promise<IHttpResponse<IUserRegisterResponse>> {
         if (registerDto.key !== config.registerKey) {
