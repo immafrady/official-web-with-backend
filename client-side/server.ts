@@ -44,7 +44,7 @@ export function app() {
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
-  server.use('/api', proxy('http://localhost:7001', {
+  server.use('/api', proxy('http://fradyspace.com:7002', {
     proxyReqPathResolver: function (req) {
       const parts = req.url.split('?');
       const queryString = parts[1];

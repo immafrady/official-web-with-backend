@@ -3,7 +3,7 @@ import {Observable, throwError} from 'rxjs';
 import { catchError } from "rxjs/operators";
 import {BaseResponseError} from 'libs/common';
 import {UnknownError} from 'libs/response-error';
-import { CustomLogger } from "../modules/logger/logger.service";
+import { CustomLogger } from "../modules/logger/custom-logger.service";
 
 @Injectable()
 export class CommonErrorInterceptor implements NestInterceptor {

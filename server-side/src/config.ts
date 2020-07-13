@@ -10,6 +10,7 @@ interface Config {
     [Config_Typeorm]: ConnectionOptions;
     port: number;
     logRoot: string;
+    appName: string;
 }
 
 export const config = (function (): Config {

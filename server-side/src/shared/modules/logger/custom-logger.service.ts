@@ -1,18 +1,45 @@
-import { Inject, Injectable, LoggerService } from "@nestjs/common";
-import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import { Logger, format, LogEntry } from 'winston';
+import { Injectable, LoggerService } from "@nestjs/common";
+import { Logger, format, LogEntry, createLogger, transports } from "winston";
 import { Request } from "express";
 import { IHttpResponse } from "libs/common";
-const { label } = format;
+import * as DailyRotateFile from "winston-daily-rotate-file";
+import { config } from "../../../config";
+const { label, combine, timestamp, printf } = format;
 
 type Level = 'error' | 'warn' | 'info' | 'http' | 'verbose' | 'debug' | 'silly'
 
 @Injectable()
 export class CustomLogger implements LoggerService {
+    private logger: Logger;
+
     constructor(
-        @Inject(WINSTON_MODULE_PROVIDER)
-        private readonly logger: Logger
-    ) {}
+    ) {
+        this.logger = createLogger({
+            format: combine(
+                timestamp(),
+                printf((info) => {
+                    return (
+                        `
+[${info.level}] at ${info.timestamp} -- ${info.label}
+${info.message}
+                        `
+                    )
+                })
+            ),
+            transports: [
+                new DailyRotateFile({
+                    filename: 'request-%DATE%.log',
+                    datePattern: 'YYYY-MM-DD',
+                    maxSize: '20m',
+                    maxFiles: '30d',
+                    dirname: config.logRoot
+                }),
+                new transports.Console({
+                    handleExceptions: true
+                })
+            ]
+        })
+    }
 
     pipe(level: Level, message: any, context?: string, trace?: string) {
         let info: LogEntry= {
