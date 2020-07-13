@@ -12,7 +12,10 @@ import {
 } from 'libs/response-error';
 import { successResponse } from '../../utils/ro-builder.utils';
 import { config } from '../../config';
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
+@ApiTags('用户(user)')
+@ApiBearerAuth()
 @Controller('user')
 export class UserController extends BaseController {
 

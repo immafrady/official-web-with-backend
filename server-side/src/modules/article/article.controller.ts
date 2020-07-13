@@ -16,20 +16,19 @@ import {
 } from "libs/response-error";
 import { successResponse } from "../../utils/ro-builder.utils";
 import { UserId } from "../../shared/decorators/user-id.decorator";
-import { ArticleListDto } from "./dto/article-list.dto";
+import { ArticleListDto } from "./dto";
 import { IArticleFindManyOptions } from "./article.interface";
 import { ArticleStatus } from "libs/enums/article";
 import { LessThanOrEqual, Like } from "typeorm";
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
 
+@ApiTags('文章(article)')
+@ApiBearerAuth()
 @Controller('article')
 export class ArticleController {
     constructor(private articleService: ArticleService) {}
 
-    /**
-     * @description 新增文章
-     * @param createArticleDto
-     * @param userId
-     */
+    @ApiOperation({ summary: '新增文章' })
     @Post('new')
     async createArticle(@Body() createArticleDto: CreateArticleDto, @UserId() userId: number): Promise<IHttpResponse<IArticleCreateResponse>> {
         try {
@@ -39,12 +38,7 @@ export class ArticleController {
         }
     }
 
-    /**
-     * @description 修改文章
-     * @param editArticleDto
-     * @param userId
-     * @param articleId
-     */
+    @ApiOperation({ summary: '修改文章' })
     @Put('detail/:id')
     async editArticle(@Body() editArticleDto: EditArticleDto, @UserId() userId: number, @Param('id') articleId: number): Promise<IHttpResponse<IArticleModifyResponse>> {
         await this.articleService.hasArticleOrFail(articleId);
@@ -55,10 +49,7 @@ export class ArticleController {
         }
     }
 
-    /**
-     * @description 删除文章
-     * @param articleId
-     */
+    @ApiOperation({ summary: '删除文章' })
     @Delete('detail/:id')
     async deleteArticle(@Param('id') articleId: number): Promise<IHttpResponse<IArticleDeleteResponse>> {
         await this.articleService.hasArticleOrFail(articleId);
@@ -69,10 +60,7 @@ export class ArticleController {
         }
     }
 
-    /**
-     * @description 切换文章状态
-     * @param articleId
-     */
+    @ApiOperation({ summary: '切换文章状态' })
     @Put('detail/:id/status')
     async updateArticleStatus(@Param('id') articleId: number): Promise<IHttpResponse<IArticleSetStatusResponse>> {
         await this.articleService.hasArticleOrFail(articleId);
@@ -83,10 +71,7 @@ export class ArticleController {
         }
     }
 
-    /**
-     * @description 用户的列表
-     * @param articleListDto
-     */
+    @ApiOperation({ summary: '普通用户 - 获取文章列表' })
     @Get('list')
     async userArticleList(@Query() articleListDto: ArticleListDto): Promise<IHttpResponse<IArticleListResponse>> {
         try {
@@ -107,10 +92,7 @@ export class ArticleController {
         }
     }
 
-    /**
-     * @description 管理员的列表
-     * @param articleListDto
-     */
+    @ApiOperation({ summary: '管理员 - 获取文章列表' })
     @Get('admin/list')
     async adminArticleList(@Query() articleListDto: ArticleListDto): Promise<IHttpResponse<IArticleListResponse>> {
         try {
@@ -129,10 +111,7 @@ export class ArticleController {
         }
     }
 
-    /**
-     * @description 用户看到的列表
-     * @param articleId
-     */
+    @ApiOperation({ summary: '普通用户 - 获取文章详情' })
     @Get('detail/:id')
     async userArticleDetail(@Param('id') articleId: number): Promise<IHttpResponse<IArticleDetailResponse>> {
         await this.articleService.hasArticleOrFail(articleId);
@@ -158,6 +137,7 @@ export class ArticleController {
         }
     }
 
+    @ApiOperation({ summary: '管理员 - 获取文章详情' })
     @Get('admin/detail/:id')
     async adminArticleDetail(@Param('id') articleId: number): Promise<IHttpResponse<IArticleDetailResponse>> {
         await this.articleService.hasArticleOrFail(articleId);
