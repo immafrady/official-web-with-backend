@@ -13,6 +13,7 @@ import { LoggerModule } from './shared/modules/logger/logger.module';
 import { config } from './config';
 import { BaseResponseErrorFilter } from './shared/filters/base-response-error.filter';
 import * as DailyRotateFile from 'winston-daily-rotate-file'
+import { LoggerInterceptor } from "./shared/interceptors/logger.interceptor";
 
 const { combine, timestamp, printf } = format
 
@@ -53,7 +54,8 @@ ${info.message}
     providers: [
         AppService,
         { provide: APP_INTERCEPTOR, useClass: CommonErrorInterceptor }, // 把未知错误转化为业务异常
-        { provide: APP_FILTER, useClass: BaseResponseErrorFilter } // 统一处理业务异常
+        { provide: APP_INTERCEPTOR, useClass: LoggerInterceptor }, // 统一的请求日志拦截
+        { provide: APP_FILTER, useClass: BaseResponseErrorFilter }, // 统一处理业务异常
     ],
 })
 export class AppModule {}

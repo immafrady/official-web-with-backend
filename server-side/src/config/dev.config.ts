@@ -2,8 +2,6 @@ import defaultConfig from './default.config';
 import { Config_Typeorm } from '../constants';
 import { ConnectionOptions } from 'typeorm';
 
-console.log('dir: ', __dirname);
-
 // 开发配置
 export default {
     ...defaultConfig,
