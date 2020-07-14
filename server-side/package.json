@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run pm2:delete && npm run start:prod",
     "stop": "pm2 stop official-web",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && npm run update:libs",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "restart": "pm2 restart official-web",
@@ -21,13 +21,16 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "update:libs": "npm install ../libs"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/swagger": "^4.5.12",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.12.2",
     "jsonwebtoken": "^8.5.1",
     "libs": "file:../libs",
     "md5": "^2.2.1",
