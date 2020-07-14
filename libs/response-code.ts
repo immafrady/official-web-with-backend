@@ -13,6 +13,6 @@ export const enum ResponseCode {
     ArticleCannotModify,
     ArticleNotFound,
     ArticleListCannotMake,
-    CommonFormInvalid = 9998,
+    CommonFormInvalid = 400,
     UnknownError = 9999
 }
