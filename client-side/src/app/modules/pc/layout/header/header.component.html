@@ -2,9 +2,9 @@
 <header class="header-container">
   <pc-core-container>
     <div class="header-wrapper">
-      <img [src]="getImage('logo-dark')" class="title-logo" alt="logo" routerLink="/">
+      <img [src]="getImage('logo-dark')" class="title-logo" alt="薪宝科技" routerLink="/">
       <div class="router-container">
-        <a *ngFor="let routerInfo of headerRoutes" [routerLink]="'/' + routerInfo.name" routerLinkActive="current-page" [routerLinkActiveOptions]="{exact:true}">{{ routerInfo.title }}</a>
+        <a *ngFor="let routerInfo of headerRoutes" [routerLink]="'/' + routerInfo.name" [title]="'薪宝科技-' + routerInfo.title" routerLinkActive="current-page" [routerLinkActiveOptions]="{exact:true}">{{ routerInfo.title }}</a>
       </div>
     </div>
   </pc-core-container>
