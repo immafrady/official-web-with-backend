@@ -1,7 +1,7 @@
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
-import { APPLICATION_NAME, SEO_DEFAULT_TITLE, SEO_DESCRIPTION } from "@/config/resources";
+import { APPLICATION_NAME, SEO_DEFAULT_KEYWORDS, SEO_DEFAULT_TITLE, SEO_DESCRIPTION } from "@/config/resources";
 import {IRouterData} from '@/config/router-info';
 
 export class BasePageComponent {
@@ -22,10 +22,8 @@ export class BasePageComponent {
             titleService.setTitle(SEO_DEFAULT_TITLE)
           }
 
-          metaService.addTags([
-            { name: 'description', content: data.description || SEO_DESCRIPTION },
-            { name: 'keywords', content: data.keywords }
-          ])
+          metaService.updateTag({ name: 'description', content: data.description || SEO_DESCRIPTION })
+          metaService.updateTag({ name: 'keywords', content: data.keywords || SEO_DEFAULT_KEYWORDS })
         }
       })
     })

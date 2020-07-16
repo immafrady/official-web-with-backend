@@ -13,7 +13,7 @@
           </div>
           <div class="right">
             <div class="item">关注我们：</div>
-            <div class="item"><a [href]="companyInfo.WEIBO_HREF" target="_blank"><img [src]="getImage('icon-weibo')" class="sns-icon" alt="微博"></a></div>
+            <div class="item"><a [href]="companyInfo.WEIBO_HREF" target="_blank" rel="nofollow"><img [src]="getImage('icon-weibo')" class="sns-icon" alt="微博"></a></div>
             <div class="item with-qrcode">
               <img [src]="getImage('icon-wechat')" class="sns-icon wechat" alt="微信">
               <div class="qrcode-block">
@@ -30,6 +30,6 @@
     </div>
   </pc-core-container>
   <pc-core-container className="bottom-container">
-    <div class="content"><a [href]="gongXinBuUrl" target="_blank">{{ companyInfo.BEIAN }}</a></div>
+    <div class="content"><a [href]="gongXinBuUrl" target="_blank" rel="nofollow">{{ companyInfo.BEIAN }}</a></div>
   </pc-core-container>
 </footer>
