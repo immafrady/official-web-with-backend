@@ -7,7 +7,8 @@ export interface IRouterInfo {
 // 路由信息 data
 export interface IRouterData {
   title: string;
-  meta?: string;
+  description?: string;
+  keywords?: string;
 }
 
 /**
@@ -28,7 +29,7 @@ export function getWebRouterInfo(key: WebRouterName): IRouterInfo {
   const routerInfos = {
     [WebRouterName.Home]: <IRouterInfo>{
       name: '',
-      title: '首页'
+      title: ''
     },
     [WebRouterName.AboutUs]: <IRouterInfo>{
       name: 'about-us',
