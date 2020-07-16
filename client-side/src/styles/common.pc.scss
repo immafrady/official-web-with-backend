@@ -51,5 +51,7 @@ body {
 
 .keywords {
   height: 0;
-  text-indent: -10000;
+  width: 1px;
+  overflow: hidden;
+  text-indent: -10000px;
 }
