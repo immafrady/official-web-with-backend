@@ -7,6 +7,7 @@ $carousel-height: 620px;
   width: 100%;
   height: $carousel-height;
   position: relative;
+  user-select: none;
   &:hover {
     .carousel-btn {
       opacity: 1;
