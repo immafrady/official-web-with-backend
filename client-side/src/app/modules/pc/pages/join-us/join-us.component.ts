@@ -622,6 +622,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
   }
 
   changeRecruitment(type):void {
+    this.expandSet = new Set<number>();
+    this.rotateActive = false;
     this.positionType = type
   }
 
