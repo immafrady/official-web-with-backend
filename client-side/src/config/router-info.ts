@@ -29,7 +29,7 @@ export function getWebRouterInfo(key: WebRouterName): IRouterInfo {
   const routerInfos = {
     [WebRouterName.Home]: <IRouterInfo>{
       name: '',
-      title: ''
+      title: '首页'
     },
     [WebRouterName.AboutUs]: <IRouterInfo>{
       name: 'about-us',
