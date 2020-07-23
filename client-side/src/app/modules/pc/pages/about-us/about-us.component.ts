@@ -79,7 +79,7 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
       { time: '5月', content: '荣获“2020中国人力资源服务机构100强“' }
     ]
   };
-  active:string = '2018';
+  active:string = '2020';
 
   ngOnInit(): void {
   }
