@@ -32,19 +32,6 @@
       @include clear-fix;
       height: 140px;
       margin-bottom: 20px;
-      img {
-        float: left;
-        cursor: pointer;
-      }
-      .product-intro-packet {
-        display: none;
-      }
-      &:hover {
-        .product-intro-packet {
-          display: block;
-          margin-left: 60px;
-        }
-      }
     }
     h2 {
       color: #333333;
