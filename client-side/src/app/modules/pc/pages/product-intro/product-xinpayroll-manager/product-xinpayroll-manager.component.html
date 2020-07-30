@@ -1,0 +1,119 @@
+<div class="product-manager-container">
+  <pc-core-container className="product-steward-banner">
+    <div class="product-banner-intro">
+      <div class="intro-left">
+        <h2>以科技赋能新就业形态商税结算</h2>
+        <p>企业发佣报税智能结算系统</p>
+      </div>
+      <img [src]="getImage('product-steward-system')" alt="">
+    </div>
+  </pc-core-container>
+
+  <pc-core-container>
+    <div class="product-analyze-container">
+      <div class="analyze-left">
+        <img [src]="getImage('product-steward-logo')" alt="">
+        <h2>关于薪税管家</h2>
+        <p>薪税管家以科技赋能新就业形态商税结算，为平台型灵活用工企业提供数字化技术驱动的佣金管理、批量发放、实时支付、纳税申报、自动开票、账单管理、风控管理等一体化系统服务。</p>
+      </div>
+      <img [src]="getImage('product-steward-intro')" alt="">
+    </div>
+  </pc-core-container>
+
+  <pc-core-container>
+    <div class="product-title">
+      <h2>技术优势</h2>
+      <h3>安全可靠 · 大容量 · 高并发 · 批量实时发放</h3>
+    </div>
+    <div class="product-technical-advantage">
+      <div class="advantage-desc" *ngFor="let item of technicalAdvantage">
+        <img [src]="item.icon" alt="">
+        <p>{{ item.advantage1 }}</p>
+        <p>{{ item.advantage2 }}</p>
+        <p></p>
+      </div>
+    </div>
+  </pc-core-container>
+
+  <pc-core-container className="platform-service-advantage-container">
+    <div class="product-title">
+      <h2>平台服务优势</h2>
+    </div>
+    <div>
+      <div class="platform-service-advantage">
+        <div class="service-advantage-text">
+          <h3>发放智能上传</h3>
+          <ol>
+            <li>佣金代发数据智能导入</li>
+            <li>告别模板手工复制粘贴数据</li>
+            <li>减少数据出错率</li>
+          </ol>
+        </div>
+        <img class="platform-img" [src]="getImage('product-service1')" alt="">
+      </div>
+      <div class="platform-service-advantage arrow-reversal">
+        <img class="platform-img" [src]="getImage('product-service2')" alt="">
+        <div class="service-advantage-text">
+          <h3>安全性校验</h3>
+          <ol>
+            <li>自动校验人员信息正确性及数据是否重复</li>
+            <li>避免客户重复发放及数据导入错误</li>
+          </ol>
+        </div>
+      </div>
+      <div class="platform-service-advantage">
+        <div class="service-advantage-text">
+          <h3>发放信息智能查询</h3>
+          <ol>
+            <li>银联专属通道实时接口</li>
+            <li>数据及时更新</li>
+            <li>支持1900多家银行及微信、支付宝发放</li>
+          </ol>
+        </div>
+        <img class="platform-img" [src]="getImage('product-service3')" alt="">
+      </div>
+      <div class="platform-service-advantage arrow-reversal">
+        <img class="platform-img" [src]="getImage('product-service4')" alt="">
+        <div class="service-advantage-text">
+          <h3>企业属账户</h3>
+          <ol>
+            <li>银行电子账户体系</li>
+            <li>一个企业对应一个账户</li>
+            <li>实时查询账户的余额、流水及设计提醒</li>
+          </ol>
+        </div>
+      </div>
+      <div class="platform-service-advantage">
+        <div class="service-advantage-text">
+          <h3>凭证可视化</h3>
+          <ol>
+            <li>可实时查看电子回单、企业发票凭证、个人申报纳税凭证</li>
+          </ol>
+        </div>
+        <img class="platform-img" [src]="getImage('product-service5')" alt="">
+      </div>
+      <div class="platform-service-advantage arrow-reversal">
+        <img class="platform-img" [src]="getImage('product-service6')" alt="">
+        <div class="service-advantage-text">
+          <h3>一键申请发票</h3>
+          <ol>
+            <li>发放完成后可按结算周期一键申请发票</li>
+            <li>自动化邮寄到指定地址</li>
+          </ol>
+        </div>
+      </div>
+      <div class="platform-service-advantage">
+        <div class="service-advantage-text">
+          <h3>系统安全稳定</h3>
+          <ol>
+            <li>采用分布式架构</li>
+            <li>可自定义审核机制</li>
+            <li>对敏感人员代发限制</li>
+            <li>数据采用双节点四层加密处理</li>
+          </ol>
+        </div>
+        <img class="platform-img" [src]="getImage('product-service7')" alt="">
+      </div>
+    </div>
+  </pc-core-container>
+</div>

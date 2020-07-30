@@ -1,0 +1,116 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+.product-manager-container {
+  .product-steward-banner{
+    height: 450px;
+    background: $product-steward-banner center;
+    background-size: cover;
+  }
+  .product-banner-intro {
+    font-size: 26px;
+    padding: 64px 86px 0 80px;
+    @include clear-fix;
+    .intro-left {
+      color: #fff;
+      margin: 74px 16px 0 0;
+      float: left;
+      h2 {
+        font-size: 42px;
+        color: #fff;
+        margin-bottom: 50px;
+      }
+    }
+  }
+  .product-technical-advantage {
+    width: 1016px;
+    margin: 50px auto;
+    @include clear-fix;
+    .advantage-desc {
+      float: left;
+      width: 204px;
+      margin: 35px 25px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 22px;
+      color: #333333;
+      img {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .product-analyze-container {
+    margin: 90px 0 0 120px;
+    @include clear-fix;
+    .analyze-left {
+      float: left;
+      font-size: 16px;
+      line-height: 28px;
+      color: #666;
+      width: 503px;
+      margin-right: 60px;
+      h2 {
+        font-size: 28px;
+        margin: 30px 0;
+        color: #333;
+        font-weight: 700;
+      }
+    }
+
+  }
+  .product-title {
+    text-align: center;
+    font-size: 22px;
+    h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+  }
+  .platform-service-advantage-container {
+    margin-bottom: 65px;
+    .platform-service-advantage {
+      padding: 45px 0;
+      margin: 0 140px 0 160px;
+      border-bottom: 2px solid #EEEEEE;
+      @include clear-fix;
+      .service-advantage-text {
+        float: left;
+        width: 316px;
+        font-size: 14px;
+        line-height: 30px;
+        color: #666;
+        margin: 36px 36px 0 0;
+        h3 {
+          font-size: 26px;
+          color: #333;
+          margin-bottom: 25px;
+          font-weight: 700;
+        }
+        li {
+          list-style: disc;
+          margin-left: 18px;
+        }
+      }
+      .platform-img {
+        margin-left: 55px;
+        float: left;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+      &.arrow-reversal {
+        .service-advantage-text {
+          float: right;
+          margin: 36px 0 0;
+        }
+        .platform-img {
+          float: left;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+
