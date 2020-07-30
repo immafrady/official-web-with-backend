@@ -42,8 +42,11 @@ body {
 // carousel下方点点
 .ant-carousel .slick-dots li.slick-active button {
   background-color: $theme-color;
+  width: 8px;
 }
 .ant-carousel .slick-dots li button {
+  width: 8px;
+  margin: 0 8px;
   height: 8px;
   border-radius: 5px;
   background-color: #ccc;
