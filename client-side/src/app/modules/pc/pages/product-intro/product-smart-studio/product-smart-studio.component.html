@@ -1,0 +1,157 @@
+<div class="product-studio-container">
+  <pc-core-container className="product-studio-banner">
+    <div class="product-banner-intro">
+      <div class="intro-left">
+        <h2>合规更省钱，自由职业第一步</h2>
+        <p class="banner-desc">在共享经济背景下，我们专注为广大自由职业者，提供更合规便捷的工商税务登记、开票及税务服务。</p>
+        <div class="guide-code">
+          <img [src]="getImage('product-studio-code')" alt="">
+          <div class="guide-code-text">
+            <p>扫码关注 </p>
+            <p>口袋工作室-服务号</p>
+          </div>
+        </div>
+      </div>
+      <img [src]="getImage('product-studio-hand')" alt="口袋工作室">
+    </div>
+  </pc-core-container>
+
+  <pc-core-container>
+    <div class="product-analyze-container">
+      <div class="analyze-left">
+        <img [src]="getImage('product-studio-logo')" alt="口袋工作室">
+        <h2>关于口袋工作室</h2>
+        <p>专注为新就业形态自由职业者提供包括：价值资讯、个人工作室设立、工商税务登记、报税开票、商保社保、公积金缴纳、工作室托管等一站式综合商事服务。</p>
+      </div>
+      <div class="">
+        <img [src]="getImage('product-studio-intro')" alt="">
+      </div>
+    </div>
+  </pc-core-container>
+
+  <pc-core-container>
+    <div class="product-studio-type">
+      <div>
+        <img [src]="getImage('product-studio-personal')" alt="个体经营">
+        <p>个体经营</p>
+      </div>
+      <div>
+        <img [src]="getImage('product-studio-free')" alt="自由职业者">
+        <p>自由职业者</p>
+      </div>
+      <div>
+        <img [src]="getImage('product-studio-business')" alt="创客">
+        <p>创客</p>
+      </div>
+    </div>
+  </pc-core-container>
+
+  <pc-core-container className="platform-service-advantage-container">
+    <div class="product-title">
+      <h2>平台服务优势</h2>
+    </div>
+    <div class="product-advantage-container">
+      <div class="advantage-desc" *ngFor="let item of technicalAdvantage">
+        <img [src]="item.icon" alt="">
+        <p class="title">{{ item.advantage1 }}</p>
+        <p>{{ item.advantage2 }}</p>
+        <p></p>
+      </div>
+    </div>
+    <div class="platform-service-advantage">
+      <div class="service-advantage-text">
+        <h3>法人无须到场，在线申领执照</h3>
+        <ol>
+          <li>全线上操作</li>
+          <li>人脸识别+签名</li>
+          <li>实名认证一键完成法人无须亲自前往工商部门</li>
+          <li>足不出户线上就能办理</li>
+          <li>快速获取执照</li>
+        </ol>
+      </div>
+      <div class="product-studio-carousel">
+        <nz-carousel #carouselAdvantage nzAutoPlay>
+          <div nz-carousel-content>
+            <img [src]="getImage('product-studio-carousel1')" alt="">
+          </div>
+          <div nz-carousel-content>
+            <img [src]="getImage('product-studio-carousel2')" alt="">
+          </div>
+          <div nz-carousel-content>
+            <img [src]="getImage('product-studio-carousel3')" alt="">
+          </div>
+        </nz-carousel>
+        <img class="arrow-container left" [src]="getImage('arrow-left')" alt="" (click)="carouselAdvantage.pre()">
+        <img class="arrow-container right" [src]="getImage('arrow-right')" alt="" (click)="carouselAdvantage.next()">
+        <div class="product-studio-carousel-bg"></div>
+      </div>
+    </div>
+    <div class="platform-service-advantage arrow-reversal">
+      <img class="platform-img" [src]="getImage('product-studio-service1')" alt="">
+      <div class="service-advantage-text">
+        <h3>地址免费，执照全国可用</h3>
+        <ol>
+          <li>为自由职业者提供免费地址</li>
+          <li>无需租用办公场地</li>
+          <li>落户园区</li>
+          <li>执照全国通用</li>
+        </ol>
+      </div>
+    </div>
+    <div class="platform-service-advantage">
+      <div class="service-advantage-text">
+        <h3>政府合作，全程代办<br>高效快速安全可靠</h3>
+        <ol>
+          <li>与地方政府签署战略合作框架协议</li>
+          <li>工商税务登记全程代办</li>
+          <li>为用户省去众多中间跑腿环节</li>
+          <li>省心安心更放心</li>
+        </ol>
+      </div>
+      <img class="platform-img" [src]="getImage('product-studio-service2')" alt="">
+    </div>
+    <div class="platform-service-advantage arrow-reversal">
+      <img class="platform-img" [src]="getImage('product-studio-service3')" alt="">
+      <div class="service-advantage-text">
+        <h3>合规开票，<br>操作简单安全高效</h3>
+        <ol>
+          <li>可开具增值税专票、普票</li>
+          <li>让您的业务更合规</li>
+        </ol>
+      </div>
+    </div>
+    <div class="platform-service-advantage">
+      <div class="service-advantage-text">
+        <h3>企业合作，<br>API极速对接通道</h3>
+        <ol>
+          <li>支持企业系统API对接</li>
+          <li>批量开通及托管</li>
+          <li>企业合作更高效</li>
+        </ol>
+      </div>
+      <img class="platform-img" [src]="getImage('product-studio-service4')" alt="">
+    </div>
+    <div class="platform-service-advantage arrow-reversal">
+      <img class="platform-img" [src]="getImage('product-studio-service5')" alt="">
+      <div class="service-advantage-text">
+        <h3>专属客服指导，多种优惠套餐</h3>
+        <ol>
+          <li>我们为每位用户提供免费专属客服</li>
+          <li>专业注册指导并提供包括记账、报税、托管等专项优 惠套餐服务</li>
+        </ol>
+      </div>
+    </div>
+  </pc-core-container>
+
+  <pc-core-container className="product-studio-attention">
+    <div>
+      <h2>关注口袋工作室服务号，合规更省钱</h2>
+      <div class="attention-code">
+        <img [src]="getImage('product-studio-service-code')" alt="">
+        <p>口袋工作室</p>
+        <p>关注官方微信服务号</p>
+      </div>
+    </div>
+  </pc-core-container>
+</div>
+

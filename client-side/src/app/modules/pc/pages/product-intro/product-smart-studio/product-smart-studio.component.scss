@@ -1,0 +1,207 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+.product-studio-container {
+  .product-studio-banner{
+    height: 450px;
+    background: $product-studio-banner center;
+    background-size: cover;
+  }
+  .product-banner-intro {
+    font-size: 14px;
+    line-height: 26px;
+    .intro-left {
+      float: left;
+      color: #fff;
+      margin: 98px 130px 0 80px;
+      h2 {
+        font-size: 42px;
+        color: #fff;
+        margin-bottom: 30px;
+      }
+    }
+    .banner-desc {
+      width: 408px;
+      margin-bottom: 30px;
+    }
+    .guide-code {
+      position: relative;
+      .guide-code-text {
+        width: 125px;
+        text-align: center;
+        position: absolute;
+        bottom: 20px;
+        font-size: 11px;
+      }
+    }
+  }
+  .product-analyze-container {
+    margin: 90px 0 0 90px;
+    @include clear-fix;
+    .analyze-left {
+      float: left;
+      font-size: 16px;
+      line-height: 28px;
+      color: #666;
+      width: 513px;
+      margin-right: 40px;
+      h2 {
+        font-size: 28px;
+        margin: 30px 0;
+        color: #333;
+        font-weight: 700;
+      }
+    }
+  }
+  .product-studio-type {
+    text-align: center;
+    @include clear-fix;
+    width: 930px;
+    margin: auto;
+    div {
+      margin: 45px 85px 115px;
+      font-size: 20px;
+      color: #333;
+      float: left;
+      p {
+        margin-top: 15px;
+      }
+    }
+  }
+  .product-title {
+    text-align: center;
+    font-size: 22px;
+    h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+  }
+  .product-advantage-container {
+    margin: 0 auto;
+    width: 1050px;
+    @include clear-fix;
+    .advantage-desc {
+      float: left;
+      width: 320px;
+      min-height: 224px;
+      padding: 30px 52px;
+      margin: 20px 15px;
+      text-align: center;
+      font-size: 14px;
+      color: #333333;
+      box-shadow:0 2px 18px 4px rgba(153,153,153,0.1);
+      border-radius: 8px;
+      line-height: 24px;
+      img {
+        margin-bottom: 15px;
+      }
+      .title {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .platform-service-advantage-container {
+    width: 900px;
+    margin: 0 auto 65px;
+    .platform-service-advantage {
+      padding: 80px 0 45px 0;
+      margin: 0 140px 0 160px;
+      border-bottom: 2px solid #EEEEEE;
+      @include clear-fix;
+      .service-advantage-text {
+        width: 340px;
+        font-size: 14px;
+        line-height: 30px;
+        color: #666;
+        margin-right: 35px;
+        float: left;
+        h3 {
+          font-size: 26px;
+          color: #333;
+          margin-bottom: 25px;
+          font-weight: 700;
+          line-height: 42px;
+        }
+        li {
+          list-style: disc;
+          margin-left: 18px;
+        }
+      }
+      .platform-img {
+        margin-left: 70px;
+        float: right;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+      &.arrow-reversal {
+        .service-advantage-text {
+          float: right;
+          margin: 0;
+        }
+        .platform-img {
+          float: left;
+          margin: 0;
+        }
+      }
+    }
+    .product-studio-carousel {
+      position: relative;
+      float: right;
+      right: 100px;
+      nz-carousel {
+        width: 167px;
+        height: 370px;
+        position: relative;
+        border-radius: 20px;
+        .ant-carousel .slick-dots-bottom {
+          bottom: -25px !important;
+        }
+      }
+      .arrow-container {
+        top: 135px;
+        cursor: pointer;
+        position: absolute;
+        &.left {
+          left: -65px;
+        }
+        &.right {
+          right: -65px;
+        }
+      }
+      .product-studio-carousel-bg {
+        width: 167px;
+        height: 334px;
+        background: $product-studio-carousel-bg;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 100;
+      }
+    }
+  }
+  .product-studio-attention {
+    background-color: #F3F5F5;
+    padding: 80px 0 90px;
+    text-align: center;
+    h2 {
+      font-size: 26px;
+      color: #333;
+    }
+    .attention-code {
+      width: 160px;
+      height: 160px;
+      border: 1px solid #CCCCCC;
+      background-color: #EEEEEE;
+      text-align: center;
+      padding: 25px 0 5px;
+      font-size: 11px;
+      line-height: 23px;
+      margin: 42px auto 0;
+      color: #666;
+    }
+  }
+}
+
