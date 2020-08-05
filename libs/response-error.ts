@@ -55,6 +55,30 @@ export class ArticleNotFoundError extends BaseResponseError {
     }
 }
 
+export class PictureCannotSaveError extends BaseResponseError {
+    constructor(data?: any,  message = '无法保存图片') {
+        super(ResponseCode.PictureCannotSave, message, data);
+    }
+}
+
+export class PictureCannotDeleteError extends BaseResponseError {
+    constructor(data?: any,  message = '无法删除图片') {
+        super(ResponseCode.PictureCannotDelete, message, data);
+    }
+}
+
+export class PictureCannotModifyError extends BaseResponseError {
+    constructor(data?: any,  message = '无法修改图片') {
+        super(ResponseCode.PictureCannotModify, message, data);
+    }
+}
+
+export class PictureNotFoundError extends BaseResponseError {
+    constructor(data?: any,  message = '找不到图片') {
+        super(ResponseCode.PictureNotFound, message, data);
+    }
+}
+
 export class CommonFormInvalidError extends BaseResponseError {
     constructor(message = '表单校验失败', data?: any) {
         super(ResponseCode.CommonFormInvalid, message, data);
