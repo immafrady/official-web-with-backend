@@ -3,6 +3,7 @@ import { BaseEntity } from "../../shared/base.entity";
 import { IUserEntity } from 'libs/entity/user';
 import { Article } from "../article/article.entity";
 import * as md5 from 'md5';
+import { Picture } from "../picture/picture.entity";
 
 @Entity()
 export class User extends BaseEntity implements IUserEntity{
@@ -31,6 +32,12 @@ export class User extends BaseEntity implements IUserEntity{
         article => article.user
     )
     articles: Article[];
+
+    @OneToMany(
+        () => Picture,
+        picture => picture.user
+    )
+    pictures: Picture[];
 
     @BeforeInsert()
     hashPassword(): void {
