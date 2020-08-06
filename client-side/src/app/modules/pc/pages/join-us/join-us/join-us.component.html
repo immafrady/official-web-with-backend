@@ -24,6 +24,9 @@
         <img [src]="getImage('join-us-work-environment-4')" alt="">
         <img [src]="getImage('join-us-work-environment-5')" alt="">
       </div>
+      <div class="more-link">
+        <a [routerLink]="['enterprise-culture-more', { type: PictureType.ENVIRONMENT }]">查看更多 》</a>
+      </div>
     </nz-tab>
     <nz-tab nzTitle="小伙伴生活">
       <div class="company-container">
@@ -33,6 +36,9 @@
         <img [src]="getImage('join-us-live-4')" alt="">
         <img [src]="getImage('join-us-live-5')" alt="">
         <img [src]="getImage('join-us-live-6')" alt="">
+      </div>
+      <div class="more-link">
+        <a [routerLink]="['enterprise-culture-more', { type: PictureType.ENVIRONMENT }]">查看更多 》</a>
       </div>
     </nz-tab>
   </nz-tabset>

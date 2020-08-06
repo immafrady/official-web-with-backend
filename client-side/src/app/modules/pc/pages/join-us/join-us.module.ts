@@ -3,14 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { JoinUsRoutingModule } from './join-us-routing.module';
 import {PcSharedModule} from '@pc/shared/pc-shared.module';
-import {JoinUsComponent} from "./join-us.component";
-import {NzTableModule, NzTabsModule, NzIconModule, NzTagModule} from "ng-zorro-antd";
+import {JoinUsComponent} from "./join-us/join-us.component";
+import {NzTableModule, NzTabsModule, NzIconModule, NzTagModule, NzSpinModule} from "ng-zorro-antd";
 import {FormsModule} from "@angular/forms";
+import { EnterpriseCultureMoreComponent } from './enterprise-culture-more/enterprise-culture-more.component';
+import {NgxImageGalleryModule} from "@web-aid-kit/ngx-image-gallery";
 
 
 @NgModule({
   declarations: [
-    JoinUsComponent
+    JoinUsComponent,
+    EnterpriseCultureMoreComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +23,9 @@ import {FormsModule} from "@angular/forms";
     NzTableModule,
     FormsModule,
     NzIconModule,
-    NzTagModule
+    NzTagModule,
+    NgxImageGalleryModule,
+    NzSpinModule
   ]
 })
 export class JoinUsModule { }
