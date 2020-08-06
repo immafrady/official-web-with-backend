@@ -7,7 +7,7 @@ import { IRequestPagination } from "../common";
  */
 export interface IPictureSaveOptions {
     title: string;
-    comment: string;
+    comment?: string;
     priority: PicturePriority;
     type: PictureType;
     modifyDate: Date;
@@ -24,7 +24,7 @@ export interface IPictureDeleteOptions {
 /**
  * @description 修改图片
  */
-export interface IPictureEditOptions extends IPictureEntity{}
+export interface IPictureEditOptions extends Omit<IPictureEntity, 'url'>{}
 
 /**
  * @description 图片列表
@@ -33,3 +33,8 @@ export interface IPictureListOptions extends IRequestPagination{
     type?: PictureType;
     priority?: PicturePriority;
 }
+
+/**
+ * @description 图片详情
+ */
+export interface IPictureDetailOptions {}

@@ -2,22 +2,22 @@
  * 图片类型
  */
 export enum PictureType {
-    ENVIRONMENT = 'ENVIRONMENT',
-    FRIEND = 'FRIEND'
+    Environment = 'ENVIRONMENT',
+    Friend = 'FRIEND'
 }
 export const PictureTypeLabel = {
-    [PictureType.ENVIRONMENT]: '工作环境',
-    [PictureType.FRIEND]: '小伙伴生活'
+    [PictureType.Environment]: '工作环境',
+    [PictureType.Friend]: '小伙伴生活'
 }
 
 /**
  * 图片重要级别
  */
 export enum PicturePriority {
-    NORMAL,
-    IMPORTANT
+    Normal = 0,
+    Important = 1
 }
 export const PicturePriorityLabel = {
-    [PicturePriority.NORMAL]: '普通',
-    [PicturePriority.IMPORTANT]: '重要'
+    [PicturePriority.Normal]: '普通',
+    [PicturePriority.Important]: '重要'
 }

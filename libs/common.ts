@@ -20,8 +20,9 @@ export interface IRequestPagination {
 /**
  * @description 响应列表分页
  */
-export interface IResponsePagination {
+export interface IResponsePagination<T> {
     total: number;
+    list: T[]
 }
 
 export class BaseResponseError extends Error{

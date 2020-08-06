@@ -4,7 +4,7 @@ import { PicturePriority, PictureType } from "../enums/picture";
 /**
  * 图片实体
  */
-export interface IPictureEntity extends IBaseEntity {
+export interface IPictureEntity extends Partial<IBaseEntity> {
     url: string;
     type: PictureType;
     priority: PicturePriority;
