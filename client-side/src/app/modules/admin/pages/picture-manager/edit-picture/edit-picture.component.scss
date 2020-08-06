@@ -15,8 +15,39 @@
     .ant-form-item-label {
       min-width: 150px;
     }
-    nz-select,input,nz-date-picker {
-      width: 300px;
+    nz-date-picker {
+      width: 50% !important;
+    }
+  }
+}
+
+.ant-upload.ant-upload-drag {
+  width: 260px;
+  border-radius: 4px;
+}
+.picture-list {
+  display: flex;
+  flex-wrap: wrap;
+  .picture-box {
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    border: 1px dashed #ccc;
+    position: relative;
+    padding: 8px;
+    border-radius: 4px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .anticon-close-circle {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      font-size: 20px;
+      color: #ccc;
+      cursor: pointer;
     }
   }
 }

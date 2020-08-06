@@ -1,7 +1,7 @@
 <div class="news-list-container">
   <div class="nav-container">
     <h2 class="news-list-title">图片管理</h2>
-    <button nz-button nzType="primary" routerLink="edit-picture/0">上传图片</button>
+    <button nz-button nzType="primary" routerLink="edit-picture">上传图片</button>
   </div>
   <nz-table #nzTable [nzData]="pictureList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
     <thead>
@@ -27,7 +27,7 @@
           <img [src]="data.url" alt="">
         </td>
         <td>
-          <button nz-button nzType="primary" nzShape="round" routerLink="edit-picture/{{ data.id }}">编辑</button>
+          <button nz-button nzType="primary" nzShape="round" [routerLink]="[ 'edit-picture', { id: data.id } ]" >编辑</button>
           <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteArticle(data.id)">删除</button>
         </td>
       </tr>
