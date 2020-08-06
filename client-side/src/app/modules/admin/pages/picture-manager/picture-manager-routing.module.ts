@@ -6,7 +6,7 @@ import {PictureManagerComponent} from "@admin/pages/picture-manager/picture-mana
 
 const routes: Routes = [
   {path: '', component: PictureManagerComponent, data: { title: '图片管理' }},
-  {path: 'edit-picture/:id', component: EditPictureComponent, data: { title: '上传/修改图片' }},
+  {path: 'edit-picture', component: EditPictureComponent, data: { title: '上传/修改图片' }},
 ];
 
 @NgModule({

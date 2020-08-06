@@ -1,27 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UploadFile, UploadXHRArgs} from "ng-zorro-antd";
+import {UploadFile} from "ng-zorro-antd";
 import {uploadAliyun} from "@/utils/uploadAliOss";
-import {IArticleModifyOptions} from "@libs/request/article";
-import {CreateArticleService} from "@admin/pages/news-list/create-article/create-article.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Subscription} from "rxjs";
+import {PicturePriority, PicturePriorityLabel, PictureType, PictureTypeLabel} from "@libs/enums/picture";
+import {EditPictureService} from "@admin/pages/picture-manager/edit-picture/edit-picture.service";
 
 @Component({
   selector: 'admin-edit-picture',
   templateUrl: './edit-picture.component.html',
-  styleUrls: ['./edit-picture.component.scss']
+  styleUrls: ['./edit-picture.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EditPictureComponent implements OnInit {
-
   validateForm: FormGroup;
-  priorityOptions = [];
-  typeOptions = [];
-  fileList = [];
   urls = [];
+  pictureId: number;
+  previewPicture: string;
+  priorityOptions = [{
+    value: PicturePriority.Normal,
+    label: PicturePriorityLabel[PicturePriority.Normal]
+  }, {
+    value: PicturePriority.Important,
+    label: PicturePriorityLabel[PicturePriority.Important]
+  }];
+  typeOptions = [{
+    value: PictureType.Environment,
+    label: PictureTypeLabel[PictureType.Environment]
+  }, {
+    value: PictureType.Friend,
+    label: PictureTypeLabel[PictureType.Friend]
+  }];
   constructor(
     private fb: FormBuilder,
-    private CreateArticleService: CreateArticleService,
+    private EditPictureService: EditPictureService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -31,43 +43,48 @@ export class EditPictureComponent implements OnInit {
       this.validateForm.controls[key].updateValueAndValidity()
     }
     const formData = this.validateForm.value;
-    if (formData.id) {
-      this.CreateArticleService.saveDetailArticle(formData as IArticleModifyOptions).subscribe(() => {
-        this.router.navigate(['/admin/news-list'])
+    formData.urls = this.urls;
+    if (this.pictureId) {
+      this.EditPictureService.modifyPicture(this.pictureId, formData).subscribe(() => {
+        this.router.navigate(['/admin/picture-manager'])
       })
     } else {
-      this.CreateArticleService.saveArticle(formData).subscribe(() => {
-        this.router.navigate(['/admin/news-list'])
+      this.EditPictureService.savePicture(formData).subscribe(() => {
+        this.router.navigate(['/admin/picture-manager'])
       })
     }
   }
-  customRequest(args: UploadXHRArgs ): Subscription {
-    args.onSuccess('', args.file, '');
-    console.log('here, ', args)
-    return new Subscription()
-  }
+
+  customRequest(): void {}
   handleChange(info: { file: UploadFile }): void {
-    console.log(info);
     uploadAliyun(info.file.originFileObj).then(res => {
       this.urls.push(res.url);
-      console.log(this.urls);
     })
+  }
+
+  getPictureDetail(): void {
+    this.EditPictureService.getPictureDetail(this.pictureId).subscribe(({ data }) => {
+      this.validateForm.patchValue(data);
+      this.previewPicture = data.url
+    })
+  }
+
+  deletePicture(index): void {
+    this.urls.splice(index, 1)
   }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       title: [null, [Validators.required]],
-      status: [null, [Validators.required]],
-      modifyDate:[null, [Validators.required]],
-      type:[null, [Validators.required]],
-      thumbnail:[null, [Validators.required]],
-      id: [null]
+      comment: [null],
+      priority: [null, [Validators.required]],
+      type: [null, [Validators.required]],
+      modifyDate:[null, [Validators.required]]
     });
-    this.route.params.subscribe(data => {
-      const id = +data.id;
-      if (id) {
-        this.validateForm.patchValue({ id });
-      }
+
+    this.route.paramMap.subscribe(({ params }) => {
+      this.pictureId = +params.params.id;
+      this.getPictureDetail()
     })
   }
 

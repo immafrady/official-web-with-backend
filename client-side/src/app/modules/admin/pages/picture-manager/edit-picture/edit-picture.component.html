@@ -8,45 +8,52 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="priority">文章重要级别</nz-form-label>
-      <nz-form-control nzErrorTip="请选择文章重要级别">
-        <nz-select id="priority" formControlName="priority" nzPlaceHolder="请选择文章重要级别" ngModel>
+      <nz-form-label nzRequired nzFor="priority">图片重要级别</nz-form-label>
+      <nz-form-control nzErrorTip="请选择图片重要级别">
+        <nz-select id="priority" formControlName="priority" nzPlaceHolder="请选择图片重要级别" ngModel>
           <nz-option *ngFor="let option of priorityOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
         </nz-select>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="type">文章分类</nz-form-label>
-      <nz-form-control nzErrorTip="请选择文章重要级别">
-        <nz-select id="type" formControlName="type" nzPlaceHolder="请选择文章重要级别">
+      <nz-form-label nzRequired nzFor="type">图片分类</nz-form-label>
+      <nz-form-control nzErrorTip="请选择图片分类">
+        <nz-select id="type" formControlName="type" nzPlaceHolder="请选择图片分类">
           <nz-option *ngFor="let option of typeOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
         </nz-select>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired>发布时间</nz-form-label>
-      <nz-form-control nzErrorTip="请选择发布时间">
+      <nz-form-label nzRequired>自定义上传时间</nz-form-label>
+      <nz-form-control nzErrorTip="请选择自定义上传时间">
         <nz-date-picker
           nzShowTime
           formControlName="modifyDate"
           nzFormat="yyyy-MM-dd HH:mm:ss"
-          nzPlaceHolder="请选择发布时间"
+          nzPlaceHolder="请选择自定义上传时间"
           ngModel
         ></nz-date-picker>
       </nz-form-control>
     </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="comment">描述</nz-form-label>
+      <nz-form-control>
+        <textarea formControlName="comment" id="comment" nz-input placeholder="请输入描述" ngModel></textarea>
+      </nz-form-control>
+    </nz-form-item>
     <nz-form-item style="width: 100%">
-      <nz-form-label nzRequired>上传图片</nz-form-label>
-      <nz-form-control nzErrorTip="请上传上传缩略图">
+      <nz-form-label nzRequired>{{ pictureId ? '预览图片' : '上传图片' }}</nz-form-label>
+      <nz-form-control *ngIf="!pictureId" nzErrorTip="请上传上传缩略图">
         <nz-upload
           class="avatar-uploader"
           nzAction=""
           nzType="drag"
-          nzListType="picture"
+          nzListType="picture-card"
           nzAccept="image/*"
+          [nzLimit]="5"
           [nzCustomRequest]="customRequest"
           [nzMultiple]="true"
-          [(nzFileList)]="fileList"
+          [nzShowUploadList]="false"
           (nzChange)="handleChange($event)"
         >
           <p class="ant-upload-drag-icon">
@@ -55,8 +62,19 @@
           <p>点击或者拖拽上传</p>
           <p>支持单个或批量上传</p>
         </nz-upload>
+        <div class="picture-list">
+          <div *ngFor="let item of urls, let idx = index" class="picture-box">
+            <img [src]="item" alt="">
+            <i nz-icon nzType="close-circle" nzTheme="outline" (click)="deletePicture(idx)"></i>
+          </div>
+        </div>
+      </nz-form-control>
+      <nz-form-control>
+        <img [src]="previewPicture" alt="">
       </nz-form-control>
     </nz-form-item>
-    <button nz-button nzType="primary" style="margin-left: 150px" [disabled]="!validateForm.valid">保存</button>
+    <div style="width: 100%">
+      <button nz-button nzType="primary" style="margin-left: 150px" [disabled]="!validateForm.valid">保存</button>
+    </div>
   </form>
 </div>

@@ -32,7 +32,7 @@
         <td>{{ data.priority | picturePriority }}</td>
         <td>{{ data.type | pictureType  }}</td>
         <td>
-          <button nz-button nzType="primary" nzShape="round" routerLink="edit-picture/{{ data.id }}">编辑</button>
+          <button nz-button nzType="primary" nzShape="round" [routerLink]="[ 'edit-picture', { id: data.id } ]" >编辑</button>
           <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteOnePicture(data.id)">删除</button>
         </td>
       </tr>
