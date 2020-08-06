@@ -14,8 +14,8 @@ export const PictureTypeLabel = {
  * 图片重要级别
  */
 export enum PicturePriority {
-    Normal = 0,
-    Important = 1
+    Normal = '0',
+    Important = '1'
 }
 export const PicturePriorityLabel = {
     [PicturePriority.Normal]: '普通',

@@ -1,14 +1,36 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { Token_PictureRepository } from "../../constants";
-import { Repository } from "typeorm";
+import { DeleteResult, Repository } from "typeorm";
 import { Picture } from "./picture.entity";
-import { SavePictureDto } from "./dto";
+import { EditPictureDto, SavePictureDto } from "./dto";
 import { User } from "../user/user.entity";
+import { IPictureDetailResponse, IPictureListResponse } from "libs/response/picture";
+import { IPictureFindManyOptions } from "./picture.interface";
+import { IRequestPagination } from "libs/common";
+import { cleanNoneValue } from "../../utils/clean-none-value.util";
+import { handlePagination } from "../../utils/handle-pagination.util";
+import { FindManyOptions } from "typeorm/find-options/FindManyOptions";
+import { PictureNotFoundError } from "libs/response-error";
 
 @Injectable()
 export class PictureService {
     constructor(@Inject(Token_PictureRepository) private pictureRepository: Repository<Picture>) {}
 
+    /**
+     * @description 判断是否存在图片
+     * @param id
+     */
+    async hasPictureOrFail(id: number):Promise<void> {
+        if (!await this.pictureRepository.findOne(id)) {
+            throw new PictureNotFoundError();
+        }
+    }
+
+    /**
+     * @description 新增图片们
+     * @param savePictureDto
+     * @param userId
+     */
     async create(savePictureDto: SavePictureDto, userId: number): Promise<any> {
         const qb = await this.pictureRepository.createQueryBuilder();
         const user = new User();
@@ -25,8 +47,58 @@ export class PictureService {
                 user
             }
         });
-
         await qb.insert().into(Picture).values(values).execute();
         return {};
+    }
+
+
+    /**
+     * @description 编辑图片
+     * @param editPictureDto
+     * @param pictureId
+     * @param userId
+     */
+    async edit(editPictureDto: EditPictureDto, pictureId: number, userId: number): Promise<any> {
+        const picture = this.pictureRepository.create(editPictureDto);
+        const user = new User();
+        user.id = userId;
+        picture.user = user;
+        await this.pictureRepository.update(pictureId, picture);
+        return {};
+    }
+
+    /**
+     * @description 删除图片
+     * @param pictureId
+     */
+    async delete(pictureId: number): Promise<DeleteResult> {
+        return await this.pictureRepository.delete(pictureId);
+    }
+
+    /**
+     * @description 图片单张详情
+     * @param pictureId
+     */
+    async findOne(pictureId: number): Promise<IPictureDetailResponse> {
+        return await this.pictureRepository.findOne(pictureId );
+    }
+
+    async findMany(pictureFindManyOptions: IPictureFindManyOptions, pagination?: IRequestPagination): Promise<IPictureListResponse> {
+        cleanNoneValue(pictureFindManyOptions.where);
+        let options: FindManyOptions<Picture> = {
+            select: pictureFindManyOptions.select,
+            where: pictureFindManyOptions.where,
+            order: {
+                modifyDate: "DESC"
+            }
+        }
+        if (pagination) {
+            options = { ...options, ...handlePagination(pagination.size, pagination.page)}
+        }
+        const [list, total] = await this.pictureRepository.findAndCount(options)
+        return {
+            list,
+            total
+        }
     }
 }

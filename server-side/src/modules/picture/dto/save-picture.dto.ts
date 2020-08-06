@@ -1,6 +1,6 @@
 import { PicturePriority, PictureType } from "libs/enums/picture";
-import { IsArray, IsDate, IsDateString, IsEnum, IsString } from "class-validator";
-import { ApiProperty } from "@nestjs/swagger";
+import { IsArray, IsDate, IsDateString, IsEnum, IsOptional, IsString } from "class-validator";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IPictureSaveOptions } from "libs/request/picture";
 
 export class SavePictureDto implements IPictureSaveOptions{
@@ -8,8 +8,9 @@ export class SavePictureDto implements IPictureSaveOptions{
     @IsString()
     readonly title: string;
 
-    @ApiProperty({ description: '图片描述'  })
+    @ApiPropertyOptional({ description: '图片描述' })
     @IsString()
+    @IsOptional()
     readonly comment: string;
 
     @ApiProperty({ description: '图片权重', enum: PicturePriority })
@@ -20,8 +21,9 @@ export class SavePictureDto implements IPictureSaveOptions{
     @IsEnum(PictureType)
     readonly type: PictureType;
 
-    @ApiProperty({ description: '图片修改日期' })
+    @ApiPropertyOptional({ description: '图片修改日期' })
     @IsDateString()
+    @IsOptional()
     readonly modifyDate: Date;
 
     @ApiProperty({ description: '图片链接们' })

@@ -18,7 +18,8 @@ export class Picture extends BaseEntity implements IPictureEntity {
      * @description 图片描述
      */
     @Column({
-        type: "text"
+        type: "text",
+        nullable: true
     })
     comment: string;
 
@@ -46,7 +47,7 @@ export class Picture extends BaseEntity implements IPictureEntity {
     @Column({
         type: "enum",
         enum: PicturePriority,
-        default: PicturePriority.NORMAL
+        default: PicturePriority.Normal
     })
     priority: PicturePriority;
 
@@ -56,7 +57,7 @@ export class Picture extends BaseEntity implements IPictureEntity {
     @Column({
         type: "enum",
         enum: PictureType,
-        default: PictureType.FRIEND
+        default: PictureType.Friend
     })
     type: PictureType;
 

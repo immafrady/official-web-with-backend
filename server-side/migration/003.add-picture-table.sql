@@ -5,7 +5,7 @@ create table `picture`
     `updateDate`  datetime(6)                     default CURRENT_TIMESTAMP(6)        not null ,
     `modifyDate`  datetime(6)                     default CURRENT_TIMESTAMP(6)        not null ,
     `url`         text                                                                not null ,
-    `comment`     text                                                                not null ,
+    `comment`     text                                                                    null ,
     `title`       text                                                                not null ,
     `priority`    enum('0', '1')                  default '0'                         not null ,
     `type`        enum('ENVIRONMENT', 'FRIEND')   default 'FRIEND'                    not null ,

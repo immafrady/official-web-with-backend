@@ -1026,7 +1026,6 @@
     <column id="308" parent="287" name="comment">
       <Position>6</Position>
       <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="309" parent="287" name="priority">

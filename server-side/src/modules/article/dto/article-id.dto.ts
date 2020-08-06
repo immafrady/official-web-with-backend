@@ -4,5 +4,5 @@ import { ApiProperty } from "@nestjs/swagger";
 export class ArticleIdDto {
     @ApiProperty({ description: '文章Id' })
     @IsNumberString()
-    id: number;
+    readonly id: number;
 }
