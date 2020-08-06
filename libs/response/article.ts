@@ -39,9 +39,7 @@ export interface IArticleDetailResponse {
 /**
  * @description 文章列表
  */
-export interface IArticleListResponse extends IResponsePagination{
-    list: IArticleEntity[]
-}
+export interface IArticleListResponse extends IResponsePagination<IArticleEntity> {}
 
 /**
  *  @description 修改文章状态接口
