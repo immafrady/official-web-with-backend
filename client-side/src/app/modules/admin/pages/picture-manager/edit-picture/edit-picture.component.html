@@ -8,14 +8,6 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="status">是否发布</nz-form-label>
-      <nz-form-control nzErrorTip="请选择是否发布">
-        <nz-select id="status" formControlName="status" nzPlaceHolder="请选择是否发布" ngModel>
-          <nz-option *ngFor="let option of statusOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-        </nz-select>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
       <nz-form-label nzRequired nzFor="priority">文章重要级别</nz-form-label>
       <nz-form-control nzErrorTip="请选择文章重要级别">
         <nz-select id="priority" formControlName="priority" nzPlaceHolder="请选择文章重要级别" ngModel>
@@ -26,7 +18,7 @@
     <nz-form-item>
       <nz-form-label nzRequired nzFor="type">文章分类</nz-form-label>
       <nz-form-control nzErrorTip="请选择文章重要级别">
-        <nz-select id="type" formControlName="type" nzPlaceHolder="请选择文章重要级别" nzMode="multiple">
+        <nz-select id="type" formControlName="type" nzPlaceHolder="请选择文章重要级别">
           <nz-option *ngFor="let option of typeOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
         </nz-select>
       </nz-form-control>
@@ -44,30 +36,25 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item style="width: 100%">
-      <nz-form-label nzRequired>上传缩略图</nz-form-label>
+      <nz-form-label nzRequired>上传图片</nz-form-label>
       <nz-form-control nzErrorTip="请上传上传缩略图">
         <nz-upload
           class="avatar-uploader"
           nzAction=""
-          nzName="avatar"
-          nzListType="picture-card"
+          nzType="drag"
+          nzListType="picture"
           nzAccept="image/*"
           [nzCustomRequest]="customRequest"
-          [nzShowUploadList]="false"
+          [nzMultiple]="true"
+          [(nzFileList)]="fileList"
           (nzChange)="handleChange($event)"
         >
-          <ng-container *ngIf="!validateForm.value.thumbnail">
-            <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
-            <div class="ant-upload-text">上传缩略图</div>
-          </ng-container>
-          <img *ngIf="validateForm.value.thumbnail" [src]="validateForm.value.thumbnail" style="width: 100%" />
+          <p class="ant-upload-drag-icon">
+            <i nz-icon nzType="inbox"></i>
+          </p>
+          <p>点击或者拖拽上传</p>
+          <p>支持单个或批量上传</p>
         </nz-upload>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item style="width: 100%;">
-      <nz-form-label nzRequired>文章内容</nz-form-label>
-      <nz-form-control nzErrorTip="请输入文章内容">
-        <editor formControlName="content" [init]="tinyOptions" ngModel></editor>
       </nz-form-control>
     </nz-form-item>
     <button nz-button nzType="primary" style="margin-left: 150px" [disabled]="!validateForm.valid">保存</button>

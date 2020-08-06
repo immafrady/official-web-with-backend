@@ -3,6 +3,7 @@ import {BasePageComponent} from '@/app/shared/base-page.component';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {getImage} from '@/utils/getImage';
+import { PictureType } from '@libs/enums/picture'
 
 @Component({
   selector: 'pc-join-us',
@@ -11,6 +12,7 @@ import {getImage} from '@/utils/getImage';
   encapsulation: ViewEncapsulation.None
 })
 export class JoinUsComponent extends BasePageComponent implements OnInit {
+  PictureType = PictureType;
   positionType = 'common';
   rotateActive = false;
   expandSet = new Set<number>();

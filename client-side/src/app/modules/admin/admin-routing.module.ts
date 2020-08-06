@@ -11,6 +11,7 @@ const routes: Routes = [
       { path: '', component: WrapperComponent, canActivateChild: [AuthGuard], children: [
         // todo 加载具体页面
           { path: 'news-list', loadChildren: () => import('./pages/news-list/news-list.module').then(mod => mod.NewsListModule) },
+          { path: 'picture-manager', loadChildren: () => import('./pages/picture-manager/picture-manager.module').then(mod => mod.PictureManagerModule) },
           { path: '**', redirectTo: 'news-list' }
 
         ] },
