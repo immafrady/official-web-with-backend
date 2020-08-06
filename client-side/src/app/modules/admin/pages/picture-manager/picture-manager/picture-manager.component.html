@@ -1,34 +1,39 @@
-<div class="news-list-container">
+<div class="picture-list-container">
   <div class="nav-container">
-    <h2 class="news-list-title">图片管理</h2>
+    <h2 class="picture-list-title">图片管理</h2>
     <button nz-button nzType="primary" routerLink="edit-picture/0">上传图片</button>
+    <button nz-button nzType="danger" >批量删除</button>
   </div>
   <nz-table #nzTable [nzData]="pictureList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
     <thead>
     <tr>
+      <th [nzChecked]="checked" ></th>
       <th nzWidth="80px">序号</th>
       <th>标题</th>
       <th>描述</th>
-      <th>发布时间</th>
-      <th>类型</th>
       <th>缩略图</th>
+      <th>修改日期</th>
+      <th>权重</th>
+      <th>类型</th>
       <th nzWidth="350px">操作</th>
     </tr>
     </thead>
     <tbody>
     <ng-container *ngFor="let data of nzTable.data, index as index" >
       <tr>
+        <td [nzChecked]=""></td>
         <td>{{ index + 1 }}</td>
         <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
-        <td nzEllipsis [nzTooltipTitle]="data.content" nz-tooltip>{{ data.content }}</td>
-        <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-        <td>{{ data.type }}</td>
+        <td nzEllipsis [nzTooltipTitle]="data.comment" nz-tooltip>{{ data.comment }}</td>
         <td>
-          <img [src]="data.url" alt="">
+          <img [src]="data.url" class="thumbnail" alt="">
         </td>
+        <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ data.priority | picturePriority }}</td>
+        <td>{{ data.type | pictureType  }}</td>
         <td>
           <button nz-button nzType="primary" nzShape="round" routerLink="edit-picture/{{ data.id }}">编辑</button>
-          <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteArticle(data.id)">删除</button>
+          <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteOnePicture(data.id)">删除</button>
         </td>
       </tr>
     </ng-container>
