@@ -23,7 +23,9 @@ export class NewsCenterService {
       this.transferState.remove(key);
       return of(transferList)
     } else {
-      return this.http.get('/article/list?' + httpParamsHandler(data)).pipe(
+      return this.http.get('/article/list', {
+        params: httpParamsHandler(data)
+      }).pipe(
         tap((res: IHttpResponse<IArticleListResponse>) => {
           this.transferState.set(key, res)
         })
@@ -32,7 +34,7 @@ export class NewsCenterService {
   }
 
   getPageNewsList(data:IArticleListOptions): Observable<IHttpResponse<IArticleListResponse>> {
-    return this.http.get('/article/list?' + httpParamsHandler(data)) as Observable<IHttpResponse<IArticleListResponse>>
+    return this.http.get('/article/list', { params: httpParamsHandler(data) }) as Observable<IHttpResponse<IArticleListResponse>>
   }
 
   getNewsDetail(data: IArticleDetailOptions): Observable<IHttpResponse<IArticleDetailResponse>> {

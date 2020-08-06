@@ -1,11 +1,21 @@
 import {HttpParams} from "@angular/common/http";
 
-export function httpParamsHandler(params:Object) {
+export function httpParamsHandler(params: Object = {}): HttpParams {
   let httpParams = new HttpParams();
-  if (params) {
-    for (let key in params) {
-      httpParams = httpParams.set(key, params[key])
+  for (let key in params) {
+    if (params.hasOwnProperty(key)) {
+      const value = params[key]
+      if (value !== null && value !== undefined) {
+        if (Array.isArray(value)) {
+          value.forEach(v => {
+            httpParams = httpParams.append(key, String(v));
+          })
+        } else {
+          httpParams = httpParams.set(key, String(value));
+        }
+      }
     }
-    return httpParams.toString()
+
   }
+  return httpParams
 }
