@@ -24,7 +24,7 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="priority">文章分类</nz-form-label>
+      <nz-form-label nzRequired nzFor="type">文章分类</nz-form-label>
       <nz-form-control nzErrorTip="请选择文章重要级别">
         <nz-select id="type" formControlName="type" nzPlaceHolder="请选择文章重要级别" nzMode="multiple">
           <nz-option *ngFor="let option of typeOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
