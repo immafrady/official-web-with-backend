@@ -13,6 +13,10 @@ export const enum ResponseCode {
     ArticleCannotModify,
     ArticleNotFound,
     ArticleListCannotMake,
+    PictureCannotSave = 3001,
+    PictureCannotDelete,
+    PictureCannotModify,
+    PictureNotFound,
     CommonFormInvalid = 400,
     UnknownError = 9999
 }

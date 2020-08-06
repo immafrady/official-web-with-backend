@@ -11,6 +11,7 @@ import { LoggerModule } from './shared/modules/logger/logger.module';
 import { BaseResponseErrorFilter } from './shared/filters/base-response-error.filter';
 import { LoggerInterceptor } from "./shared/interceptors/logger.interceptor";
 import { CustomValidationPipe } from "./shared/pipes/custom-validation.pipe";
+import { PictureModule } from "./modules/picture/picture.module";
 
 @Module({
     imports: [
@@ -18,6 +19,7 @@ import { CustomValidationPipe } from "./shared/pipes/custom-validation.pipe";
         SystemModule,
         DatabaseModule,
         ArticleModule,
+        PictureModule,
         LoggerModule
     ],
     controllers: [AppController],
