@@ -1,0 +1,50 @@
+@import "src/styles/images.pc";
+@import "src/styles/common.pc";
+
+.enterprise-culture-more {
+  background-color: #f7f7f7;
+  padding: 42px 0;
+}
+.waterfall {
+  @include clear-fix;
+  visibility: hidden;
+  transition: all 0.2s;
+  margin: 0 auto;
+  &.show {
+    visibility: inherit;
+  }
+  .waterfall-img {
+    margin-bottom: 20px;
+    float: left;
+    width: 285px;
+    cursor: pointer;
+    img {
+      width: 100%;
+      border-radius: 6px;
+      filter: blur(5px);
+      transition: filter .7s ease-in-out;
+      &.loaded {
+        filter: none;
+      }
+    }
+  }
+  //  float: left;
+  //  transform: scale(1);
+  //  transition: all 0.5s;
+  //  overflow: hidden;
+  //  position: relative;
+  //  border: 10px solid #fff;
+  //  margin: 10px 0 10px 20px;
+  //  cursor: pointer;
+  //  border-radius: 4px;
+  //  img {
+  //    width: 250px;
+  //    height: 340px;
+  //    object-fit: cover;
+  //    transition: all 0.5s ease-in-out;
+  //    &:hover {
+  //      transform: scale(1.2);
+  //    }
+  //  }
+  //}
+}

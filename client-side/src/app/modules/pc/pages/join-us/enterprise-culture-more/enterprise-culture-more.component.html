@@ -1,0 +1,15 @@
+<pc-core-container className="enterprise-culture-more">
+  <div class="block-title">小伙伴生活</div>
+  <nz-spin [nzSpinning]="isSpinning" nzTip="Loading...">
+    <div class="waterfall" [ngClass]="{ 'show': !isSpinning }">
+      <div *ngFor="let item of imgList, let idx = index" class="waterfall-img" (click)="openGallery(idx)">
+        <img [src]="item.url" alt="" [ngClass]="{ 'loaded': !isSpinning }">
+      </div>
+    </div>
+  </nz-spin>
+  <ngx-image-gallery
+    [images]="imgList"
+    [conf]="conf"
+  ></ngx-image-gallery>
+</pc-core-container>
+
