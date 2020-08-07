@@ -19,7 +19,7 @@ export class PictureManagerComponent implements OnInit {
   conf: GALLERY_CONF = {
     imageOffset: '0px',
     showDeleteControl: false,
-    showImageTitle: true,
+    showImageTitle: true
   };
   imgList: GALLERY_IMAGE[] = [];
   constructor(private pictureManagerService: PictureManagerService) { }
