@@ -15,26 +15,28 @@ import {
 } from "ng-zorro-antd";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PcSharedModule } from "@pc/shared/pc-shared.module";
+import {NgxImageGalleryModule} from "@web-aid-kit/ngx-image-gallery";
 
 
 @NgModule({
   declarations: [EditPictureComponent, PictureManagerComponent],
-    imports: [
-        CommonModule,
-        PictureManagerRoutingModule,
-        NzTableModule,
-        NzButtonModule,
-        NzToolTipModule,
-        NzFormModule,
-        NzInputModule,
-        NzSelectModule,
-        NzGridModule,
-        NzUploadModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NzDatePickerModule,
-        NzIconModule,
-        PcSharedModule
-    ]
+  imports: [
+    CommonModule,
+    PictureManagerRoutingModule,
+    NzTableModule,
+    NzButtonModule,
+    NzToolTipModule,
+    NzFormModule,
+    NzInputModule,
+    NzSelectModule,
+    NzGridModule,
+    NzUploadModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NzDatePickerModule,
+    NzIconModule,
+    PcSharedModule,
+    NgxImageGalleryModule
+  ]
 })
 export class PictureManagerModule { }

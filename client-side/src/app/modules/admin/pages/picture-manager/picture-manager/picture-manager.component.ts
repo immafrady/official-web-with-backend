@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { httpParamsHandler } from "@/utils/httpParamsHandler";
 import { PictureManagerService } from "@admin/pages/picture-manager/picture-manager.service";
 import { IPictureEntity } from "@libs/entity/picture";
+import {GALLERY_CONF, GALLERY_IMAGE, NgxImageGalleryComponent} from "@web-aid-kit/ngx-image-gallery";
 
 @Component({
   selector: 'admin-picture-manager',
@@ -10,13 +11,26 @@ import { IPictureEntity } from "@libs/entity/picture";
   styleUrls: ['./picture-manager.component.scss']
 })
 export class PictureManagerComponent implements OnInit {
+  @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent;
   pictureList: IPictureEntity[];
   total: number;
   checked = false;
   indeterminate = false;
   setOfCheckedId = new Set<number>();
+  conf: GALLERY_CONF = {
+    imageOffset: '0px',
+    showDeleteControl: false,
+    showImageTitle: true,
+  };
+  imgList: GALLERY_IMAGE[] = [];
   constructor(private pictureManagerService: PictureManagerService) { }
 
+  openGallery(url, title, index: number = 0) {
+    this.imgList = [{ url, title }];
+    setTimeout(() => {
+      this.ngxImageGallery.open();
+    }, 0)
+  }
   ngOnInit(): void {
     this.getPictureList();
   }
