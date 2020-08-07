@@ -40,14 +40,14 @@ export class PictureController {
     async editPicture(@Body() editPictureDto: EditPictureDto, @UserId() userId: number, @Param() pictureIdDto: PictureIdDto): Promise<IHttpResponse<IPictureEditResponse>> {
         await this.pictureService.hasPictureOrFail(pictureIdDto.id);
         try {
-            return successResponse(await this.pictureService.edit(editPictureDto, pictureIdDto.id, userId), '');
+            return successResponse(await this.pictureService.edit(editPictureDto, pictureIdDto.id, userId), '修改图片信息成功');
         } catch (e) {
             throw new PictureCannotModifyError(e);
         }
     }
 
     @ApiOperation({ summary: '批量删除图片' })
-    @Delete('delete')
+    @Put('delete')
     async deletePictures(@Body() deletePictureDto: DeletePictureDto): Promise<IHttpResponse<IPictureDeleteResponse>> {
         const res = {
             total: deletePictureDto.ids.length,
@@ -74,7 +74,7 @@ export class PictureController {
         }
     }
 
-    @ApiOperation({ summary: '图片' })
+    @ApiOperation({ summary: '图片列表' })
     @Get('list')
     async adminPictureList(@Query() pictureListDto: PictureListDto): Promise<IHttpResponse<IPictureListResponse>> {
         try {
