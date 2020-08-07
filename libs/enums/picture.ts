@@ -18,6 +18,6 @@ export enum PicturePriority {
     Important = '1'
 }
 export const PicturePriorityLabel = {
-    [PicturePriority.Normal]: '普通',
-    [PicturePriority.Important]: '重要'
+    [PicturePriority.Normal]: '仅内页展示',
+    [PicturePriority.Important]: '一级页面及内页展示'
 }
