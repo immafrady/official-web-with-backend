@@ -6,37 +6,41 @@
   </div>
   <nz-table #nzTable [nzData]="pictureList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
     <thead>
-    <tr>
-      <th nzWidth="40px" [nzChecked]="checked" ></th>
-      <th nzWidth="80px">序号</th>
-      <th>标题</th>
-      <th>描述</th>
-      <th nzWidth="200px">自定义上传日期</th>
-      <th>权重</th>
-      <th>类型</th>
-      <th>缩略图</th>
-      <th nzWidth="350px">操作</th>
-    </tr>
+      <tr>
+        <th nzWidth="40px" [nzChecked]="checked" ></th>
+        <th nzWidth="80px">序号</th>
+        <th>标题</th>
+        <th>描述</th>
+        <th nzWidth="200px">自定义上传日期</th>
+        <th>权重</th>
+        <th>类型</th>
+        <th>缩略图</th>
+        <th nzWidth="350px">操作</th>
+      </tr>
     </thead>
     <tbody>
-    <ng-container *ngFor="let data of nzTable.data, index as index" >
-      <tr>
-        <td [nzChecked]=""></td>
-        <td>{{ index + 1 }}</td>
-        <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
-        <td nzEllipsis [nzTooltipTitle]="data.comment" nz-tooltip>{{ data.comment }}</td>
-        <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-        <td>{{ data.priority | picturePriority }}</td>
-        <td>{{ data.type | pictureType  }}</td>
-        <td class="preview-img">
-          <img title="点击查看大图" [src]="data.url" class="thumbnail" alt="">
-        </td>
-        <td>
-          <button nz-button nzType="primary" nzShape="round" [routerLink]="[ 'edit-picture', { id: data.id } ]" >编辑</button>
-          <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteOnePicture(data.id)">删除</button>
-        </td>
-      </tr>
-    </ng-container>
+      <ng-container *ngFor="let data of nzTable.data, index as index" >
+        <tr>
+          <td [nzChecked]=""></td>
+          <td>{{ index + 1 }}</td>
+          <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
+          <td nzEllipsis [nzTooltipTitle]="data.comment" nz-tooltip>{{ data.comment }}</td>
+          <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ data.priority | picturePriority }}</td>
+          <td>{{ data.type | pictureType  }}</td>
+          <td class="preview-img">
+            <img title="点击查看大图" [src]="data.url" class="thumbnail" alt="" (click)="openGallery(data.url, data.title)">
+          </td>
+          <td>
+            <button nz-button nzType="primary" nzShape="round" [routerLink]="[ 'edit-picture', { id: data.id } ]" >编辑</button>
+            <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteOnePicture(data.id)">删除</button>
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </nz-table>
 </div>
+<ngx-image-gallery
+  [images]="imgList"
+  [conf]="conf"
+></ngx-image-gallery>
