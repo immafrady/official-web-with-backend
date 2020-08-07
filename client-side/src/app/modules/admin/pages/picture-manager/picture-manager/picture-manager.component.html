@@ -2,12 +2,12 @@
   <div class="nav-container">
     <h2 class="picture-list-title">图片管理</h2>
     <button nz-button nzType="primary" routerLink="edit-picture">上传图片</button>
-    <button nz-button nzType="danger" >批量删除</button>
+    <button nz-button nzType="danger" (click)="deleteSelectedPictures()">批量删除</button>
   </div>
   <nz-table #nzTable [nzData]="pictureList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
     <thead>
       <tr>
-        <th nzWidth="40px" [nzChecked]="checked" ></th>
+        <th nzWidth="40px" [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllCheckChange($event)"></th>
         <th nzWidth="80px">序号</th>
         <th>标题</th>
         <th>描述</th>
@@ -21,7 +21,7 @@
     <tbody>
       <ng-container *ngFor="let data of nzTable.data, index as index" >
         <tr>
-          <td [nzChecked]=""></td>
+          <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
           <td>{{ index + 1 }}</td>
           <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
           <td nzEllipsis [nzTooltipTitle]="data.comment" nz-tooltip>{{ data.comment }}</td>
