@@ -88,11 +88,14 @@ export class ArticleService {
             ...handlePagination(pagination.size, pagination.page)
         });
 
-        for (let i = 0; i < list.length; i++) {
-            list[i].user = {
-                id: list[i].user.id,
-                nickname: list[i].user.nickname
-            } as User
+        // 展示用户才需要进行如下操作
+        if (showUser) {
+            for (let i = 0; i < list.length; i++) {
+                list[i].user = {
+                    id: list[i].user.id,
+                    nickname: list[i].user.nickname
+                } as User
+            }
         }
 
         return {
@@ -114,7 +117,7 @@ export class ArticleService {
         });
         if (list) {
             for (let i = 0; i < list.length; i++) {
-                if (list[i].id === articleId) {
+                if (list[i].id === Number(articleId)) {
                     articleRelation[0] = list[i - 1] as ArticlePick;
                     articleRelation[1] = list[i + 1] as ArticlePick;
                 }
