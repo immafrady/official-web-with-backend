@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable } from "@nestjs/common";
 import { Token_ArticleRepository } from "../../constants";
 import { Article } from "./article.entity";
 import { Repository } from "typeorm";
@@ -87,6 +87,13 @@ export class ArticleService {
             },
             ...handlePagination(pagination.size, pagination.page)
         });
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].user = {
+                id: list[i].user.id,
+                nickname: list[i].user.nickname
+            } as User
+        }
 
         return {
             list,
