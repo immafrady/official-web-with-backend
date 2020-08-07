@@ -1,13 +1,13 @@
 <div class="picture-list-container">
   <div class="nav-container">
     <h2 class="picture-list-title">图片管理</h2>
-    <button nz-button nzType="primary" routerLink="edit-picture/0">上传图片</button>
+    <button nz-button nzType="primary" routerLink="edit-picture">上传图片</button>
     <button nz-button nzType="danger" >批量删除</button>
   </div>
   <nz-table #nzTable [nzData]="pictureList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
     <thead>
     <tr>
-      <th [nzChecked]="checked" ></th>
+      <th nzWidth="40px" [nzChecked]="checked" ></th>
       <th nzWidth="80px">序号</th>
       <th>标题</th>
       <th>描述</th>

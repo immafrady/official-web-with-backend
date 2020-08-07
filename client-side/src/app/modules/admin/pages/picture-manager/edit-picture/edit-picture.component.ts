@@ -82,10 +82,10 @@ export class EditPictureComponent implements OnInit {
       modifyDate:[null, [Validators.required]]
     });
 
-    this.route.paramMap.subscribe(({ params }) => {
-      this.pictureId = +params.params.id;
+    this.pictureId = +this.route.snapshot.paramMap.get('id');
+    if (this.pictureId) {
       this.getPictureDetail()
-    })
+    }
   }
 
 }
