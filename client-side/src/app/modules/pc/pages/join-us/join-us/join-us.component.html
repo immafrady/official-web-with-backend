@@ -17,12 +17,7 @@
   <nz-tabset [nzTabBarGutter]="180" [nzSize]="'large'">
     <nz-tab nzTitle="工作环境">
       <div class="company-container">
-        <img [src]="getImage('join-us-work-environment-1')" alt="">
-        <img [src]="getImage('join-us-work-environment-2')" alt="">
-        <img [src]="getImage('join-us-work-environment-3')" alt="">
-        <img [src]="getImage('join-us-work-environment-6')" alt="">
-        <img [src]="getImage('join-us-work-environment-4')" alt="">
-        <img [src]="getImage('join-us-work-environment-5')" alt="">
+        <img *ngFor="let item of environmentPicture" [src]="item.url" alt="">
       </div>
       <div class="more-link">
         <a [routerLink]="['enterprise-culture-more', { type: PictureType.Environment }]">查看更多 》</a>
@@ -30,12 +25,7 @@
     </nz-tab>
     <nz-tab nzTitle="小伙伴生活">
       <div class="company-container">
-        <img [src]="getImage('join-us-live-1')" alt="">
-        <img [src]="getImage('join-us-live-2')" alt="">
-        <img [src]="getImage('join-us-live-3')" alt="">
-        <img [src]="getImage('join-us-live-4')" alt="">
-        <img [src]="getImage('join-us-live-5')" alt="">
-        <img [src]="getImage('join-us-live-6')" alt="">
+        <img *ngFor="let item of friendPicture" [src]="item.url" alt="">
       </div>
       <div class="more-link">
         <a [routerLink]="['enterprise-culture-more', { type: PictureType.Friend }]">查看更多 》</a>

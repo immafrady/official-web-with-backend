@@ -47,12 +47,15 @@ $colorRed: #D50032;
     font-size: 20px;
   }
   .company-container {
-    width: 1158px;
-    margin: 20px auto;
+    width: 1140px;
+    margin: 30px auto;
     @include clear-fix;
     img {
       float: left;
       margin: 10px;
+      width: 360px;
+      height: 200px;
+      object-fit: cover;
     }
   }
   .more-link {

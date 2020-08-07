@@ -3,7 +3,8 @@ import {BasePageComponent} from '@/app/shared/base-page.component';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {getImage} from '@/utils/getImage';
-import { PictureType } from '@libs/enums/picture'
+import {PicturePriority, PictureType} from '@libs/enums/picture'
+import {JoinUsService} from "@pc/pages/join-us/join-us.service";
 
 @Component({
   selector: 'pc-join-us',
@@ -515,12 +516,14 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
     ],
   };
   getImage = getImage;
-
+  environmentPicture = [];
+  friendPicture = [];
   constructor(
     metaService: Meta,
     titleService: Title,
     activatedRoute: ActivatedRoute,
-    router: Router
+    router: Router,
+    private JoinUsService: JoinUsService
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
@@ -531,7 +534,15 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
     this.positionType = type
   }
 
+  getPictureList(type, list): void {
+    this.JoinUsService.getPictureList({ type, size: 6, page: 1, priority: PicturePriority.Important }).subscribe(({ data }) => {
+      this[list] = data.list
+    })
+  }
+
   ngOnInit(): void {
+    this.getPictureList( PictureType.Environment, 'environmentPicture');
+    this.getPictureList( PictureType.Friend, 'friendPicture');
   }
 
 }
