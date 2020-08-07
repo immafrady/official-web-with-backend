@@ -5,11 +5,16 @@
     font-weight: 700;
     margin-bottom: 10px;
   }
+  .preview-img {
+    padding: 0 !important;
+  }
   .thumbnail {
-    display: block;
-    width: 50px;
-    height: 50px;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    height: 46px;
     object-fit: cover;
+    cursor: pointer;
   }
   [nz-button] {
     margin-right: 8px;
