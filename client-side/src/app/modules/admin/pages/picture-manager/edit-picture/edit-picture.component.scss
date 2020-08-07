@@ -19,6 +19,15 @@
       width: 100% !important;
     }
   }
+  .preview-img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .tips {
+    color: red;
+  }
+
 }
 
 .ant-upload.ant-upload-drag {
@@ -50,12 +59,4 @@
       cursor: pointer;
     }
   }
-}
-.preview-img {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-}
-.tips {
-  color: red;
 }
