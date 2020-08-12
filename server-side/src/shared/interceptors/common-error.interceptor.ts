@@ -36,7 +36,7 @@ export class CommonErrorInterceptor implements NestInterceptor {
                             message: res?.message
                         }))
                     } else {
-                        return throwError(new UnknownError('未知错误2', {
+                        return throwError(new UnknownError('未知错误', {
                             stack: err.stack,
                             name: err.name
                         }));

@@ -5,14 +5,14 @@ import { IRequestPagination } from "../common";
 import { IArticleEntity } from "../entity/article";
 import { ArticleType } from '../enums/article';
 
-export interface IArticleCreateOptions extends IArticleEntity {
+export interface IArticleCreateOptions extends Omit<IArticleEntity, "count"> {
     userId?: number;
 }
 
 /**
  * @description 修改接口
  */
-export interface IArticleModifyOptions extends IArticleEntity {
+export interface IArticleModifyOptions extends Omit<IArticleEntity, "count"> {
     id?: number;
     userId?: number;
 }

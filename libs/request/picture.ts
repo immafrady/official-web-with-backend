@@ -24,7 +24,7 @@ export interface IPictureDeleteOptions {
 /**
  * @description 修改图片
  */
-export interface IPictureEditOptions extends Omit<IPictureEntity, 'url'>{}
+export interface IPictureEditOptions extends Omit<IPictureEntity, "url">{}
 
 /**
  * @description 图片列表

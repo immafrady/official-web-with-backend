@@ -75,4 +75,11 @@ export class Article extends BaseEntity implements IArticleEntity{
     )
     user: User;
 
+    /**
+     * @description 文章计数
+     */
+    @Column({
+        unsigned: true
+    })
+    count: number;
 }

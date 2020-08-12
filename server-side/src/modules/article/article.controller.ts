@@ -134,6 +134,8 @@ export class ArticleController {
 
         if (result) {
             const related = await this.articleService.findRelation(articleId, options);
+            // 文章计数加一
+            await this.articleService.countingPlusOne(articleId);
             return successResponse({
                 article: result.article,
                 related,

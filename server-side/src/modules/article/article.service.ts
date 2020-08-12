@@ -169,4 +169,19 @@ export class ArticleService {
             status: article.status === ArticleStatus.Online ? ArticleStatus.Offline : ArticleStatus.Online
         });
     }
+
+    /**
+     * @description 文章阅读数加一
+     * @param id
+     */
+    async countingPlusOne(id: number): Promise<UpdateResult> {
+        return await this.articleRepository
+            .createQueryBuilder()
+            .update(Article)
+            .set({
+                count: () => "count + 1"
+            })
+            .where("id = :id",{ id })
+            .execute();
+    }
 }

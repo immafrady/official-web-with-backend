@@ -12,6 +12,7 @@ export interface IArticleEntity extends Partial<IBaseEntity>{
     status: ArticleStatus;
     priority: ArticlePriority;
     type: ArticleType[];
+    count: number;
 }
 
 export type ArticlePick = {
