@@ -12,6 +12,7 @@ import { BaseResponseErrorFilter } from './shared/filters/base-response-error.fi
 import { LoggerInterceptor } from "./shared/interceptors/logger.interceptor";
 import { CustomValidationPipe } from "./shared/pipes/custom-validation.pipe";
 import { PictureModule } from "./modules/picture/picture.module";
+import { JobModule } from "./modules/job/job.module";
 
 @Module({
     imports: [
@@ -20,6 +21,7 @@ import { PictureModule } from "./modules/picture/picture.module";
         DatabaseModule,
         ArticleModule,
         PictureModule,
+        JobModule,
         LoggerModule
     ],
     controllers: [AppController],
