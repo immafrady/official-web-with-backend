@@ -1,9 +1,8 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { Token_ArticleRepository } from "../../constants";
 import { Article } from "./article.entity";
-import { Repository } from "typeorm";
+import { DeleteResult, Repository } from "typeorm";
 import { CreateArticleDto, EditArticleDto } from "./dto";
-import { DeleteResult } from "typeorm/query-builder/result/DeleteResult";
 import { IArticleListResponse } from "libs/response/article";
 import { ArticleRelation, IArticleFindManyOptions, IArticleFindOneResult } from "./article.interface";
 import { IRequestPagination } from "libs/common";
