@@ -1,18 +1,21 @@
 import { IBaseEntity } from "../common";
+import { JobStatus } from "../enums/job";
 
-export interface IJobTypeEntity extends Partial<IBaseEntity> {
+export interface IJobDepartmentEntity extends Partial<IBaseEntity> {
     label: string;
+    sort: number;
 }
 
 export interface IJobDetailEntity extends Partial<IBaseEntity> {
     title: string;
-    department: string;
     location: string;
     modifyDate: Date;
     content: IJobContentDetail;
+    status: JobStatus;
 }
 
 export interface IJobContentDetail {
     duty: string;
-    requirement: string
+    requirement: string;
+    other: string;
 }

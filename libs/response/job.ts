@@ -1,4 +1,4 @@
 import { IResponsePagination } from '../common';
-import { IJobTypeEntity } from '../entity/job';
+import { IJobDepartmentEntity } from '../entity/job';
 
-export interface IJobTypeListResponse extends IResponsePagination<IJobTypeEntity>{}
+export interface IJobDepartmentListResponse extends IResponsePagination<IJobDepartmentEntity>{}

@@ -1,17 +1,32 @@
-import { IJobContentDetail, IJobDetailEntity, IJobTypeEntity } from "libs/entity/job";
+import { IJobContentDetail, IJobDetailEntity, IJobDepartmentEntity } from "libs/entity/job";
 import { BaseEntity } from "../../shared/base.entity";
-import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany } from "typeorm";
+import { JobStatus } from "libs/enums/job";
 
 @Entity()
-export class JobType extends BaseEntity implements IJobTypeEntity {
+export class JobDepartment extends BaseEntity implements IJobDepartmentEntity {
     /**
-     * @description 类型名字
+     * @description 部门名字
      */
     @Column({
         type: "varchar",
         length: 191
     })
     label: string;
+
+    /**
+     * @description 顺序
+     */
+    @Column({
+        type: "int"
+    })
+    sort: number;
+
+    @OneToMany(
+        () => JobDetail,
+        jobDetail => jobDetail.department
+    )
+    jobDetails: JobDetail[];
 }
 
 @Entity()
@@ -21,12 +36,6 @@ export class JobDetail extends BaseEntity implements IJobDetailEntity {
      */
     @Column("simple-json")
     content: IJobContentDetail;
-
-    @Column({
-        type: "varchar",
-        length: 191
-    })
-    department: string;
 
     /**
      * @description 工作地
@@ -53,17 +62,20 @@ export class JobDetail extends BaseEntity implements IJobDetailEntity {
     })
     title: string;
 
-    @ManyToMany(type => JobType, )
-    @JoinTable({
-        name: 'job_type_to_detail',
-        joinColumn: {
-            referencedColumnName: 'id',
-            name: 'detail_id'
-        },
-        inverseJoinColumn: {
-            referencedColumnName: 'id',
-            name: 'type_id'
-        }
+    @ManyToOne(
+        () => JobDepartment,
+        jobDepartment => jobDepartment.jobDetails
+    )
+    @JoinColumn({ name: "department_id" })
+    department: JobDepartment;
+
+    /**
+     * @description 职位状态
+     */
+    @Column({
+        type: "enum",
+        enum: JobStatus,
+        default: JobStatus.Offline
     })
-    types: JobType[];
+    status: JobStatus;
 }

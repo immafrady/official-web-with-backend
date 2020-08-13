@@ -1,12 +1,12 @@
 import { Provider } from "@nestjs/common";
-import { Token_DatabaseConnection, Token_JobDetailRepository, Token_JobTypeRepository } from "../../constants";
+import { Token_DatabaseConnection, Token_JobDetailRepository, Token_JobDepartmentRepository } from "../../constants";
 import { Connection } from "typeorm";
-import { JobDetail, JobType } from "./job.entity";
+import { JobDetail, JobDepartment } from "./job.entity";
 
 export const jobProviders: Provider[] = [
     {
-        provide: Token_JobTypeRepository,
-        useFactory: (connection: Connection) => connection.getRepository(JobType),
+        provide: Token_JobDepartmentRepository,
+        useFactory: (connection: Connection) => connection.getRepository(JobDepartment),
         inject: [Token_DatabaseConnection]
     }, {
         provide: Token_JobDetailRepository,
