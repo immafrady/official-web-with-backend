@@ -19,7 +19,7 @@ export class DepartmentManagerService {
     return this.http.post('/job/department/save', data) as Observable<IHttpResponse<IJobDepartmentSaveResponse>>
   }
 
-  // 获取文章列表
+  // 获取部门列表
   getDepartmentList(): Observable<IHttpResponse<IJobDepartmentListResponse>> {
     return this.http.get('/job/department/list') as Observable<IHttpResponse<IJobDepartmentListResponse>>
   }

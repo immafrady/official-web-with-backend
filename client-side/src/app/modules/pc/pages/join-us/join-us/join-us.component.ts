@@ -540,6 +540,12 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
     })
   }
 
+  getJobList(): void {
+    this.JoinUsService.getJobList().subscribe(({ data }) => {
+
+    })
+  }
+
   ngOnInit(): void {
     this.getPictureList( PictureType.Environment, 'environmentPicture');
     this.getPictureList( PictureType.Friend, 'friendPicture');

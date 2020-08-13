@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {DepartmentManagerService} from "@admin/pages/department-manager/department-manager.service";
 
 @Component({
@@ -10,19 +10,16 @@ import {DepartmentManagerService} from "@admin/pages/department-manager/departme
 })
 export class EditDepartmentComponent implements OnInit {
   validateForm: FormGroup;
-  id = null;
   constructor(
     private fb: FormBuilder,
     private DepartmentManagerService: DepartmentManagerService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       label: [null, [Validators.required]],
-      sort: [null, [Validators.required]],
-      id: [null]
+      sort: [null, [Validators.required]]
     });
   }
 
