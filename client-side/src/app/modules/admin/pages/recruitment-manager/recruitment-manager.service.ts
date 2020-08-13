@@ -6,10 +6,10 @@ import {
   IJobDetailDeleteResponse,
   IJobDetailDetailResponse,
   IJobDetailListResponse,
-  IJobDetailSaveResponse
+  IJobDetailSaveResponse,
+  IJobDetailSetStatusResponse
 } from "@libs/response/job";
 import {HttpClient} from "@angular/common/http";
-import {IArticleDetailResponse} from "@libs/response/article";
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +38,10 @@ export class RecruitmentManagerService {
   //  获取招聘信息
   getRecruitmentContent(id): Observable<IHttpResponse<IJobDetailDetailResponse>> {
     return this.http.get(`/job/item/detail/${ id }`) as Observable<IHttpResponse<IJobDetailDetailResponse>>
+  }
+
+  // 上线或者下线
+  handlerRecruit(id): Observable<IHttpResponse<IJobDetailSetStatusResponse>> {
+    return this.http.put(`/job/item/detail/${ id }/status`, null) as Observable<IHttpResponse<IJobDetailSetStatusResponse>>
   }
 }
