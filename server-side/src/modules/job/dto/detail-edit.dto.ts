@@ -21,15 +21,14 @@ class JobContentDetail implements IJobContentDetail {
     readonly other?: string;
 }
 
-
 export class DetailEditDto implements IJobDetailEditOptions {
+    @ApiProperty({ description: '职位Id - 编辑时需要' })
+    @IsNumber()
+    readonly id?: number;
+
     @ApiProperty({ description: '职位需求' })
     @ValidateNested()
     readonly content: JobContentDetail;
-
-    @ApiProperty({ description: '部门' })
-    @IsString()
-    readonly department: string;
 
     @ApiProperty({ description: '工作地' })
     @IsString()

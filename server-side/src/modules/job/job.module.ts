@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { jobProviders } from "./job.provider";
 import { JobService } from './job.service';
-import { JobDepartmentController, JobDetailController } from "./job.controller";
+import { JobController, JobDepartmentController, JobDetailController } from "./job.controller";
 import { AuthMiddleware } from '../../shared/middlewares/auth.middleware';
 
 @Module({
@@ -9,7 +9,7 @@ import { AuthMiddleware } from '../../shared/middlewares/auth.middleware';
         ...jobProviders,
         JobService
     ],
-    controllers: [JobDepartmentController, JobDetailController]
+    controllers: [JobDepartmentController, JobDetailController, JobController]
 })
 export class JobModule implements NestModule {
     configure(consumer: MiddlewareConsumer): any {

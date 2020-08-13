@@ -12,6 +12,7 @@ export interface IJobDetailEntity extends Partial<IBaseEntity> {
     modifyDate: Date;
     content: IJobContentDetail;
     status: JobStatus;
+    department?: IJobDepartmentEntity;
 }
 
 export interface IJobContentDetail {
