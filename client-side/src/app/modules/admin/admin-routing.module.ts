@@ -12,6 +12,8 @@ const routes: Routes = [
         // todo 加载具体页面
           { path: 'news-list', loadChildren: () => import('./pages/news-list/news-list.module').then(mod => mod.NewsListModule) },
           { path: 'picture-manager', loadChildren: () => import('./pages/picture-manager/picture-manager.module').then(mod => mod.PictureManagerModule) },
+          { path: 'recruitment-manager', loadChildren: () => import('./pages/recruitment-manager/recruitment-manager.module').then(mod => mod.RecruitmentManagerModule) },
+          { path: 'department-manager', loadChildren: () => import('./pages/department-manager/department-manager.module').then(mod => mod.DepartmentManagerModule) },
           { path: '**', redirectTo: 'news-list' }
 
         ] },
