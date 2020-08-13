@@ -24,6 +24,8 @@ import {
 } from "libs/response-error";
 import { successResponse } from "../../utils/ro-builder.utils";
 import { DetailIdDto } from "./dto/detail-id.dto";
+import { JobStatus } from "libs/enums/job";
+import { LessThanOrEqual } from "typeorm";
 
 @ApiTags('职位招聘 - 部门')
 @ApiBearerAuth()
@@ -175,7 +177,12 @@ export class JobController {
         }
 
         try {
-            const { list: details } = await this.jobService.detailFindMany();
+            const { list: details } = await this.jobService.detailFindMany({
+                where: {
+                    status: JobStatus.Online,
+                    modifyDate: LessThanOrEqual(new Date())
+                }
+            });
             details.forEach(detail => {
               response.details[detail.department.label]?.push(detail);
             })

@@ -14,6 +14,7 @@ import {
 import { JobDepartmentNotFoundError, JobDetailNotFoundError } from "libs/response-error";
 import { IJobDetailEntity } from "libs/entity/job";
 import { JobStatus } from "libs/enums/job";
+import { IJobDetailFindManyOptions } from "./job.interface";
 
 @Injectable()
 export class JobService {
@@ -135,9 +136,10 @@ export class JobService {
     /**
      * @description 详情找多条
      */
-    async detailFindMany(): Promise<IJobDetailListResponse> {
+    async detailFindMany(jobDetailFindManyOptions?: IJobDetailFindManyOptions): Promise<IJobDetailListResponse> {
         const [list, total] = await this.jobDetailRepo.findAndCount({
-            relations: ['department']
+            relations: ['department'],
+            where: jobDetailFindManyOptions?.where
         })
         return {
             list,
