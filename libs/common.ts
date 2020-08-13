@@ -46,3 +46,15 @@ export interface IBaseEntity {
     createDate: Date;
     updateDate: Date;
 }
+
+export interface IDeleteResult {
+    /**
+     * Raw SQL result returned by executed query.
+     */
+    raw: any;
+    /**
+     * Number of affected rows/documents
+     * Not all drivers support this
+     */
+    affected?: number | null;
+}

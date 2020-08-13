@@ -1,8 +1,26 @@
 import { IJobDetailEditOptions } from "libs/request/job";
 import { IJobContentDetail } from "libs/entity/job";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { IsDateString, IsEnum, IsNumberString, IsOptional, IsString, ValidateNested } from "class-validator";
+import { IsDateString, IsEnum, IsNumber  , IsOptional, IsString, ValidateNested } from "class-validator";
 import { JobStatus } from "libs/enums/job";
+
+class JobContentDetail implements IJobContentDetail {
+    @ApiPropertyOptional({ description: '岗位职责' })
+    @IsString()
+    @IsOptional()
+    readonly duty?: string;
+
+    @ApiPropertyOptional({ description: '任职需求' })
+    @IsString()
+    @IsOptional()
+    readonly requirement?: string;
+
+    @ApiPropertyOptional({ description: '其他输入' })
+    @IsString()
+    @IsOptional()
+    readonly other?: string;
+}
+
 
 export class DetailEditDto implements IJobDetailEditOptions {
     @ApiProperty({ description: '职位需求' })
@@ -26,27 +44,10 @@ export class DetailEditDto implements IJobDetailEditOptions {
     readonly title: string;
 
     @ApiProperty({ description: '对应部门Id' })
-    @IsNumberString()
+    @IsNumber()
     readonly departmentId: number;
 
     @ApiProperty({ description: '职位状态', enum: JobStatus })
     @IsEnum(JobStatus)
     readonly status: JobStatus;
-}
-
-class JobContentDetail implements IJobContentDetail {
-    @ApiPropertyOptional({ description: '岗位职责' })
-    @IsString()
-    @IsOptional()
-    readonly duty: string;
-
-    @ApiPropertyOptional({ description: '任职需求' })
-    @IsString()
-    @IsOptional()
-    readonly requirement: string;
-
-    @ApiPropertyOptional({ description: '其他输入' })
-    @IsString()
-    @IsOptional()
-    readonly other: string;
 }

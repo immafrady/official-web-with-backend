@@ -15,7 +15,7 @@ export interface IJobDetailEntity extends Partial<IBaseEntity> {
 }
 
 export interface IJobContentDetail {
-    duty: string;
-    requirement: string;
-    other: string;
+    duty?: string;
+    requirement?: string;
+    other?: string;
 }

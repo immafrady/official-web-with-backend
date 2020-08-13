@@ -79,6 +79,54 @@ export class PictureNotFoundError extends BaseResponseError {
     }
 }
 
+export class JobDepartmentCannotSaveError extends BaseResponseError {
+    constructor(data?: any,  message = '无法新增部门') {
+        super(ResponseCode.JobDepartmentCannotSave, message, data);
+    }
+}
+
+export class JobDepartmentCannotDeleteError extends BaseResponseError {
+    constructor(data?: any,  message = '无法删除部门') {
+        super(ResponseCode.JobDepartmentCannotDelete, message, data);
+    }
+}
+
+export class JobDepartmentCannotModifyError extends BaseResponseError {
+    constructor(data?: any,  message = '无法修改部门') {
+        super(ResponseCode.JobDepartmentCannotModify, message, data);
+    }
+}
+
+export class JobDepartmentNotFoundError extends BaseResponseError {
+    constructor(data?: any,  message = '找不到部门') {
+        super(ResponseCode.JobDepartmentNotFound, message, data);
+    }
+}
+
+export class JobDetailCannotSaveError extends BaseResponseError {
+    constructor(data?: any,  message = '无法新增职位') {
+        super(ResponseCode.JobDetailCannotSave, message, data);
+    }
+}
+
+export class JobDetailCannotDeleteError extends BaseResponseError {
+    constructor(data?: any,  message = '无法删除职位') {
+        super(ResponseCode.JobDetailCannotDelete, message, data);
+    }
+}
+
+export class JobDetailCannotModifyError extends BaseResponseError {
+    constructor(data?: any,  message = '无法修改职位') {
+        super(ResponseCode.JobDetailCannotModify, message, data);
+    }
+}
+
+export class JobDetailNotFoundError extends BaseResponseError {
+    constructor(data?: any,  message = '找不到职位') {
+        super(ResponseCode.JobDetailNotFound, message, data);
+    }
+}
+
 export class CommonFormInvalidError extends BaseResponseError {
     constructor(message = '表单校验失败', data?: any) {
         super(ResponseCode.CommonFormInvalid, message, data);

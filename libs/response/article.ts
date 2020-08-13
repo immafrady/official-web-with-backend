@@ -1,5 +1,5 @@
 import { ArticlePick, IArticleEntity } from "../entity/article";
-import { IResponsePagination } from "../common";
+import { IDeleteResult, IResponsePagination } from "../common";
 import { IUserEntity } from '../entity/user';
 
 /**
@@ -15,17 +15,7 @@ export interface IArticleModifyResponse {}
 /**
  * @description 删除接口
  */
-export interface IArticleDeleteResponse {
-    /**
-     * Raw SQL result returned by executed query.
-     */
-    raw: any;
-    /**
-     * Number of affected rows/documents
-     * Not all drivers support this
-     */
-    affected?: number | null;
-}
+export interface IArticleDeleteResponse extends IDeleteResult {}
 
 /**
  * @description 单篇文章

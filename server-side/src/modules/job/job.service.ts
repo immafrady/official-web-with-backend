@@ -1,16 +1,33 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { JobDetail, JobDepartment } from './job.entity';
 import { Token_JobDetailRepository, Token_JobDepartmentRepository } from '../../constants';
 import { DepartmentEditDto, DetailEditDto } from "./dto";
-import { IJobDepartmentListResponse } from 'libs/response/job';
+import {
+    IJobDepartmentDeleteResponse,
+    IJobDepartmentDetailResponse,
+    IJobDepartmentListResponse,
+    IJobDetailDeleteResponse
+} from "libs/response/job";
+import { JobDepartmentNotFoundError } from "libs/response-error";
 
 @Injectable()
 export class JobService {
     constructor(@Inject(Token_JobDepartmentRepository) private jobDepartmentRepo: Repository<JobDepartment>, @Inject(Token_JobDetailRepository) private jobDetailRepo: Repository<JobDetail>) {}
 
+
     /**
-     * @description 新增类型
+     * @description 判断是否存在部门
+     * @param id
+     */
+    async hasDepartmentOrFail(id: number): Promise<void> {
+        if (!await this.jobDepartmentRepo.findOne(id)) {
+            throw new JobDepartmentNotFoundError();
+        }
+    }
+
+    /**
+     * @description 新增部门
      * @param departmentEditDto
      */
     async createDepartment(departmentEditDto: DepartmentEditDto): Promise<any> {
@@ -20,26 +37,34 @@ export class JobService {
     }
 
     /**
-     * @description 删除类型
+     * @description 删除部门
      * @param id
      */
-    async deleteDepartment(id: number): Promise<DeleteResult> {
+    async deleteDepartment(id: number): Promise<IJobDepartmentDeleteResponse> {
         return await this.jobDepartmentRepo.delete(id);
     }
 
     /**
-     * @description 类型列表
+     * @description 部门列表
      */
-    async getTypeList(): Promise<IJobDepartmentListResponse> {
+    async departmentFindMany(): Promise<IJobDepartmentListResponse> {
         const [list, total] = await this.jobDepartmentRepo.findAndCount({
             order: {
-
+                sort: "ASC"
             }
         });
         return {
             list,
             total
-        }
+        };
+    }
+
+    /**
+     * @description 查找单个部门
+     * @param id
+     */
+    async departmentFindOne(id: number): Promise<IJobDepartmentDetailResponse> {
+        return await this.jobDepartmentRepo.findOne(id);
     }
 
     /**
@@ -88,7 +113,7 @@ export class JobService {
      * @description 删除职位详情
      * @param id
      */
-    async deleteDetail(id: number): Promise<DeleteResult> {
+    async deleteDetail(id: number): Promise<IJobDetailDeleteResponse> {
         return await this.jobDetailRepo.delete(id);
     }
 }

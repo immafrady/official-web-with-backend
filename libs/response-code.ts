@@ -17,6 +17,14 @@ export const enum ResponseCode {
     PictureCannotDelete,
     PictureCannotModify,
     PictureNotFound,
+    JobDepartmentCannotSave = 4001,
+    JobDepartmentCannotDelete,
+    JobDepartmentCannotModify,
+    JobDepartmentNotFound,
+    JobDetailCannotSave = 4051,
+    JobDetailCannotDelete,
+    JobDetailCannotModify,
+    JobDetailNotFound,
     CommonFormInvalid = 400,
     UnknownError = 9999
 }
