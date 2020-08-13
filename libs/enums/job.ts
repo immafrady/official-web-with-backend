@@ -5,7 +5,7 @@ export enum JobStatus {
     Offline = 'OFFLINE',
     Online = 'ONLINE'
 }
-export const ArticleStatusLabel = {
+export const JobStatusLabel = {
     [JobStatus.Offline]: '已下线',
     [JobStatus.Online]: '已上线'
 }
