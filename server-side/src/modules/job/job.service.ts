@@ -124,7 +124,9 @@ export class JobService {
      * @param id
      */
     async detailFindOne(id: number): Promise<any> {
-        return await this.jobDetailRepo.findOne(id);
+        return await this.jobDetailRepo.findOne(id, {
+            relations: ['department']
+        });
     }
 
     /**

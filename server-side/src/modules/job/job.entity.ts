@@ -1,6 +1,6 @@
 import { IJobContentDetail, IJobDetailEntity, IJobDepartmentEntity } from "libs/entity/job";
 import { BaseEntity } from "../../shared/base.entity";
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { JobStatus } from "libs/enums/job";
 
 @Entity()

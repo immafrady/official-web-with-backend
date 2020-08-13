@@ -3,6 +3,7 @@ import { IJobContentDetail } from "libs/entity/job";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IsBoolean, IsDateString, IsEnum, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
 import { JobStatus } from "libs/enums/job";
+import { Type } from "class-transformer";
 
 class JobContentDetail implements IJobContentDetail {
     @ApiPropertyOptional({ description: '岗位职责' })
@@ -28,6 +29,7 @@ export class DetailEditDto implements IJobDetailEditOptions {
 
     @ApiProperty({ description: '职位需求' })
     @ValidateNested()
+    @Type(() => JobContentDetail)
     readonly content: JobContentDetail;
 
     @ApiProperty({ description: '工作地' })
