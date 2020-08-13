@@ -7,14 +7,14 @@ import {
     IJobDepartmentDeleteResponse,
     IJobDepartmentDetailResponse,
     IJobDepartmentListResponse,
-    IJobDetailDeleteResponse
+    IJobDetailDeleteResponse, IJobDetailListResponse
 } from "libs/response/job";
-import { JobDepartmentNotFoundError } from "libs/response-error";
+import { JobDepartmentNotFoundError, JobDetailNotFoundError } from "libs/response-error";
+import { IJobDetailEntity } from "libs/entity/job";
 
 @Injectable()
 export class JobService {
     constructor(@Inject(Token_JobDepartmentRepository) private jobDepartmentRepo: Repository<JobDepartment>, @Inject(Token_JobDetailRepository) private jobDetailRepo: Repository<JobDetail>) {}
-
 
     /**
      * @description 判断是否存在部门
@@ -50,7 +50,8 @@ export class JobService {
     async departmentFindMany(): Promise<IJobDepartmentListResponse> {
         const [list, total] = await this.jobDepartmentRepo.findAndCount({
             order: {
-                sort: "ASC"
+                sort: "ASC",
+                updateDate: "DESC",
             }
         });
         return {
@@ -77,12 +78,35 @@ export class JobService {
         return {}
     }
 
+    /* --------------- 职位详情 ---------------- */
+    generateDetailFromDto(detailEditDto: DetailEditDto): IJobDetailEntity {
+        const { id, ...dto } = detailEditDto;
+        const { departmentId, ...detail } = dto;
+        const department = new JobDepartment();
+        department.id = departmentId;
+
+        const result = this.jobDetailRepo.create(detail);
+        result.department = department;
+        return result;
+    }
+
+    /**
+     * @description 判断是否存在部门
+     * @param id
+     */
+    async hasDetailOrFail(id: number): Promise<void> {
+        if (!await this.jobDetailRepo.findOne(id)) {
+            throw new JobDetailNotFoundError();
+        }
+    }
+
     /**
      * @description 新增详情
      * @param detailEditDto
      */
     async createDetail(detailEditDto: DetailEditDto): Promise<any> {
-
+        await this.jobDetailRepo.save(this.generateDetailFromDto(detailEditDto));
+        return {}
     }
 
     /**
@@ -91,7 +115,8 @@ export class JobService {
      * @param detailEditDto
      */
     async editDetail(id: number, detailEditDto: DetailEditDto): Promise<any> {
-
+        await this.jobDetailRepo.update(id, this.generateDetailFromDto(detailEditDto));
+        return {}
     }
 
     /**
@@ -99,14 +124,20 @@ export class JobService {
      * @param id
      */
     async detailFindOne(id: number): Promise<any> {
-
+        return await this.jobDetailRepo.findOne(id);
     }
 
     /**
      * @description 详情找多条
      */
-    async detailFindMany(): Promise<any> {
-
+    async detailFindMany(): Promise<IJobDetailListResponse> {
+        const [list, total] = await this.jobDetailRepo.findAndCount({
+            relations: ['department']
+        })
+        return {
+            list,
+            total
+        }
     }
 
     /**

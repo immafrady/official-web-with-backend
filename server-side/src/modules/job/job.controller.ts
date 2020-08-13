@@ -1,19 +1,29 @@
 import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { JobService } from "./job.service";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { DepartmentEditDto, DepartmentIdDto } from "./dto";
+import { DepartmentEditDto, DepartmentIdDto, DetailEditDto } from "./dto";
 import { IHttpResponse } from "libs/common";
 import {
     IJobDepartmentDeleteResponse,
-    IJobDepartmentDetailResponse, IJobDepartmentListResponse,
-    IJobDepartmentSaveResponse
+    IJobDepartmentDetailResponse,
+    IJobDepartmentListResponse,
+    IJobDepartmentSaveResponse,
+    IJobDetailDeleteResponse,
+    IJobDetailDetailResponse,
+    IJobDetailSaveResponse,
+    IJobListResponse
 } from "libs/response/job";
 import {
     JobDepartmentCannotDeleteError,
     JobDepartmentCannotModifyError,
-    JobDepartmentCannotSaveError, JobDepartmentNotFoundError
+    JobDepartmentCannotSaveError,
+    JobDepartmentNotFoundError,
+    JobDetailCannotDeleteError,
+    JobDetailCannotModifyError,
+    JobDetailCannotSaveError, JobDetailNotFoundError
 } from "libs/response-error";
 import { successResponse } from "../../utils/ro-builder.utils";
+import { DetailIdDto } from "./dto/detail-id.dto";
 
 @ApiTags('职位招聘 - 部门')
 @ApiBearerAuth()
@@ -55,7 +65,6 @@ export class JobDepartmentController {
     @ApiOperation({ summary: '详情' })
     @Get('detail/:id')
     async getOne(@Param() departmentIdDto: DepartmentIdDto): Promise<IHttpResponse<IJobDepartmentDetailResponse>> {
-        await this.jobService.hasDepartmentOrFail(departmentIdDto.id);
         try {
             return successResponse(await this.jobService.departmentFindOne(departmentIdDto.id));
         } catch (e) {
@@ -74,10 +83,94 @@ export class JobDepartmentController {
     }
 }
 
-@ApiTags('职位招聘 - 详情')
+@ApiTags('职位招聘 - 具体')
 @ApiBearerAuth()
-@Controller('job/detail')
+@Controller('job/item')
 export class JobDetailController {
     constructor(private jobService: JobService) {}
 
+    @ApiOperation({ summary: '新增/编辑' })
+    @Post('save')
+    async editOrCreate(@Body() detailEditDto: DetailEditDto): Promise<IHttpResponse<IJobDetailSaveResponse>> {
+        const { id, ...dto } = detailEditDto;
+        if (id) {
+            await this.jobService.hasDetailOrFail(id);
+            try {
+                return successResponse(await this.jobService.editDetail(id, dto), '成功修改职位');
+            } catch (e) {
+                throw new JobDetailCannotModifyError(e);
+            }
+        } else {
+            try {
+                return successResponse(await this.jobService.createDetail(dto), '成功新增职位');
+            } catch (e) {
+                throw new JobDetailCannotSaveError(e);
+            }
+        }
+    }
+
+    @ApiOperation({ summary: '删除' })
+    @Delete('detail/:id')
+    async delete(@Param() detailIdDto: DetailIdDto): Promise<IHttpResponse<IJobDetailDeleteResponse>> {
+        await this.jobService.hasDetailOrFail(detailIdDto.id);
+        try {
+            return successResponse(await this.jobService.deleteDetail(detailIdDto.id), '成功删除职位');
+        } catch (e) {
+            throw new JobDetailCannotDeleteError(e)
+        }
+    }
+
+    @ApiOperation({ summary: '详情' })
+    @Get('detail/:id')
+    async getOne(@Param() detailIdDto: DetailIdDto): Promise<IHttpResponse<IJobDetailDetailResponse>> {
+        try {
+            return successResponse(await this.jobService.detailFindOne(detailIdDto.id));
+        } catch (e) {
+            throw new JobDetailNotFoundError(e);
+        }
+    }
+
+    @ApiOperation({ summary: '列表' })
+    @Get('list')
+    async getMany() {
+        try {
+            return successResponse(await this.jobService.detailFindMany());
+        } catch (e) {
+            throw new JobDetailNotFoundError(e)
+        }
+    }
+}
+
+@ApiTags('加入我们 - 前端页面')
+@Controller('job')
+export class JobController {
+    constructor(private jobService: JobService) {}
+
+    @ApiOperation({ summary: '分类之后的列表' })
+    @Get('list')
+    async getFormatList(): Promise<IHttpResponse<IJobListResponse>> {
+        const response: IJobListResponse = {
+            departments: [], details: {}
+        };
+
+        try {
+            const { list: departments } = await this.jobService.departmentFindMany();
+            response.departments = departments.map(department => {
+                response.details[department.label] = [];
+                return department.label;
+            })
+        } catch (e) {
+            throw new JobDepartmentNotFoundError(e);
+        }
+
+        try {
+            const { list: details } = await this.jobService.detailFindMany();
+            details.forEach(detail => {
+              response.details[detail.department.label].push(detail)
+            })
+        } catch (e) {
+            throw new JobDetailNotFoundError(e);
+        }
+        return successResponse(response);
+    }
 }
