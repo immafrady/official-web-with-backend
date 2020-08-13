@@ -34,7 +34,9 @@ export class RecruitmentManagerComponent implements OnInit {
   }
 
   handlerRecruit(id): void {
-
+    this.RecruitmentManagerService.handlerRecruit(id).subscribe(() => {
+      this.getRecruitmentList()
+    })
   }
 
 }
