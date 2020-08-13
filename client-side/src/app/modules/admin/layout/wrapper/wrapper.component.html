@@ -17,6 +17,16 @@
         <i nz-icon nzType="picture"></i>
         <span>图片管理</span>
       </li>
+      <ul nz-submenu nzTitle="招聘设置" nzIcon="setting">
+        <ul>
+          <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzTitle="部门管理" routerLink="/admin/department-manager" [nzMatchRouter]="true">
+            <span>部门管理</span>
+          </li>
+          <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzTitle="招聘管理" routerLink="/admin/recruitment-manager" [nzMatchRouter]="true">
+            <span>招聘管理</span>
+          </li>
+        </ul>
+      </ul>
     </ul>
   </nz-sider>
   <nz-layout>

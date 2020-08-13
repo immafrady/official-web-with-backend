@@ -1,0 +1,20 @@
+<div class="create-article-content">
+  <h2 class="create-article-title">{{ id ? '编辑部门' : '新增部门'}}</h2>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="label">部门名称</nz-form-label>
+      <nz-form-control nzErrorTip="请输入部门名称">
+        <input nz-input formControlName="label" id="label" placeholder="请输入部门名称" ngModel/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="sort">部门排序</nz-form-label>
+      <nz-form-control nzErrorTip="请输入排序">
+        <input nz-input formControlName="sort" id="sort" type="number" placeholder="请输入排序" ngModel/>
+      </nz-form-control>
+    </nz-form-item>
+    <div style="width: 100%">
+      <button nz-button nzType="primary" style="margin-left: 150px" [disabled]="!validateForm.valid">保存</button>
+    </div>
+  </form>
+</div>
