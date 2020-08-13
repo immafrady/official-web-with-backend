@@ -2,6 +2,7 @@ import { Article } from "./article.entity";
 import { TypeOrmFindWhere } from "../../shared/public.interface";
 import { ArticlePick } from "libs/entity/article";
 import { User } from "../user/user.entity";
+import { IUserEntity } from 'libs/entity/user';
 
 export interface IArticleFindManyOptions {
     where?: TypeOrmFindWhere<Article>,
@@ -20,5 +21,5 @@ export type ArticleRelation = [ArticlePick, ArticlePick];
 
 export interface IArticleFindOneResult {
     article: Article,
-    author?: User
+    author?: Pick<IUserEntity, "id" | "nickname">
 }

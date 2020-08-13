@@ -23,7 +23,7 @@ export interface IArticleDeleteResponse extends IDeleteResult {}
 export interface IArticleDetailResponse {
     article: IArticleEntity;
     related?: [ArticlePick, ArticlePick],
-    author?: IUserEntity
+    author?: Pick<IUserEntity, "id" | "nickname">
 }
 
 /**

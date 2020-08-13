@@ -1,5 +1,5 @@
 import { BaseEntity } from "../../shared/base.entity";
-import { Column, Entity, ManyToOne } from "typeorm";
+import { AfterLoad, Column, Entity, ManyToOne } from 'typeorm';
 import { ArticlePriority, ArticleStatus, ArticleType } from 'libs/enums/article';
 import { IArticleEntity } from 'libs/entity/article';
 
@@ -82,4 +82,14 @@ export class Article extends BaseEntity implements IArticleEntity{
         unsigned: true
     })
     count: number;
+
+    @AfterLoad()
+    afterLoad() {
+        if (this.user) {
+            const user = new User();
+            user.id = this.user.id;
+            user.nickname = this.user.nickname;
+            this.user = user;
+        }
+    }
 }

@@ -87,16 +87,6 @@ export class ArticleService {
             ...handlePagination(pagination.size, pagination.page)
         });
 
-        // 展示用户才需要进行如下操作
-        if (showUser) {
-            for (let i = 0; i < list.length; i++) {
-                list[i].user = {
-                    id: list[i].user.id,
-                    nickname: list[i].user.nickname
-                } as User
-            }
-        }
-
         return {
             list,
             total
@@ -139,9 +129,7 @@ export class ArticleService {
 
         if (article) {
             if (showUser) {
-                const author = new User();
-                author.id = article.user?.id;
-                author.nickname = article.user?.nickname;
+                const author = { ...article.user };
                 delete article.user;
 
                 return {
