@@ -8,6 +8,11 @@ interface IDateDictionary {
   [key: string]: { time: string, content: string }[]
 }
 
+interface IDateListItem {
+  year: string;
+  title: string;
+}
+
 @Component({
   selector: 'pc-about-us',
   templateUrl: './about-us.component.html',
@@ -25,7 +30,13 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
     super(metaService, titleService, activatedRoute, router)
   }
 
-  dateList:Array<any> = [{
+  dateList: IDateListItem[] = [{
+    year: '2014',
+    title: '呵呵'
+  },{
+    year: '2015',
+    title: '啦啦'
+  },{
     year: '2016',
     title: '探索'
   }, {
@@ -39,7 +50,28 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
     title: '飞跃'
   }, {
     year: '2020',
-    title: '引领'}];
+    title: '引领'
+  }];
+
+  currIndex = 0;
+
+  get currentTab() {
+    return this.dateList[this.currIndex]
+  }
+
+  get displayDateList() {
+      const tabLength = 5;
+      const startPos = this.currIndex - 2;
+      const endPos = startPos + tabLength
+    if (startPos <= 0) {
+      return this.dateList.slice(0, tabLength)
+    } else if (endPos >= this.dateList.length) {
+      return this.dateList.slice(this.dateList.length - tabLength, this.dateList.length)
+    } else {
+      return this.dateList.slice(startPos, endPos)
+    }
+  }
+
   dateDictionary: IDateDictionary = {
     '2016': [
       { time: '12月', content: '率先推出自由职业者发薪报税经营模式，引领行业探索新经济商税服务未来' }
@@ -79,31 +111,30 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
       { time: '7月', content: '薪宝科技CEO刘树兵，成功登榜中国人力资源行业青年企业家' },
     ]
   };
-  active:string = '2020';
 
   ngOnInit(): void {
   }
-  selectTab(active, arrow?: string): void {
-    if (arrow) {
-      let position = null;
-      this.dateList.forEach((item, index) => {
-        if (item.year === active) {
-          position = index
-        }
-      });
-      if (arrow === 'left') {
-        position--;
-        if (position >= 0) {
-          this.active = this.dateList[position].year;
-        }
-      } else if (arrow === 'right') {
-        position++;
-        if (position < this.dateList.length) {
-          this.active = this.dateList[position].year
-        }
+
+  clickArrow(type: 'left' | 'right'): void {
+    if (type === "left") {
+      this.currIndex--;
+      if (this.currIndex < 0) {
+        this.currIndex = 0;
       }
-    } else {
-      this.active = active;
+    } else if (type === "right") {
+      this.currIndex++;
+      if (this.currIndex >= this.dateList.length) {
+        this.currIndex = this.dateList.length - 1;
+      }
+    }
+  }
+
+  selectTab(year: string): void {
+    for (let i = 0; i < this.dateList.length; i++) {
+      if (this.dateList[i].year === year) {
+        this.currIndex = i;
+        return;
+      }
     }
   }
 }
