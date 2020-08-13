@@ -1,7 +1,7 @@
 import { IJobDetailEditOptions } from "libs/request/job";
 import { IJobContentDetail } from "libs/entity/job";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { IsDateString, IsEnum, IsNumber  , IsOptional, IsString, ValidateNested } from "class-validator";
+import { IsBoolean, IsDateString, IsEnum, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
 import { JobStatus } from "libs/enums/job";
 
 class JobContentDetail implements IJobContentDetail {
@@ -49,4 +49,12 @@ export class DetailEditDto implements IJobDetailEditOptions {
     @ApiProperty({ description: '职位状态', enum: JobStatus })
     @IsEnum(JobStatus)
     readonly status: JobStatus;
+
+    @ApiProperty({ description: '是否急聘' })
+    @IsBoolean()
+    eager: boolean;
+
+    @ApiProperty({ description: '是否火热' })
+    @IsBoolean()
+    hot: boolean;
 }

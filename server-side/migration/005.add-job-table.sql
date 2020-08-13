@@ -18,6 +18,8 @@ CREATE TABLE `job_detail` (
     `updateDate`      datetime(6)                   NOT NULL            DEFAULT CURRENT_TIMESTAMP(6),
     `content`         text                          NOT NULL,
     `department_id`    int                           NULL,
+    `eager`           tinyint(1)                    NOT NULL            DEFAULT '0',
+    `hot`             tinyint(1)                    NOT NULL            DEFAULT '0',
     `location`        varchar(191)                  NOT NULL,
     `modifyDate`      datetime(6)                   NOT NULL            DEFAULT CURRENT_TIMESTAMP(6),
     `title`           varchar(191)                  NOT NULL,

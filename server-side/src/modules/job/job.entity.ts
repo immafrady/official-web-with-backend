@@ -8,8 +8,7 @@ export class JobDepartment extends BaseEntity implements IJobDepartmentEntity {
     /**
      * @description 部门名字
      */
-    @Column({
-        type: "varchar",
+    @Column("varchar", {
         length: 191
     })
     label: string;
@@ -17,9 +16,7 @@ export class JobDepartment extends BaseEntity implements IJobDepartmentEntity {
     /**
      * @description 顺序
      */
-    @Column({
-        type: "int"
-    })
+    @Column("int")
     sort: number;
 
     @OneToMany(
@@ -40,8 +37,7 @@ export class JobDetail extends BaseEntity implements IJobDetailEntity {
     /**
      * @description 工作地
      */
-    @Column({
-        type: "varchar",
+    @Column("varchar", {
         length: 191
     })
     location: string;
@@ -49,15 +45,13 @@ export class JobDetail extends BaseEntity implements IJobDetailEntity {
     /**
      * @description 发布时间
      */
-    @Column({
-        type: "datetime",
+    @Column("datetime", {
         default: () => "CURRENT_TIMESTAMP(6)",
         precision: 6
     })
     modifyDate: Date;
 
-    @Column({
-        type: "varchar",
+    @Column("varchar", {
         length: 191
     })
     title: string;
@@ -72,10 +66,21 @@ export class JobDetail extends BaseEntity implements IJobDetailEntity {
     /**
      * @description 职位状态
      */
-    @Column({
-        type: "enum",
+    @Column("enum", {
         enum: JobStatus,
         default: JobStatus.Offline
     })
     status: JobStatus;
+
+    /**
+     * @description 是否急聘
+     */
+    @Column()
+    eager: boolean;
+
+    /**
+     * @description 是否火热
+     */
+    @Column()
+    hot: boolean;
 }

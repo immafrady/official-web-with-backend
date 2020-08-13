@@ -12,6 +12,8 @@ export interface IJobDetailEntity extends Partial<IBaseEntity> {
     modifyDate: Date;
     content: IJobContentDetail;
     status: JobStatus;
+    hot: boolean;
+    eager: boolean;
     department?: IJobDepartmentEntity;
 }
 

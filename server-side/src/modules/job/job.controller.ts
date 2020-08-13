@@ -166,7 +166,7 @@ export class JobController {
         try {
             const { list: details } = await this.jobService.detailFindMany();
             details.forEach(detail => {
-              response.details[detail.department.label].push(detail)
+              response.details[detail.department.label]?.push(detail);
             })
         } catch (e) {
             throw new JobDetailNotFoundError(e);
