@@ -4,7 +4,16 @@ import { CommonModule } from '@angular/common';
 import { RecruitmentManagerRoutingModule } from './recruitment-manager-routing.module';
 import { RecruitmentManagerComponent } from './recruitment-manager/recruitment-manager.component';
 import { EditRecruitInfoComponent } from './edit-recruit-info/edit-recruit-info.component';
-import {NzButtonModule, NzTableModule, NzToolTipModule, NzWaveModule} from "ng-zorro-antd";
+import {
+  NzButtonModule, NzDatePickerModule,
+  NzFormModule,
+  NzGridModule,
+  NzInputModule, NzSelectModule, NzSwitchModule,
+  NzTableModule,
+  NzToolTipModule,
+  NzWaveModule
+} from "ng-zorro-antd";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -15,7 +24,14 @@ import {NzButtonModule, NzTableModule, NzToolTipModule, NzWaveModule} from "ng-z
     NzWaveModule,
     NzTableModule,
     NzToolTipModule,
-    NzButtonModule
+    NzButtonModule,
+    NzGridModule,
+    NzInputModule,
+    NzFormModule,
+    ReactiveFormsModule,
+    NzSelectModule,
+    NzSwitchModule,
+    NzDatePickerModule
   ]
 })
 export class RecruitmentManagerModule { }

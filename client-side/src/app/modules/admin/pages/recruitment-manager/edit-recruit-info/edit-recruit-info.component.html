@@ -1,1 +1,78 @@
-<p>edit-recruit-info works!</p>
+<div class="create-article-content">
+  <h2 class="create-article-title">{{ id ? '编辑招聘信息' : '新增招聘信息'}}</h2>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="title">职位名称</nz-form-label>
+      <nz-form-control nzErrorTip="请输入职位名称">
+        <input nz-input formControlName="title" id="title" placeholder="请输入职位名称" ngModel/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="location">工作地</nz-form-label>
+      <nz-form-control nzErrorTip="请输入工作地">
+        <input nz-input formControlName="location" id="location" placeholder="请输入工作地" ngModel/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="departmentId">部门</nz-form-label>
+      <nz-form-control nzErrorTip="请选择部门">
+        <nz-select id="departmentId" formControlName="departmentId" nzPlaceHolder="请选择部门">
+          <nz-option *ngFor="let option of departmentOptions" [nzLabel]="option.label" [nzValue]="option.id"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="status">职位状态</nz-form-label>
+      <nz-form-control nzErrorTip="请选择职位状态">
+        <nz-select id="status" formControlName="status" nzPlaceHolder="请选择职位状态">
+          <nz-option *ngFor="let option of statusOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="eager">是否急聘</nz-form-label>
+      <nz-form-control>
+        <nz-switch formControlName="eager" id="eager"></nz-switch>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="hot">是否火热</nz-form-label>
+      <nz-form-control>
+        <nz-switch formControlName="hot" id="hot"></nz-switch>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired>发布时间</nz-form-label>
+      <nz-form-control nzErrorTip="请选择发布时间">
+        <nz-date-picker
+          nzShowTime
+          formControlName="modifyDate"
+          nzFormat="yyyy-MM-dd HH:mm:ss"
+          nzPlaceHolder="请选择发布时间"
+          ngModel
+        ></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="duty">岗位职责</nz-form-label>
+      <nz-form-control>
+        <textarea formControlName="duty" id="duty" nz-input placeholder="请输入岗位职责"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="requirement">任职需求</nz-form-label>
+      <nz-form-control>
+        <textarea formControlName="requirement" id="requirement" nz-input placeholder="请输入任职需求"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="other">其他输入</nz-form-label>
+      <nz-form-control>
+        <textarea formControlName="other" id="other" nz-input placeholder="请输入其他输入"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+    <div style="width: 100%">
+      <button nz-button nzType="primary" style="margin-left: 150px" [disabled]="!validateForm.valid">保存</button>
+    </div>
+  </form>
+</div>
