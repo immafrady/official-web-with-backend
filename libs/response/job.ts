@@ -1,4 +1,4 @@
-import { IDeleteResult, IResponsePagination } from "../common";
+import { IDeleteResult, IResponsePagination, IUpdateResult } from "../common";
 import { IJobDepartmentEntity, IJobDetailEntity } from "../entity/job";
 
 // --------- 职位 -----------
@@ -16,6 +16,8 @@ export interface IJobDetailDeleteResponse extends IDeleteResult {}
 export interface IJobDetailDetailResponse extends IJobDetailEntity {}
 
 export interface IJobDetailSaveResponse {}
+
+export interface IJobDetailSetStatusResponse extends IUpdateResult {}
 
 export interface IJobDetailListResponse extends IResponsePagination<IJobDetailEntity> {}
 

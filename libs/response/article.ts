@@ -1,5 +1,5 @@
 import { ArticlePick, IArticleEntity } from "../entity/article";
-import { IDeleteResult, IResponsePagination } from "../common";
+import { IDeleteResult, IResponsePagination, IUpdateResult } from "../common";
 import { IUserEntity } from '../entity/user';
 
 /**
@@ -34,23 +34,4 @@ export interface IArticleListResponse extends IResponsePagination<IArticleEntity
 /**
  *  @description 修改文章状态接口
  */
-export interface IArticleSetStatusResponse {
-    /**
-     * Raw SQL result returned by executed query.
-     */
-    raw: any;
-    /**
-     * Number of affected rows/documents
-     * Not all drivers support this
-     */
-    affected?: number;
-    /**
-     * Contains inserted entity id.
-     * Has entity-like structure (not just column database name and values).
-     */
-    /**
-     * Generated values returned by a database.
-     * Has entity-like structure (not just column database name and values).
-     */
-    generatedMaps: any[];
-}
+export interface IArticleSetStatusResponse extends IUpdateResult {}

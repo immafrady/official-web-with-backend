@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { JobService } from "./job.service";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { DepartmentEditDto, DepartmentIdDto, DetailEditDto } from "./dto";
@@ -10,7 +10,7 @@ import {
     IJobDepartmentSaveResponse,
     IJobDetailDeleteResponse,
     IJobDetailDetailResponse,
-    IJobDetailSaveResponse,
+    IJobDetailSaveResponse, IJobDetailSetStatusResponse,
     IJobListResponse
 } from "libs/response/job";
 import {
@@ -137,6 +137,17 @@ export class JobDetailController {
             return successResponse(await this.jobService.detailFindMany());
         } catch (e) {
             throw new JobDetailNotFoundError(e)
+        }
+    }
+
+    @ApiOperation({ summary: '上下线' })
+    @Put('detail/:id/status')
+    async updateDetailStatus(@Param() detailIdDto: DetailIdDto): Promise<IHttpResponse<IJobDetailSetStatusResponse>> {
+        await this.jobService.hasDetailOrFail(detailIdDto.id);
+        try {
+            return successResponse(await this.jobService.switchJobDetailStatus(detailIdDto.id), '切换上下线成功');
+        } catch (e) {
+            throw new JobDetailCannotModifyError(e);
         }
     }
 }

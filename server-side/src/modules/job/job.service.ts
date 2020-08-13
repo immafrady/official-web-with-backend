@@ -1,16 +1,19 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { JobDetail, JobDepartment } from './job.entity';
-import { Token_JobDetailRepository, Token_JobDepartmentRepository } from '../../constants';
+import { Inject, Injectable } from "@nestjs/common";
+import { Repository } from "typeorm";
+import { JobDepartment, JobDetail } from "./job.entity";
+import { Token_JobDepartmentRepository, Token_JobDetailRepository } from "../../constants";
 import { DepartmentEditDto, DetailEditDto } from "./dto";
 import {
     IJobDepartmentDeleteResponse,
     IJobDepartmentDetailResponse,
     IJobDepartmentListResponse,
-    IJobDetailDeleteResponse, IJobDetailListResponse
+    IJobDetailDeleteResponse,
+    IJobDetailListResponse,
+    IJobDetailSetStatusResponse
 } from "libs/response/job";
 import { JobDepartmentNotFoundError, JobDetailNotFoundError } from "libs/response-error";
 import { IJobDetailEntity } from "libs/entity/job";
+import { JobStatus } from "libs/enums/job";
 
 @Injectable()
 export class JobService {
@@ -140,6 +143,17 @@ export class JobService {
             list,
             total
         }
+    }
+
+    /**
+     * @description 切换职位上下线
+     * @param id
+     */
+    async switchJobDetailStatus(id: number): Promise<IJobDetailSetStatusResponse> {
+        const detail = await this.jobDetailRepo.findOne(id);
+        return await this.jobDetailRepo.update(id, {
+            status: detail.status === JobStatus.Online ? JobStatus.Offline : JobStatus.Online
+        })
     }
 
     /**
