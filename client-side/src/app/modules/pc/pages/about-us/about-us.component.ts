@@ -103,6 +103,7 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
       { time: '5月', content: '荣获“2020中国人力资源服务机构100强”' },
       { time: '疫情期间', content: '薪宝科技逆势而上，累计服务企业客户超过500家，涵盖100+互联网各领域头部平台，累计服务自由职业者超过2000万人次，正以行业领导者姿态继续探索新经济商税服务未来…' },
       { time: '7月', content: '薪宝科技CEO刘树兵，成功登榜中国人力资源行业青年企业家' },
+      { time: '8月', content: '薪宝科技海口分公司入选“2020海口民营企业100强”' },
     ]
   };
 
