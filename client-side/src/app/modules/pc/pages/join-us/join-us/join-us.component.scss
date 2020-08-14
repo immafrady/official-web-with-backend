@@ -65,10 +65,13 @@ $colorRed: #D50032;
 
 .station-container {
   margin-top: 80px;
+  .recruitment-content {
+    text-align: center;
+  }
   .recruitment-group {
     border: 1px solid #CCCCCC;
     @include clear-fix;
-    margin: 30px 0 0 28px;
+    margin: 30px auto 0px;
     display: inline-block;
     div {
       width: 127px;
@@ -101,6 +104,11 @@ $colorRed: #D50032;
       height: 20px;
       opacity: 0;
       z-index: 100;
+    }
+    .recruit-detail {
+      li {
+        margin-bottom: 30px;
+      }
     }
     .anticon {
       margin: -27px;

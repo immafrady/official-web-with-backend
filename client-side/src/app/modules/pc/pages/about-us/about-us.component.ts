@@ -62,7 +62,7 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
   get displayDateList() {
       const tabLength = 5;
       const startPos = this.currIndex - 2;
-      const endPos = startPos + tabLength
+      const endPos = startPos + tabLength;
     if (startPos <= 0) {
       return this.dateList.slice(0, tabLength)
     } else if (endPos >= this.dateList.length) {
