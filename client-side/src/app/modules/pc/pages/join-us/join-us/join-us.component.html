@@ -38,9 +38,9 @@
   <div class="block-title">招聘岗位</div>
   <div class="recruitment-content">
     <div class="recruitment-group">
-      <div class="arrow selector-left" (click)="clickArrow('left')"><img [src]="base64Pics.SELECTOR_LEFT" alt=""></div>
+      <div class="arrow selector-left" (click)="clickArrow('left')"><i nz-icon nzType="left" nzTheme="outline"></i></div>
       <div [class]="label === departments[currIndex] ? 'active' : ''" *ngFor="let label of displayDepartmentList" (click)="selectTab(label)">{{ label }}</div>
-      <div class="arrow selector-right" (click)="clickArrow('right')" ><img [src]="base64Pics.SELECTOR_RIGHT" alt=""></div>
+      <div class="arrow selector-right" (click)="clickArrow('right')" ><i nz-icon nzType="right" nzTheme="outline"></i></div>
     </div>
   </div>
   <div class="join-us-table">

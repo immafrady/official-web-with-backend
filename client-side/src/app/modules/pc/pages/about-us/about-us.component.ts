@@ -31,12 +31,6 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
   }
 
   dateList: IDateListItem[] = [{
-    year: '2014',
-    title: '呵呵'
-  },{
-    year: '2015',
-    title: '啦啦'
-  },{
     year: '2016',
     title: '探索'
   }, {
