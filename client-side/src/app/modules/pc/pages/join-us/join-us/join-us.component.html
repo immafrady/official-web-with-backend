@@ -39,7 +39,7 @@
   <div class="recruitment-content">
     <div class="recruitment-group">
       <div class="arrow selector-left" (click)="clickArrow('left')"><img [src]="base64Pics.SELECTOR_LEFT" alt=""></div>
-      <div [class]="item.type === positionType ? 'active' : ''" *ngFor="let item of departments" (click)="changeRecruitment(item)">{{ item }}</div>
+      <div [class]="item === positionType ? 'active' : ''" *ngFor="let item of departments" (click)="changeRecruitment(item)">{{ item }}</div>
       <div class="arrow selector-right" (click)="clickArrow('right')" ><img [src]="base64Pics.SELECTOR_RIGHT" alt=""></div>
     </div>
   </div>
