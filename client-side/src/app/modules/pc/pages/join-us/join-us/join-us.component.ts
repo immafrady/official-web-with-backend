@@ -6,6 +6,7 @@ import {getImage} from '@/utils/getImage';
 import {PicturePriority, PictureType} from '@libs/enums/picture'
 import {JoinUsService} from "@pc/pages/join-us/join-us.service";
 import {BASE_64_IMG} from "@/config/images";
+import { IJobDetailEntity } from "@libs/entity/job";
 
 @Component({
   selector: 'pc-join-us',
@@ -27,8 +28,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
       this.expandSet.delete(id);
     }
   }
-  departments = [];
-  recruitDetail = {};
+  departments: string[] = [];
+  recruitDetail: { [departmentName: string]: IJobDetailEntity[] } = {};
   getImage = getImage;
   environmentPicture = [];
   friendPicture = [];
@@ -40,12 +41,6 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
     private JoinUsService: JoinUsService
   ) {
     super(metaService, titleService, activatedRoute, router)
-  }
-
-  changeRecruitment(type):void {
-    this.expandSet = new Set<number>();
-    this.rotateActive = false;
-    this.positionType = type
   }
 
   getPictureList(type, list): void {
@@ -62,6 +57,29 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
     })
   }
 
+  currIndex = 0;
+
+  get currentTab() {
+    return this.departments[this.currIndex];
+  }
+
+  get displayDepartmentList() {
+    const tabLength = 5;
+    if (this.departments?.length < tabLength) {
+      return this.departments;
+    } else {
+      const startPos = this.currIndex - 2;
+      const endPos = startPos + tabLength;
+      if (startPos <= 0) {
+        return this.departments.slice(0, tabLength)
+      } else if (endPos >= this.departments.length) {
+        return this.departments.slice(this.departments.length - tabLength, this.departments.length)
+      } else {
+        return this.departments.slice(startPos, endPos)
+      }
+    }
+  }
+
   clickArrow(type: 'left' | 'right'): void {
     if (type === "left") {
       this.currIndex--;
@@ -70,8 +88,19 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
       }
     } else if (type === "right") {
       this.currIndex++;
-      if (this.currIndex >= this.dateList.length) {
-        this.currIndex = this.dateList.length - 1;
+      if (this.currIndex >= this.departments.length) {
+        this.currIndex = this.departments.length - 1;
+      }
+    }
+  }
+
+  selectTab(label: string): void {
+    this.expandSet = new Set<number>();
+    this.rotateActive = false;
+    for (let i = 0; i < this.departments.length; i++) {
+      if (this.departments[i] === label) {
+        this.currIndex = i;
+        return;
       }
     }
   }

@@ -39,12 +39,12 @@
   <div class="recruitment-content">
     <div class="recruitment-group">
       <div class="arrow selector-left" (click)="clickArrow('left')"><img [src]="base64Pics.SELECTOR_LEFT" alt=""></div>
-      <div [class]="item === positionType ? 'active' : ''" *ngFor="let item of departments" (click)="changeRecruitment(item)">{{ item }}</div>
+      <div [class]="label === departments[currIndex] ? 'active' : ''" *ngFor="let label of displayDepartmentList" (click)="selectTab(label)">{{ label }}</div>
       <div class="arrow selector-right" (click)="clickArrow('right')" ><img [src]="base64Pics.SELECTOR_RIGHT" alt=""></div>
     </div>
   </div>
   <div class="join-us-table">
-    <nz-table #nzTable [nzData]="recruitDetail[positionType]" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['480px', '160px', '200px', '200px', '50px']">
+    <nz-table #nzTable [nzData]="recruitDetail[currentTab]" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['480px', '160px', '200px', '200px', '50px']">
       <thead>
         <tr>
           <th>职位</th>
