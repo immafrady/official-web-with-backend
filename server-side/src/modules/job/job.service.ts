@@ -14,7 +14,7 @@ import {
 import { JobDepartmentNotFoundError, JobDetailNotFoundError } from "libs/response-error";
 import { IJobDetailEntity } from "libs/entity/job";
 import { JobStatus } from "libs/enums/job";
-import { IJobDetailFindManyOptions } from "./job.interface";
+import { IJobDepartmentListWithoutNoDetailResult, IJobDetailFindManyOptions } from "./job.interface";
 
 @Injectable()
 export class JobService {
@@ -164,5 +164,19 @@ export class JobService {
      */
     async deleteDetail(id: number): Promise<IJobDetailDeleteResponse> {
         return await this.jobDetailRepo.delete(id);
+    }
+
+    /**
+     * @description 查出有数据的部门
+     */
+    async listDepartmentWithoutNoDetail(): Promise<IJobDepartmentListWithoutNoDetailResult> {
+        return await this.jobDepartmentRepo
+            .createQueryBuilder("department")
+            .select("department.label", "label")
+            .innerJoin("department.jobDetails", "detail")
+            .where("department.id = detail.department_id")
+            .groupBy("department.id")
+            .orderBy("MAX(department.sort)", "ASC")
+            .execute()
     }
 }

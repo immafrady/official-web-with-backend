@@ -167,8 +167,8 @@ export class JobController {
         };
 
         try {
-            const { list: departments } = await this.jobService.departmentFindMany();
-            response.departments = departments.map(department => {
+            const list = await this.jobService.listDepartmentWithoutNoDetail();
+            response.departments = list.map(department => {
                 response.details[department.label] = [];
                 return department.label;
             })
@@ -189,10 +189,6 @@ export class JobController {
         } catch (e) {
             throw new JobDetailNotFoundError(e);
         }
-
-        response.departments = response.departments.filter(department => {
-            return response.details[department]?.length > 0
-        })
         return successResponse(response);
     }
 }
