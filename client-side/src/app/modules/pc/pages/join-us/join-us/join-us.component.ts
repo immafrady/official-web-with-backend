@@ -62,7 +62,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
   }
 
   get displayDepartmentList() {
-    const tabLength = 5;
+    const tabLength = 7;
     if (this.departments?.length < tabLength) {
       return this.departments;
     } else {
