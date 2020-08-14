@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SpliceEnterPipe implements PipeTransform {
 
   transform(value: string): string[] {
-    return value.split('\n');
+    return value?.split('\n');
   }
 
 }
