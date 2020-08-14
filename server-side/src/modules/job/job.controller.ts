@@ -189,6 +189,10 @@ export class JobController {
         } catch (e) {
             throw new JobDetailNotFoundError(e);
         }
+
+        response.departments = response.departments.filter(department => {
+            return response.details[department]?.length > 0
+        })
         return successResponse(response);
     }
 }
