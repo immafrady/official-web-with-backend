@@ -5,7 +5,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {getImage} from '@/utils/getImage';
 import {PicturePriority, PictureType} from '@libs/enums/picture'
 import {JoinUsService} from "@pc/pages/join-us/join-us.service";
-import {BASE_64_IMG} from "@/config/images";
 import { IJobDetailEntity } from "@libs/entity/job";
 
 @Component({
@@ -15,7 +14,6 @@ import { IJobDetailEntity } from "@libs/entity/job";
   encapsulation: ViewEncapsulation.None
 })
 export class JoinUsComponent extends BasePageComponent implements OnInit {
-  base64Pics = BASE_64_IMG;
   PictureType = PictureType;
   positionType = '';
   rotateActive = false;
