@@ -18,14 +18,7 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
   positionType = '';
   rotateActive = false;
   expandSet = new Set<number>();
-  onExpandChange(id: number, checked: boolean): void {
-    this.rotateActive = true;
-    if (checked) {
-      this.expandSet.add(id);
-    } else {
-      this.expandSet.delete(id);
-    }
-  }
+  active = false;
   departments: string[] = [];
   recruitDetail: { [departmentName: string]: IJobDetailEntity[] } = {};
   getImage = getImage;
@@ -100,6 +93,16 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
         this.currIndex = i;
         return;
       }
+    }
+  }
+
+  expandDetail(id: number): void {
+    this.active = !this.active;
+    this.rotateActive = true;
+    if (this.active) {
+      this.expandSet.add(id);
+    } else {
+      this.expandSet.delete(id);
     }
   }
 
