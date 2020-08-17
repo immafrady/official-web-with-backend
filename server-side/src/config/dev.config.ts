@@ -10,9 +10,9 @@ export default {
         host: 'localhost',
         port: 3306,
         database: 'official_web',
-        username: 'root',
-        password: 'password',
-        // synchronize: true, // 每次启动都会覆盖数据库，生产勿用
+        username: 'yaqing',
+        password: 'Aa123456',
+        synchronize: true, // 每次启动都会覆盖数据库，生产勿用
         entities: [__dirname + '/../**/*.entity.{ts,js}']
     },
     port: 7001,

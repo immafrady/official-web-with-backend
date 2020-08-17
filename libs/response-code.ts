@@ -25,6 +25,10 @@ export const enum ResponseCode {
     JobDetailCannotDelete,
     JobDetailCannotModify,
     JobDetailNotFound,
+    IncidentYearCannotSave = 5001,
+    IncidentYearNotFound,
+    IncidentYearCannotDelete,
+    IncidentYearCannotModify,
     CommonFormInvalid = 400,
     UnknownError = 9999
 }

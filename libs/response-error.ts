@@ -1,5 +1,5 @@
-import { ResponseCode } from "./response-code";
-import { BaseResponseError } from "./common";
+import {ResponseCode} from "./response-code";
+import {BaseResponseError} from "./common";
 
 export class UserNotFoundError extends BaseResponseError {
     constructor(data?: any, message = '找不到用户') {
@@ -132,6 +132,31 @@ export class CommonFormInvalidError extends BaseResponseError {
         super(ResponseCode.CommonFormInvalid, message, data);
     }
 }
+
+export class IncidentYearCannotSaveError extends BaseResponseError{
+    constructor(message = '无法新增年份', data?: any) {
+        super(ResponseCode.IncidentYearCannotSave, message, data)
+    }
+}
+
+export class IncidentYearNotFoundError extends BaseResponseError{
+    constructor(message = '无法找到该年份', data?: any) {
+        super(ResponseCode.IncidentYearNotFound, message, data)
+    }
+}
+
+export class IncidentYearCannotDeleteError extends BaseResponseError{
+    constructor(message = '无法删除年份', data?: any) {
+        super(ResponseCode.IncidentYearCannotDelete, message, data)
+    }
+}
+
+export class IncidentYearCannotModifyError extends BaseResponseError{
+    constructor(message = '无法修改年份', data?: any) {
+        super(ResponseCode.IncidentYearCannotModify, message, data)
+    }
+}
+
 
 // 未知错误
 export class UnknownError extends BaseResponseError {

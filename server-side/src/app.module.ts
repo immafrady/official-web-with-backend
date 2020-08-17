@@ -13,6 +13,7 @@ import { LoggerInterceptor } from "./shared/interceptors/logger.interceptor";
 import { CustomValidationPipe } from "./shared/pipes/custom-validation.pipe";
 import { PictureModule } from "./modules/picture/picture.module";
 import { JobModule } from "./modules/job/job.module";
+import {IncidentModule} from "./modules/incident/incident.module";
 
 @Module({
     imports: [
@@ -22,7 +23,8 @@ import { JobModule } from "./modules/job/job.module";
         ArticleModule,
         PictureModule,
         JobModule,
-        LoggerModule
+        LoggerModule,
+        IncidentModule
     ],
     controllers: [AppController],
     providers: [
