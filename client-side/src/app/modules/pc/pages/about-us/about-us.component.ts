@@ -108,6 +108,7 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.currIndex = this.dateList.length - 1
   }
 
   clickArrow(type: 'left' | 'right'): void {
