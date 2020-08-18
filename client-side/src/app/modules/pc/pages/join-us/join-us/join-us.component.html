@@ -56,12 +56,12 @@
       </thead>
       <tbody>
         <ng-container *ngFor="let data of nzTable.data">
-          <tr>
+          <tr (click)="expandDetail(data.id)">
             <td>{{ data.title }}<nz-tag *ngIf="data.eager" [nzColor]="'#F36374'">急</nz-tag><nz-tag *ngIf="data.hot" [nzColor]="'#30CBF3'">新</nz-tag></td>
             <td>{{ data.department.label }}</td>
             <td>{{ data.location }}</td>
             <td>{{ data.modifyDate | date:'yyyy-MM-dd' }}</td>
-            <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : rotateActive ? 'rotateDown': ''" nz-icon nzType="down" nzTheme="outline"></i></td>
+            <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : rotateActive ? 'rotateDown' : ''" nz-icon nzType="down" nzTheme="outline"></i></td>
           </tr>
           <tr [nzExpand]="expandSet.has(data.id)">
            <td>
