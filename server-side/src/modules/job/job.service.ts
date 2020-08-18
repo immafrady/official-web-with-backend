@@ -11,10 +11,11 @@ import {
     IJobDetailListResponse,
     IJobDetailSetStatusResponse
 } from "libs/response/job";
-import { JobDepartmentNotFoundError, JobDetailNotFoundError } from "libs/response-error";
 import { IJobDetailEntity } from "libs/entity/job";
 import { JobStatus } from "libs/enums/job";
 import { IJobDepartmentListWithoutNoDetailResult, IJobDetailFindManyOptions } from "./job.interface";
+import { ResponseError } from "../../shared/response-error";
+import { ResponseCode } from "libs/response-code";
 
 @Injectable()
 export class JobService {
@@ -26,7 +27,7 @@ export class JobService {
      */
     async hasDepartmentOrFail(id: number): Promise<void> {
         if (!await this.jobDepartmentRepo.findOne(id)) {
-            throw new JobDepartmentNotFoundError();
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到部门');
         }
     }
 
@@ -95,12 +96,12 @@ export class JobService {
     }
 
     /**
-     * @description 判断是否存在部门
+     * @description 判断是否存在详情
      * @param id
      */
     async hasDetailOrFail(id: number): Promise<void> {
         if (!await this.jobDetailRepo.findOne(id)) {
-            throw new JobDetailNotFoundError();
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到职位详情');
         }
     }
 

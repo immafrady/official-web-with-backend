@@ -1,10 +1,11 @@
-import {Inject, Injectable} from '@nestjs/common';
-import {Token_IncidentDetailRepository, Token_IncidentYearRepository} from "../../constants";
-import {Repository} from "typeorm";
-import {IncidentDetail, IncidentYear} from "./incident.entity";
-import {YearEditDto} from "./dto";
-import {IIncidentYearDeleteResponse, IIncidentYearListResponse} from "libs/response/incident";
-import {IncidentYearNotFoundError} from "libs/response-error";
+import { Inject, Injectable } from "@nestjs/common";
+import { Token_IncidentDetailRepository, Token_IncidentYearRepository } from "../../constants";
+import { Repository } from "typeorm";
+import { IncidentDetail, IncidentYear } from "./incident.entity";
+import { YearEditDto } from "./dto";
+import { IIncidentYearDeleteResponse, IIncidentYearListResponse } from "libs/response/incident";
+import { ResponseError } from "../../shared/response-error";
+import { ResponseCode } from "libs/response-code";
 
 @Injectable()
 export class IncidentService {
@@ -19,7 +20,7 @@ export class IncidentService {
      */
     async hasYearOrFail(id: number): Promise<void> {
         if (!await this.incidentYearRepo.findOne(id)) {
-            throw new IncidentYearNotFoundError();
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '无法找到该年份');
         }
     }
 

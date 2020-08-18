@@ -9,12 +9,6 @@ import {
     IArticleListResponse,
     IArticleModifyResponse, IArticleSetStatusResponse
 } from "libs/response/article";
-import {
-    ArticleCannotCreateError,
-    ArticleCannotDeleteError,
-    ArticleCannotModifyError,
-    ArticleNotFoundError
-} from "libs/response-error";
 import { successResponse } from "../../utils/ro-builder.utils";
 import { UserId } from "../../shared/decorators/user-id.decorator";
 import { ArticleListDto } from "./dto";
@@ -23,6 +17,8 @@ import { ArticleStatus } from "libs/enums/article";
 import { LessThanOrEqual, Like } from "typeorm";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { ArticleIdDto } from "./dto/article-id.dto";
+import { ResponseError } from "../../shared/response-error";
+import { ResponseCode } from "libs/response-code";
 
 @ApiTags('文章(article)')
 @ApiBearerAuth()
@@ -36,7 +32,7 @@ export class ArticleController {
         try {
             return successResponse(await this.articleService.create(createArticleDto, userId), '新增文章成功');
         } catch (e) {
-            throw new ArticleCannotCreateError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotCreate, '无法生成文章', e);
         }
     }
 
@@ -48,7 +44,7 @@ export class ArticleController {
         try {
             return successResponse(await this.articleService.edit(editArticleDto, articleId, userId), '更新文章成功');
         } catch (e) {
-            throw new ArticleCannotModifyError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法修改文章', e);
         }
     }
 
@@ -60,7 +56,7 @@ export class ArticleController {
         try {
             return successResponse(await this.articleService.delete(articleId), '删除文章成功');
         } catch (e) {
-            throw new ArticleCannotDeleteError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotDelete, '无法删除文章', e);
         }
     }
 
@@ -72,7 +68,7 @@ export class ArticleController {
         try {
             return successResponse(await this.articleService.switchArticleStatus(articleId), '修改状态成功');
         } catch (e) {
-            throw new ArticleCannotModifyError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法切换文章状态', e);
         }
     }
 
@@ -93,7 +89,7 @@ export class ArticleController {
             };
             return successResponse(await this.articleService.findMany(options, pagination, true));
         } catch (e) {
-            throw new ArticleNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到文章', e);
         }
     }
 
@@ -112,7 +108,7 @@ export class ArticleController {
             };
             return successResponse(await this.articleService.findMany(options, pagination, false));
         } catch (e) {
-            throw new ArticleNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到文章', e);
         }
     }
 
@@ -142,7 +138,7 @@ export class ArticleController {
                 author: result.author
             });
         } else {
-            throw new ArticleNotFoundError({}, '没有阅读权限');
+            throw new ResponseError(ResponseCode.CommonItemForbidden, '没有阅读权限');
         }
     }
 
@@ -156,7 +152,7 @@ export class ArticleController {
         try {
             return successResponse(await this.articleService.findOne(articleId));
         } catch (e) {
-            throw new ArticleNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到文章', e);
         }
     }
 }

@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Param, Put, Delete, Get, Query } from "@nestjs/common";
+import { Controller, Post, Body, Param, Put, Get, Query } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { PictureService } from "./picture.service";
 import { DeletePictureDto, EditPictureDto, PictureIdDto, PictureListDto, SavePictureDto } from "./dto";
@@ -6,18 +6,14 @@ import { UserId } from "../../shared/decorators/user-id.decorator";
 import { IHttpResponse, IRequestPagination } from "libs/common";
 import { successResponse } from "../../utils/ro-builder.utils";
 import {
-    PictureCannotDeleteError,
-    PictureCannotModifyError,
-    PictureCannotSaveError,
-    PictureNotFoundError
-} from "libs/response-error";
-import {
     IPictureDeleteResponse,
     IPictureDetailResponse,
     IPictureEditResponse, IPictureListResponse,
     IPictureSaveResponse
 } from "libs/response/picture";
 import { IPictureFindManyOptions } from "./picture.interface";
+import { ResponseError } from "../../shared/response-error";
+import { ResponseCode } from "libs/response-code";
 
 @ApiTags('图片(picture)')
 @ApiBearerAuth()
@@ -31,7 +27,7 @@ export class PictureController {
         try {
             return successResponse(await this.pictureService.create(savePictureDto, userId), '保存图片成功');
         } catch (e) {
-            throw new PictureCannotSaveError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotCreate, '无法保存图片', e);
         }
     }
 
@@ -42,7 +38,7 @@ export class PictureController {
         try {
             return successResponse(await this.pictureService.edit(editPictureDto, pictureIdDto.id, userId), '修改图片信息成功');
         } catch (e) {
-            throw new PictureCannotModifyError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法修改图片', e);
         }
     }
 
@@ -60,7 +56,7 @@ export class PictureController {
             }
             return successResponse(res, '成功删除图片');
         } catch (e) {
-            throw new PictureCannotDeleteError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotDelete, '无法删除图片', e);
         }
     }
 
@@ -70,7 +66,7 @@ export class PictureController {
         try {
             return successResponse(await this.pictureService.findOne(pictureIdDto.id));
         } catch (e) {
-            throw new PictureNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到图片', e);
         }
     }
 
@@ -94,7 +90,7 @@ export class PictureController {
 
             return successResponse(await this.pictureService.findMany(options, pagination))
         } catch (e) {
-            throw new PictureNotFoundError(e)
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到图片', e);
         }
     }
 }
