@@ -2,10 +2,15 @@ import { Inject, Injectable } from "@nestjs/common";
 import { Token_IncidentDetailRepository, Token_IncidentYearRepository } from "../../constants";
 import { Repository } from "typeorm";
 import { IncidentDetail, IncidentYear } from "./incident.entity";
-import { YearEditDto } from "./dto";
-import { IIncidentYearDeleteResponse, IIncidentYearListResponse } from "libs/response/incident";
+import {DetailEditDto, YearEditDto} from "./dto";
+import {
+    IIncidentDetailDeleteResponse, IIncidentDetailDetailResponse, IIncidentDetailListResponse,
+    IIncidentYearDeleteResponse,
+    IIncidentYearListResponse, IListYearListWithoutNoDetailResult
+} from "libs/response/incident";
 import { ResponseError } from "../../shared/response-error";
 import { ResponseCode } from "libs/response-code";
+import {IIncidentYearEntity} from "libs/entity/incident";
 
 @Injectable()
 export class IncidentService {
@@ -67,4 +72,81 @@ export class IncidentService {
             total
         }
     }
+
+    /**
+     * @description 判断存在该详情
+     * @param id
+     */
+    async hasDetailOrFail(id: number): Promise<void> {
+        if (!await this.incidentDetailRepo.findOne(id)) {
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '无法找到详情')
+        }
+    }
+
+    /**
+     * @description 新增详情
+     * @param detailEditDto
+     */
+    async addDeatil(detailEditDto: DetailEditDto): Promise<any> {
+        const detail = this.incidentDetailRepo.create(detailEditDto);
+        await this.incidentDetailRepo.save(detail);
+        return {}
+    }
+
+    /**
+     * @description 编辑详情
+     * @param id
+     * @param detailEditDto
+     */
+    async editDetail(id: number, detailEditDto: DetailEditDto): Promise<any> {
+        await this.incidentDetailRepo.update(id, detailEditDto);
+        return {}
+    }
+
+    /**
+     * @description 删除详情
+     * @param id
+     */
+    async deleteDetail(id: number): Promise<IIncidentDetailDeleteResponse> {
+        return await this.incidentDetailRepo.delete(id)
+    }
+
+
+    /**
+     * @description 查找详情列表
+     */
+    async detailList(): Promise<IIncidentDetailListResponse> {
+        const [list, total] = await this.incidentDetailRepo.findAndCount({
+            relations: ['incidentYear'],
+            order: {
+                updateDate: 'DESC'
+            }
+        });
+        return {
+            list,
+            total
+        }
+    }
+
+    /**
+     * @description 查找单条详情
+     * @param id
+     */
+    async detailFindOne(id: number): Promise<IIncidentDetailDetailResponse> {
+        return await this.incidentDetailRepo.findOne(id)
+    }
+
+
+    async listYearListWithoutNoDetail(): Promise<IListYearListWithoutNoDetailResult> {
+        return await this.incidentYearRepo
+            .createQueryBuilder('year')
+            .select('year.year', 'year')
+            .addSelect('year.label', 'label')
+            .innerJoin('year.incidentDetails', 'detail')
+            .groupBy('year.id')
+            .orderBy('Max(year.sort)', 'ASC')
+            .execute()
+    }
 }
+
+

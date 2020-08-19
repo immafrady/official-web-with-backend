@@ -9,4 +9,5 @@ export interface IIncidentYearEntity extends Partial<IBaseEntity>{
 export interface IIncidentDetailEntity extends Partial<IBaseEntity>{
     title: string;
     detail: string;
+    incidentYear?: IIncidentYearEntity
 }
