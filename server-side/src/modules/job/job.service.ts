@@ -175,7 +175,6 @@ export class JobService {
             .createQueryBuilder("department")
             .select("department.label", "label")
             .innerJoin("department.jobDetails", "detail")
-            .where("department.id = detail.department_id")
             .groupBy("department.id")
             .orderBy("MAX(department.sort)", "ASC")
             .execute()
