@@ -1,9 +1,8 @@
 import {IsNumberString} from "class-validator";
 import {ApiProperty} from "@nestjs/swagger";
 
-export class YearIdDto  {
-
-    @ApiProperty({ description: '年份id' })
+export class DetailIdDto {
+    @ApiProperty({ description: '详情id'})
     @IsNumberString()
-    id: number;
+    id: number
 }

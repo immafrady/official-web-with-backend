@@ -1,5 +1,5 @@
 import {BaseEntity} from "../../shared/base.entity";
-import {Column, Entity, ManyToOne, OneToMany} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToMany} from "typeorm";
 import {IIncidentDetailEntity, IIncidentYearEntity} from "libs/entity/incident";
 
 @Entity()
@@ -48,6 +48,7 @@ export class IncidentDetail extends BaseEntity implements IIncidentDetailEntity{
     detail: string;
 
     @ManyToOne(type => IncidentYear, incidentYear => incidentYear.incidentDetails)
+    @JoinColumn({ name: 'incident_detail_id'})
     incidentYear: IncidentYear
 
 }
