@@ -67,6 +67,7 @@ $colorRed: #D50032;
   margin-top: 80px;
   .recruitment-content {
     text-align: center;
+    user-select: none;
   }
   .recruitment-group {
     border: 1px solid #CCCCCC;
@@ -95,6 +96,7 @@ $colorRed: #D50032;
     }
     .arrow {
       color: #999;
+      width: 90px;
     }
   }
   .join-us-table {
@@ -150,12 +152,13 @@ $colorRed: #D50032;
       background-color: #fff;
     }
     .ant-table tfoot>tr>td, .ant-table tfoot>tr>th, .ant-table-tbody>tr>td, .ant-table-thead>tr>th {
-      font-size: 20px;
+      font-size: 18px;
       color: #333333;
       border-color: #CBCBCB;
     }
     .ant-table-tbody>tr>td {
       color: #656565;
+      font-size: 16px !important;
       &:first-child {
         color: #333333;
       }
