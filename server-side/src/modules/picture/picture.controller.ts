@@ -14,6 +14,7 @@ import {
 import { IPictureFindManyOptions } from "./picture.interface";
 import { ResponseError } from "../../shared/response-error";
 import { ResponseCode } from "libs/response-code";
+import { MoreThanOrEqual } from "typeorm";
 
 @ApiTags('图片(picture)')
 @ApiBearerAuth()
@@ -77,7 +78,7 @@ export class PictureController {
             const options: IPictureFindManyOptions = {
                 where: {
                     type: pictureListDto.type || undefined,
-                    priority: pictureListDto.priority || undefined
+                    priority: pictureListDto.priority ? MoreThanOrEqual(pictureListDto.priority) : undefined
                 }
             }
             let pagination: IRequestPagination
