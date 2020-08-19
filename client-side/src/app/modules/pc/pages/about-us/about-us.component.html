@@ -34,4 +34,20 @@
   </div>
 </pc-core-container>
 
+<pc-core-container>
+  <h2 class="block-title">企业荣誉</h2>
+  <ul class="honor-box">
+    <li *ngFor="let item of honorSliceList">
+      <img [src]="item.url" class="box-img">
+      <p class="box-title">{{ item.title }}</p>
+    </li>
+  </ul>
+  <div class="expand-put-away" *ngIf="honorList.length > 8">
+    <div class="expand-put-away-container" (click)="expandMore()">
+      <div class="action-icon"><i nz-icon [nzType]="expandActive ? 'minus' : 'plus'" nzTheme="outline"></i></div>
+      <p>{{ expandActive ? '收起' : '了解更多'}}</p>
+    </div>
+  </div>
+</pc-core-container>
+
 

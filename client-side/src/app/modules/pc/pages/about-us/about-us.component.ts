@@ -3,6 +3,8 @@ import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from '@/app/shared/base-page.component';
 import { BASE_64_IMG } from "src/config/images";
+import {PicturePriority, PictureType} from "@libs/enums/picture";
+import {JoinUsService} from "@pc/pages/join-us/join-us.service";
 
 interface IDateDictionary {
   [key: string]: { time: string, content: string }[]
@@ -21,11 +23,15 @@ interface IDateListItem {
 })
 export class AboutUsComponent extends BasePageComponent implements OnInit {
   base64Pics = BASE_64_IMG;
+  honorSliceList = [];
+  honorList = [];
+  expandActive = false;
   constructor(
     metaService: Meta,
     titleService: Title,
     activatedRoute: ActivatedRoute,
-    router: Router
+    router: Router,
+    private JoinUsService: JoinUsService
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
@@ -108,6 +114,7 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.getPictureList()
   }
 
   clickArrow(type: 'left' | 'right'): void {
@@ -131,5 +138,17 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
         return;
       }
     }
+  }
+
+  getPictureList(): void {
+    this.JoinUsService.getPictureList({ type: PictureType.Honor , priority: PicturePriority.Normal }).subscribe(({ data }) => {
+      this.honorList = data.list;
+      this.honorSliceList = data.list.slice(0, 8)
+    })
+  }
+
+  expandMore(): void {
+    this.expandActive = !this.expandActive;
+    this.honorSliceList = this.expandActive ? this.honorList : this.honorList.slice(0, 8)
   }
 }
