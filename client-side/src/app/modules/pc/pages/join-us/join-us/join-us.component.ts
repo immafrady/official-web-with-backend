@@ -18,7 +18,6 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
   positionType = '';
   rotateActive = false;
   expandSet = new Set<number>();
-  active = false;
   departments: string[] = [];
   recruitDetail: { [departmentName: string]: IJobDetailEntity[] } = {};
   getImage = getImage;
@@ -97,9 +96,8 @@ export class JoinUsComponent extends BasePageComponent implements OnInit {
   }
 
   expandDetail(id: number): void {
-    this.active = !this.active;
     this.rotateActive = true;
-    if (this.active) {
+    if (!this.expandSet.has(id)) {
       this.expandSet.add(id);
     } else {
       this.expandSet.delete(id);
