@@ -88,7 +88,7 @@ export class IncidentDetailController {
             }
         } else {
             try {
-                return successResponse(await this.incidentService.addDeatil(dto), '成功新增内容')
+                return successResponse(await this.incidentService.addDetail(dto), '成功新增内容')
             } catch (e) {
                 throw new ResponseError(ResponseCode.CommonEditCannotCreate, '无法新增内容', e)
             }
