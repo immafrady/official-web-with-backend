@@ -34,6 +34,16 @@ export class WrapperComponent implements OnInit {
       label: '招聘管理',
       link: '/admin/recruitment-manager'
     }]
+  }, {
+    label: '大事件管理',
+    icon: 'ordered-list',
+    children: [{
+      label: '年份管理',
+      link: '/admin/incident-manager/year-list'
+    }, {
+      label: '事件管理',
+      link: '/admin/incident-manager/detail-list'
+    }]
   }]
   constructor() { }
 

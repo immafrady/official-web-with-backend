@@ -1,0 +1,70 @@
+<div class="list-container detail-list">
+  <div class="nav-container">
+    <h2>事件管理</h2>
+    <button nz-button nzType="primary" (click)="showModal()">新增事件</button>
+  </div>
+
+  <nz-table #nzTable [nzData]="list" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
+    <thead>
+    <tr>
+      <th nzWidth="80px">序号</th>
+      <th>年份</th>
+      <th>标题</th>
+      <th>描述</th>
+      <th nzWidth="350px">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of nzTable.data, index as index">
+      <td>{{ index + 1 }}</td>
+      <ng-container *ngIf="editCache[data.id].edit; else displayTemplate">
+        <td>
+          <nz-select [(ngModel)]="editCache[data.id].data.yearId">
+            <nz-option *ngFor="let option of yearOptions" [nzLabel]="option.year" [nzValue]="option.id"></nz-option>
+          </nz-select>
+        </td>
+        <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.title" /></td>
+        <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.detail"/></td>
+        <td>
+          <button nz-button nzType="primary" nzShape="round" (click)="saveEdit(data.id)">保存</button>
+          <button nz-button nzType="info" nzShape="round" (click)="updateEditStatus(data.id, false)">取消</button>
+        </td>
+      </ng-container>
+      <ng-template #displayTemplate>
+        <td>{{ data.incidentYear.year }}</td>
+        <td>{{ data.title }}</td>
+        <td>{{ data.detail }}</td>
+        <td>
+          <button nz-button nzType="primary" nzShape="round" (click)="updateEditStatus(data.id, true)">编辑</button>
+          <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteDetail(data.id)">删除</button>
+        </td>
+      </ng-template>
+    </tr>
+    </tbody>
+  </nz-table>
+
+  <nz-modal [(nzVisible)]="isVisible" nzClassName="detail-list-modal" nzTitle="新增事件" nzOkText="保存" [nzOkDisabled]="!form?.valid" (nzOnCancel)="handleSaveCancel()" (nzOnOk)="handleSave()">
+    <form *ngIf="isVisible" nz-form [formGroup]="form" >
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="year">年份</nz-form-label>
+        <nz-form-control nzErrorTip="请选择年份">
+          <nz-select id="yearId" formControlName="yearId" nzPlaceHolder="请选择年份">
+            <nz-option *ngFor="let option of yearOptions" [nzLabel]="option.year" [nzValue]="option.id"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="title">标题</nz-form-label>
+        <nz-form-control nzErrorTip="请输入标题">
+          <input nz-input formControlName="title" id="title" placeholder="请输入标题">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="detail">描述</nz-form-label>
+        <nz-form-control nzErrorTip="请输入描述">
+          <textarea nz-input formControlName="detail" id="detail" placeholder="请输入描述"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-modal>
+</div>
