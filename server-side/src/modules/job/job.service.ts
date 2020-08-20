@@ -84,7 +84,7 @@ export class JobService {
     }
 
     /* --------------- 职位详情 ---------------- */
-    generateDetailFromDto(detailEditDto: DetailEditDto): IJobDetailEntity {
+    private generateDetailFromDto(detailEditDto: DetailEditDto): IJobDetailEntity {
         const { id, ...dto } = detailEditDto;
         const { departmentId, ...detail } = dto;
         const department = new JobDepartment();

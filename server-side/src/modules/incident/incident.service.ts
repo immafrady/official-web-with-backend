@@ -10,7 +10,7 @@ import {
 } from "libs/response/incident";
 import { ResponseError } from "../../shared/response-error";
 import { ResponseCode } from "libs/response-code";
-import {IIncidentYearEntity} from "libs/entity/incident";
+import {IIncidentDetailEntity} from "libs/entity/incident";
 
 @Injectable()
 export class IncidentService {
@@ -83,13 +83,23 @@ export class IncidentService {
         }
     }
 
+    private generateDetailFromDto(detailEditDto: DetailEditDto): IIncidentDetailEntity {
+        const { id, ...dto} = detailEditDto;
+        const { yearId, ...detail} = dto;
+        const year = new IncidentYear();
+        year.id = yearId;
+
+        const result = this.incidentDetailRepo.create(detail);
+        result.incidentYear = year;
+        return result
+    }
+
     /**
      * @description 新增详情
      * @param detailEditDto
      */
-    async addDeatil(detailEditDto: DetailEditDto): Promise<any> {
-        const detail = this.incidentDetailRepo.create(detailEditDto);
-        await this.incidentDetailRepo.save(detail);
+    async addDetail(detailEditDto: DetailEditDto): Promise<any> {
+        await this.incidentDetailRepo.save(this.generateDetailFromDto(detailEditDto));
         return {}
     }
 
@@ -99,7 +109,7 @@ export class IncidentService {
      * @param detailEditDto
      */
     async editDetail(id: number, detailEditDto: DetailEditDto): Promise<any> {
-        await this.incidentDetailRepo.update(id, detailEditDto);
+        await this.incidentDetailRepo.update(id, this.generateDetailFromDto(detailEditDto));
         return {}
     }
 
