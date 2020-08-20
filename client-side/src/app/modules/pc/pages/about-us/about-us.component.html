@@ -23,13 +23,13 @@
   <h2 class="block-title">企业大事件</h2>
   <div class="selector-container">
     <div class="arrow selector-left" (click)="clickArrow('left')"><img [src]="base64Pics.SELECTOR_LEFT" alt=""></div>
-    <div *ngFor="let item of displayDateList" (click)="selectTab(item.year)" class="selector" [class]="item.year === dateList[currIndex].year ? 'active' : ''">{{ item.year }} {{ item.title }}</div>
+    <div *ngFor="let item of displayDateList" (click)="selectTab(item.year)" class="selector" [class]="item.year === dateList[currIndex].year ? 'active' : ''">{{ item.year }} {{ item.label }}</div>
     <div class="arrow selector-right" (click)="clickArrow('right')" ><img [src]="base64Pics.SELECTOR_RIGHT" alt=""></div>
   </div>
   <div class="selector-content">
-    <h3>{{ currentTab.year }}年大事件</h3>
+    <h3>{{ currentTab?.year }}年大事件</h3>
     <nz-timeline>
-      <nz-timeline-item *ngFor="let item of dateDictionary[currentTab.year]" nzColor="#D50031"><span class="position-left">{{ item.time }}</span>{{ item.content }}</nz-timeline-item>
+      <nz-timeline-item *ngFor="let item of dateDictionary[currentTab?.year]" nzColor="#D50031"><span class="position-left">{{ item.title }}</span>{{ item.detail }}</nz-timeline-item>
     </nz-timeline>
   </div>
 </pc-core-container>

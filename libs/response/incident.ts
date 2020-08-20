@@ -16,7 +16,8 @@ export interface IIncidentDetailListResponse extends IResponsePagination<IIncide
 export interface IIncidentDetailDetailResponse extends IIncidentDetailEntity{}
 
 export type IListYearListWithoutNoDetailResult = Pick<IIncidentYearEntity, "year"| "label">[];
+export type IListYearListFormattedDetailResult = { [year: string]: IIncidentDetailEntity[] };
 export interface IIncidentListResponse {
     yearList: IListYearListWithoutNoDetailResult;
-    details: { [year: string]: IIncidentDetailEntity[] }
+    details: IListYearListFormattedDetailResult
 }

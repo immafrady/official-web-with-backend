@@ -5,7 +5,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { IIncidentDetailEditOptions, IIncidentYearEditOptions } from "@libs/request/incident";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { IHttpResponse } from "@libs/common";
 import {
   IIncidentDetailDeleteResponse, IIncidentDetailDetailResponse, IIncidentDetailListResponse,
@@ -14,12 +14,16 @@ import {
   IIncidentYearListResponse,
   IIncidentYearSaveResponse
 } from "@libs/response/incident";
+import { makeStateKey, TransferState } from "@angular/platform-browser";
+import { tap } from "rxjs/operators";
+
+const stateKey = makeStateKey('incident-list')
 
 @Injectable({
   providedIn: 'root'
 })
 export class IncidentManagerService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private transferState: TransferState) { }
 
   // 保存年份
   saveYear(data: IIncidentYearEditOptions): Observable<IHttpResponse<IIncidentYearSaveResponse>> {
@@ -58,6 +62,17 @@ export class IncidentManagerService {
 
   // 获取前端详情
   getCommonList(): Observable<IHttpResponse<IIncidentListResponse>> {
-    return this.http.get('/incident/list') as Observable<IHttpResponse<IIncidentListResponse>>
+    const list = this.transferState.get(stateKey, undefined);
+    if (list) {
+      this.transferState.remove(stateKey)
+      return of(list)
+    } else {
+      return this.http.get('/incident/list').pipe(
+        tap((res: IHttpResponse<IIncidentListResponse>) => {
+          this.transferState.set(stateKey, res)
+        })
+      ) as Observable<IHttpResponse<IIncidentListResponse>>
+    }
+
   }
 }
