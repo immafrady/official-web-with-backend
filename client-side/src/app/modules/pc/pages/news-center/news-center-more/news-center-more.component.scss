@@ -14,16 +14,5 @@
       margin: 40px 10px;
     }
   }
-  nz-pagination {
-    text-align: center;
-  }
-  .ant-pagination-item-active, .ant-pagination-item:focus, .ant-pagination-item:hover, .ant-pagination-next:focus .ant-pagination-item-link, .ant-pagination-next:hover .ant-pagination-item-link, .ant-pagination-prev:focus .ant-pagination-item-link, .ant-pagination-prev:hover .ant-pagination-item-link {
-    border-color: #D50032;
-    background-color: #D50032;
-    a, svg {color: #fff;}
-  }
-  .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon, .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon {
-    color: #D50032;
-  }
 }
 
