@@ -48,7 +48,7 @@ export class IncidentDetail extends BaseEntity implements IIncidentDetailEntity{
     detail: string;
 
     @ManyToOne(type => IncidentYear, incidentYear => incidentYear.incidentDetails)
-    @JoinColumn({ name: 'incident_detail_id'})
+    @JoinColumn({ name: 'year_id'})
     incidentYear: IncidentYear
 
 }
