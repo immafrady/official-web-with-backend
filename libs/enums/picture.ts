@@ -3,11 +3,15 @@
  */
 export enum PictureType {
     Environment = 'ENVIRONMENT',
-    Friend = 'FRIEND'
+    Friend = 'FRIEND',
+    Honor = 'HONOR',
+    Patent = 'PATENT'
 }
 export const PictureTypeLabel = {
     [PictureType.Environment]: '工作环境',
-    [PictureType.Friend]: '小伙伴生活'
+    [PictureType.Friend]: '小伙伴生活',
+    [PictureType.Honor]: '企业荣誉',
+    [PictureType.Patent]: '高薪技术及软著成果'
 }
 
 /**

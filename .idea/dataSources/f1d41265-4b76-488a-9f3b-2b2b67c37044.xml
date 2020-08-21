@@ -1182,7 +1182,7 @@
     </column>
     <column id="336" parent="289" name="type">
       <Position>7</Position>
-      <DataType>enum(&apos;ENVIRONMENT&apos;, &apos;FRIEND&apos;)|0e</DataType>
+      <DataType>enum(&apos;PATENT&apos;, &apos;HONOR&apos;, &apos;ENVIRONMENT&apos;, &apos;FRIEND&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;FRIEND&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>

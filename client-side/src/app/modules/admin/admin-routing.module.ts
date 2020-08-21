@@ -14,8 +14,8 @@ const routes: Routes = [
           { path: 'picture-manager', loadChildren: () => import('./pages/picture-manager/picture-manager.module').then(mod => mod.PictureManagerModule) },
           { path: 'recruitment-manager', loadChildren: () => import('./pages/recruitment-manager/recruitment-manager.module').then(mod => mod.RecruitmentManagerModule) },
           { path: 'department-manager', loadChildren: () => import('./pages/department-manager/department-manager.module').then(mod => mod.DepartmentManagerModule) },
+          { path: 'incident-manager', loadChildren: () => import('./pages/incident-manager/incident-manager.module').then(mod => mod.IncidentManagerModule) },
           { path: '**', redirectTo: 'news-list' }
-
         ] },
     ]
   },

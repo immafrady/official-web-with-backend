@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, PLATFORM_ID, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasePageComponent} from '@/app/shared/base-page.component';
 import {getImage} from '@/utils/getImage';
 import Swiper from "swiper";
-import { isPlatformBrowser } from '@angular/common';
+import {isPlatformBrowser} from '@angular/common';
+import {PicturePriority, PictureType} from "@libs/enums/picture";
+import {JoinUsService} from "@pc/pages/join-us/join-us.service";
 
 @Component({
   selector: 'pc-xin-innovation-valley',
@@ -14,6 +16,9 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class XinInnovationValleyComponent extends BasePageComponent implements OnInit, AfterViewInit {
   getImage = getImage;
+  patentList = [];
+  patentSliceList = [];
+  expandActive = false;
   slides = [
     {
       title: '高并发处理',
@@ -74,7 +79,8 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
     activatedRoute: ActivatedRoute,
     router: Router,
     @Inject(PLATFORM_ID)
-    private platformId: any
+    private platformId: any,
+    private JoinUsService: JoinUsService
   ) {
     super(metaService, titleService, activatedRoute, router)
   }
@@ -99,6 +105,19 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getPictureList()
+  }
 
+  getPictureList(): void {
+    this.JoinUsService.getPictureList({ type: PictureType.Patent, priority: PicturePriority.Normal }).subscribe(({ data }) => {
+      this.patentList = data.list;
+      this.patentSliceList = data.list.slice(0, 12)
+    })
+  }
+
+  expandMore(): void {
+    this.expandActive = !this.expandActive;
+    this.patentSliceList = this.expandActive ? this.patentList : this.patentList.slice(0, 8)
+  }
 }

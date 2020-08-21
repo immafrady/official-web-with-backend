@@ -10,7 +10,8 @@ import { IRequestPagination } from "libs/common";
 import { cleanNoneValue } from "../../utils/clean-none-value.util";
 import { handlePagination } from "../../utils/handle-pagination.util";
 import { FindManyOptions } from "typeorm/find-options/FindManyOptions";
-import { PictureNotFoundError } from "libs/response-error";
+import { ResponseCode } from "libs/response-code";
+import { ResponseError } from "../../shared/response-error";
 
 @Injectable()
 export class PictureService {
@@ -22,7 +23,7 @@ export class PictureService {
      */
     async hasPictureOrFail(id: number):Promise<void> {
         if (!await this.pictureRepository.findOne(id)) {
-            throw new PictureNotFoundError();
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到图片');
         }
     }
 

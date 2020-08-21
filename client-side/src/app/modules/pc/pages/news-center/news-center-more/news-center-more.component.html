@@ -3,5 +3,5 @@
   <div class="inner-container">
     <pc-news-preview *ngFor="let news of moreNewsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
   </div>
-  <nz-pagination [nzPageIndex]="1" [nzTotal]="total" nzShowQuickJumper [nzHideOnSinglePage]="true" (nzPageIndexChange)="getPageNewsList($event)"></nz-pagination>
+  <nz-pagination [nzPageIndex]="1" [nzPageSize]="12" [nzTotal]="total" nzShowQuickJumper [nzHideOnSinglePage]="true" (nzPageIndexChange)="getPageNewsList($event)"></nz-pagination>
 </pc-core-container>

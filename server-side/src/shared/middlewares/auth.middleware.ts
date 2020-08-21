@@ -1,7 +1,8 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { UserNotAuthorizeError } from 'libs/response-error';
 import { getDataFromJwt } from '../../utils/get-data-from-jwt.utls';
+import { ResponseError } from "../response-error";
+import { ResponseCode } from "libs/response-code";
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
@@ -11,7 +12,7 @@ export class AuthMiddleware implements NestMiddleware {
         if (decoded) {
             next();
         } else {
-            throw new UserNotAuthorizeError();
+            throw new ResponseError(ResponseCode.UserNotAuthorize, '用户未授权登录');
         }
     }
 }

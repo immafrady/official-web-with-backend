@@ -69,3 +69,48 @@ body {
     font-size: 16px;
   }
 }
+
+// 展示更多的icon和文字样式
+.expand-put-away {
+  margin-bottom: 50px;
+  text-align: center;
+  .expand-put-away-container {
+    cursor: pointer;
+    display: inline-block;
+    &:hover {
+      .action-icon {
+        transform: scale(1.2);
+      }
+    }
+  }
+  .action-icon {
+    width: 62px;
+    height: 62px;
+    border: 2px solid #343434;
+    border-radius: 50%;
+    font-size: 24px;
+    text-align: center;
+    line-height: 62px;
+    color: #343434;
+    margin: auto;
+    transition: all 0.5s ease-in-out;
+  }
+  p {
+    margin-top: 9px;
+    font-size: 16px;
+    color: #343434;
+  }
+}
+
+
+nz-pagination {
+  text-align: center;
+}
+.ant-pagination-item-active, .ant-pagination-item:focus, .ant-pagination-item:hover, .ant-pagination-next:focus .ant-pagination-item-link, .ant-pagination-next:hover .ant-pagination-item-link, .ant-pagination-prev:focus .ant-pagination-item-link, .ant-pagination-prev:hover .ant-pagination-item-link {
+  border-color: $theme-color;
+  background-color: $theme-color;
+  a, svg {color: #fff;}
+}
+.ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon, .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon {
+  color: $theme-color;
+}

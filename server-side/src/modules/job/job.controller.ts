@@ -10,22 +10,16 @@ import {
     IJobDepartmentSaveResponse,
     IJobDetailDeleteResponse,
     IJobDetailDetailResponse,
-    IJobDetailSaveResponse, IJobDetailSetStatusResponse,
+    IJobDetailSaveResponse,
+    IJobDetailSetStatusResponse,
     IJobListResponse
 } from "libs/response/job";
-import {
-    JobDepartmentCannotDeleteError,
-    JobDepartmentCannotModifyError,
-    JobDepartmentCannotSaveError,
-    JobDepartmentNotFoundError,
-    JobDetailCannotDeleteError,
-    JobDetailCannotModifyError,
-    JobDetailCannotSaveError, JobDetailNotFoundError
-} from "libs/response-error";
 import { successResponse } from "../../utils/ro-builder.utils";
 import { DetailIdDto } from "./dto/detail-id.dto";
 import { JobStatus } from "libs/enums/job";
 import { LessThanOrEqual } from "typeorm";
+import { ResponseError } from "../../shared/response-error";
+import { ResponseCode } from "libs/response-code";
 
 @ApiTags('职位招聘 - 部门')
 @ApiBearerAuth()
@@ -42,13 +36,13 @@ export class JobDepartmentController {
             try {
                 return successResponse(await this.jobService.editDepartment(id, dto), '成功修改部门资料');
             } catch (e) {
-                throw new JobDepartmentCannotModifyError(e);
+                throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法修改部门', e);
             }
         } else {
             try {
                 return successResponse(await this.jobService.createDepartment(dto), ' 成功新增部门');
             } catch (e) {
-                throw new JobDepartmentCannotSaveError(e);
+                throw new ResponseError(ResponseCode.CommonEditCannotCreate, '无法新增部门', e);
             }
         }
     }
@@ -60,7 +54,7 @@ export class JobDepartmentController {
         try {
             return successResponse(await this.jobService.deleteDepartment(departmentIdDto.id), '成功删除部门');
         } catch (e) {
-            throw new JobDepartmentCannotDeleteError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotDelete, '无法删除部门', e);
         }
     }
 
@@ -70,7 +64,7 @@ export class JobDepartmentController {
         try {
             return successResponse(await this.jobService.departmentFindOne(departmentIdDto.id));
         } catch (e) {
-            throw new JobDepartmentNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到部门', e);
         }
     }
 
@@ -80,7 +74,7 @@ export class JobDepartmentController {
         try {
             return successResponse(await this.jobService.departmentFindMany());
         } catch (e) {
-            throw new JobDepartmentNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到部门', e);
         }
     }
 }
@@ -100,13 +94,13 @@ export class JobDetailController {
             try {
                 return successResponse(await this.jobService.editDetail(id, dto), '成功修改职位');
             } catch (e) {
-                throw new JobDetailCannotModifyError(e);
+                throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法修改职位', e);
             }
         } else {
             try {
                 return successResponse(await this.jobService.createDetail(dto), '成功新增职位');
             } catch (e) {
-                throw new JobDetailCannotSaveError(e);
+                throw new ResponseError(ResponseCode.CommonEditCannotCreate, '无法新增职位', e);
             }
         }
     }
@@ -118,7 +112,7 @@ export class JobDetailController {
         try {
             return successResponse(await this.jobService.deleteDetail(detailIdDto.id), '成功删除职位');
         } catch (e) {
-            throw new JobDetailCannotDeleteError(e)
+            throw new ResponseError(ResponseCode.CommonEditCannotDelete, '无法删除职位', e)
         }
     }
 
@@ -128,7 +122,7 @@ export class JobDetailController {
         try {
             return successResponse(await this.jobService.detailFindOne(detailIdDto.id));
         } catch (e) {
-            throw new JobDetailNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到职位详情');
         }
     }
 
@@ -138,7 +132,7 @@ export class JobDetailController {
         try {
             return successResponse(await this.jobService.detailFindMany());
         } catch (e) {
-            throw new JobDetailNotFoundError(e)
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到职位详情');
         }
     }
 
@@ -149,7 +143,7 @@ export class JobDetailController {
         try {
             return successResponse(await this.jobService.switchJobDetailStatus(detailIdDto.id), '切换上下线成功');
         } catch (e) {
-            throw new JobDetailCannotModifyError(e);
+            throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法修改职位详情上下线状态',e);
         }
     }
 }
@@ -173,7 +167,7 @@ export class JobController {
                 return department.label;
             })
         } catch (e) {
-            throw new JobDepartmentNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到部门');
         }
 
         try {
@@ -187,7 +181,7 @@ export class JobController {
               response.details[detail.department.label]?.push(detail);
             })
         } catch (e) {
-            throw new JobDetailNotFoundError(e);
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到职位详情');
         }
         return successResponse(response);
     }

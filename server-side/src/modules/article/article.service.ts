@@ -9,10 +9,11 @@ import { IRequestPagination } from "libs/common";
 import { cleanNoneValue } from "../../utils/clean-none-value.util";
 import { handlePagination } from "../../utils/handle-pagination.util";
 import { User } from "../user/user.entity";
-import { ArticleNotFoundError } from "libs/response-error";
 import { ArticleStatus } from "libs/enums/article";
 import { UpdateResult } from "typeorm/query-builder/result/UpdateResult";
 import { ArticlePick } from "libs/entity/article";
+import { ResponseError } from "../../shared/response-error";
+import { ResponseCode } from "libs/response-code";
 
 @Injectable()
 export class ArticleService {
@@ -27,7 +28,7 @@ export class ArticleService {
      */
     async hasArticleOrFail(id: number): Promise<void> {
         if (!await this.articleRepository.findOne(id)) {
-            throw new ArticleNotFoundError();
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到文章');
         }
     }
 

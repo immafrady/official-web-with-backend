@@ -2,7 +2,7 @@
 @import "src/styles/common.pc";
 
 $colorRed: #D50031;
-$colorGrey: #CBCBCB;
+$colorGrey: #CCCCCC;
 $borderContent: 1px solid $colorGrey;
 .about-us-banner {
   height: 450px;
@@ -111,3 +111,28 @@ $borderContent: 1px solid $colorGrey;
     }
   }
 }
+
+
+.honor-box {
+  @include clear-fix;
+  width: 1080px;
+  margin: 50px auto 40px;
+  li {
+    float: left;
+    margin: 15px;
+    text-align: center;
+  }
+  .box-img {
+    width: 240px;
+    height: 255px;
+    background-size: cover;
+    object-fit: cover;
+  }
+  .box-title {
+    width: 170px;
+    line-height: 26px;
+    min-height: 52px;
+    margin: 20px auto 0;
+  }
+}
+

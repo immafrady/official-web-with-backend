@@ -1,10 +1,10 @@
 import { ArgumentsHost, Catch, ExceptionFilter, Inject } from "@nestjs/common";
-import { BaseResponseError } from 'libs/common';
 import { Request, Response } from "express";
 import { errorResponse } from '../../utils/ro-builder.utils';
 import { CustomLogger } from "../modules/logger/custom-logger.service";
+import { ResponseError } from "../response-error";
 
-@Catch(BaseResponseError)
+@Catch(ResponseError)
 export class BaseResponseErrorFilter implements ExceptionFilter {
     constructor(
         @Inject(CustomLogger)
@@ -12,7 +12,7 @@ export class BaseResponseErrorFilter implements ExceptionFilter {
     ) {
     }
 
-    catch(exception: BaseResponseError, host: ArgumentsHost): void {
+    catch(exception: ResponseError, host: ArgumentsHost): void {
         const ctx = host.switchToHttp();
         const request = ctx.getRequest();
         const response = ctx.getResponse<Response>();
