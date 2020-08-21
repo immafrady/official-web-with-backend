@@ -129,6 +129,7 @@ export class IncidentService {
         const [list, total] = await this.incidentDetailRepo.findAndCount({
             relations: ['incidentYear'],
             order: {
+                sort: 'ASC',
                 updateDate: 'DESC'
             }
         });

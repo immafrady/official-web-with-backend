@@ -19,5 +19,9 @@ export class DetailEditDto implements IIncidentDetailEditOptions {
 
     @ApiProperty({ description: '关联的年份Id' })
     @IsNumber()
-    readonly yearId: number
+    readonly yearId: number;
+
+    @ApiProperty({ description: '排序'})
+    @IsNumber()
+    readonly sort: number
 }

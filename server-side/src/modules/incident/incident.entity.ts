@@ -49,6 +49,12 @@ export class IncidentDetail extends BaseEntity implements IIncidentDetailEntity{
 
     @ManyToOne(type => IncidentYear, incidentYear => incidentYear.incidentDetails)
     @JoinColumn({ name: 'year_id'})
-    incidentYear: IncidentYear
+    incidentYear: IncidentYear;
+
+    /**
+     * @description 排序
+     */
+    @Column("int")
+    sort: number;
 
 }
