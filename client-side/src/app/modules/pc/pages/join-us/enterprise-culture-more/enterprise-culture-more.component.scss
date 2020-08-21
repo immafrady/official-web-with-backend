@@ -8,7 +8,6 @@
   .waterfall {
     @include clear-fix;
     visibility: hidden;
-    transition: all 0.2s ease-in-out;
     width: 1200px;
     margin: 0 auto 40px;
     &.show {
@@ -28,12 +27,7 @@
         height: 100%;
         object-fit: cover;
         background-size: cover;
-        filter: blur(5px);
-        transition: filter .7s ease-in-out, transform 0.15s ease-in;
         position: absolute;
-        &.loaded {
-          filter: none;
-        }
       }
       .img-back-bg {
         display: none;
@@ -54,9 +48,6 @@
         }
       }
       &:hover {
-        img {
-          transform: scale(1.2);
-        }
         .img-back-bg {
           display: block;
         }
