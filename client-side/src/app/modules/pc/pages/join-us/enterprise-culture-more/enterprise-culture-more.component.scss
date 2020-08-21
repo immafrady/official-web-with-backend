@@ -9,15 +9,15 @@
     @include clear-fix;
     visibility: hidden;
     transition: all 0.2s ease-in-out;
-    width: 1140px;
+    width: 1200px;
     margin: 0 auto 40px;
     &.show {
       visibility: inherit;
     }
     .waterfall-img {
       float: left;
-      width: 360px;
-      height: 200px;
+      width: 280px;
+      height: 180px;
       cursor: pointer;
       border: 8px solid #fff;
       overflow: hidden;
@@ -46,10 +46,11 @@
         p {
           text-align: center;
           color: #fff;
+          font-size: 10px;
           position: absolute;
           bottom: 0;
           width: 100%;
-          line-height: 40px;
+          line-height: 30px;
         }
       }
       &:hover {
