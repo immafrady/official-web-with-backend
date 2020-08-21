@@ -9,18 +9,19 @@
     @include clear-fix;
     visibility: hidden;
     transition: all 0.2s ease-in-out;
+    width: 1140px;
     margin: 0 auto 40px;
     &.show {
       visibility: inherit;
     }
     .waterfall-img {
       float: left;
-      width: 280px;
-      height: 340px;
+      width: 360px;
+      height: 200px;
       cursor: pointer;
       border: 8px solid #fff;
       overflow: hidden;
-      margin: 20px 10px;
+      margin: 10px;
       position: relative;
       img {
         width: 100%;
