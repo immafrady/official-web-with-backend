@@ -107,7 +107,7 @@ $borderContent: 1px solid $colorGrey;
     .ant-timeline-item-head {
       width: 12px;
       height: 12px;
-      background-color: $colorRed;
+      border: 1px solid $colorRed;
     }
   }
 }
