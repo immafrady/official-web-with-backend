@@ -75,7 +75,8 @@ export class DetailListComponent implements OnInit {
     this.form = this.fb.group({
       detail: [null, [Validators.required]],
       title: [null, [Validators.required]],
-      yearId: [null, [Validators.required]]
+      yearId: [null, [Validators.required]],
+      sort: [null, [Validators.required]]
     })
     this.isVisible = true
   }

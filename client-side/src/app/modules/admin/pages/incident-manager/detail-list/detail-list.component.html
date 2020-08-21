@@ -11,6 +11,7 @@
       <th>年份</th>
       <th>标题</th>
       <th>描述</th>
+      <th>排序</th>
       <th nzWidth="350px">操作</th>
     </tr>
     </thead>
@@ -25,6 +26,7 @@
         </td>
         <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.title" /></td>
         <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.detail"/></td>
+        <td><nz-input-number [(ngModel)]="editCache[data.id].data.sort" [nzStep]="1"></nz-input-number></td>
         <td>
           <button nz-button nzType="primary" nzShape="round" (click)="saveEdit(data.id)">保存</button>
           <button nz-button nzType="info" nzShape="round" (click)="updateEditStatus(data.id, false)">取消</button>
@@ -34,6 +36,7 @@
         <td>{{ data.incidentYear.year }}</td>
         <td>{{ data.title }}</td>
         <td>{{ data.detail }}</td>
+        <td>{{ data.sort }}</td>
         <td>
           <button nz-button nzType="primary" nzShape="round" (click)="updateEditStatus(data.id, true)">编辑</button>
           <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteDetail(data.id)">删除</button>
@@ -63,6 +66,12 @@
         <nz-form-label nzRequired nzFor="detail">描述</nz-form-label>
         <nz-form-control nzErrorTip="请输入描述">
           <textarea nz-input formControlName="detail" id="detail" placeholder="请输入描述"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="sort">事件排序</nz-form-label>
+        <nz-form-control nzErrorTip="请输入事件排序">
+          <nz-input-number formControlName="sort" id="sort" [nzStep]="1"></nz-input-number>
         </nz-form-control>
       </nz-form-item>
     </form>
