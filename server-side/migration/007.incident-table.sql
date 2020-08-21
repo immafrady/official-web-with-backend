@@ -18,6 +18,7 @@ create table incident_detail
     updateDate         datetime(6)              not null default CURRENT_TIMESTAMP(6),
     title              varchar(191)             not null,
     detail             text                     not null,
+    sort               int                      not null,
     year_id            int                      null,
     constraint FK_incident_year_id
     foreign key (year_id) references incident_year (id)
