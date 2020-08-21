@@ -7,7 +7,10 @@
     "install-libs:server": "rm -rf server-side/src/libs && cp -r libs server-side/src",
     "client-install": "cd client-side && npm install",
     "server-install": "cd server-side && npm install",
-    "postinstall": "npm run client-install && npm run server-install"
+    "postinstall": "npm run client-install && npm run server-install",
+    "client-pm2-delete": "cd client-side && npm run pm2:delete",
+    "server-pm2-delete": "cd server-side && npm run pm2:delete",
+    "pm2:delete": "npm run client-pm2-delete && npm run server-pm2-delete"
   },
   "repository": {
     "type": "git",
