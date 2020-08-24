@@ -1,5 +1,5 @@
-<div class="create-article-content">
-  <h2 class="create-article-title">{{ id ? '编辑招聘信息' : '新增招聘信息'}}</h2>
+<div class="edit-form-container">
+  <h2 class="form-title">{{ id ? '编辑招聘信息' : '新增招聘信息'}}</h2>
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <nz-form-item>
       <nz-form-label nzRequired nzFor="title">职位名称</nz-form-label>

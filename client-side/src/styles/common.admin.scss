@@ -1,5 +1,6 @@
 @import "common.base";
 
+// 列表公共样式
 .list-container {
   .nav-container {
     margin-bottom: 10px;
@@ -17,5 +18,28 @@
   }
   [nz-button] {
     margin-right: 8px;
+  }
+}
+
+// 表单公共样式
+.edit-form-container {
+  .form-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    .ant-form-item {
+      display: flex;
+      width: 50%;
+    }
+    .ant-form-item-label {
+      min-width: 150px;
+    }
+    nz-date-picker {
+      width: 100% !important;
+    }
   }
 }

@@ -1,5 +1,5 @@
-<div class="create-article-content">
-  <h2 class="create-article-title">{{ validateForm.value.id ? '编辑文章' : '新增文章'}}</h2>
+<div class="edit-form-container create-article">
+  <h2 class="form-title">{{ validateForm.value.id ? '编辑文章' : '新增文章'}}</h2>
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <nz-form-item>
       <nz-form-label nzRequired nzFor="title">标题</nz-form-label>

@@ -1,5 +1,5 @@
-<div class="create-article-content">
-  <h2 class="create-article-title">{{ pictureId ? '编辑图片内容' : '上传图片'}}</h2>
+<div class="edit-form-container edit-picture">
+  <h2 class="form-title">{{ pictureId ? '编辑图片内容' : '上传图片'}}</h2>
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <nz-form-item>
       <nz-form-label nzRequired nzFor="title">标题</nz-form-label>

@@ -1,29 +1,8 @@
-.create-article-content {
-  width: 1200px;
-  .create-article-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    .ant-form-item {
-      display: flex;
-      width: 50%;
-    }
-    .ant-form-item-label {
-      min-width: 150px;
-    }
-    nz-date-picker {
-      width: 100% !important;
-    }
-  }
-}
+@import "src/styles/common.admin";
+
 .tox-tinymce {
   min-height: 450px;
 }
-
 .tox {
   .tox-dialog__header {
     border-bottom: 1px solid #cecece !important;
