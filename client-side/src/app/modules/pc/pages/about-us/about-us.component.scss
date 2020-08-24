@@ -2,8 +2,7 @@
 @import "src/styles/common.pc";
 
 $colorRed: #D50031;
-$colorGrey: #CCCCCC;
-$borderContent: 1px solid $colorGrey;
+$borderContent: 1px solid #CCCCCC;
 .about-us-banner {
   height: 450px;
   background: $about-us-banner-1 center;
@@ -74,7 +73,7 @@ $borderContent: 1px solid $colorGrey;
       font-size: 18px;
       cursor: pointer;
       &.active {
-        background-color: $colorGrey;
+        background-color: #f8f8f8;
         color: $colorRed;
       }
     }
@@ -129,10 +128,11 @@ $borderContent: 1px solid $colorGrey;
     object-fit: cover;
   }
   .box-title {
-    width: 170px;
+    width: 200px;
     line-height: 26px;
     min-height: 52px;
     margin: 20px auto 0;
+    font-size: 14px;
   }
 }
 

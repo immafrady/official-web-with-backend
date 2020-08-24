@@ -30,6 +30,12 @@ export class EditPictureComponent implements OnInit {
   }, {
     value: PictureType.Friend,
     label: PictureTypeLabel[PictureType.Friend]
+  }, {
+    value: PictureType.Honor,
+    label: PictureTypeLabel[PictureType.Honor]
+  }, {
+    value: PictureType.Patent,
+    label: PictureTypeLabel[PictureType.Patent]
   }];
   constructor(
     private fb: FormBuilder,
