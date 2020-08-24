@@ -23,6 +23,7 @@ $colorRed: #D50032;
 }
 
 .join-us-environment-live {
+  margin-bottom: 80px;
   .ant-tabs-bar {
     border-bottom: none;
     text-align: center;
@@ -60,6 +61,47 @@ $colorRed: #D50032;
   }
   .more-link {
     margin: -10px 28px 0 0;
+  }
+}
+
+.recruitment-box {
+  width: 1122px;
+  margin: 50px auto 95px;
+  @include clear-fix;
+  .recruitment-way {
+    float: left;
+    width: 330px;
+    padding: 40px;
+    box-shadow:0 3px 43px 0 rgba(153,153,153,0.25);
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 66px;
+    p {
+      font-size: 26px;
+      font-weight: 500;
+    }
+    img {
+      width: 256px;
+      height: 222px;
+      margin: 20px 0 28px;
+    }
+    a {
+      display: inline-block;
+      width: 176px;
+      height: 46px;
+      line-height: 46px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #D50037;
+      background-color: #FFF4F7;
+      border-radius:23px;
+      &:hover {
+        background-color: #FFBDBD;
+      }
+    }
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }
 
