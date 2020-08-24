@@ -118,6 +118,6 @@ export class XinInnovationValleyComponent extends BasePageComponent implements O
 
   expandMore(): void {
     this.expandActive = !this.expandActive;
-    this.patentSliceList = this.expandActive ? this.patentList : this.patentList.slice(0, 8)
+    this.patentSliceList = this.expandActive ? this.patentList : this.patentList.slice(0, 12)
   }
 }
