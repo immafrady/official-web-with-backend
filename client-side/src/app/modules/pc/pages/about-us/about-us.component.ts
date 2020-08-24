@@ -8,15 +8,6 @@ import {JoinUsService} from "@pc/pages/join-us/join-us.service";
 import { IncidentManagerService } from "@/app/shared/api/incident-manager.service";
 import { IListYearListFormattedDetailResult, IListYearListWithoutNoDetailResult } from "@libs/response/incident";
 
-interface IDateDictionary {
-  [key: string]: { time: string, content: string }[]
-}
-
-interface IDateListItem {
-  year: string;
-  title: string;
-}
-
 @Component({
   selector: 'pc-about-us',
   templateUrl: './about-us.component.html',
@@ -94,6 +85,7 @@ export class AboutUsComponent extends BasePageComponent implements OnInit {
     this.incidentService.getCommonList().subscribe(({ data }) => {
       this.dateList = data.yearList;
       this.dateDictionary = data.details;
+      this.currIndex = data.yearList.length - 1;
     })
   }
 
