@@ -1,23 +1,2 @@
-@import "src/styles/common.pc";
-.news-list-container {
-  .news-list-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  [nz-button] {
-    margin-right: 8px;
-  }
-}
+@import "src/styles/common.admin";
 
-.nav-container {
-  margin-bottom: 10px;
-  @include clear-fix;
-  h2 {
-    float: left;
-  }
-  button {
-    float: right;
-    border-radius: 4px;
-  }
-}

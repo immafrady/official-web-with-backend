@@ -1,10 +1,5 @@
-@import "src/styles/common.pc";
+@import "src/styles/common.admin";
 .picture-list-container {
-  .picture-list-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
   .preview-img {
     padding: 0 !important;
   }
@@ -16,20 +11,5 @@
     height: 46px;
     object-fit: cover;
     cursor: pointer;
-  }
-  [nz-button] {
-    margin-right: 8px;
-  }
-}
-
-.nav-container {
-  margin-bottom: 10px;
-  @include clear-fix;
-  h2 {
-    float: left;
-  }
-  button {
-    float: right;
-    border-radius: 4px;
   }
 }
