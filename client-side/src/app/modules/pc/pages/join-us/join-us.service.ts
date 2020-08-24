@@ -21,7 +21,6 @@ export class JoinUsService {
   }
 
   getJobList(): Observable<IHttpResponse<IJobListResponse>> {
-    // @ts-ignore
-    return this.http.get('/job/list', null) as Observable<IHttpResponse<IJobListResponse>>
+    return this.http.get('/job/list') as Observable<IHttpResponse<IJobListResponse>>
   }
 }

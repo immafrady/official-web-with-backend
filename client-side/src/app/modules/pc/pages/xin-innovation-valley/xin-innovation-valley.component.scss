@@ -142,3 +142,21 @@
     margin-bottom: 50px;
   }
 }
+
+
+.patent-box {
+  @include clear-fix;
+  width: 1128px;
+  margin: 45px auto;
+  li {
+    float: left;
+    margin: 15px 20px;
+    text-align: center;
+  }
+  .box-img {
+    width: 148px;
+    height: 200px;
+    background-size: cover;
+    object-fit: cover;
+  }
+}

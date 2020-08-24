@@ -11,10 +11,11 @@ import {
     IJobDetailListResponse,
     IJobDetailSetStatusResponse
 } from "libs/response/job";
-import { JobDepartmentNotFoundError, JobDetailNotFoundError } from "libs/response-error";
 import { IJobDetailEntity } from "libs/entity/job";
 import { JobStatus } from "libs/enums/job";
-import { IJobDetailFindManyOptions } from "./job.interface";
+import { IJobDepartmentListWithoutNoDetailResult, IJobDetailFindManyOptions } from "./job.interface";
+import { ResponseError } from "../../shared/response-error";
+import { ResponseCode } from "libs/response-code";
 
 @Injectable()
 export class JobService {
@@ -26,7 +27,7 @@ export class JobService {
      */
     async hasDepartmentOrFail(id: number): Promise<void> {
         if (!await this.jobDepartmentRepo.findOne(id)) {
-            throw new JobDepartmentNotFoundError();
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到部门');
         }
     }
 
@@ -83,7 +84,7 @@ export class JobService {
     }
 
     /* --------------- 职位详情 ---------------- */
-    generateDetailFromDto(detailEditDto: DetailEditDto): IJobDetailEntity {
+    private generateDetailFromDto(detailEditDto: DetailEditDto): IJobDetailEntity {
         const { id, ...dto } = detailEditDto;
         const { departmentId, ...detail } = dto;
         const department = new JobDepartment();
@@ -95,12 +96,12 @@ export class JobService {
     }
 
     /**
-     * @description 判断是否存在部门
+     * @description 判断是否存在详情
      * @param id
      */
     async hasDetailOrFail(id: number): Promise<void> {
         if (!await this.jobDetailRepo.findOne(id)) {
-            throw new JobDetailNotFoundError();
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到职位详情');
         }
     }
 
@@ -164,5 +165,18 @@ export class JobService {
      */
     async deleteDetail(id: number): Promise<IJobDetailDeleteResponse> {
         return await this.jobDetailRepo.delete(id);
+    }
+
+    /**
+     * @description 查出有数据的部门
+     */
+    async listDepartmentWithoutNoDetail(): Promise<IJobDepartmentListWithoutNoDetailResult> {
+        return await this.jobDepartmentRepo
+            .createQueryBuilder("department")
+            .select("department.label", "label")
+            .innerJoin("department.jobDetails", "detail")
+            .groupBy("department.id")
+            .orderBy("MAX(department.sort)", "ASC")
+            .execute()
     }
 }

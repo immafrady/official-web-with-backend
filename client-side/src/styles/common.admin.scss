@@ -1,1 +1,21 @@
 @import "common.base";
+
+.list-container {
+  .nav-container {
+    margin-bottom: 10px;
+    @include clear-fix;
+    h2 {
+      float: left;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    button {
+      float: right;
+      border-radius: 4px;
+    }
+    [nz-button] {
+      margin-right: 8px;
+    }
+  }
+}

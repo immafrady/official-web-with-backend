@@ -4,15 +4,11 @@ import { BaseController } from '../../shared/base.controller';
 import { LoginDto, RegisterDto } from './dto';
 import { IHttpResponse } from 'libs/common';
 import { IUserLoginResponse, IUserRegisterResponse } from 'libs/response/user';
-import {
-    UserAlreadyExistError,
-    UserNotFoundError,
-    UserPasswordNotPairError,
-    UserRegisterKeyNotPairError
-} from 'libs/response-error';
 import { successResponse } from '../../utils/ro-builder.utils';
 import { config } from '../../config';
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ResponseError } from "../../shared/response-error";
+import { ResponseCode } from "libs/response-code";
 
 @ApiTags('用户(user)')
 @ApiBearerAuth()
@@ -30,10 +26,10 @@ export class UserController extends BaseController {
     async login(@Body() loginDto: LoginDto): Promise<IHttpResponse<IUserLoginResponse>> {
         const user = await this.userService.findByUsername(loginDto.username);
         if (!user) {
-            throw new UserNotFoundError();
+            throw new ResponseError(ResponseCode.UserNotFound, '找不到用户');
         }
         if (!this.userService.checkPasswordEqual(loginDto.password, user.password)) {
-            throw new UserPasswordNotPairError();
+            throw new ResponseError(ResponseCode.UserPasswordNotPair, '用户密码不匹配');
         }
         return successResponse( {
             nickname: user.nickname,
@@ -45,12 +41,12 @@ export class UserController extends BaseController {
     @Post('register')
     async register(@Body() registerDto: RegisterDto): Promise<IHttpResponse<IUserRegisterResponse>> {
         if (registerDto.key !== config.registerKey) {
-            throw new UserRegisterKeyNotPairError();
+            throw new ResponseError(ResponseCode.UserRegisterKeyNotPair, '注册用key不正确');
         }
 
         const user = await this.userService.findByUsername(registerDto.username);
         if (user) {
-            throw new UserAlreadyExistError();
+            throw new ResponseError(ResponseCode.UserAlreadyExist, '用户已存在');
         }
         return successResponse(await this.userService.createNewUser(registerDto));
     }

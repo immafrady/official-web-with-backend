@@ -7,10 +7,11 @@ import { ArticleStatusPipe } from './pipes/article-status.pipe';
 import { RichTextNoSanitizePipe } from './pipes/rich-text-no-sanitize.pipe';
 import { PictureTypePipe } from './pipes/picture-type.pipe';
 import { PicturePriorityPipe } from './pipes/picture-priority.pipe';
+import { SpliceEnterPipe } from './pipes/splice-enter.pipe';
 
 @NgModule({
-  declarations: [SvgIconComponent, ArticleTypePipe, ArticleStatusPipe, RichTextNoSanitizePipe, PictureTypePipe, PicturePriorityPipe],
+  declarations: [SvgIconComponent, ArticleTypePipe, ArticleStatusPipe, RichTextNoSanitizePipe, PictureTypePipe, PicturePriorityPipe, SpliceEnterPipe],
   imports: [AngularSvgIconModule, CommonModule],
-  exports: [SvgIconComponent, ArticleTypePipe, ArticleStatusPipe, RichTextNoSanitizePipe, PictureTypePipe, PicturePriorityPipe]
+  exports: [SvgIconComponent, ArticleTypePipe, ArticleStatusPipe, RichTextNoSanitizePipe, PictureTypePipe, PicturePriorityPipe, SpliceEnterPipe]
 })
 export class GlobalSharedModule { }

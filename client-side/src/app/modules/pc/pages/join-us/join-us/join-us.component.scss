@@ -65,10 +65,14 @@ $colorRed: #D50032;
 
 .station-container {
   margin-top: 80px;
+  .recruitment-content {
+    text-align: center;
+    user-select: none;
+  }
   .recruitment-group {
     border: 1px solid #CCCCCC;
     @include clear-fix;
-    margin: 30px 0 0 28px;
+    margin: 30px auto 0px;
     display: inline-block;
     div {
       width: 127px;
@@ -90,6 +94,10 @@ $colorRed: #D50032;
         border-color: $colorRed;
       }
     }
+    .arrow {
+      color: #999;
+      width: 90px;
+    }
   }
   .join-us-table {
     width: 1144px;
@@ -101,6 +109,11 @@ $colorRed: #D50032;
       height: 20px;
       opacity: 0;
       z-index: 100;
+    }
+    .recruit-detail {
+      li {
+        margin-bottom: 30px;
+      }
     }
     .anticon {
       margin: -27px;
@@ -139,12 +152,13 @@ $colorRed: #D50032;
       background-color: #fff;
     }
     .ant-table tfoot>tr>td, .ant-table tfoot>tr>th, .ant-table-tbody>tr>td, .ant-table-thead>tr>th {
-      font-size: 20px;
+      font-size: 18px;
       color: #333333;
       border-color: #CBCBCB;
     }
     .ant-table-tbody>tr>td {
       color: #656565;
+      font-size: 16px !important;
       &:first-child {
         color: #333333;
       }
@@ -167,11 +181,9 @@ $colorRed: #D50032;
     .ant-table-content {
       margin-bottom: -1px;
     }
-    .collapse-arrow,.ant-table-cell-with-append,.ant-table-cell {
-      &:hover {
-        .anticon {
-          color: $colorRed !important;
-        }
+    .ant-table-row:hover {
+      .ant-table-cell-with-append {
+        color: $colorRed !important;
       }
     }
   }

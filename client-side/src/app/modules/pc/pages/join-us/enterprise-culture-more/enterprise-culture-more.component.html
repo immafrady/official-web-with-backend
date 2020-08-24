@@ -3,9 +3,13 @@
   <nz-spin [nzSpinning]="isSpinning" nzTip="Loading...">
     <div class="waterfall" [ngClass]="{ 'show': !isSpinning }">
       <div *ngFor="let item of imgList, let idx = index" class="waterfall-img" (click)="openGallery(idx)">
-        <img [src]="item.url" alt="" [ngClass]="{ 'loaded': !isSpinning }">
+        <img [src]="item.url" alt="">
+        <div class="img-back-bg">
+          <p>{{ item.title }}</p>
+        </div>
       </div>
     </div>
+    <nz-pagination [nzPageIndex]="1" [nzPageSize]="12" [nzTotal]="total" nzShowQuickJumper [nzHideOnSinglePage]="true" (nzPageIndexChange)="getPictureList($event)"></nz-pagination>
   </nz-spin>
   <ngx-image-gallery
     [images]="imgList"

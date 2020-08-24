@@ -36,11 +36,15 @@
 
 <pc-core-container className="station-container">
   <div class="block-title">招聘岗位</div>
-  <div class="recruitment-group">
-    <div [class]="item.type === positionType ? 'active' : ''" *ngFor="let item of recruitment" (click)="changeRecruitment(item.type)">{{ item.label }}</div>
+  <div class="recruitment-content">
+    <div class="recruitment-group">
+      <div class="arrow selector-left" (click)="clickArrow('left')"><i nz-icon nzType="left" nzTheme="outline"></i></div>
+      <div [class]="label === departments[currIndex] ? 'active' : ''" *ngFor="let label of displayDepartmentList" (click)="selectTab(label)">{{ label }}</div>
+      <div class="arrow selector-right" (click)="clickArrow('right')" ><i nz-icon nzType="right" nzTheme="outline"></i></div>
+    </div>
   </div>
   <div class="join-us-table">
-    <nz-table #nzTable [nzData]="positionData[positionType]" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['480px', '160px', '200px', '200px', '50px']">
+    <nz-table #nzTable [nzData]="recruitDetail[currentTab]" nzTableLayout="fixed" [nzShowPagination]="false" [nzWidthConfig]="['480px', '160px', '200px', '200px', '50px']">
       <thead>
         <tr>
           <th>职位</th>
@@ -52,17 +56,19 @@
       </thead>
       <tbody>
         <ng-container *ngFor="let data of nzTable.data">
-          <tr>
-            <td>{{ data.position }}<nz-tag *ngIf="data.impatient" [nzColor]="'#F36374'">急</nz-tag><nz-tag *ngIf="data.new" [nzColor]="'#30CBF3'">新</nz-tag></td>
-            <td>{{ data.type }}</td>
-            <td>{{ data.address }}</td>
-            <td>{{ data.date }}</td>
-            <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : rotateActive ? 'rotateDown': ''" nz-icon nzType="down" nzTheme="outline"></i></td>
+          <tr (click)="expandDetail(data.id)">
+            <td>{{ data.title }}<nz-tag *ngIf="data.eager" [nzColor]="'#F36374'">急</nz-tag><nz-tag *ngIf="data.hot" [nzColor]="'#30CBF3'">新</nz-tag></td>
+            <td>{{ data.department.label }}</td>
+            <td>{{ data.location }}</td>
+            <td>{{ data.modifyDate | date:'yyyy-MM-dd' }}</td>
+            <td class="collapse-arrow" [nzExpand]="expandSet.has(data.id)"><i [class]="expandSet.has(data.id) ? 'rotateUp' : rotateActive ? 'rotateDown' : ''" nz-icon nzType="down" nzTheme="outline"></i></td>
           </tr>
           <tr [nzExpand]="expandSet.has(data.id)">
            <td>
-             <ul>
-               <li *ngFor="let item of data.description">{{ item }}</li>
+             <ul class="recruit-detail">
+               <li *ngIf="data.content.duty"><span>岗位职责：</span><p *ngFor="let item of data.content.duty | spliceEnter">{{ item }}</p></li>
+               <li *ngIf="data.content.requirement"><span>任职要求：</span><p *ngFor="let item of data.content.requirement | spliceEnter">{{ item }}</p></li>
+               <li><p *ngFor="let item of data.content.other | spliceEnter">{{ item }}</p></li>
              </ul>
               <div class="send-way">
                 <p>应聘此职位，投递简历至 <a href="mailto:HR@xinpayorll.com">HR@xinpayorll.com</a></p>
