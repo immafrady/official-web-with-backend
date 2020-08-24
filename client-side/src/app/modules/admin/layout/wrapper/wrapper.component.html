@@ -12,7 +12,6 @@
       <ng-container *ngFor="let item of structure">
         <ul *ngIf="item?.children?.length > 0; else single" nz-submenu [nzTitle]="item.label" [nzIcon]="item.icon">
           <li *ngFor="let innerItem of item.children" nz-menu-item nz-tooltip nzTooltipPlacement="right" [routerLink]="innerItem.link" [nzMatchRouter]="true">
-            <i nz-icon [nzType]="innerItem.icon"></i>
             <span>{{ innerItem.label }}</span>
           </li>
         </ul>
