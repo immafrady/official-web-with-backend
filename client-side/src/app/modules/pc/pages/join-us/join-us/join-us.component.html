@@ -17,7 +17,7 @@
   <nz-tabset [nzTabBarGutter]="180" [nzSize]="'large'">
     <nz-tab nzTitle="工作环境">
       <div class="company-container">
-        <img *ngFor="let item of environmentPicture" [src]="item.url" alt="">
+        <img *ngFor="let item of environmentPicture" [src]="item.url | imgResize:360:200" alt="">
       </div>
       <div class="more-link">
         <a [routerLink]="['enterprise-culture-more', { type: PictureType.Environment }]">查看更多 》</a>
@@ -25,7 +25,7 @@
     </nz-tab>
     <nz-tab nzTitle="小伙伴生活">
       <div class="company-container">
-        <img *ngFor="let item of friendPicture" [src]="item.url" alt="">
+        <img *ngFor="let item of friendPicture" [src]="item.url | imgResize:360:200" alt="">
       </div>
       <div class="more-link">
         <a [routerLink]="['enterprise-culture-more', { type: PictureType.Friend }]">查看更多 》</a>
