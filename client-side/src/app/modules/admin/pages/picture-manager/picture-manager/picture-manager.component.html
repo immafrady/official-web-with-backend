@@ -12,31 +12,52 @@
         <th>标题</th>
         <th>描述</th>
         <th nzWidth="200px">自定义上传日期</th>
-        <th>权重</th>
+        <th nzWidth="200px">权重</th>
         <th nzWidth="120px">类型</th>
         <th>缩略图</th>
-        <th nzWidth="350px">操作</th>
+        <th nzWidth="200px">排序</th>
+        <th nzWidth="200px">操作</th>
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let data of nzTable.data, index as index" >
-        <tr>
-          <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
-          <td>{{ index + 1 }}</td>
-          <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
-          <td nzEllipsis [nzTooltipTitle]="data.comment" nz-tooltip>{{ data.comment }}</td>
-          <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-          <td>{{ data.priority | picturePriority }}</td>
-          <td>{{ data.type | pictureType  }}</td>
-          <td class="preview-img">
-            <img title="点击查看大图" [src]="data.url" class="thumbnail" alt="" (click)="openGallery(data.url, data.title)">
-          </td>
-          <td>
-            <button nz-button nzType="primary" nzShape="round" [routerLink]="[ 'edit-picture', { id: data.id } ]" >编辑</button>
-            <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteOnePicture(data.id)">删除</button>
-          </td>
-        </tr>
+    <tr *ngFor="let data of nzTable.data, index as index">
+      <ng-container *ngIf="!editCache[data.id].edit; else editTemplate">
+        <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+        <td>{{ index + 1 }}</td>
+        <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
+        <td nzEllipsis [nzTooltipTitle]="data.comment" nz-tooltip>{{ data.comment }}</td>
+        <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ data.priority | picturePriority }}</td>
+        <td>{{ data.type | pictureType  }}</td>
+        <td class="preview-img">
+          <img title="点击查看大图" [src]="data.url | imgResize:60:46" class="thumbnail" alt="" (click)="openGallery(data.url, data.title)">
+        </td>
+        <td>{{ data.sort }} <button nz-button nzType="link" (click)="editSort(data.id, true)">编辑排序</button></td>
+        <td>
+          <button nz-button nzType="primary" nzShape="round" [routerLink]="[ 'edit-picture', { id: data.id } ]" >编辑</button>
+          <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteOnePicture(data.id)">删除</button>
+        </td>
       </ng-container>
+      <ng-template #editTemplate>
+        <td></td>
+        <td>{{ index + 1 }}</td>
+        <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
+        <td nzEllipsis [nzTooltipTitle]="data.comment" nz-tooltip>{{ data.comment }}</td>
+        <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ data.priority | picturePriority }}</td>
+        <td>{{ data.type | pictureType  }}</td>
+        <td class="preview-img">
+          <img title="点击查看大图" [src]="data.url | imgResize:60:46" class="thumbnail" alt="" (click)="openGallery(data.url, data.title)">
+        </td>
+        <td>
+          <nz-input-number [(ngModel)]="editCache[data.id].data.sort" [nzStep]="1"></nz-input-number>
+        </td>
+        <td>
+          <button nz-button nzType="primary" nzShape="round" (click)="saveEditSort(data.id)">保存</button>
+          <button nz-button nzType="info" nzShape="round" (click)="editSort(data.id, false)">取消</button>
+        </td>
+      </ng-template>
+    </tr>
     </tbody>
   </nz-table>
 </div>

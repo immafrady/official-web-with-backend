@@ -112,6 +112,7 @@ export class CreateArticleComponent implements OnInit {
       modifyDate:[null, [Validators.required]],
       content:[null, [Validators.required]],
       type:[null, [Validators.required]],
+      sort:[null, [Validators.required]],
       thumbnail:[null, [Validators.required]],
       id: [null]
     });

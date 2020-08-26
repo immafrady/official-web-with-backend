@@ -1,9 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { httpParamsHandler } from "@/utils/httpParamsHandler";
 import { PictureManagerService } from "@admin/pages/picture-manager/picture-manager.service";
-import { IPictureEntity } from "@libs/entity/picture";
 import {GALLERY_CONF, GALLERY_IMAGE, NgxImageGalleryComponent} from "@web-aid-kit/ngx-image-gallery";
+import {IJobDepartmentEditOptions} from "@libs/request/job";
 
 @Component({
   selector: 'admin-picture-manager',
@@ -12,7 +10,8 @@ import {GALLERY_CONF, GALLERY_IMAGE, NgxImageGalleryComponent} from "@web-aid-ki
 })
 export class PictureManagerComponent implements OnInit {
   @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent;
-  pictureList: IPictureEntity[];
+  editCache: { [key: string]: { edit: boolean; data: IJobDepartmentEditOptions } } = {};
+  pictureList = [];
   total: number;
   checked = false;
   indeterminate = false;
@@ -42,6 +41,12 @@ export class PictureManagerComponent implements OnInit {
     this.pictureManagerService.getPictureList().subscribe(res => {
       this.total = res.data.total;
       this.pictureList = res.data.list;
+      this.pictureList.forEach(item => {
+        this.editCache[item.id] = {
+          edit: false,
+          data: { ...item }
+        };
+      });
     })
   }
 
@@ -109,5 +114,17 @@ export class PictureManagerComponent implements OnInit {
   refreshCheckedStatus(): void {
     this.checked = this.pictureList.every(({ id }) => this.setOfCheckedId.has(id));
     this.indeterminate = this.pictureList.some(({ id }) => this.setOfCheckedId.has(id)) && !this.checked;
+  }
+
+  saveEditSort(id): void {
+    this.pictureManagerService.updatePictureSort(id,{ sort: this.editCache[id].data.sort}).subscribe(() => {
+      const index = this.pictureList.findIndex(item => item.id === id);
+      Object.assign(this.pictureList[index], this.editCache[id].data);
+      this.editSort(id, false)
+    })
+  }
+
+  editSort(id: string, judge: boolean): void {
+    this.editCache[id].edit = judge;
   }
 }

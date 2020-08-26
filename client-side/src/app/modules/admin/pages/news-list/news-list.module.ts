@@ -8,14 +8,14 @@ import {
   NzDatePickerModule,
   NzFormModule,
   NzGridModule, NzIconModule,
-  NzInputModule,
+  NzInputModule, NzInputNumberModule,
   NzSelectModule,
   NzTableModule, NzToolTipModule,
   NzUploadModule
 } from "ng-zorro-antd";
 import {NewsLIstService} from "./news-list.service";
 import {CreateArticleComponent} from "./create-article/create-article.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
 import {CreateArticleService} from "./create-article/create-article.service";
 import { AdminSharedModule } from '@admin/shared/admin-shared.module';
@@ -41,7 +41,9 @@ import { PcSharedModule } from '@pc/shared/pc-shared.module';
     NzIconModule,
     NzToolTipModule,
     AdminSharedModule,
-    PcSharedModule
+    PcSharedModule,
+    NzInputNumberModule,
+    FormsModule
   ],
   providers: [
     NewsLIstService,
