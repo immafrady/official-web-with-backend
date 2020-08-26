@@ -1,7 +1,7 @@
 import { IPictureEditOptions } from "libs/request/picture";
 import { PicturePriority, PictureType } from "libs/enums/picture";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { IsDateString, IsEnum, IsOptional, IsString } from "class-validator";
+import { IsDateString, IsEnum, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class EditPictureDto implements IPictureEditOptions{
     @ApiProperty({ description: '图片标题' })
@@ -27,5 +27,6 @@ export class EditPictureDto implements IPictureEditOptions{
     readonly modifyDate: Date;
 
     @ApiProperty({ description: '修改图片排序 - 单条' })
+    @IsNumber()
     readonly sort: number;
 }
