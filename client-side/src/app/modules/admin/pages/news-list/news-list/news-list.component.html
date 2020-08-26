@@ -11,25 +11,41 @@
       <th>发布时间</th>
       <th>类型</th>
       <th>状态</th>
+      <th>排序</th>
       <th nzWidth="350px">操作</th>
     </tr>
     </thead>
     <tbody>
-    <ng-container *ngFor="let data of nzTable.data, index as index" >
-      <tr>
-        <td>{{ index + 1 }}</td>
-        <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
-        <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-        <td>{{ data.type | articleType }}</td>
-        <td>{{ data.status | articleStatus }}</td>
-        <td>
-          <button nz-button nzType="primary" nzShape="round" routerLink="create-article/{{ data.id }}">编辑</button>
-          <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteArticle(data.id)">删除</button>
-          <button nz-button nzType="dashed" nzShape="round" [nzDanger]="data.status === ArticleStatus.Online" (click)="handlerArticle(data.id)">{{ data.status === ArticleStatus.Online ? '下线' : '上线' }}</button>
-          <button nz-button nzType="link" routerLink="preview-article/{{ data.id }}">预览</button>
-        </td>
+      <tr *ngFor="let data of nzTable.data, index as index">
+        <ng-container *ngIf="!editCache[data.id].edit; else editTemplate">
+          <td>{{ index + 1 }}</td>
+          <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
+          <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ data.type | articleType }}</td>
+          <td>{{ data.status | articleStatus }}</td>
+          <td>{{ data.sort }} <button nz-button nzType="link" (click)="editSort(data.id, true)">编辑排序</button></td>
+          <td>
+            <button nz-button nzType="primary" nzShape="round" routerLink="create-article/{{ data.id }}">编辑</button>
+            <button nz-button nzType="primary" nzDanger nzShape="round" (click)="deleteArticle(data.id)">删除</button>
+            <button nz-button nzType="dashed" nzShape="round" [nzDanger]="data.status === ArticleStatus.Online" (click)="handlerArticle(data.id)">{{ data.status === ArticleStatus.Online ? '下线' : '上线' }}</button>
+            <button nz-button nzType="link" routerLink="preview-article/{{ data.id }}">预览</button>
+          </td>
+        </ng-container>
+        <ng-template #editTemplate>
+          <td>{{ index + 1 }}</td>
+          <td nzEllipsis [nzTooltipTitle]="data.title" nz-tooltip>{{ data.title }}</td>
+          <td>{{ data.modifyDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ data.type | articleType }}</td>
+          <td>{{ data.status | articleStatus }}</td>
+          <td>
+            <nz-input-number [(ngModel)]="editCache[data.id].data.sort" [nzStep]="1"></nz-input-number>
+          </td>
+          <td>
+            <button nz-button nzType="primary" nzShape="round" (click)="saveEditSort(data.id)">保存</button>
+            <button nz-button nzType="info" nzShape="round" (click)="editSort(data.id, false)">取消</button>
+          </td>
+        </ng-template>
       </tr>
-    </ng-container>
     </tbody>
   </nz-table>
 </div>
