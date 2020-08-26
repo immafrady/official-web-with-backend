@@ -7,7 +7,7 @@ import { PictureManagerComponent } from './picture-manager/picture-manager.compo
 import {
   NzButtonModule, NzDatePickerModule,
   NzFormModule, NzGridModule, NzIconModule,
-  NzInputModule,
+  NzInputModule, NzInputNumberModule,
   NzSelectModule,
   NzTableModule,
   NzToolTipModule,
@@ -36,7 +36,8 @@ import {NgxImageGalleryModule} from "@web-aid-kit/ngx-image-gallery";
     NzDatePickerModule,
     NzIconModule,
     PcSharedModule,
-    NgxImageGalleryModule
+    NgxImageGalleryModule,
+    NzInputNumberModule
   ]
 })
 export class PictureManagerModule { }

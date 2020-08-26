@@ -85,7 +85,8 @@ export class EditPictureComponent implements OnInit {
       comment: [null],
       priority: [null, [Validators.required]],
       type: [null, [Validators.required]],
-      modifyDate:[null, [Validators.required]]
+      modifyDate:[null, [Validators.required]],
+      sort:[null, [Validators.required]],
     });
 
     this.pictureId = +this.route.snapshot.paramMap.get('id');

@@ -41,6 +41,12 @@
         <textarea formControlName="comment" id="comment" nz-input placeholder="请输入描述" ngModel></textarea>
       </nz-form-control>
     </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="sort">排序</nz-form-label>
+      <nz-form-control nzErrorTip="请输入排序">
+        <nz-input-number formControlName="sort" id="sort" [nzStep]="1" nzPlaceHolder="请输入排序"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
     <nz-form-item *ngIf="!pictureId" style="width: 100%">
       <nz-form-label nzRequired>{{ pictureId ? '预览图片' : '上传图片' }}</nz-form-label>
       <nz-form-control nzErrorTip="请上传上传缩略图">
