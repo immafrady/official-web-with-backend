@@ -12,6 +12,7 @@ export interface IPictureSaveOptions {
     type: PictureType;
     modifyDate: Date;
     urls: string[];
+    sort: number;
 }
 
 /**
@@ -25,6 +26,11 @@ export interface IPictureDeleteOptions {
  * @description 修改图片
  */
 export interface IPictureEditOptions extends Omit<IPictureEntity, "url">{}
+
+/**
+ * @description 编辑图片排序
+ */
+export interface IPictureEditSortOptions extends Pick<IPictureEntity, "sort">{}
 
 /**
  * @description 图片列表

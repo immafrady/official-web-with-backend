@@ -66,4 +66,9 @@ export class Picture extends BaseEntity implements IPictureEntity {
         user => user.pictures
     )
     user: User;
+
+    @Column({
+        default: 0
+    })
+    sort: number;
 }

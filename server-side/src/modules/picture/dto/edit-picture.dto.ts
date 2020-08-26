@@ -25,4 +25,7 @@ export class EditPictureDto implements IPictureEditOptions{
     @IsDateString()
     @IsOptional()
     readonly modifyDate: Date;
+
+    @ApiProperty({ description: '修改图片排序 - 单条' })
+    readonly sort: number;
 }

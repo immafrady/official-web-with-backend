@@ -1,5 +1,5 @@
 import { PicturePriority, PictureType } from "libs/enums/picture";
-import { IsArray, IsDate, IsDateString, IsEnum, IsOptional, IsString, IsUrl } from "class-validator";
+import { IsArray, IsDate, IsDateString, IsEnum, IsNumber, IsOptional, IsString, IsUrl } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IPictureSaveOptions } from "libs/request/picture";
 
@@ -31,4 +31,8 @@ export class SavePictureDto implements IPictureSaveOptions{
         each: true
     })
     readonly urls: string[];
+
+    @ApiProperty({ description: '图片排序 - 整体' })
+    @IsNumber()
+    readonly sort: number;
 }

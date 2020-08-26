@@ -59,7 +59,7 @@ export class PictureService {
      * @param pictureId
      * @param userId
      */
-    async edit(editPictureDto: EditPictureDto, pictureId: number, userId: number): Promise<any> {
+    async edit(editPictureDto: Partial<EditPictureDto>, pictureId: number, userId: number): Promise<any> {
         const picture = this.pictureRepository.create(editPictureDto);
         const user = new User();
         user.id = userId;
@@ -81,7 +81,7 @@ export class PictureService {
      * @param pictureId
      */
     async findOne(pictureId: number): Promise<IPictureDetailResponse> {
-        return await this.pictureRepository.findOne(pictureId );
+        return await this.pictureRepository.findOne(pictureId);
     }
 
     async findMany(pictureFindManyOptions: IPictureFindManyOptions, pagination?: IRequestPagination): Promise<IPictureListResponse> {
@@ -90,6 +90,7 @@ export class PictureService {
             select: pictureFindManyOptions.select,
             where: pictureFindManyOptions.where,
             order: {
+                sort: "ASC",
                 modifyDate: "DESC"
             }
         }

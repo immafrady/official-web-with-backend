@@ -15,6 +15,7 @@ import { IPictureFindManyOptions } from "./picture.interface";
 import { ResponseError } from "../../shared/response-error";
 import { ResponseCode } from "libs/response-code";
 import { MoreThanOrEqual } from "typeorm";
+import { SortPictureDto } from "./dto/sort-picture.dto";
 
 @ApiTags('图片(picture)')
 @ApiBearerAuth()
@@ -68,6 +69,17 @@ export class PictureController {
             return successResponse(await this.pictureService.findOne(pictureIdDto.id));
         } catch (e) {
             throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到图片', e);
+        }
+    }
+
+    @ApiOperation({ summary: '修改图片排序' })
+    @Put('detail/:id/sort')
+    async updateArticleSort(@Param() pictureIdDto: PictureIdDto, @Body() sortPictureDto: SortPictureDto, @UserId() userId: number) {
+        await this.pictureService.hasPictureOrFail(pictureIdDto.id);
+        try {
+            return successResponse(await this.pictureService.edit(sortPictureDto, pictureIdDto.id, userId), '更新图片排序成功');
+        } catch (e) {
+            throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法修改图片排序', e);
         }
     }
 

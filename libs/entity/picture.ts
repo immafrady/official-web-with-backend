@@ -11,4 +11,5 @@ export interface IPictureEntity extends Partial<IBaseEntity> {
     modifyDate: Date;
     comment: string;
     title: string;
+    sort: number;
 }
