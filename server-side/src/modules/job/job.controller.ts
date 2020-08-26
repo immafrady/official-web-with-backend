@@ -21,7 +21,7 @@ import { LessThanOrEqual } from "typeorm";
 import { ResponseError } from "../../shared/response-error";
 import { ResponseCode } from "libs/response-code";
 
-@ApiTags('职位招聘 - 部门')
+@ApiTags('职位招聘 - 部门(job-department)')
 @ApiBearerAuth()
 @Controller('job/department')
 export class JobDepartmentController {
@@ -32,7 +32,7 @@ export class JobDepartmentController {
     async editOrCreate(@Body() departmentEditDto: DepartmentEditDto): Promise<IHttpResponse<IJobDepartmentSaveResponse>> {
         const { id, ...dto } = departmentEditDto;
         if (id) {
-            await this.jobService.hasDepartmentOrFail(id);
+            await this.jobService.departmentFindOneOrFail(id);
             try {
                 return successResponse(await this.jobService.editDepartment(id, dto), '成功修改部门资料');
             } catch (e) {
@@ -50,7 +50,7 @@ export class JobDepartmentController {
     @ApiOperation({ summary: '删除' })
     @Delete('detail/:id')
     async delete(@Param() departmentIdDto: DepartmentIdDto): Promise<IHttpResponse<IJobDepartmentDeleteResponse>> {
-        await this.jobService.hasDepartmentOrFail(departmentIdDto.id);
+        await this.jobService.departmentFindOneOrFail(departmentIdDto.id);
         try {
             return successResponse(await this.jobService.deleteDepartment(departmentIdDto.id), '成功删除部门');
         } catch (e) {
@@ -62,7 +62,7 @@ export class JobDepartmentController {
     @Get('detail/:id')
     async getOne(@Param() departmentIdDto: DepartmentIdDto): Promise<IHttpResponse<IJobDepartmentDetailResponse>> {
         try {
-            return successResponse(await this.jobService.departmentFindOne(departmentIdDto.id));
+            return successResponse(await this.jobService.departmentFindOneOrFail(departmentIdDto.id));
         } catch (e) {
             throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到部门', e);
         }
@@ -79,7 +79,7 @@ export class JobDepartmentController {
     }
 }
 
-@ApiTags('职位招聘 - 具体')
+@ApiTags('职位招聘 - 具体(job-detail)')
 @ApiBearerAuth()
 @Controller('job/item')
 export class JobDetailController {
@@ -90,7 +90,7 @@ export class JobDetailController {
     async editOrCreate(@Body() detailEditDto: DetailEditDto): Promise<IHttpResponse<IJobDetailSaveResponse>> {
         const { id, ...dto } = detailEditDto;
         if (id) {
-            await this.jobService.hasDetailOrFail(id);
+            await this.jobService.detailFindOneOrFail(id);
             try {
                 return successResponse(await this.jobService.editDetail(id, dto), '成功修改职位');
             } catch (e) {
@@ -108,7 +108,7 @@ export class JobDetailController {
     @ApiOperation({ summary: '删除' })
     @Delete('detail/:id')
     async delete(@Param() detailIdDto: DetailIdDto): Promise<IHttpResponse<IJobDetailDeleteResponse>> {
-        await this.jobService.hasDetailOrFail(detailIdDto.id);
+        await this.jobService.detailFindOneOrFail(detailIdDto.id);
         try {
             return successResponse(await this.jobService.deleteDetail(detailIdDto.id), '成功删除职位');
         } catch (e) {
@@ -119,11 +119,7 @@ export class JobDetailController {
     @ApiOperation({ summary: '详情' })
     @Get('detail/:id')
     async getOne(@Param() detailIdDto: DetailIdDto): Promise<IHttpResponse<IJobDetailDetailResponse>> {
-        try {
-            return successResponse(await this.jobService.detailFindOne(detailIdDto.id));
-        } catch (e) {
-            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到职位详情');
-        }
+        return successResponse(await this.jobService.detailFindOneOrFail(detailIdDto.id));
     }
 
     @ApiOperation({ summary: '列表' })
@@ -139,7 +135,7 @@ export class JobDetailController {
     @ApiOperation({ summary: '上下线' })
     @Put('detail/:id/status')
     async updateDetailStatus(@Param() detailIdDto: DetailIdDto): Promise<IHttpResponse<IJobDetailSetStatusResponse>> {
-        await this.jobService.hasDetailOrFail(detailIdDto.id);
+        await this.jobService.detailFindOneOrFail(detailIdDto.id);
         try {
             return successResponse(await this.jobService.switchJobDetailStatus(detailIdDto.id), '切换上下线成功');
         } catch (e) {
@@ -148,7 +144,7 @@ export class JobDetailController {
     }
 }
 
-@ApiTags('加入我们 - 前端页面')
+@ApiTags('加入我们 - 前端页面(job)')
 @Controller('job')
 export class JobController {
     constructor(private jobService: JobService) {}

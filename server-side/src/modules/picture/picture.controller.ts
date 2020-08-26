@@ -36,7 +36,7 @@ export class PictureController {
     @ApiOperation({ summary: '修改图片信息' })
     @Put('detail/:id')
     async editPicture(@Body() editPictureDto: EditPictureDto, @UserId() userId: number, @Param() pictureIdDto: PictureIdDto): Promise<IHttpResponse<IPictureEditResponse>> {
-        await this.pictureService.hasPictureOrFail(pictureIdDto.id);
+        await this.pictureService.findOneOrFail(pictureIdDto.id);
         try {
             return successResponse(await this.pictureService.edit(editPictureDto, pictureIdDto.id, userId), '修改图片信息成功');
         } catch (e) {
@@ -65,17 +65,13 @@ export class PictureController {
     @ApiOperation({ summary: '获取图片详情' })
     @Get('detail/:id')
     async adminPictureDetail(@Param() pictureIdDto: PictureIdDto): Promise<IHttpResponse<IPictureDetailResponse>> {
-        try {
-            return successResponse(await this.pictureService.findOne(pictureIdDto.id));
-        } catch (e) {
-            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到图片', e);
-        }
+        return successResponse(await this.pictureService.findOneOrFail(pictureIdDto.id));
     }
 
     @ApiOperation({ summary: '修改图片排序' })
     @Put('detail/:id/sort')
     async updateArticleSort(@Param() pictureIdDto: PictureIdDto, @Body() sortPictureDto: SortPictureDto, @UserId() userId: number) {
-        await this.pictureService.hasPictureOrFail(pictureIdDto.id);
+        await this.pictureService.findOneOrFail(pictureIdDto.id);
         try {
             return successResponse(await this.pictureService.edit(sortPictureDto, pictureIdDto.id, userId), '更新图片排序成功');
         } catch (e) {

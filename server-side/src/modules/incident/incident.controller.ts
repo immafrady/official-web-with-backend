@@ -17,7 +17,7 @@ import {ApiBearerAuth, ApiOperation, ApiTags} from "@nestjs/swagger";
 import {ResponseError} from "../../shared/response-error";
 import {ResponseCode} from "libs/response-code";
 
-@ApiTags('关于我们 - 历史大事件年份')
+@ApiTags('关于我们 - 历史大事件年份(incident-year)')
 @ApiBearerAuth()
 @Controller('incident/year')
 export class IncidentYearController {
@@ -67,7 +67,7 @@ export class IncidentYearController {
     }
 }
 
-@ApiTags('关于我们 - 企业大事件内容')
+@ApiTags('关于我们 - 企业大事件内容(incident-detail)')
 @ApiBearerAuth()
 @Controller('incident/item')
 export class IncidentDetailController {
@@ -80,7 +80,7 @@ export class IncidentDetailController {
         const { id, ...dto } = detailEditDto;
 
         if (id) {
-            await this.incidentService.hasDetailOrFail(id);
+            await this.incidentService.detailFindOneOrFail(id);
             try {
                 return successResponse(await this.incidentService.editDetail(id, dto), '成功修改事件内容')
             } catch (e) {
@@ -98,7 +98,7 @@ export class IncidentDetailController {
     @ApiOperation({ summary: '删除事件内容' })
     @Delete('detail/:id')
     async deleteDetail(@Param() detailIdDto: DetailIdDto): Promise<IHttpResponse<IIncidentDetailDeleteResponse>> {
-        await this.incidentService.hasDetailOrFail(detailIdDto.id);
+        await this.incidentService.detailFindOneOrFail(detailIdDto.id);
         try {
             return successResponse(await this.incidentService.deleteDetail(detailIdDto.id), '成功删除事件内容')
         } catch (e) {
@@ -109,8 +109,7 @@ export class IncidentDetailController {
     @ApiOperation({ summary: '获取单条事件内容' })
     @Get('detail/:id')
     async getOne(@Param() detailIdDto: DetailIdDto): Promise<IHttpResponse<IIncidentDetailDetailResponse>> {
-        await this.incidentService.hasDetailOrFail(detailIdDto.id);
-        return successResponse(await this.incidentService.detailFindOne(detailIdDto.id))
+        return successResponse(await this.incidentService.detailFindOneOrFail(detailIdDto.id))
     }
 
     @ApiOperation({ summary: '获取事件列表' })
@@ -124,7 +123,7 @@ export class IncidentDetailController {
     }
 }
 
-@ApiTags('关于我们 - 前端')
+@ApiTags('关于我们 - 前端页面(incident)')
 @Controller('incident')
 export class IncidentController {
     constructor(

@@ -73,16 +73,6 @@ export class IncidentService {
         }
     }
 
-    /**
-     * @description 判断存在该详情
-     * @param id
-     */
-    async hasDetailOrFail(id: number): Promise<void> {
-        if (!await this.incidentDetailRepo.findOne(id)) {
-            throw new ResponseError(ResponseCode.CommonItemNotFound, '无法找到详情')
-        }
-    }
-
     private generateDetailFromDto(detailEditDto: DetailEditDto): IIncidentDetailEntity {
         const { id, ...dto} = detailEditDto;
         const { yearId, ...detail} = dto;
@@ -143,8 +133,12 @@ export class IncidentService {
      * @description 查找单条详情
      * @param id
      */
-    async detailFindOne(id: number): Promise<IIncidentDetailDetailResponse> {
-        return await this.incidentDetailRepo.findOne(id)
+    async detailFindOneOrFail(id: number): Promise<IIncidentDetailDetailResponse> {
+        const detail = await this.incidentDetailRepo.findOne(id);
+        if (!detail) {
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '无法找到详情')
+        }
+        return detail
     }
 
 

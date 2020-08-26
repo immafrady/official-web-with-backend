@@ -18,16 +18,6 @@ export class PictureService {
     constructor(@Inject(Token_PictureRepository) private pictureRepository: Repository<Picture>) {}
 
     /**
-     * @description 判断是否存在图片
-     * @param id
-     */
-    async hasPictureOrFail(id: number):Promise<void> {
-        if (!await this.pictureRepository.findOne(id)) {
-            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到图片');
-        }
-    }
-
-    /**
      * @description 新增图片们
      * @param savePictureDto
      * @param userId
@@ -77,11 +67,15 @@ export class PictureService {
     }
 
     /**
-     * @description 图片单张详情
+     * @description 图片单张详情(或报错)
      * @param pictureId
      */
-    async findOne(pictureId: number): Promise<IPictureDetailResponse> {
-        return await this.pictureRepository.findOne(pictureId);
+    async findOneOrFail(pictureId: number): Promise<IPictureDetailResponse> {
+        const picture = await this.pictureRepository.findOne(pictureId);
+        if (!picture) {
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到图片');
+        }
+        return picture;
     }
 
     async findMany(pictureFindManyOptions: IPictureFindManyOptions, pagination?: IRequestPagination): Promise<IPictureListResponse> {

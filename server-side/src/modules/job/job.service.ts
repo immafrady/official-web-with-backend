@@ -22,16 +22,6 @@ export class JobService {
     constructor(@Inject(Token_JobDepartmentRepository) private jobDepartmentRepo: Repository<JobDepartment>, @Inject(Token_JobDetailRepository) private jobDetailRepo: Repository<JobDetail>) {}
 
     /**
-     * @description 判断是否存在部门
-     * @param id
-     */
-    async hasDepartmentOrFail(id: number): Promise<void> {
-        if (!await this.jobDepartmentRepo.findOne(id)) {
-            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到部门');
-        }
-    }
-
-    /**
      * @description 新增部门
      * @param departmentEditDto
      */
@@ -66,11 +56,15 @@ export class JobService {
     }
 
     /**
-     * @description 查找单个部门
+     * @description 查找单个部门(或报错)
      * @param id
      */
-    async departmentFindOne(id: number): Promise<IJobDepartmentDetailResponse> {
-        return await this.jobDepartmentRepo.findOne(id);
+    async departmentFindOneOrFail(id: number): Promise<IJobDepartmentDetailResponse> {
+        const department = await this.jobDepartmentRepo.findOne(id);
+        if (!department) {
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到部门');
+        }
+        return department;
     }
 
     /**
@@ -96,16 +90,6 @@ export class JobService {
     }
 
     /**
-     * @description 判断是否存在详情
-     * @param id
-     */
-    async hasDetailOrFail(id: number): Promise<void> {
-        if (!await this.jobDetailRepo.findOne(id)) {
-            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到职位详情');
-        }
-    }
-
-    /**
      * @description 新增详情
      * @param detailEditDto
      */
@@ -125,13 +109,17 @@ export class JobService {
     }
 
     /**
-     * @description 详情找单条
+     * @description 详情找单条(或报错)
      * @param id
      */
-    async detailFindOne(id: number): Promise<any> {
-        return await this.jobDetailRepo.findOne(id, {
+    async detailFindOneOrFail(id: number): Promise<any> {
+        const detail = await this.jobDetailRepo.findOne(id, {
             relations: ['department']
         });
+        if (!detail) {
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到职位详情');
+        }
+        return detail;
     }
 
     /**

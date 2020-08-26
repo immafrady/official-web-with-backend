@@ -39,7 +39,7 @@ export class ArticleController {
     @Put('detail/:id')
     async editArticle(@Body() editArticleDto: EditArticleDto, @UserId() userId: number, @Param() articleIdDto: ArticleIdDto): Promise<IHttpResponse<IArticleModifyResponse>> {
         const articleId = articleIdDto.id;
-        await this.articleService.hasArticleOrFail(articleId);
+        await this.articleService.findOneOrFail(articleId);
         try {
             return successResponse(await this.articleService.edit(editArticleDto, articleId, userId), '更新文章成功');
         } catch (e) {
@@ -51,7 +51,7 @@ export class ArticleController {
     @Delete('detail/:id')
     async deleteArticle(@Param() articleIdDto: ArticleIdDto): Promise<IHttpResponse<IArticleDeleteResponse>> {
         const articleId = articleIdDto.id;
-        await this.articleService.hasArticleOrFail(articleId);
+        await this.articleService.findOneOrFail(articleId);
         try {
             return successResponse(await this.articleService.delete(articleId), '删除文章成功');
         } catch (e) {
@@ -63,7 +63,7 @@ export class ArticleController {
     @Put('detail/:id/status')
     async updateArticleStatus(@Param() articleIdDto: ArticleIdDto): Promise<IHttpResponse<IArticleSetStatusResponse>> {
         const articleId = articleIdDto.id;
-        await this.articleService.hasArticleOrFail(articleId);
+        await this.articleService.findOneOrFail(articleId);
         try {
             return successResponse(await this.articleService.switchArticleStatus(articleId), '修改状态成功');
         } catch (e) {
@@ -74,7 +74,7 @@ export class ArticleController {
     @ApiOperation({ summary: '修改文章排序' })
     @Put('detail/:id/sort')
     async updateArticleSort(@Param() articleIdDto: ArticleIdDto, @Body() sortArticleDto: SortArticleDto, @UserId() userId: number) {
-        await this.articleService.hasArticleOrFail(articleIdDto.id);
+        await this.articleService.findOneOrFail(articleIdDto.id);
         try {
             return successResponse(await this.articleService.edit(sortArticleDto, articleIdDto.id, userId), '更新文章排序成功');
         } catch (e) {
@@ -127,8 +127,6 @@ export class ArticleController {
     async userArticleDetail(@Param() articleIdDto: ArticleIdDto): Promise<IHttpResponse<IArticleDetailResponse>> {
         const articleId = articleIdDto.id;
 
-        await this.articleService.hasArticleOrFail(articleId);
-
         const options: IArticleFindManyOptions = {
             where: {
                 status: ArticleStatus.Online,
@@ -136,7 +134,7 @@ export class ArticleController {
             }
         };
 
-        const result = await this.articleService.findOne(articleId, options, true);
+        const result = await this.articleService.findOneOrFail(articleId, options, true);
 
         if (result) {
             const related = await this.articleService.findRelation(articleId, options);
@@ -155,14 +153,6 @@ export class ArticleController {
     @ApiOperation({ summary: '管理员 - 获取文章详情' })
     @Get('admin/detail/:id')
     async adminArticleDetail(@Param() articleIdDto: ArticleIdDto): Promise<IHttpResponse<IArticleDetailResponse>> {
-        const articleId = articleIdDto.id;
-
-        await this.articleService.hasArticleOrFail(articleId);
-
-        try {
-            return successResponse(await this.articleService.findOne(articleId));
-        } catch (e) {
-            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到文章', e);
-        }
+        return successResponse(await this.articleService.findOneOrFail(articleIdDto.id));
     }
 }

@@ -23,16 +23,6 @@ export class ArticleService {
     ) {}
 
     /**
-     * @description 判断是否存在文章
-     * @param id
-     */
-    async hasArticleOrFail(id: number): Promise<void> {
-        if (!await this.articleRepository.findOne(id)) {
-            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到文章');
-        }
-    }
-
-    /**
      * @description 新增文章
      * @param createArticleDto
      * @param userId
@@ -118,16 +108,20 @@ export class ArticleService {
     }
 
     /**
-     * @description 查找单篇文章
+     * @description 查找单篇文章(或报错)
      * @param articleId
      * @param options
      * @param showUser
      */
-    async findOne(articleId: number, options: IArticleFindManyOptions = {}, showUser = false): Promise<IArticleFindOneResult> {
+    async findOneOrFail(articleId: number, options: IArticleFindManyOptions = {}, showUser = false): Promise<IArticleFindOneResult> {
         const article = await this.articleRepository.findOne(articleId, {
             where: options?.where,
             relations: showUser ? ['user'] : undefined
         });
+
+        if (!article) {
+            throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到文章');
+        }
 
         if (article) {
             if (showUser) {
