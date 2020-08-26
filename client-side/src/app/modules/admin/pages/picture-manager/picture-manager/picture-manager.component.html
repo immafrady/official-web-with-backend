@@ -30,7 +30,7 @@
         <td>{{ data.priority | picturePriority }}</td>
         <td>{{ data.type | pictureType  }}</td>
         <td class="preview-img">
-          <img title="点击查看大图" [src]="data.url" class="thumbnail" alt="" (click)="openGallery(data.url, data.title)">
+          <img title="点击查看大图" [src]="data.url | imgResize:60:46" class="thumbnail" alt="" (click)="openGallery(data.url, data.title)">
         </td>
         <td>{{ data.sort }} <button nz-button nzType="link" (click)="editSort(data.id, true)">编辑排序</button></td>
         <td>
@@ -47,7 +47,7 @@
         <td>{{ data.priority | picturePriority }}</td>
         <td>{{ data.type | pictureType  }}</td>
         <td class="preview-img">
-          <img title="点击查看大图" [src]="data.url" class="thumbnail" alt="" (click)="openGallery(data.url, data.title)">
+          <img title="点击查看大图" [src]="data.url | imgResize:60:46" class="thumbnail" alt="" (click)="openGallery(data.url, data.title)">
         </td>
         <td>
           <nz-input-number [(ngModel)]="editCache[data.id].data.sort" [nzStep]="1"></nz-input-number>
