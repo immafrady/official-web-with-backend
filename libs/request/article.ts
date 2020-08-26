@@ -25,6 +25,11 @@ export interface IArticleDeleteOptions {
 }
 
 /**
+ * @description 编辑文章排序
+ */
+export interface IArticleEditSortOptions extends Pick<IArticleEntity, "sort">{}
+
+/**
  * @description 单篇文章
  */
 export interface IArticleDetailOptions {

@@ -83,6 +83,14 @@ export class Article extends BaseEntity implements IArticleEntity{
     })
     count: number;
 
+    /**
+     * @description 文章排序
+     */
+    @Column({
+        default: 0
+    })
+    sort: number;
+
     @AfterLoad()
     afterLoad() {
         if (this.user) {

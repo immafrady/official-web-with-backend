@@ -13,6 +13,7 @@ export interface IArticleEntity extends Partial<IBaseEntity>{
     priority: ArticlePriority;
     type: ArticleType[];
     count: number;
+    sort: number;
 }
 
 export type ArticlePick = {

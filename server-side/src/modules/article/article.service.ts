@@ -52,7 +52,7 @@ export class ArticleService {
      * @param articleId
      * @param userId
      */
-    async edit(editArticleDto: EditArticleDto, articleId: number, userId: number): Promise<any> {
+    async edit(editArticleDto: Partial<EditArticleDto>, articleId: number, userId: number): Promise<any> {
         const article = this.articleRepository.create(editArticleDto);
         const user = new User();
         user.id = userId;
@@ -82,6 +82,7 @@ export class ArticleService {
             where: articleFindManyOptions.where,
             relations: showUser ? ['user'] : undefined,
             order: {
+                sort: 'ASC',
                 modifyDate: 'DESC',
                 priority: 'DESC'
             },

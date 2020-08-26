@@ -1,7 +1,7 @@
 
 import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { ArticleService } from "./article.service";
-import { CreateArticleDto, EditArticleDto } from "./dto";
+import { CreateArticleDto, EditArticleDto, SortArticleDto } from "./dto";
 import { IHttpResponse, IRequestPagination } from "libs/common";
 import {
     IArticleCreateResponse,
@@ -11,12 +11,11 @@ import {
 } from "libs/response/article";
 import { successResponse } from "../../utils/ro-builder.utils";
 import { UserId } from "../../shared/decorators/user-id.decorator";
-import { ArticleListDto } from "./dto";
+import { ArticleListDto, ArticleIdDto } from "./dto";
 import { IArticleFindManyOptions } from "./article.interface";
 import { ArticleStatus } from "libs/enums/article";
 import { LessThanOrEqual, Like } from "typeorm";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { ArticleIdDto } from "./dto/article-id.dto";
 import { ResponseError } from "../../shared/response-error";
 import { ResponseCode } from "libs/response-code";
 
@@ -69,6 +68,17 @@ export class ArticleController {
             return successResponse(await this.articleService.switchArticleStatus(articleId), '修改状态成功');
         } catch (e) {
             throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法切换文章状态', e);
+        }
+    }
+
+    @ApiOperation({ summary: '修改文章排序' })
+    @Put('detail/:id/sort')
+    async updateArticleSort(@Param() articleIdDto: ArticleIdDto, @Body() sortArticleDto: SortArticleDto, @UserId() userId: number) {
+        await this.articleService.hasArticleOrFail(articleIdDto.id);
+        try {
+            return successResponse(await this.articleService.edit(sortArticleDto, articleIdDto.id, userId), '更新文章排序成功');
+        } catch (e) {
+            throw new ResponseError(ResponseCode.CommonEditCannotModify, '无法修改文章排序', e);
         }
     }
 

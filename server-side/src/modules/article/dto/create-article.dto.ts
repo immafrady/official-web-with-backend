@@ -1,7 +1,7 @@
 import { IArticleCreateOptions } from "libs/request/article";
 import { ArticlePriority, ArticleStatus, ArticleType } from "libs/enums/article";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDateString, IsEnum, IsString } from "class-validator";
+import { IsDateString, IsEnum, IsNumber, IsString } from "class-validator";
 
 export class CreateArticleDto implements IArticleCreateOptions{
     @ApiProperty({ description: '文章内容' })
@@ -31,4 +31,8 @@ export class CreateArticleDto implements IArticleCreateOptions{
     @ApiProperty({ description: '文章类型', enum: ArticleType, isArray: true })
     @IsEnum(ArticleType, { each: true })
     readonly type: ArticleType[];
+
+    @ApiProperty({ description: '文章排序 - 越小排越前' })
+    @IsNumber()
+    readonly sort: number;
 }
