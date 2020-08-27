@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { PictureManagerService } from "@admin/pages/picture-manager/picture-manager.service";
 import {GALLERY_CONF, GALLERY_IMAGE, NgxImageGalleryComponent} from "@web-aid-kit/ngx-image-gallery";
 import {IJobDepartmentEditOptions} from "@libs/request/job";
-import {PictureTypeLabel} from "@libs/enums/picture";
+import {PictureType, PictureTypeLabel} from "@libs/enums/picture";
 
 @Component({
   selector: 'admin-picture-manager',
@@ -23,7 +23,19 @@ export class PictureManagerComponent implements OnInit {
     showImageTitle: true
   };
   imgList: GALLERY_IMAGE[] = [];
-  listOfFilter = [];
+  listOfFilter = [{
+    value: PictureType.Environment,
+    text: PictureTypeLabel[PictureType.Environment]
+  }, {
+    value: PictureType.Friend,
+    text: PictureTypeLabel[PictureType.Friend]
+  }, {
+    value: PictureType.Honor,
+    text: PictureTypeLabel[PictureType.Honor]
+  }, {
+    value: PictureType.Patent,
+    text: PictureTypeLabel[PictureType.Patent]
+  }];
 
   constructor(private pictureManagerService: PictureManagerService) { }
 
@@ -57,9 +69,6 @@ export class PictureManagerComponent implements OnInit {
           edit: false,
           data: { ...item }
         };
-        if (this.listOfFilter.findIndex(options => options.value === item.type) === -1) {
-          this.listOfFilter.push({ text: PictureTypeLabel[item.type] , value: item.type});
-        }
       });
     })
   }
