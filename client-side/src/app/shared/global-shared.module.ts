@@ -9,10 +9,11 @@ import { PictureTypePipe } from './pipes/picture-type.pipe';
 import { PicturePriorityPipe } from './pipes/picture-priority.pipe';
 import { SpliceEnterPipe } from './pipes/splice-enter.pipe';
 import { ImgResizePipe } from './pipes/img-resize.pipe';
+import { LabelEnumFormatterPipe } from './pipes/label-enum-formatter.pipe';
 
 @NgModule({
-  declarations: [SvgIconComponent, ArticleTypePipe, ArticleStatusPipe, RichTextNoSanitizePipe, PictureTypePipe, PicturePriorityPipe, SpliceEnterPipe, ImgResizePipe],
+  declarations: [SvgIconComponent, ArticleTypePipe, ArticleStatusPipe, RichTextNoSanitizePipe, PictureTypePipe, PicturePriorityPipe, SpliceEnterPipe, ImgResizePipe, LabelEnumFormatterPipe],
   imports: [AngularSvgIconModule, CommonModule],
-  exports: [SvgIconComponent, ArticleTypePipe, ArticleStatusPipe, RichTextNoSanitizePipe, PictureTypePipe, PicturePriorityPipe, SpliceEnterPipe, ImgResizePipe]
+  exports: [SvgIconComponent, ArticleTypePipe, ArticleStatusPipe, RichTextNoSanitizePipe, PictureTypePipe, PicturePriorityPipe, SpliceEnterPipe, ImgResizePipe, LabelEnumFormatterPipe]
 })
 export class GlobalSharedModule { }
