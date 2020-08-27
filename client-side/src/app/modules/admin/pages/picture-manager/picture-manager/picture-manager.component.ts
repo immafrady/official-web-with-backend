@@ -40,7 +40,9 @@ export class PictureManagerComponent implements OnInit {
 
   // 搜索列表
   filterList(e): void {
-    this.getPictureList(e)
+    if (e) {
+      this.getPictureList(e)
+    }
   }
 
   /**
