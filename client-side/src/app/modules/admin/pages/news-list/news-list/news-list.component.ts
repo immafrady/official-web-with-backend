@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {NewsLIstService} from "../news-list.service";
-import {IArticleDeleteOptions, IArticleSetStatusOption} from '@libs/request/article';
-import {ArticleStatus} from '@libs/enums/article';
-import {IJobDepartmentEditOptions} from "@libs/request/job";
+import { Component, OnInit } from "@angular/core";
+import { NewsLIstService } from "../news-list.service";
+import { IArticleDeleteOptions, IArticleSetStatusOption } from "@libs/request/article";
+import { ArticleStatus, ArticleType, ArticleTypeLabel } from "@libs/enums/article";
+import { IJobDepartmentEditOptions } from "@libs/request/job";
+import { IArticleEntity } from "@libs/entity/article";
 
 @Component({
   selector: 'admin-news-list',
@@ -17,6 +18,23 @@ export class NewsListComponent implements OnInit {
   constructor(
     private newsLIstService: NewsLIstService
   ) {}
+  readonly articleTypeFilter = [{
+    text: ArticleTypeLabel[ArticleType.Honor],
+    value: ArticleType.Honor
+  }, {
+    text: ArticleTypeLabel[ArticleType.Hot],
+    value: ArticleType.Hot
+  }, {
+    text: ArticleTypeLabel[ArticleType.New],
+    value: ArticleType.New
+  }, {
+    text: ArticleTypeLabel[ArticleType.Old],
+    value: ArticleType.Old
+  }];
+
+  filterFn(list: ArticleType[], data: IArticleEntity): boolean {
+    return list.some(key => data.type.includes(key))
+  }
 
   saveEditSort(id): void {
     this.newsLIstService.updateArticleSort(id, { sort: this.editCache[id].data.sort}).subscribe(() => {
