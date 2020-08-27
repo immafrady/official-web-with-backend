@@ -17,6 +17,10 @@ export class DetailListComponent implements OnInit {
   isVisible: boolean = false;
   form: FormGroup;
   yearOptions: IIncidentYearEntity[];
+  yearFilters: {text: string, value: string}[];
+  filterFn(list: string[], data: IIncidentDetailEntity) {
+    return list.some(year => data.incidentYear.year === year)
+  }
 
   constructor(private incidentService: IncidentManagerService, private fb: FormBuilder) { }
 
@@ -24,6 +28,13 @@ export class DetailListComponent implements OnInit {
     this.getDetailList()
     this.incidentService.getYearList().subscribe(({ data }) => {
       this.yearOptions = data.list
+      this.yearFilters = data.list.map(item => {
+        return {
+          text: item.year,
+          value: item.year
+        }
+      })
+      console.log(this.yearFilters)
     })
   }
 
