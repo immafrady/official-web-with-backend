@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { PictureManagerService } from "@admin/pages/picture-manager/picture-manager.service";
 import {GALLERY_CONF, GALLERY_IMAGE, NgxImageGalleryComponent} from "@web-aid-kit/ngx-image-gallery";
 import {IJobDepartmentEditOptions} from "@libs/request/job";
+import {PictureTypeLabel} from "@libs/enums/picture";
 
 @Component({
   selector: 'admin-picture-manager',
@@ -22,6 +23,8 @@ export class PictureManagerComponent implements OnInit {
     showImageTitle: true
   };
   imgList: GALLERY_IMAGE[] = [];
+  listOfFilter = [];
+
   constructor(private pictureManagerService: PictureManagerService) { }
 
   openGallery(url, title, index: number = 0) {
@@ -30,15 +33,21 @@ export class PictureManagerComponent implements OnInit {
       this.ngxImageGallery.open();
     }, 0)
   }
+
   ngOnInit(): void {
     this.getPictureList();
+  }
+
+  // 搜索列表
+  filterList(e): void {
+    this.getPictureList(e)
   }
 
   /**
    * @description 获取图片列表
    */
-  getPictureList(): void {
-    this.pictureManagerService.getPictureList().subscribe(res => {
+  getPictureList(type?): void {
+    this.pictureManagerService.getPictureList({ type }).subscribe(res => {
       this.total = res.data.total;
       this.pictureList = res.data.list;
       this.pictureList.forEach(item => {
@@ -46,6 +55,9 @@ export class PictureManagerComponent implements OnInit {
           edit: false,
           data: { ...item }
         };
+        if (this.listOfFilter.findIndex(options => options.value === item.type) === -1) {
+          this.listOfFilter.push({ text: PictureTypeLabel[item.type] , value: item.type});
+        }
       });
     })
   }
@@ -86,7 +98,7 @@ export class PictureManagerComponent implements OnInit {
   onAllCheckChange(checked: boolean): void {
     this.pictureList.forEach(({ id }) => {
       this.updateCheckedSet(id, checked);
-    })
+    });
     this.refreshCheckedStatus();
   }
 
@@ -116,15 +128,15 @@ export class PictureManagerComponent implements OnInit {
     this.indeterminate = this.pictureList.some(({ id }) => this.setOfCheckedId.has(id)) && !this.checked;
   }
 
+  editSort(id: string, judge: boolean): void {
+    this.editCache[id].edit = judge;
+  }
+
   saveEditSort(id): void {
     this.pictureManagerService.updatePictureSort(id,{ sort: this.editCache[id].data.sort}).subscribe(() => {
       const index = this.pictureList.findIndex(item => item.id === id);
       Object.assign(this.pictureList[index], this.editCache[id].data);
       this.editSort(id, false)
     })
-  }
-
-  editSort(id: string, judge: boolean): void {
-    this.editCache[id].edit = judge;
   }
 }

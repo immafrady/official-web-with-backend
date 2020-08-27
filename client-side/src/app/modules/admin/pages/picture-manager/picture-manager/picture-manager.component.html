@@ -4,19 +4,19 @@
     <button nz-button nzType="primary" routerLink="edit-picture">上传图片</button>
     <button nz-button nzType="danger" (click)="deleteSelectedPictures()">批量删除</button>
   </div>
-  <nz-table #nzTable [nzData]="pictureList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed">
+  <nz-table #nzTable [nzData]="pictureList" [nzTotal]="total" [nzPageSize]="10" nzTableLayout="fixed" [nzWidthConfig]="['40px', '80px', '80px', '80px', '180px', '200px', '130px', '90px', '150px', '180px']">
     <thead>
       <tr>
-        <th nzWidth="40px" [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllCheckChange($event)"></th>
-        <th nzWidth="80px">序号</th>
+        <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllCheckChange($event)"></th>
+        <th>序号</th>
         <th>标题</th>
         <th>描述</th>
-        <th nzWidth="200px">自定义上传日期</th>
-        <th nzWidth="200px">权重</th>
-        <th nzWidth="120px">类型</th>
+        <th>自定义上传日期</th>
+        <th>权重</th>
+        <th [nzFilterMultiple]="false" [nzShowFilter]="listOfFilter.length > 0" [nzFilters]="listOfFilter" (nzFilterChange)="filterList($event)">类型</th>
         <th>缩略图</th>
-        <th nzWidth="200px">排序</th>
-        <th nzWidth="200px">操作</th>
+        <th>排序</th>
+        <th>操作</th>
       </tr>
     </thead>
     <tbody>
