@@ -34,7 +34,6 @@ export class DetailListComponent implements OnInit {
           value: item.year
         }
       })
-      console.log(this.yearFilters)
     })
   }
 
