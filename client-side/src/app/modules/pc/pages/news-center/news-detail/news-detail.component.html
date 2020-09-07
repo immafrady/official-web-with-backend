@@ -1,7 +1,7 @@
 <pc-core-container class="news-detail-container">
   <div class="news-detail--content">
     <div class="breadcrumb"><a routerLink="/news-center">新闻中心 > </a>公司新闻</div>
-    <h2 class="news-detail-title">{{ newsDetail?.title }}</h2>
+    <h1 class="news-detail-title">{{ newsDetail?.title }}</h1>
     <div class="news-detail-time">
       <span>发布时间：{{ newsDetail?.modifyDate | date: 'yyyy-MM-dd' }}</span>
       <span>阅读量：{{ newsDetail?.count }}</span>
