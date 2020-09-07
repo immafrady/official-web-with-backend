@@ -77,14 +77,14 @@
   <div class="xin-town-thumb">
     <div id="gallery" class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img [src]="getImage('xin-town-big-bg-1', 'jpg')" /></div>
-        <div class="swiper-slide"><img [src]="getImage('xin-town-big-bg-2', 'jpg')" /></div>
+        <div class="swiper-slide"><img [src]="getImage('xin-town-big-bg-1', 'jpg')" alt="" /></div>
+        <div class="swiper-slide"><img [src]="getImage('xin-town-big-bg-2', 'jpg')" alt="" /></div>
       </div>
     </div>
     <div id="thumbs" class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide slide-prev" (click)="swipePrev('prev')"><span [class]="sliderName === 'prev' ? 'active' : ''" class="invert-matte"></span><img [src]="getImage('xin-town-small-bg-1')"/></div>
-        <div class="swiper-slide slide-next" (click)="swipeNext('next')"><span [class]="sliderName === 'next' ? 'active' : ''"  class="invert-matte"></span><img [src]="getImage('xin-town-small-bg-2')"/></div>
+        <div class="swiper-slide slide-prev" (click)="swipePrev('prev')"><span [class]="sliderName === 'prev' ? 'active' : ''" class="invert-matte"></span><img [src]="getImage('xin-town-small-bg-1')" alt=""/></div>
+        <div class="swiper-slide slide-next" (click)="swipeNext('next')"><span [class]="sliderName === 'next' ? 'active' : ''"  class="invert-matte"></span><img [src]="getImage('xin-town-small-bg-2')" alt=""/></div>
       </div>
     </div>
   </div>
