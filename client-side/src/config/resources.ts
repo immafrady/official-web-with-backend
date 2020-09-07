@@ -4,7 +4,7 @@ export const COMPANY_INFO = {
   ADDRESS: '广州市天河区粤垦路611号力达广场A1栋16层（整层）',
   TELEPHONES: ['020-88529619', '020-38776616'],
   WEIBO_HREF: 'http://weibo.com/xinshuiguanjia',
-  COPYRIGHT: 'Copyright 2019',
+  COPYRIGHT: 'Copyright 2020',
   BEIAN: '粤ICP备17126097号-4'
 }
 
