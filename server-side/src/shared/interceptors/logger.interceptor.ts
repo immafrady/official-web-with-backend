@@ -1,7 +1,7 @@
 import { CallHandler, ExecutionContext, Inject, Injectable, NestInterceptor } from "@nestjs/common";
 import { Observable } from 'rxjs';
 import { tap } from "rxjs/operators";
-import { CustomLogger } from "../modules/logger/custom-logger.service";
+import { CustomLogger } from "../../global/logger/custom-logger.service";
 import { Request } from "express";
 
 @Injectable()

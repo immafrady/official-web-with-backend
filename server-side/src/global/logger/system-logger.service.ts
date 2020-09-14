@@ -2,7 +2,7 @@ import { Injectable, LoggerService } from "@nestjs/common";
 import { Logger as WinstonLogger, createLogger, format, transports } from "winston";
 import { utilities as nestWinstonModuleUtilities } from "nest-winston";
 import * as DailyRotateFile from "winston-daily-rotate-file";
-import { config } from "../../../config";
+import { config } from "../../config";
 const { nestLike } = nestWinstonModuleUtilities.format;
 const { combine, timestamp, uncolorize } = format;
 const { Console } = transports;

@@ -3,7 +3,7 @@ import { Logger, format, LogEntry, createLogger, transports } from "winston";
 import { Request } from "express";
 import { IHttpResponse } from "libs/common";
 import * as DailyRotateFile from "winston-daily-rotate-file";
-import { config } from "../../../config";
+import { config } from "../../config";
 const { label, combine, timestamp, printf } = format;
 
 type Level = 'error' | 'warn' | 'info' | 'http' | 'verbose' | 'debug' | 'silly';

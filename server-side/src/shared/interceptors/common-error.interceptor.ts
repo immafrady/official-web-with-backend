@@ -9,7 +9,7 @@ import {
 } from "@nestjs/common";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { CustomLogger } from "../modules/logger/custom-logger.service";
+import { CustomLogger } from "../../global/logger/custom-logger.service";
 import { ResponseError } from "../response-error";
 import { ResponseCode } from "libs/response-code";
 

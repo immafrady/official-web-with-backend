@@ -1,7 +1,7 @@
 import { ArgumentsHost, Catch, ExceptionFilter, Inject } from "@nestjs/common";
 import { Request, Response } from "express";
 import { errorResponse } from '../../utils/ro-builder.utils';
-import { CustomLogger } from "../modules/logger/custom-logger.service";
+import { CustomLogger } from "../../global/logger/custom-logger.service";
 import { ResponseError } from "../response-error";
 
 @Catch(ResponseError)

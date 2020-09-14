@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { config } from "./config";
-import { SystemLogger } from "./shared/modules/logger/system-logger.service";
+import { SystemLogger } from "./global/logger/system-logger.service";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { checkIsProd } from "./utils/check-is-prod.util";
 
