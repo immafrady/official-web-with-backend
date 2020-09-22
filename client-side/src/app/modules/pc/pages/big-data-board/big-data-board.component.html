@@ -1,0 +1,32 @@
+
+<div class="big-data-board-container">
+  <div class="big-data-board-header">薪宝科技大数据看板</div>
+  <div class="big-data-board-liner">
+    <div class="liner-content-left">
+      <div class="liner-content-left-service common-content">
+        <img class="liner-bg" [src]="getImage('data-module-bg1')" alt="">
+        <div echarts [options]="serviceOption" class="demo-chart"></div>
+      </div>
+      <div class="liner-content-left-detail common-content">
+        <img class="liner-bg" [src]="getImage('data-module-bg2')" alt="">
+        <div echarts [options]="serviceOption" class="demo-chart"></div>
+      </div>
+    </div>
+    <div class="liner-content-center">
+      <img class="liner-bg" [src]="getImage('data-module-bg-center')" alt="">
+    </div>
+    <div class="liner-content-right">
+      <div class="common-content">
+        <img class="liner-bg" [src]="getImage('data-module-bg3')" alt="">
+        <div echarts [options]="industryOption" class="demo-chart"></div>
+      </div>
+      <div class="common-content">
+        <img class="liner-bg" [src]="getImage('data-module-bg4')" alt="">
+        <div echarts [options]="incomeOption" class="demo-chart"></div>
+      </div>
+    </div>
+  </div>
+  <div class="big-data-board-footer">
+
+  </div>
+</div>
