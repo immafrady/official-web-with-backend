@@ -50,6 +50,83 @@
       height: 100%;
       width: 23vw;
     }
+
+    // 地图的样式
+    .map-layout {
+      position: relative;
+      width: 40vw;
+      left: 4vw;
+      top: 8vh;
+      .map-layout-tabs {
+        display: flex;
+        justify-content: space-between;
+        div {
+          padding: 13px 20px;
+          border: 1px solid #FFFFFF;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: 500;
+          cursor: pointer;
+          color: #fff;
+          &.active {
+            background-color: #0590FF;
+          }
+        }
+      }
+      .map-img {
+        width: 100%;
+        height: 55vh;
+        position: absolute;
+        top: 10vh;
+        .map-bg {
+          width: 100%;
+          height: 100%;
+          background-size: 100%;
+        }
+      }
+    }
+
+    // 发放明细
+    .provide-list {
+      position: absolute;
+      z-index: 100;
+      color: #fff;
+      width: 20vw;
+      left: 2.5vw;
+      top: 2vh;
+      font-size: 12px;
+      .provide-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 2vh 0 3vh;
+      }
+      .status {
+        color: #FFF200;
+        width: 18%;
+      }
+      .merchant-no {
+        width: 52%;
+      }
+      .amount {
+        width: 30%;
+      }
+      .provide-list-header {
+        display: flex;
+        line-height: 3.5vh;
+        .status {
+          color: #fff;
+        }
+      }
+      .provide-list-content {
+        .list-merchant {
+          display: flex;
+          justify-content: space-between;
+        }
+        li {
+          line-height: 3vh;
+        }
+      }
+    }
   }
 
   .big-data-board-footer {

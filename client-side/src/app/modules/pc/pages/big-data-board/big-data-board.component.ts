@@ -8,19 +8,86 @@ import {getImage} from "@/utils/getImage";
 })
 export class BigDataBoardComponent implements OnInit {
   getImage = getImage;
+  activeMap = 0;
+  mapList = [getImage('data-map1'), getImage('data-map2'), getImage('data-map3')];
+
+  list = [
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+    { status: '正在发放', merchantNo: '1045262893132255232', amount: '200.00'},
+  ];
   constructor() { }
 
   serviceOption = {
+    title: {
+      text: '月新增服务人次',
+      left: '5%',
+      top: '7%',
+      textStyle: {
+        color: '#fff',
+        fontSize: 16
+      }
+    },
+    grid: [{
+      left: '14%',
+      bottom: '32%',
+      top: '26%',
+      right: '15%'
+    }],
     xAxis: {
+      name: '月份',
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      data: ['2019年1月', '2019年2月', '2019年3月', '2019年4月', '2019年5月', '2019年6月', '2019年7月', '2019年8月', '2019年9月', '2019年10月', '2019年11月', '2019年12月'],
+      axisLine: {
+        lineStyle: {
+          color: '#fff',
+          width: 2
+        },
+        symbol: ['none', 'arrow'],
+        symbolOffset: 10
+      },
+      axisLabel: {
+        rotate: 60,
+        interval: 0
+      },
+      axisTick: {
+        show: false
+      }
     },
     yAxis: {
-      type: 'value'
+      name: '个数（人）',
+      type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: '#fff',
+          width: 2
+        },
+        symbol: ['none', 'arrow'],
+        symbolOffset: 10
+      },
+      axisTick: {
+        show: false
+      },
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
     },
     series: [{
-      data: [120, 200, 150, 80, 70, 110, 130],
-      type: 'bar'
+      data: [22000, 18000, 15000, 25000, 50000, 10000, 17000, 18000, 19000, 30000, 14000, 15000],
+      type: 'bar',
+      itemStyle: {
+        color: '#16DBFF'
+      },
+      barWidth: 9
     }]
   };
 
@@ -28,11 +95,14 @@ export class BigDataBoardComponent implements OnInit {
     title: {
       text: '服务自由职业者行业分布',
       left: 30,
-      top: 40
+      top: 40,
+      textStyle: {
+        color: '#fff',
+        fontSize: 16
+      }
     },
     tooltip: {
-      trigger: 'item',
-      formatter: '{a} <br/>{b} : {c} ({d}%)'
+      show: false
     },
     color:['#FFD669','#F08AFF','#5656D8','#FA863E','#5AC1DD', '#FF2D2D', '#FF14A4', '#ABFF86'],
     legend: {
@@ -47,24 +117,28 @@ export class BigDataBoardComponent implements OnInit {
         color: '#fff',
         fontSize: 16
       },
-      data: ['直播', '社交电商', '即时配送', '共享出行', '医疗', '房地产', '在线教育', '其他']
-    },
-    toolbox: {
-      show: true
+      data: ['直播', '社交电商', '即时配送', '共享出行', '医疗', '房地产', '在线教育 10%', '其他']
     },
     series: [
       {
-        name: '半径模式',
+        name: '服务自由职业者行业分布',
         type: 'pie',
-        radius: [20, 110],
+        radius: ['20%', '50%'],
         center: ['30%', '50%'],
-        roseType: 'radius',
         label: {
-          show: false
+          show: false,
+          position: 'center'
         },
         emphasis: {
           label: {
-            show: true
+            show: true,
+            fontSize: '12',
+            fontWeight: 'bold'
+          },
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
           }
         },
         data: [
@@ -74,7 +148,7 @@ export class BigDataBoardComponent implements OnInit {
           {value: 10, name: '共享出行'},
           {value: 5, name: '医疗'},
           {value: 10, name: '房地产'},
-          {value: 10, name: '在线教育'},
+          {value: 10, name: '在线教育 10%'},
           {value: 5, name: '其他'}
         ]
       }
@@ -82,9 +156,17 @@ export class BigDataBoardComponent implements OnInit {
   };
 
   incomeOption = {
+    title: {
+      text: '自由职业者收入水平分布',
+      left: 30,
+      top: 40,
+      textStyle: {
+        color: '#fff',
+        fontSize: 16
+      }
+    },
     tooltip: {
-      trigger: 'item',
-      formatter: '{a} <br/>{b}: {c} ({d}%)'
+      show: false
     },
     color:['#00CDC7','#A0DA00','#FFC600','#FF8400','#FF4C8F', '#FF3B3B', '#A0DA00'],
     legend: {
@@ -103,9 +185,9 @@ export class BigDataBoardComponent implements OnInit {
     },
     series: [
       {
-        name: '访问来源',
+        name: '自由职业者收入水平分布',
         type: 'pie',
-        radius: ['40', '100'],
+        radius: ['20%', '50%'],
         center: ['30%', '50%'],
         avoidLabelOverlap: false,
         label: {
@@ -115,8 +197,13 @@ export class BigDataBoardComponent implements OnInit {
         emphasis: {
           label: {
             show: true,
-            fontSize: '30',
+            fontSize: '12',
             fontWeight: 'bold'
+          },
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
           }
         },
         labelLine: {
@@ -133,6 +220,10 @@ export class BigDataBoardComponent implements OnInit {
         ]
       }
     ]
+  };
+
+  changeTabMap(val) {
+    this.activeMap = val
   };
 
 

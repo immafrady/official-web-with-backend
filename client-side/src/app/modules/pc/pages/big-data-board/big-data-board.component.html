@@ -9,11 +9,35 @@
       </div>
       <div class="liner-content-left-detail common-content">
         <img class="liner-bg" [src]="getImage('data-module-bg2')" alt="">
-        <div echarts [options]="serviceOption" class="demo-chart"></div>
+        <div class="provide-list">
+          <p class="provide-title">实时发放明细</p>
+          <div class="provide-list-header">
+            <div class="status">发放状态</div>
+            <div class="merchant-no">商户号</div>
+            <div class="amount">发放金额(元)</div>
+          </div>
+          <div class="provide-list-content">
+            <ul *ngFor="let item of list" class="list-merchant">
+              <li class="status">{{ item.status }}</li>
+              <li class="merchant-no">{{ item.merchantNo }}</li>
+              <li class="amount">{{ item.amount }}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <div class="liner-content-center">
       <img class="liner-bg" [src]="getImage('data-module-bg-center')" alt="">
+      <div class="map-layout">
+        <div class="map-layout-tabs">
+          <div (click)="changeTabMap(0)" [class]="{'active': activeMap === 0}">全国客户分步</div>
+          <div (click)="changeTabMap(1)" [class]="{'active': activeMap === 1}">服务自由职业者地域分步</div>
+          <div (click)="changeTabMap(2)" [class]="{'active': activeMap === 2}">薪商小镇全国分步</div>
+        </div>
+        <div class="map-img">
+          <img class="map-bg" [src]="mapList[activeMap]" alt="">
+        </div>
+      </div>
     </div>
     <div class="liner-content-right">
       <div class="common-content">
@@ -26,7 +50,5 @@
       </div>
     </div>
   </div>
-  <div class="big-data-board-footer">
-
-  </div>
+  <div class="big-data-board-footer"></div>
 </div>
