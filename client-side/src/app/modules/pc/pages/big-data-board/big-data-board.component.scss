@@ -191,16 +191,17 @@
       font-weight: 500;
       color: #fff;
       text-align: center;
+      margin: 2vh 0 0.05vh;
     }
     .inner-container {
-      width: 1145px;
+      width: 1140px;
       overflow: hidden;
       position: relative;
       .move-mask {
         position: absolute;
         height: 100%;
         width: 300px;
-        z-index: 100;
+        z-index: 22;
         &.move-mask-left {
           left: -10px;
           background:linear-gradient(90deg,rgba(12,11,43,1) 0%,rgba(12,11,43,0.36) 83%,rgba(255,255,255,0) 100%);
