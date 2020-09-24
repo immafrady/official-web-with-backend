@@ -1,14 +1,17 @@
 
 <div class="big-data-board-container">
   <div class="big-data-board-header">薪宝科技大数据看板</div>
+  <div class="data-show-container">
+    <div>服务企业数量<span>612</span></div>
+    <div>全国累计服务人数<span>5500000</span></div>
+    <div>全国累计服务人次<span>25000000</span></div>
+  </div>
   <div class="big-data-board-liner">
     <div class="liner-content-left">
       <div class="liner-content-left-service common-content">
-        <img class="liner-bg" [src]="getImage('data-module-bg1')" alt="">
         <div echarts [options]="serviceOption" class="demo-chart"></div>
       </div>
-      <div class="liner-content-left-detail common-content">
-        <img class="liner-bg" [src]="getImage('data-module-bg2')" alt="">
+      <div class="liner-content-left-detail common-content common-height">
         <div class="provide-list">
           <p class="provide-title">实时发放明细</p>
           <div class="provide-list-header">
@@ -17,17 +20,23 @@
             <div class="amount">发放金额(元)</div>
           </div>
           <div class="provide-list-content">
-            <ul *ngFor="let item of list" class="list-merchant">
-              <li class="status">{{ item.status }}</li>
-              <li class="merchant-no">{{ item.merchantNo }}</li>
-              <li class="amount">{{ item.amount }}</li>
+            <ul class="list-merchant">
+              <li *ngFor="let item of list">
+                <div class="status">{{ item.status }}</div>
+                <div class="merchant-no">{{ item.merchantNo }}</div>
+                <div class="amount">{{ item.amount }}</div>
+              </li>
+              <li *ngFor="let item of list" >
+                <div class="status">{{ item.status }}</div>
+                <div class="merchant-no">{{ item.merchantNo }}</div>
+                <div class="amount">{{ item.amount }}</div>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
     <div class="liner-content-center">
-      <img class="liner-bg" [src]="getImage('data-module-bg-center')" alt="">
       <div class="map-layout">
         <div class="map-layout-tabs">
           <div (click)="changeTabMap(0)" [class]="{'active': activeMap === 0}">全国客户分步</div>
@@ -41,12 +50,25 @@
     </div>
     <div class="liner-content-right">
       <div class="common-content">
-        <img class="liner-bg" [src]="getImage('data-module-bg3')" alt="">
         <div echarts [options]="industryOption" class="demo-chart"></div>
       </div>
-      <div class="common-content">
-        <img class="liner-bg" [src]="getImage('data-module-bg4')" alt="">
+      <div class="common-content common-height">
         <div echarts [options]="incomeOption" class="demo-chart"></div>
+      </div>
+    </div>
+  </div>
+  <div class="cooperation-container">
+    <div class="block-title">合作伙伴</div>
+    <div class="inner-container bottom">
+      <div class="move-mask move-mask-left"></div>
+      <div class="move-mask move-mask-right"></div>
+      <div class="line-move">
+        <img [src]="getImage('home-logo1')" alt="">
+        <img [src]="getImage('home-logo2')" alt="">
+        <img [src]="getImage('home-logo3')" alt="">
+        <img [src]="getImage('home-logo1')" alt="">
+        <img [src]="getImage('home-logo2')" alt="">
+        <img [src]="getImage('home-logo3')" alt="">
       </div>
     </div>
   </div>
