@@ -110,7 +110,7 @@ export class BigDataBoardComponent implements OnInit {
     legend: {
       orient: 'vertical',
       x: '60%',      //可设定图例在左、右、居中
-      y: '25%',     //可设定图例在上、下、居中
+      y: '30%',     //可设定图例在上、下、居中
       itemWidth: 10,
       itemHeight: 10,
       icon: 'circle',
@@ -126,7 +126,7 @@ export class BigDataBoardComponent implements OnInit {
         name: '服务自由职业者行业分布',
         type: 'pie',
         radius: ['30%', '45%'],
-        center: ['30%', '45%'],
+        center: ['30%', '58%'],
         label: {
           show: false,
           position: 'center'
@@ -175,7 +175,7 @@ export class BigDataBoardComponent implements OnInit {
     legend: {
       orient: 'vertical',
       x: '60%',      //可设定图例在左、右、居中
-      y: '22%',     //可设定图例在上、下、居中
+      y: '35%',     //可设定图例在上、下、居中
       padding:[0,50,0,0],
       itemWidth: 10,
       itemHeight: 10,
@@ -191,7 +191,7 @@ export class BigDataBoardComponent implements OnInit {
         name: '自由职业者收入水平分布',
         type: 'pie',
         radius: ['20%', '45%'],
-        center: ['30%', '40%'],
+        center: ['30%', '58%'],
         avoidLabelOverlap: false,
         label: {
           show: false,
