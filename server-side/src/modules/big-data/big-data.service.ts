@@ -29,14 +29,23 @@ export class BigDataService {
         const data = await this.bigDataRepo.find();
         const result = {};
         data.forEach(d => {
-            result[d.key] = d.value;
+            result[d.key] = BigDataService.getRawValue(d.key, d.value);
         })
         return data;
     }
 
-    //
-    static getValue(type: BigDataType): any {
-
+    // 获取值
+    static getRawValue(type: BigDataType, value: string): any {
+        try {
+            return JSON.parse(value);
+        } catch (e) {
+            switch (type) {
+                case BigDataType.EnterpriseCount: // 服务企业数量
+                case BigDataType.NationwideServiceTotalNumber: // 全国累计服务人数
+                case BigDataType.NationwideServiceTotalCount: // 全国累计服务人次
+                    return 0
+            }
+        }
     }
 
 }
