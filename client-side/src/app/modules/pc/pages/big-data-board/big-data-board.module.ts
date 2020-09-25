@@ -13,7 +13,7 @@ import {NgxEchartsModule} from "ngx-echarts";
     BigDataBoardRoutingModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    }),
+    })
   ]
 })
 export class BigDataBoardModule { }
