@@ -1,0 +1,233 @@
+@import "src/styles/common.pc";
+@import "src/styles/images.pc";
+
+.big-data-board-container {
+  background-color: #0c0b2b;
+  position: relative;
+  height: 100vh;
+  .big-data-board-header {
+    width: 100%;
+    height: 10vh;
+    background: $big-data-bg-header  center;
+    background-size: cover;
+    padding-top: 2.2vh;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .data-show-container {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    height: 7vh;
+    span {
+      font-size: 46px;
+      font-weight: 600;
+      margin-left: 5px;
+      color: #00FCFF;
+    }
+  }
+
+  .big-data-board-liner {
+    display: flex;
+    justify-content: space-between;
+    height: 65vh;
+    padding: 0 2vw;
+    // 公共样式设置
+    .common-content {
+      height: 33vh;
+      position: relative;
+      z-index: 100;
+      margin-bottom: 2vh;
+      background-color: rgba(0, 132, 218, 0.1);
+      &.common-height {
+        height: 30vh;
+        margin-bottom: 0;
+      }
+    }
+    .liner-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .liner-content-left {
+      height: 100%;
+      width: 23vw;
+      .demo-chart {
+        height: 98%;
+        position: relative;
+        bottom: 0;
+      }
+    }
+
+    .liner-content-center {
+      height: 65vh;
+      width: 48vw;
+      position: relative;
+      z-index: 100;
+      background-color: rgba(0, 132, 218, 0.1);
+    }
+
+    .liner-content-right {
+      height: 100%;
+      width: 23vw;
+    }
+
+    // 地图的样式
+    .map-layout {
+      position: relative;
+      width: 33vw;
+      left: 7.5vw;
+      top: 3vh;
+      .map-layout-tabs {
+        display: flex;
+        justify-content: space-between;
+        div {
+          padding: 13px 20px;
+          border: 1px solid #FFFFFF;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: 500;
+          color: #fff;
+          &.active {
+            background-color: #0590FF;
+            border-color: #0590FF;
+          }
+        }
+      }
+      .map-img {
+        width: 100%;
+        height: 55vh;
+        position: absolute;
+        top: 10vh;
+        .map-bg {
+          width: 85%;
+          background-size: cover;
+          margin-left: 10%;
+        }
+      }
+    }
+
+    // 发放明细
+    .provide-list {
+      position: absolute;
+      z-index: 100;
+      color: #fff;
+      width: 20vw;
+      left: 1.5vw;
+      top: 2vh;
+      font-size: 12px;
+      .provide-title {
+        font-size: 16px;
+        font-weight: 500;
+        margin: 1.5vh 0;
+      }
+      .status {
+        color: #FFF200;
+        width: 18%;
+      }
+      .merchant-no {
+        width: 52%;
+      }
+      .amount {
+        width: 30%;
+      }
+      .provide-list-header {
+        display: flex;
+        line-height: 3.5vh;
+        .status {
+          color: #fff;
+        }
+      }
+      .provide-list-content {
+        overflow: hidden;
+        height: 17.5vh;
+        .list-merchant {
+          animation: moveScroll 10s linear infinite;
+          @keyframes moveScroll {
+            0% {
+              transform: translate3d(0, 0, 0);
+            }
+            100% {
+              transform: translate3d(0, -50%, 0);
+            }
+          }
+        }
+        li {
+          line-height: 3.5vh;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .big-data-board-footer {
+    width: 100%;
+    height: 36vh;
+    background: $big-data-bg-footer  center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+  }
+
+  // 合作伙伴
+  .cooperation-container {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    height: 18vh;
+    left: 50%;
+    transform: translateX(-50%);
+    .block-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #fff;
+      text-align: center;
+      margin: 2vh 0 1vh;
+    }
+    .inner-container {
+      width: 1140px;
+      height: 73px;
+      overflow: hidden;
+      position: relative;
+      .move-mask {
+        position: absolute;
+        width: 300px;
+        height: 100%;
+        z-index: 22;
+        &.move-mask-left {
+          left: -10px;
+          background:linear-gradient(90deg,rgba(12,11,43,1) 0%,rgba(12,11,43,0.36) 83%,rgba(255,255,255,0) 100%);
+        }
+        &.move-mask-right {
+          right: 0;
+          background:linear-gradient(-90deg,rgba(12,11,43,1) 0%,rgba(12,11,43,0.36) 83%,rgba(255,255,255,0) 100%);
+        }
+      }
+      .line-move {
+        width: 7038px;
+        animation: move 30s linear infinite;
+        @keyframes move {
+          0% {
+            transform: translate3d(-50%, 0, 0);
+          }
+          100% {
+            transform: translate3d(0%, 0, 0);
+          }
+        }
+      }
+    }
+  }
+}
+
+#udesk_container {
+  display: none !important;
+}

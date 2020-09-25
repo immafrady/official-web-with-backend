@@ -42,7 +42,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/tinymce/tinymce.min.js"
+              "node_modules/tinymce/tinymce.min.js",
+              "node_modules/echarts/dist/echarts.js"
             ]
           },
           "configurations": {

@@ -14,6 +14,8 @@ const routes: Routes = [
       { path: getWebRouterInfo(WebRouterName.XinTown).name, loadChildren: () => import('./pages/xin-town/xin-town.module').then(mod => mod.XinTownModule) },
       { path: getWebRouterInfo(WebRouterName.XinInnovationValley).name, loadChildren: () => import('./pages/xin-innovation-valley/xin-innovation-valley.module').then(mod => mod.XinInnovationValleyModule) },
     ]
+  }, {
+    path: 'big-data-board', loadChildren: () => import('./pages/big-data-board/big-data-board.module').then(mod => mod.BigDataBoardModule)
   }
 ]
 
