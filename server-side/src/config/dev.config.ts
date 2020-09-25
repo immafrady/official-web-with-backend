@@ -13,7 +13,8 @@ export default {
         username: 'root',
         password: 'password',
         // synchronize: true, // 每次启动都会覆盖数据库，生产勿用
-        entities: [__dirname + '/../**/*.entity.{ts,js}']
+        entities: [__dirname + '/../**/*.entity.{ts,js}'],
+        logging: true
     },
     port: 7001,
     logRoot: process.cwd() + '/logs/dev'

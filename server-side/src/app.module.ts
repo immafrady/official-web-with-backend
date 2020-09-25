@@ -14,6 +14,8 @@ import { CustomValidationPipe } from "./shared/pipes/custom-validation.pipe";
 import { PictureModule } from "./modules/picture/picture.module";
 import { JobModule } from "./modules/job/job.module";
 import {IncidentModule} from "./modules/incident/incident.module";
+import { BigDataModule } from "./modules/big-data/big-data.module";
+import { ScheduleModule } from "@nestjs/schedule";
 
 @Module({
     imports: [
@@ -24,7 +26,9 @@ import {IncidentModule} from "./modules/incident/incident.module";
         PictureModule,
         JobModule,
         LoggerModule,
-        IncidentModule
+        IncidentModule,
+        BigDataModule,
+        ScheduleModule.forRoot(),
     ],
     controllers: [AppController],
     providers: [
