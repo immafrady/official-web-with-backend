@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {getImage} from "@/utils/getImage";
 
 @Component({
   selector: 'pc-big-data-board',
   templateUrl: './big-data-board.component.html',
-  styleUrls: ['./big-data-board.component.scss']
+  styleUrls: ['./big-data-board.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BigDataBoardComponent implements OnInit {
   getImage = getImage;
@@ -37,9 +38,9 @@ export class BigDataBoardComponent implements OnInit {
     },
     grid: [{
       left: '14%',
-      bottom: '21%',
+      bottom: '23%',
       top: '30%',
-      right: '15%'
+      right: '14%'
     }],
     xAxis: {
       name: '月份',
@@ -224,13 +225,16 @@ export class BigDataBoardComponent implements OnInit {
     ]
   };
 
-  changeTabMap(val) {
-    this.activeMap = val
-  };
-
   constructor() {}
 
+  get current() {
+    return this.activeMap % 3
+  }
+
   ngOnInit(): void {
+    setInterval(() => {
+      this.activeMap++
+    }, 2000)
   }
 
 }

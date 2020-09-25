@@ -39,12 +39,12 @@
     <div class="liner-content-center">
       <div class="map-layout">
         <div class="map-layout-tabs">
-          <div (click)="changeTabMap(0)" [class]="{'active': activeMap === 0}">全国客户分步</div>
-          <div (click)="changeTabMap(1)" [class]="{'active': activeMap === 1}">服务自由职业者地域分步</div>
-          <div (click)="changeTabMap(2)" [class]="{'active': activeMap === 2}">薪商小镇全国分步</div>
+          <div [class]="{'active': current === 0}">全国客户分步</div>
+          <div [class]="{'active': current === 1}">服务自由职业者地域分步</div>
+          <div [class]="{'active': current === 2}">薪商小镇全国分步</div>
         </div>
         <div class="map-img">
-          <img class="map-bg" [src]="mapList[activeMap]" alt="">
+          <img class="map-bg" [src]="mapList[current]" alt="">
         </div>
       </div>
     </div>
@@ -63,12 +63,12 @@
       <div class="move-mask move-mask-left"></div>
       <div class="move-mask move-mask-right"></div>
       <div class="line-move">
-        <img [src]="getImage('home-logo1')" alt="">
-        <img [src]="getImage('home-logo2')" alt="">
-        <img [src]="getImage('home-logo3')" alt="">
-        <img [src]="getImage('home-logo1')" alt="">
-        <img [src]="getImage('home-logo2')" alt="">
-        <img [src]="getImage('home-logo3')" alt="">
+        <img [src]="getImage('logo-1')" alt="">
+        <img [src]="getImage('logo-2')" alt="">
+        <img [src]="getImage('logo-3')" alt="">
+        <img [src]="getImage('logo-1')" alt="">
+        <img [src]="getImage('logo-2')" alt="">
+        <img [src]="getImage('logo-3')" alt="">
       </div>
     </div>
   </div>

@@ -60,7 +60,7 @@
       height: 100%;
       width: 23vw;
       .demo-chart {
-        height: 95%;
+        height: 98%;
         position: relative;
         bottom: 0;
       }
@@ -94,10 +94,10 @@
           border-radius: 10px;
           font-size: 16px;
           font-weight: 500;
-          cursor: pointer;
           color: #fff;
           &.active {
             background-color: #0590FF;
+            border-color: #0590FF;
           }
         }
       }
@@ -170,7 +170,7 @@
 
   .big-data-board-footer {
     width: 100%;
-    height: 40vh;
+    height: 36vh;
     background: $big-data-bg-footer  center;
     position: absolute;
     bottom: 0;
@@ -191,16 +191,17 @@
       font-weight: 500;
       color: #fff;
       text-align: center;
-      margin: 2vh 0 0.05vh;
+      margin: 2vh 0 1vh;
     }
     .inner-container {
       width: 1140px;
+      height: 73px;
       overflow: hidden;
       position: relative;
       .move-mask {
         position: absolute;
-        height: 100%;
         width: 300px;
+        height: 100%;
         z-index: 22;
         &.move-mask-left {
           left: -10px;
@@ -212,7 +213,7 @@
         }
       }
       .line-move {
-        width: 10260px;
+        width: 7038px;
         animation: move 30s linear infinite;
         @keyframes move {
           0% {
@@ -227,3 +228,6 @@
   }
 }
 
+#udesk_container {
+  display: none !important;
+}
