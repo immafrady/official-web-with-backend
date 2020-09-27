@@ -5,6 +5,7 @@ import { BigData } from "./big-data.entity";
 import { BigDataType } from "libs/enums/big-data";
 import { ResponseError } from "../../shared/response-error";
 import { ResponseCode } from "libs/response-code";
+import { configBigData } from "./big-data.config";
 
 @Injectable()
 export class BigDataService {
@@ -21,7 +22,10 @@ export class BigDataService {
         if (!result) {
             throw new ResponseError(ResponseCode.CommonItemNotFound, '找不到大数据配置');
         }
-        return result;
+        return {
+            key,
+            value: BigDataService.getRawValue(key, result.value)
+        };
     }
 
     // 查找全部(普通)
@@ -31,7 +35,18 @@ export class BigDataService {
         data.forEach(d => {
             result[d.key] = BigDataService.getRawValue(d.key, d.value);
         })
-        return data;
+        return result;
+    }
+
+    // 查找之后，再解析成前端想要的样子
+    async findAllParsed() {
+        const data = await this.bigDataRepo.find();
+        const result = {};
+        data.forEach(d => {
+            const rawValue = JSON.parse(d.value);
+            result[d.key] = configBigData[d.key].retFunc(rawValue);
+        })
+        return result;
     }
 
     // 获取值
@@ -39,12 +54,7 @@ export class BigDataService {
         try {
             return JSON.parse(value);
         } catch (e) {
-            switch (type) {
-                case BigDataType.EnterpriseCount: // 服务企业数量
-                case BigDataType.NationwideServiceTotalNumber: // 全国累计服务人数
-                case BigDataType.NationwideServiceTotalCount: // 全国累计服务人次
-                    return 0
-            }
+            return configBigData[type]?.raw
         }
     }
 
