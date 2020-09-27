@@ -13,6 +13,7 @@ export class BigDataService {
 
     // 编辑
     async edit(key: BigDataType, value) {
+        configBigData[key].rawValidator(value);
         return await this.bigDataRepo.update({ key }, { value });
     }
 

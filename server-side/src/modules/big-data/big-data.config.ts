@@ -1,9 +1,10 @@
 import { BigDataType } from "libs/enums/big-data";
 import { tCount, tDate, tMoney, tOrder, tPieData, tPieStore } from "./big-data.interface";
+import { HttpException, HttpStatus } from "@nestjs/common";
 
 interface IBigDataConfig {
     [bigDataType: string]: {
-        ret: any,
+        rawValidator: any,
         raw: any,
         retFunc: any
     }
@@ -28,37 +29,60 @@ const pieParser = (raws: tPieStore): tPieData => {
     return result
 }
 
+// 数字校验
+const numberValidator = (value: any): void => {
+    if (typeof value !== "number") {
+        throw new HttpException({ message: "请输入数字类型" }, HttpStatus.BAD_REQUEST)
+    }
+}
+
+// 字符串校验
+const stringValidator = (value: any): void => {
+    if (typeof value !== "string") {
+        throw new HttpException({ message: '请输入字符串类型' }, HttpStatus.BAD_REQUEST)
+    }
+}
+
+// 键值对校验
+const keyValueArrayValidator = (raws: any[]): void => {
+    if (!Array.isArray(raws)) throw new HttpException({ message: "需要传入一个数组" }, HttpStatus.BAD_REQUEST);
+    for (let i = 0; i < raws.length; i++) {
+        if (typeof raws[i].key !== "string" || typeof raws[i].value !== "number") {
+            throw new HttpException({ message: `第${i}个位置的数据类型不对` }, HttpStatus.BAD_REQUEST)
+        }
+    }
+}
+
 
 export const configBigData: IBigDataConfig = {
     [BigDataType.EnterpriseCount]: {
-        ret: 0,
         retFunc: rawParser,
+        rawValidator: numberValidator,
         raw: 0
     }, // 服务企业数量
     [BigDataType.NationwideServiceTotalNumber]: {
-        ret: 0,
         retFunc: rawParser,
+        rawValidator: numberValidator,
         raw: 0
     }, // 全国累计服务人数
     [BigDataType.NationwideServiceTotalCount]: {
-        ret: 0,
         retFunc: rawParser,
+        rawValidator: numberValidator,
         raw: 0
     }, // 全国累计服务人次
     [BigDataType.MonthlyNewServiceCount]: {
-        ret: { x: [], y: [] },
-        retFunc: (raw: { key: tDate, value: tCount }[]): { x: tDate[], y: tCount[] } => {
+        retFunc: (raws: { key: tDate, value: tCount }[]): { x: tDate[], y: tCount[] } => {
             const result = { x: [], y: [] };
-            for (let i = raw.length - 1, count = 0; i >= 0 && count < 12; i--, count++) {
-                result.x.unshift(raw[i].key);
-                result.y.unshift(raw[i].value);
+            for (let i = raws.length - 1, count = 0; i >= 0 && count < 12; i--, count++) {
+                result.x.unshift(raws[i].key);
+                result.y.unshift(raws[i].value);
             }
             return result;
         },
+        rawValidator: keyValueArrayValidator,
         raw: []
     }, // 月新增服务人次
     [BigDataType.RealtimePayDetail]: {
-        ret: [],
         retFunc: (config: { min: tMoney, max: tMoney, prefix: string }): { business: tOrder, amount: tMoney }[] => {
             const result = [];
             for (let i = 0; i < 50; i++) {
@@ -69,37 +93,39 @@ export const configBigData: IBigDataConfig = {
             }
             return result
         },
+        rawValidator: (raw: any): void => {
+            if (typeof raw.min !== "number" || typeof raw.max !== "number" || typeof raw.prefix !== "string") {
+                throw new HttpException({ message: "传参数类型错误" }, HttpStatus.BAD_REQUEST)
+            }
+            if (raw.min < 0 || raw.max < 0) {
+                throw new HttpException({ message: "金额不能设置为负数" }, HttpStatus.BAD_REQUEST)
+            }
+        },
         raw: { min: 0, max: 0, prefix: '1045262' }
     }, // 实时发放明细
     [BigDataType.NationwideClientDistribution]: {
-        ret: '',
         retFunc: rawParser,
+        rawValidator: stringValidator,
         raw: ''
     },  // 全国客户分布
     [BigDataType.FreelancerArealDistribution]: {
-        ret: '',
         retFunc: rawParser,
+        rawValidator: stringValidator,
         raw: ''
     }, // 服务自由职业者地域分布
     [BigDataType.XinTownNationDistribution]: {
-        ret: '',
         retFunc: rawParser,
+        rawValidator: stringValidator,
         raw: ''
     }, // 薪商小镇全国分布
     [BigDataType.FreelancerIndustryDistribution]: {
-        ret: {
-            data: [],
-            pieLabels: []
-        },
         retFunc: pieParser,
+        rawValidator: keyValueArrayValidator,
         raw: []
     }, // 服务自由职业者行业分布
     [BigDataType.FreelancerIncomeDistribution]: {
-        ret: {
-            data: [],
-            pieLabels: []
-        },
         retFunc: pieParser,
+        rawValidator: keyValueArrayValidator,
         raw: []
     }, // 自由职业者收入水平分布
 }
