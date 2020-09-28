@@ -1,8 +1,12 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { BigDataService } from "./big-data.service";
 import { EditBigDataDto } from "./dto/edit-big-data.dto";
-import { ApiOperation } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { successResponse } from "../../utils/ro-builder.utils";
+import { BigDataKeyDto } from "./dto/big-data-key.dto";
 
+@ApiTags('大数据')
+@ApiBearerAuth()
 @Controller('big-data')
 export class BigDataController {
     constructor(private bigDataService: BigDataService) {}
@@ -10,24 +14,24 @@ export class BigDataController {
     @ApiOperation({ summary: '编辑大数据 - 单条' })
     @Post('edit')
     async editBigData(@Body() editBigDataDto: EditBigDataDto) {
-
+        return successResponse(await this.bigDataService.edit(editBigDataDto.key, editBigDataDto.value), BigDataService.getTypeLabel(editBigDataDto.key) + '保存成功');
     }
 
-    @ApiOperation({ summary: '大数据单条' })
-    @Get('detail/:type')
-    async findOne() {
-
+    @ApiOperation({ summary: '单条' })
+    @Get('detail/:key')
+    async findOne(@Param() bigDataKeyDto: BigDataKeyDto) {
+        return successResponse(await this.bigDataService.findOneOrFail(bigDataKeyDto.key))
     }
 
-    @ApiOperation({ summary: '编辑的原始列表' })
+    @ApiOperation({ summary: '原始列表' })
     @Get('list')
     async findMany() {
-
+        return successResponse(await this.bigDataService.findAll());
     }
 
     @ApiOperation({ summary: '大数据面板数据列表' })
     @Get('board/list')
     async getFormattedList() {
-
+        return successResponse(await this.bigDataService.findAllParsed());
     }
 }
