@@ -42,8 +42,8 @@ export class BigDataManageComponent implements OnInit {
   }
 
   getBigDataList(): void {
+    // @ts-ignore
     this.bigDataManageService.getBigDataList().subscribe(({ data }) => {
-      console.log(data);
       this.validateForm.patchValue({ [BigDataType.MonthlyNewServiceCount]: data[BigDataType.MonthlyNewServiceCount] });
       this.validateForm.patchValue({ [BigDataType.NationwideServiceTotalNumber] : data[BigDataType.NationwideServiceTotalNumber]});
       this.validateForm.patchValue({ [BigDataType.FreelancerIncomeDistribution]: data[BigDataType.FreelancerIncomeDistribution] });

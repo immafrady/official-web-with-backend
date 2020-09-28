@@ -9,7 +9,7 @@
 
 <pc-core-container>
   <div class="news-container hot-news">
-    <div class="block-title">热门报道</div>
+    <div class="block-title">媒体报导</div>
     <div class="inner-container">
       <pc-news-preview *ngFor="let news of hotsNewsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
     </div>
@@ -19,7 +19,7 @@
 
 <pc-core-container>
   <div class="news-container">
-    <div class="block-title">往期动态</div>
+    <div class="block-title">企业动态</div>
     <div class="inner-container">
       <pc-news-preview *ngFor="let news of oldNewsList" [thumbnail]="news.thumbnail" [date]="news.modifyDate" [title]="news.title" [id]="news.id"></pc-news-preview>
     </div>
