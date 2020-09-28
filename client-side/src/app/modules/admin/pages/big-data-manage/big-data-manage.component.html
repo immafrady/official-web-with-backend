@@ -1,0 +1,250 @@
+<div class="list-container">
+  <nz-tabset nzTabPosition="right">
+    <nz-tab nzTitle="月新增服务人次">
+      <div class="data-board-title">月新增服务人次</div>
+      <div class="month-service-container">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(BigDataType.MonthlyNewServiceCount, 'validateForm')">
+          <nz-form-control>
+            <div class="workFlowContent" [formArrayName]="BigDataType.MonthlyNewServiceCount" *ngFor="let content of monthlyNewServiceCount.controls; let idx = index">
+              <div class="auto-container" [formGroupName]="idx.toString()">
+                <p class="title">月新增服务人次{{idx + 1}}：</p>
+                <nz-form-control>
+                  <input nz-input type="text" placeholder="请输入年月(YYYY年MM日)" formControlName="key">
+                </nz-form-control>
+                <nz-form-control>
+                  <input nz-input type="number" placeholder="请输入个数（人）" formControlName="value">
+                </nz-form-control>
+                <div class="auto-operate">
+                  <i *ngIf="monthlyNewServiceCount.controls.length > 1" nz-icon nzType="minus-circle-o" class="edit-icon" (click)="removeStage(idx, BigDataType.MonthlyNewServiceCount)"></i>
+                  <i *ngIf="idx === monthlyNewServiceCount.controls.length - 1" nz-icon nzType="plus-circle" class="edit-icon add-button" (click)="addStage(BigDataType.MonthlyNewServiceCount)"></i>
+                </div>
+              </div>
+            </div>
+          </nz-form-control>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="服务自由职业者行业分布">
+      <div class="data-board-title">服务自由职业者行业分布</div>
+      <div class="month-service-container">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(BigDataType.FreelancerIndustryDistribution, 'validateForm')">
+          <nz-form-control>
+            <div class="workFlowContent" [formArrayName]="BigDataType.FreelancerIndustryDistribution" *ngFor="let content of freelancerIndustryDistribution.controls; let idx = index">
+              <div class="auto-container" [formGroupName]="idx.toString()">
+                <p class="title">行业分布{{idx + 1}}：</p>
+                <nz-form-control>
+                  <input nz-input type="text" placeholder="请输入行业分布占比" formControlName="key">
+                </nz-form-control>
+                <nz-form-control>
+                  <input nz-input type="text" placeholder="请输入行业分布标题" formControlName="value">
+                </nz-form-control>
+                <div class="auto-operate">
+                  <i *ngIf="monthlyNewServiceCount.controls.length > 1" nz-icon nzType="minus-circle-o" class="edit-icon" (click)="removeStage(idx, BigDataType.FreelancerIndustryDistribution)"></i>
+                  <i *ngIf="idx === freelancerIndustryDistribution.controls.length - 1" nz-icon nzType="plus-circle" class="edit-icon add-button" (click)="addStage(BigDataType.FreelancerIndustryDistribution)"></i>
+                </div>
+              </div>
+            </div>
+          </nz-form-control>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="自由职业者收入水平分布">
+      <div class="data-board-title">自由职业者收入水平分布</div>
+      <div class="month-service-container">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(BigDataType.FreelancerIncomeDistribution, 'validateForm')">
+          <nz-form-control>
+            <div class="workFlowContent" [formArrayName]="BigDataType.FreelancerIncomeDistribution" *ngFor="let content of freelancerIncomeDistribution.controls; let idx = index">
+              <div class="auto-container" [formGroupName]="idx.toString()">
+                <p class="title">收入水平分布{{idx + 1}}：</p>
+                <nz-form-control>
+                  <input nz-input type="text" placeholder="请输入收入水平占比" formControlName="key">
+                </nz-form-control>
+                <nz-form-control>
+                  <input nz-input type="text" placeholder="请输入收入水平标题" formControlName="value">
+                </nz-form-control>
+                <div class="auto-operate">
+                  <i *ngIf="freelancerIncomeDistribution.controls.length > 1" nz-icon nzType="minus-circle-o" class="edit-icon" (click)="removeStage(idx, BigDataType.FreelancerIncomeDistribution)"></i>
+                  <i *ngIf="idx === freelancerIncomeDistribution.controls.length - 1" nz-icon nzType="plus-circle" class="edit-icon add-button" (click)="addStage(BigDataType.FreelancerIncomeDistribution)"></i>
+                </div>
+              </div>
+            </div>
+          </nz-form-control>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="实时发放明细">
+      <div class="data-board-title"><h2>实时发放明细</h2></div>
+      <div class="edit-form-container data-board-manager">
+        <form nz-form [formGroup]="provideValidateForm" (ngSubmit)="submitForm(BigDataType.RealtimePayDetail, 'provideValidateForm', true)">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="max">发放最大值</nz-form-label>
+            <nz-form-control nzErrorTip="请输入发放最大值">
+              <input nz-input formControlName="max" id="max" type="number" placeholder="请输入发放最大值" ngModel/>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="min">发放最小值</nz-form-label>
+            <nz-form-control nzErrorTip="请输入发放最小值">
+              <input nz-input formControlName="min" id="min" type="number" placeholder="请输入发放最小值" ngModel/>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="prefix">发放明细前缀</nz-form-label>
+            <nz-form-control nzErrorTip="请输入发放明细前缀">
+              <input nz-input formControlName="prefix" id="prefix" placeholder="请输入发放明细前缀" ngModel/>
+            </nz-form-control>
+          </nz-form-item>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="数据统计设置">
+      <div class="data-board-title">服务企业数量</div>
+      <div class="edit-form-container data-board-manager">
+        <form nz-form [formGroup]="enterpriseCountValidateForm" (ngSubmit)="submitForm(BigDataType.EnterpriseCount, 'enterpriseCountValidateForm')">
+          <nz-form-item>
+            <nz-form-label nzRequired [nzFor]="BigDataType.EnterpriseCount">服务企业数量</nz-form-label>
+            <nz-form-control nzErrorTip="请输入服务企业数量">
+              <input nz-input [formControlName]="BigDataType.EnterpriseCount" [id]="BigDataType.EnterpriseCount" type="number" placeholder="请输入服务企业数量" ngModel/>
+            </nz-form-control>
+          </nz-form-item>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="data-board-title">全国累计服务人数</div>
+      <div class="edit-form-container data-board-manager">
+        <form nz-form [formGroup]="nationwideServiceTotalNumberValidateForm" (ngSubmit)="submitForm(BigDataType.NationwideServiceTotalNumber, 'nationwideServiceTotalNumberValidateForm')">
+          <nz-form-item>
+            <nz-form-label nzRequired [nzFor]="BigDataType.NationwideServiceTotalNumber">全国累计服务人数</nz-form-label>
+            <nz-form-control nzErrorTip="请输入全国累计服务人数">
+              <input nz-input [formControlName]="BigDataType.NationwideServiceTotalNumber" [id]="BigDataType.NationwideServiceTotalNumber" type="number" placeholder="请输入全国累计服务人数" ngModel/>
+            </nz-form-control>
+          </nz-form-item>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="data-board-title">全国累计服务人次</div>
+      <div class="edit-form-container data-board-manager">
+        <form nz-form [formGroup]="nationwideServiceTotalCountValidateForm" (ngSubmit)="submitForm(BigDataType.NationwideServiceTotalCount, 'nationwideServiceTotalCountValidateForm')">
+          <nz-form-item>
+            <nz-form-label nzRequired [nzFor]="BigDataType.NationwideServiceTotalCount">全国累计服务人次</nz-form-label>
+            <nz-form-control nzErrorTip="请输入全国累计服务人次">
+              <input nz-input [formControlName]="BigDataType.NationwideServiceTotalCount" [id]="BigDataType.NationwideServiceTotalCount" type="number" placeholder="请输入全国累计服务人次" ngModel/>
+            </nz-form-control>
+          </nz-form-item>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="地图上传">
+      <div class="data-board-title">全国客户分布地图上传</div>
+      <div class="edit-form-container data-board-manager">
+        <form nz-form [formGroup]="nationwideClientDistributionValidateForm" (ngSubmit)="submitForm(BigDataType.NationwideClientDistribution, 'nationwideClientDistributionValidateForm')">
+          <nz-form-item>
+            <nz-form-label>全国客户分布</nz-form-label>
+            <nz-form-control nzErrorTip="请上传全国客户分布地图">
+              <nz-upload
+                class="avatar-uploader"
+                nzAction=""
+                nzName="avatar"
+                nzListType="picture-card"
+                nzAccept="image/*"
+                [nzCustomRequest]="customRequest"
+                [nzShowUploadList]="false"
+                (nzChange)="handleChange($event, 'nationwideClientDistributionValidateForm', BigDataType.NationwideClientDistribution, 'loading1')"
+              >
+                <ng-container *ngIf="!nationwideClientDistributionValidateForm.value[BigDataType.NationwideClientDistribution]">
+                  <i class="upload-icon" nz-icon [nzType]="loading1 ? 'loading' : 'plus'"></i>
+                  <div class="ant-upload-text">上传图片</div>
+                </ng-container>
+                <img *ngIf="nationwideClientDistributionValidateForm.value[BigDataType.NationwideClientDistribution]" [src]="nationwideClientDistributionValidateForm.value[BigDataType.NationwideClientDistribution]" style="width: 100%" alt="" />
+              </nz-upload>
+            </nz-form-control>
+          </nz-form-item>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 0 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="data-board-title">服务自由职业者地域分布地图上传</div>
+      <div class="edit-form-container data-board-manager">
+        <form nz-form [formGroup]="freelancerArealDistributionValidateForm" (ngSubmit)="submitForm(BigDataType.FreelancerArealDistribution, 'freelancerArealDistributionValidateForm')">
+          <nz-form-item>
+            <nz-form-label nzRequired>自由职业者地域分布</nz-form-label>
+            <nz-form-control nzErrorTip="请上传服务自由职业者地域分布地图">
+              <nz-upload
+                class="avatar-uploader"
+                nzAction=""
+                nzName="avatar"
+                nzListType="picture-card"
+                nzAccept="image/*"
+                [nzCustomRequest]="customRequest"
+                [nzShowUploadList]="false"
+                (nzChange)="handleChange($event, 'freelancerArealDistributionValidateForm', BigDataType.FreelancerArealDistribution, 'loading2')"
+              >
+                <ng-container *ngIf="!freelancerArealDistributionValidateForm.value[BigDataType.FreelancerArealDistribution]">
+                  <i class="upload-icon" nz-icon [nzType]="loading2 ? 'loading' : 'plus'"></i>
+                  <div class="ant-upload-text">上传图片</div>
+                </ng-container>
+                <img *ngIf="freelancerArealDistributionValidateForm.value[BigDataType.FreelancerArealDistribution]" [src]="freelancerArealDistributionValidateForm.value[BigDataType.FreelancerArealDistribution]" style="width: 100%" alt="" />
+              </nz-upload>
+            </nz-form-control>
+          </nz-form-item>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="data-board-title">薪商小镇全国分布地图上传</div>
+      <div class="edit-form-container data-board-manager">
+        <form nz-form [formGroup]="xinTownNationDistributionValidateForm" (ngSubmit)="submitForm(BigDataType.XinTownNationDistribution, 'xinTownNationDistributionValidateForm')">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="nationwideServiceTotalCount">薪商小镇全国分布</nz-form-label>
+            <nz-form-control nzErrorTip="请上传薪商小镇全国分布地图">
+              <nz-upload
+                class="avatar-uploader"
+                nzAction=""
+                nzName="avatar"
+                nzListType="picture-card"
+                nzAccept="image/*"
+                [nzCustomRequest]="customRequest"
+                [nzShowUploadList]="false"
+                (nzChange)="handleChange($event, 'xinTownNationDistributionValidateForm', BigDataType.XinTownNationDistribution, 'loading3')"
+              >
+                <ng-container *ngIf="!xinTownNationDistributionValidateForm.value[BigDataType.XinTownNationDistribution]">
+                  <i class="upload-icon" nz-icon [nzType]="loading3 ? 'loading' : 'plus'"></i>
+                  <div class="ant-upload-text">上传图片</div>
+                </ng-container>
+                <img *ngIf="xinTownNationDistributionValidateForm.value[BigDataType.XinTownNationDistribution]" [src]="xinTownNationDistributionValidateForm.value[BigDataType.XinTownNationDistribution]" style="width: 100%" alt="" />
+              </nz-upload>
+            </nz-form-control>
+          </nz-form-item>
+          <div style="width: 100%">
+            <button nz-button nzType="primary" style="margin: 10px 150px 30px">保存</button>
+          </div>
+        </form>
+      </div>
+    </nz-tab>
+  </nz-tabset>
+</div>

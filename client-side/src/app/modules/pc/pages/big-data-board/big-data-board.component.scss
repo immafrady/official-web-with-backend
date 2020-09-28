@@ -102,14 +102,14 @@
         }
       }
       .map-img {
-        width: 100%;
+        width: 90%;
         height: 55vh;
         position: absolute;
         top: 10vh;
+        left: 5%;
         .map-bg {
-          width: 85%;
-          background-size: cover;
-          margin-left: 10%;
+          width: 100%;
+          object-fit: cover;
         }
       }
     }

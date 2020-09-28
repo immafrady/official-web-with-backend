@@ -8,7 +8,6 @@ import {NzBreadCrumbModule, NzIconModule, NzLayoutModule, NzMenuModule, NzToolTi
 import { WrapperComponent } from './layout/wrapper/wrapper.component';
 import { AuthGuard } from './auth.guard';
 
-
 @NgModule({
   declarations: [AdminComponent, WrapperComponent],
   imports: [

@@ -15,6 +15,7 @@ const routes: Routes = [
           { path: 'recruitment-manager', loadChildren: () => import('./pages/recruitment-manager/recruitment-manager.module').then(mod => mod.RecruitmentManagerModule) },
           { path: 'department-manager', loadChildren: () => import('./pages/department-manager/department-manager.module').then(mod => mod.DepartmentManagerModule) },
           { path: 'incident-manager', loadChildren: () => import('./pages/incident-manager/incident-manager.module').then(mod => mod.IncidentManagerModule) },
+          { path: 'big-data-manager', loadChildren: () => import('./pages/big-data-manage/big-data-manage.module').then(mod => mod.BigDataManageModule) },
           { path: '**', redirectTo: 'news-list' }
         ] },
     ]

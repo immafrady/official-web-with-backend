@@ -44,6 +44,10 @@ export class WrapperComponent implements OnInit {
       label: '事件管理',
       link: '/admin/incident-manager/detail-list'
     }]
+  }, {
+    label: '大数据看板',
+    icon: 'area-chart',
+    link: '/admin/big-data-manager'
   }]
   constructor() { }
 

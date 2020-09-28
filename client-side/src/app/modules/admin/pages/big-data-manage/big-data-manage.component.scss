@@ -1,0 +1,57 @@
+@import "src/styles/common.admin";
+
+.data-board-manager {
+  max-width: 1000px;
+}
+
+// 大数据看板的模块标题
+.data-board-title {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 10px 12px;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+// 月新增服务
+.month-service-container {
+  [nz-form] {
+    max-width: 700px;
+  }
+}
+
+.auto-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  .title,nz-form-control {
+    margin-right: 10px;
+    min-width: 140px;
+    text-align: right;
+  }
+  .auto-operate {
+    min-width: 120px;
+    .edit-icon {
+      cursor: pointer;
+      font-size: 24px;
+      color: #999;
+      transition: all 0.3s;
+      margin-right: 10px;
+      &:hover {
+        color: #777;
+      }
+      &.add-button {
+        color: #42a3eb;
+      }
+    }
+  }
+}
+
+.upload-img-box {
+  text-align: center;
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+}
