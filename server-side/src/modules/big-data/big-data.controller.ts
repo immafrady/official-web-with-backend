@@ -14,7 +14,7 @@ export class BigDataController {
     @ApiOperation({ summary: '编辑大数据 - 单条' })
     @Post('edit')
     async editBigData(@Body() editBigDataDto: EditBigDataDto) {
-        return successResponse(await this.bigDataService.edit(editBigDataDto.key, editBigDataDto.value));
+        return successResponse(await this.bigDataService.edit(editBigDataDto.key, editBigDataDto.value), BigDataService.getTypeLabel(editBigDataDto.key) + '保存成功');
     }
 
     @ApiOperation({ summary: '单条' })
